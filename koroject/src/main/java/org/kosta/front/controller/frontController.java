@@ -1,0 +1,16 @@
+package org.kosta.front.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+@Controller
+public class frontController {
+	
+	//get주소줄로 요청, post-> data전달은 다 post
+	@RequestMapping(value="index", method=RequestMethod.GET)
+	public String index(){
+		return "index";
+	}
+
+}

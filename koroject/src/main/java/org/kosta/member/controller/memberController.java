@@ -26,7 +26,7 @@ public class memberController {
 	
 	@RequestMapping(value="insert_member",method=RequestMethod.GET)
 	public String inert_form(Model model){
-		model.addAttribute("title", "¸â¹ö");
+		model.addAttribute("title", "ï¿½ï¿½ï¿½");
 		
 		return "/memberRegister/insertMember";
 	}
