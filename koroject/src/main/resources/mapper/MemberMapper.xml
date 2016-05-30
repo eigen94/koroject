@@ -5,7 +5,12 @@
 
 <mapper namespace="org.kosta.member.mapper.MemberMapper">
 	<cache />
-	
+	<insert id="insertMember">
+		insert into member 
+			(m_id,m_name,m_email,m_pwd,m_phone,m_question,m_answer,m_recentMember)
+		values
+			(#{m_id},#{m_name},#{m_email},#{m_pwd},#{m_phone},#{m_question},#{m_answer},#{m_friend})
+	</insert>
 </mapper>
 
 

@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/member/*")
-public class MemberController {
+public class memberController {
 
-	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+	private static final Logger logger = LoggerFactory.getLogger(memberController.class);
 	
 	@Inject
 	private MemberService service;
+	
 	
 }

@@ -32,5 +32,8 @@
   		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"/>
 	</bean> 
 	
+		<context:component-scan base-package="org.kosta.member.persistence"/>
+	<context:component-scan base-package="org.kosta.member.service"/>
+	
 	
 </beans>
