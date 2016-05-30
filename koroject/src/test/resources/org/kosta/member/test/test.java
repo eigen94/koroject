@@ -34,7 +34,7 @@ public class test {
 		member.setM_question(1);
 		member.setM_answer("aaaaa");
 		member.setM_email("asdas@asd.asd");
-		member.setM_friend("asd");
+		member.setM_recentMember("asd");
 		dao.insertMember(member);
 	}
 
