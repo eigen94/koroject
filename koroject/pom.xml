@@ -197,6 +197,10 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
+			        <url>http://127.0.0.1:8080/manager/html</url>
+			        <path>/test</path>
+			        <server>TomcatServer</server>
+
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
@@ -208,6 +212,7 @@
 			        <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
 			    </configuration>
 			</plugin>
+			<!--
 			<plugin>
 			    <groupId>org.codehaus.mojo</groupId>
 			    <artifactId>tomcat-maven-plugin</artifactId>
@@ -218,6 +223,7 @@
 			        <server>TomcatServer</server>
 			    </configuration>
 			</plugin>
+			-->
         </plugins>
     </build>
 </project>
