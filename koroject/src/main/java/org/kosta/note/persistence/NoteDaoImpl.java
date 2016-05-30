@@ -14,11 +14,12 @@ public class NoteDaoImpl implements NoteDao{
 	@Inject
 	private SqlSession session;
 	
+	private static String namespace = "org.kosta.mapper.noteMapper";
+
 	
 	@Override
 	public List<Note> listAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return session.selectList(namespace + ".listAll");
 	}
 
 }
