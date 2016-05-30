@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.kosta.mapper.noteMapper">
 
-	<select id="listAll" resultType=""></select>
+	<!-- <select id="listAll" resultType=""></select> -->
 
 
 

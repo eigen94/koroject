@@ -34,6 +34,8 @@
 	
 		<context:component-scan base-package="org.kosta.member.persistence"/>
 	<context:component-scan base-package="org.kosta.member.service"/>
+		<context:component-scan base-package="org.kosta.note.persistence"/>
+	<context:component-scan base-package="org.kosta.note.service"/>
 	
 	
 </beans>

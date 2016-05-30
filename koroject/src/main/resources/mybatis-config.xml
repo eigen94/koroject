@@ -5,7 +5,8 @@
 
 <configuration>
 	<typeAliases>
-	<package name="org.kosta.member.model"/>   
+	<package name="org.kosta.member.domain"/>   
+	<package name="org.kosta.note.domain"/>
 	</typeAliases>
 	
 	
