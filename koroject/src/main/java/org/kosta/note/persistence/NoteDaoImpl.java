@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.apache.ibatis.session.SqlSession;
 import org.kosta.note.domain.Note;
 import org.springframework.stereotype.Repository;
 
