@@ -639,13 +639,11 @@ Tactile
       <div class="formholder">
         <div class="randompad">
         <form action="loginMember" method="post">
-          
              <label name="email">Email</label>
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
              <input type="password" name="m_pwd" />
              <input class="loginButton" type="submit" value="Login" />
-        
           </form>
         </div>
       </div>

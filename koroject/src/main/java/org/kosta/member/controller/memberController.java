@@ -74,7 +74,7 @@ public class memberController {
 	@RequestMapping(value="logoutMember")
 	public String logoutMember(){
 		
-		return "/memberRegister/login_form";
+		return "redirect:/index";
 	}
 	
 	@RequestMapping(value="detailMember")
