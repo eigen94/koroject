@@ -7,6 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-${title}
+${member.m_name}로그인 하셨습니다.
+<a href="detailMember"><button>개인정보</button></a>
+<a href="logoutMember"><button>로그아웃</button></a>
 </body>
 </html>
