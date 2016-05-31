@@ -26,5 +26,10 @@
 	<context:component-scan base-package="org.kosta.note.controller"/>
 	<context:component-scan base-package="org.kosta.front.controller"></context:component-scan>
 	
+	<resources location="/resources/" mapping="/resources/"/>
+	<resources location="/js/" mapping="/js/**"></resources>
+	
+	
 	
 </beans:beans>
+
