@@ -3,11 +3,13 @@ package org.kosta.note.controller;
 import javax.inject.Inject;
 
 import org.kosta.note.domain.Note;
+import org.kosta.note.domain.SearchCriteria;
 import org.kosta.note.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,15 +30,13 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
 	public String send(Note note, Model model)throws Exception{
-		System.out.println("센드123");
 		service.send(note);
-		System.out.println("센드");
 		model.addAttribute("list", service.listAll());
 		return "/note/note_list";
 	}
 	
 	@RequestMapping(value="/listAll", method = RequestMethod.GET)
-	public String listAll(Model model)throws Exception{
+	public String listAll(@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
 		model.addAttribute("list", service.listAll());
 		
 		return "/note/note_list";
