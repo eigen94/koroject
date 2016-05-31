@@ -807,7 +807,7 @@ USA
 <nav id="menu">
 <ul class="links">
 <li>
-<a href="index.html">Home</a>
+<a href="projectPage">Project</a>
 </li>
 <li>
 <a href="generic.html">Generic</a>
