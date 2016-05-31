@@ -5,7 +5,7 @@ public class LoginCommand {
 	private String m_email;
 	private String m_pwd;
 	
-	public LoginCommand(){}40
+	public LoginCommand(){}
 	
 	public LoginCommand(String m_email, String m_pwd) {
 		super();
