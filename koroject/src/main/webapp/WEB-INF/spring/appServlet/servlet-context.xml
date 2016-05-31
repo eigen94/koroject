@@ -24,5 +24,25 @@
 	
 	<context:component-scan base-package="org.kosta"/>
 	
+	<!-- 세션관리 인터셉터 -->
+	<beans:bean id="memberInterceptor" class="org.kosta.member.interceptor.MemberInterceptor"></beans:bean>
+	<beans:bean id="loginCheckInterceptor" class="org.kosta.member.interceptor.LoginCheckInterceptor"></beans:bean>
+	<beans:bean id="logoutInterceptor" class="org.kosta.member.interceptor.LogoutInterCeptor"></beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/loginMember"/>
+			<beans:ref bean="memberInterceptor"/> 
+		</interceptor>
+		<interceptor>
+			<mapping path="/login_form" />
+			<beans:ref bean="loginCheckInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/logoutMember"/>
+			<beans:ref bean="logoutInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 </beans:beans>
 

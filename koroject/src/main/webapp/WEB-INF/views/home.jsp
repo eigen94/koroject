@@ -10,7 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
-<script type="text/javascript" src="js/static/jquery/2.0.3/jquery.js"></script>
+<script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
 <script type="text/javascript">
 
 $(function(){
