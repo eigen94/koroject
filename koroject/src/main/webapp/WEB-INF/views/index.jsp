@@ -638,14 +638,15 @@ Tactile
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-           <fieldset>
+        <form action="loginMember" method="post">
+          
              <label name="email">Email</label>
-             <input type="email" value="example@example.com" />
+             <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
-             <input type="password" />
+             <input type="password" name="m_pwd" />
              <input class="loginButton" type="submit" value="Login" />
- 
-           </fieldset>
+        
+          </form>
         </div>
       </div>
     </div>
@@ -808,7 +809,7 @@ USA
 <nav id="menu">
 <ul class="links">
 <li>
-<a href="index.html">Home</a>
+<a href="projectPage">Project</a>
 </li>
 <li>
 <a href="generic.html">Generic</a>
