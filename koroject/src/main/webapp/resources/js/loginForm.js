@@ -24,7 +24,7 @@ $(function(){
 		})
 		
 		$('.loginButton').click(function(){
-			location.href="projectPage";
+			location.href="index";
 			});
 	
 });
