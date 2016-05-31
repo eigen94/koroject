@@ -17,6 +17,12 @@ public class MemberDAOImpl implements MemberDAO{
 		session.insert(namespace+".insertMember",member);
 		
 	}
+
+	@Override
+	public int idSelect() {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".idSelect");
+	}
 	
 
 

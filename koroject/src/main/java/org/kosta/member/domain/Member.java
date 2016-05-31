@@ -10,7 +10,7 @@ public class Member implements Serializable {
 	private String m_phone;
 	private int m_question;
 	private String m_answer;
-	private String m_friend;
+	private String m_recentMember;
 	public int getM_id() {
 		return m_id;
 	}
@@ -53,19 +53,20 @@ public class Member implements Serializable {
 	public void setM_answer(String m_answer) {
 		this.m_answer = m_answer;
 	}
-	public String getM_friend() {
-		return m_friend;
+	public String getM_recentMember() {
+		return m_recentMember;
 	}
-	public void setM_friend(String m_friend) {
-		this.m_friend = m_friend;
+	public void setM_recentMember(String m_recentMember) {
+		this.m_recentMember = m_recentMember;
 	}
 	@Override
 	public String toString() {
-		return "Member [m_id=" + m_id + ", m_name=" + m_name + ", m_email="
-				+ m_email + ", m_pwd=" + m_pwd + ", m_phone=" + m_phone
-				+ ", m_question=" + m_question + ", m_answer=" + m_answer
-				+ ", m_friend=" + m_friend + "]";
+		return "Member [m_id=" + m_id + ", m_name=" + m_name + ", m_email=" + m_email + ", m_pwd=" + m_pwd
+				+ ", m_phone=" + m_phone + ", m_question=" + m_question + ", m_answer=" + m_answer + ", m_recentMember="
+				+ m_recentMember + "]";
 	}
+
+	
 	
 	
 	
