@@ -5,12 +5,31 @@
 
 <mapper namespace="org.kosta.member.mapper.ImageMapper">
 	<cache />
-	<insert id="insertImage">
+	<insert id="create">
 		insert into img_board
 			(img_bno, img_title, img_content, img_writer)
 		values
 			(#{img_bno},#{img_title},#{img_content},#{img_writer})
 	</insert>
+	
+	<select id="read" resultType="org.kosta.imageboard.domain.ImageVO">
+		select * from img_board where img_bno = #{img_bno}
+	</select>
+	
+	<update id="update">
+		update img_board set img_title=#{img_title}, img_content=#{img_content} where img_bno=#{img_bno}
+	</update>
+	
+	<delete id="delete">
+		delete from img_board where img_bno = #{img_bno}
+	</delete>
+	
+	<select id="listAll" resultType="org.kosta.imageboard.domain.ImageVO">
+		select img_bno, img_title, img_content, img_writer, img_regdate, img_viewcnt
+		from img_board
+		where img_bno>0
+		order by img_bno desc, img_regdate desc
+	</select>
 </mapper>
 
 
