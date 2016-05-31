@@ -644,7 +644,7 @@ Tactile
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
              <input type="password" name="m_pwd" />
-             <input type="submit" value="Login" />
+             <input class="loginButton" type="submit" value="Login" />
         
           </form>
         </div>

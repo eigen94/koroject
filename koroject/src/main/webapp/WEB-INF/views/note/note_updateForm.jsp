@@ -7,13 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-	번호 : ${note.n_id }	<br>
-	제목 : ${note.n_title}	<br>
-	내용 : ${note.n_content}<br><br><br><br>
+	업데이트폼
 	
-	<a href="note_updateForm${note.n_id }"><button>수정</button></a><br><br>
-	<a href="listAll"><button>목록</button></a><br><br>
-	<a href="note_delete${note.n_id }"><button>삭제</button></a>
+	<form action="note_update" method="post">
+		<input type="hidden" name="n_id" value="${note.n_id }">
+		제목 : <input type="text" name="n_title" value="${note.n_title }">
+		내용 : <textarea name="n_content" rows="" cols="">${note.n_content }</textarea>
+
+		<input type="submit" value="수정">	
+	
+	</form>
 	
 </body>
 </html>

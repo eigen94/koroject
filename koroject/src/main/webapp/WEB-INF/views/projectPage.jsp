@@ -7,13 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	번호 : ${note.n_id }	<br>
-	제목 : ${note.n_title}	<br>
-	내용 : ${note.n_content}<br><br><br><br>
-	
-	<a href="note_updateForm${note.n_id }"><button>수정</button></a><br><br>
-	<a href="listAll"><button>목록</button></a><br><br>
-	<a href="note_delete${note.n_id }"><button>삭제</button></a>
-	
+ hihihi
+
 </body>
 </html>
