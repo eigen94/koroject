@@ -22,5 +22,9 @@ $(function(){
 		 
 	
 		})
+		
+		$('.loginButton').click(function(){
+			location.href="projectPage";
+			});
 	
 });

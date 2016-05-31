@@ -643,7 +643,7 @@ Tactile
              <input type="email" value="example@example.com" />
              <label name="password">Password</label>
              <input type="password" />
-             <input type="submit" value="Login" />
+             <input class="loginButton" type="submit" value="Login" />
  
            </fieldset>
         </div>

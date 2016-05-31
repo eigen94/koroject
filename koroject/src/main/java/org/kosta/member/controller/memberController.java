@@ -28,7 +28,7 @@ public class memberController {
 	@RequestMapping(value="/")
 	public String inert_form(Model model){
 		
-		return "/memberRegister/insert_form";
+		return "/index";
 	}
 	
 	@RequestMapping(value="inser_tmember",method=RequestMethod.GET)
