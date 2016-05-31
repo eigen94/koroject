@@ -14,7 +14,7 @@ public class LogoutInterCeptor extends HandlerInterceptorAdapter{
 			request.getSession().removeAttribute("member");
 			return true;
 		}
-		response.sendRedirect("login_form");
+		response.sendRedirect("index");
 		return false;
 	};
 }
