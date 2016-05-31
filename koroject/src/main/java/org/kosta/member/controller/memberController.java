@@ -2,6 +2,8 @@ package org.kosta.member.controller;
 
 import javax.inject.Inject;
 
+import org.kosta.member.domain.LoginCommand;
+import org.kosta.member.domain.Member;
 import org.kosta.member.service.MemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,12 +25,61 @@ public class memberController {
 	public void setService(MemberService service) {
 		this.service = service;
 	}
-	
-	@RequestMapping(value="insert_member",method=RequestMethod.GET)
+	//메인페이지
+	@RequestMapping(value="/")
 	public String inert_form(Model model){
-		model.addAttribute("title", "���");
+		
+		return "/index";
+	}
+	//회원가입폼
+	@RequestMapping(value="insert_member",method=RequestMethod.GET)
+	public String insert_form2(){
+		
+		return "/memberRegister/insert_form";
+	}
+	//회원가입
+	@RequestMapping(value="insert_member", method=RequestMethod.POST)
+	public String insert_member(Member member,Model model){
+		member.setM_id(service.idSelect()+1);
+		member.setM_recentMember("hi");
+		service.insertMember(member);
+		return  "/memberRegister/login_form";
+	}
+	//로그인폼
+	@RequestMapping(value="login_form", method=RequestMethod.GET)
+	public String login_form(){
+		
+		return "/memberRegister/login_form";
+	}
+	
+	//로그인하기
+	@RequestMapping(value="loginMember")
+	public String loginMember(LoginCommand login,Model model){
+		
+		Member member = service.loginMember(login);
+		if(member == null){
+			return "/memberRegister/login_form";
+		}
+		model.addAttribute("member", member);
 		
 		return "/memberRegister/insertMember";
 	}
 	
+	@RequestMapping(value="insertMember2")
+	public String loginMember2(){
+		
+		return "/memberRegister/insertMember";
+	}
+	
+	@RequestMapping(value="logoutMember")
+	public String logoutMember(){
+		
+		return "/memberRegister/login_form";
+	}
+	
+	@RequestMapping(value="detailMember")
+	public String detailMember(){
+		
+		return "/memberRegister/detailMember";
+	}
 }

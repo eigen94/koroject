@@ -1,3 +1,4 @@
+
 package org.kosta.front.controller;
 
 import org.springframework.stereotype.Controller;
@@ -12,10 +13,8 @@ public class frontController {
 	public String index(){
 		return "index";
 	}
-	
-	@RequestMapping(value="loginForm", method=RequestMethod.GET)
-	public String loginForm(){
-		return "loginForm";
+	@RequestMapping(value="projectPage", method=RequestMethod.GET)
+	public String projectPage(){
+		return "projectPage";
 	}
-
 }

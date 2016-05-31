@@ -21,7 +21,11 @@ body {
 
 #navthing {
 	margin-top: 20px;
+<<<<<<< HEAD
 	margin-left:1500px;
+=======
+	right:20px;
+>>>>>>> refs/remotes/origin/master
 	position: absolute;
 	z-index: 1;
 	

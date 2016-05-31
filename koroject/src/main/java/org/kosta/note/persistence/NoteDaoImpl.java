@@ -22,4 +22,34 @@ public class NoteDaoImpl implements NoteDao{
 		return session.selectList(namespace + ".listAll");
 	}
 
+
+	@Override
+	public void send(Note note) throws Exception {
+		session.insert(namespace + ".send", note);
+	}
+
+
+	@Override
+	public Note detail(Integer n_id) throws Exception {
+		return session.selectOne(namespace + ".detail", n_id);
+	}
+
+
+	@Override
+	public void update(Note note) {
+		session.update(namespace + ".update", note);
+	}
+
+
+	@Override
+	public void delete(int n_id) {
+		session.delete(namespace + ".delete", n_id);
+	}
+
+
+	@Override
+	public List<String> searchId(String m_name) {
+		return session.selectList(namespace + ".searchId", m_name);
+	}
+
 }

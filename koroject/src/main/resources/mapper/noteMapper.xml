@@ -5,23 +5,39 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.kosta.mapper.noteMapper">
 
-	<!-- <select id="listAll" resultType=""></select> -->
-
-
-
-
-	<!-- <insert id="create">
-		insert into tbl_board (title, content, writer)
-		values(#{title},#{content}, #{writer})
+	<insert id="send">
+		INSERT INTO note
+		values(note_seq.nextval, #{n_title}, #{n_content}, #{n_sender}, #{n_receive}, SYSDATE)
 	</insert>
-
-	<select id="read" resultType="org.zerock.domain.BoardVO">
-		select
-		bno, title, content, writer, regdate, viewcnt , replycnt
-		from
-		tbl_board
-		where bno = #{bno}
+	
+	<select id="listAll" resultType="Note">
+		SELECT * FROM NOTE ORDER BY n_id DESC
 	</select>
+
+	<select id="detail" resultType="Note">
+		SELECT * FROM note WHERE n_id = #{n_id}		
+	</select>
+
+	<update id="update">
+		UPDATE note SET 
+			n_title = #{n_title },
+			n_content = #{n_content }
+		WHERE n_id = #{n_id }
+	</update>
+
+	<delete id="delete">
+		DELETE FROM note WHERE n_id = #{n_id}
+	</delete>
+
+	<select id="searchId" resultType="String">
+		SELECT m_email
+		FROM member
+		WHERE m_email LIKE #{m_email }
+	</select>
+
+	<!-- 
+
+	
 
 	<select id="listAll" resultType="org.zerock.domain.BoardVO">
  <![CDATA[
@@ -59,14 +75,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 
-	<update id="update">
-		update tbl_board set title =#{title}, content =#{content}
-		where bno = #{bno}
-	</update>
-
-	<delete id="delete">
-		delete from tbl_board where bno = #{bno}
-	</delete>
+	
 
 
 

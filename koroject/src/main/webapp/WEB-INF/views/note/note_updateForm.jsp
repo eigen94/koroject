@@ -7,8 +7,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-${member.m_name}로그인 하셨습니다.
-<a href="detailMember"><button>개인정보</button></a>
-<a href="logoutMember"><button>로그아웃</button></a>
+	업데이트폼
+	
+	<form action="note_update" method="post">
+		<input type="hidden" name="n_id" value="${note.n_id }">
+		제목 : <input type="text" name="n_title" value="${note.n_title }">
+		내용 : <textarea name="n_content" rows="" cols="">${note.n_content }</textarea>
+
+		<input type="submit" value="수정">	
+	
+	</form>
+	
 </body>
 </html>

@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-${member.m_name}로그인 하셨습니다.
-<a href="detailMember"><button>개인정보</button></a>
-<a href="logoutMember"><button>로그아웃</button></a>
+
+	<form action="loginMember" method="post">
+		이메일 <input type="text" name="m_email">
+		비밀번호<input type="password" name="m_pwd">
+		<input type="submit" value="로그인">
+	</form>
+
 </body>
 </html>
