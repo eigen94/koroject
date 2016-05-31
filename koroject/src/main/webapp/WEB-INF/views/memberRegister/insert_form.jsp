@@ -23,6 +23,7 @@
 		<input type="text" name="m_answer"><br>
 		<input type="submit" value="회원가입">
 	</form>
+	<a href="login_form"><button>로그인</button></a>
 	
 	
 </body>

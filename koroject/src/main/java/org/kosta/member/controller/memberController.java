@@ -45,4 +45,9 @@ public class memberController {
 		model.addAttribute("title", "¸â¹ö");
 		return  "/memberRegister/insertMember";
 	}
+	@RequestMapping(value="login_form", method=RequestMethod.GET)
+	public String login_form(){
+		
+		return "/memberRegister/login_form";
+	}
 }
