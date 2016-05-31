@@ -6,5 +6,7 @@ public interface MemberDAO {
 
 	public void insertMember(Member member);
 
+	public int idSelect();
+
 	
 }
