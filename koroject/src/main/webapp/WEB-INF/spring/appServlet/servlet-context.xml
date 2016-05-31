@@ -24,5 +24,6 @@
 	<context:component-scan base-package="org.kosta.koroject" />
 	<context:component-scan base-package="org.kosta.member.controller"/>
 	
+	<context:component-scan base-package="org.kosta.imageboard.controller"/>
 	
 </beans:beans>
