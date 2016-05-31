@@ -25,19 +25,19 @@ public class memberController {
 	public void setService(MemberService service) {
 		this.service = service;
 	}
-	//�⺻ ������
+	//메인페이지
 	@RequestMapping(value="/")
 	public String inert_form(Model model){
 		
-		return "/memberRegister/insert_form";
+		return "/index";
 	}
-	//ȸ��������
+	//회원가입폼
 	@RequestMapping(value="insert_member",method=RequestMethod.GET)
 	public String insert_form2(){
 		
 		return "/memberRegister/insert_form";
 	}
-	//ȸ������
+	//회원가입
 	@RequestMapping(value="insert_member", method=RequestMethod.POST)
 	public String insert_member(Member member,Model model){
 		member.setM_id(service.idSelect()+1);
@@ -45,14 +45,14 @@ public class memberController {
 		service.insertMember(member);
 		return  "/memberRegister/login_form";
 	}
-	//�α��� ��
+	//로그인폼
 	@RequestMapping(value="login_form", method=RequestMethod.GET)
 	public String login_form(){
 		
 		return "/memberRegister/login_form";
 	}
 	
-	//�α���
+	//로그인하기
 	@RequestMapping(value="loginMember")
 	public String loginMember(LoginCommand login,Model model){
 		
