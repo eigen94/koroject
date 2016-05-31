@@ -628,10 +628,36 @@ Tactile
 <span>by Pixelarity</span>
 </a>
 </h1>
-<a href="#" id="loginform">Log In</a>
+<a href="#login" id="loginform">Log In</a>
+<script>
+$('#loginform').click(function(){
+	  $('.login').fadeToggle('slow');
+	  $(this).toggleClass('green');	  
+	});
+
+</script>
 <a href="#menu">Menu</a>
-</header>
+</header>    
+<div id="navthing">
+      <!-- <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2> -->
+    <div class="login">
+      <div class="arrow-up"></div>
+      <div class="formholder">
+        <div class="randompad">
+           <fieldset>
+             <label name="email">Email</label>
+             <input type="email" value="example@example.com" />
+             <label name="password">Password</label>
+             <input type="password" />
+             <input type="submit" value="Login" />
+ 
+           </fieldset>
+        </div>
+      </div>
+    </div>
+    </div>
 <section id="banner">
+
 <div class="inner">
 <h2 class="major special">Magna Et Lorem</h2>
 <p>Sed condimentum purus nullam feugiat consequat</p>
@@ -802,32 +828,13 @@ USA
 <a class="button fit special" href="#">Sign Up</a>
 </li>
 <li>
-<a class="button fit" href="#">Log In</a>
+<a class="button fit" href="#" id="loginform">Log In</a>
 </li>
 </ul>
 <a class="close" href="#menu"></a>
 </nav>
 
-<div id="navthing">
-      <!-- <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2> -->
-    <div class="login">
-      <div class="arrow-up"></div>
-      <div class="formholder">
-        <div class="randompad">
-           <fieldset>
-             <label name="email">Email</label>
-             <input type="email" value="example@example.com" />
-             <label name="password">Password</label>
-             <input type="password" />
-             <input type="submit" value="Login" />
- 
-           </fieldset>
-        </div>
-      </div>
-    </div>
-    </div>
-      <script src="/resources/assets/js/jquery.min.js"></script>
-
-        <script src="/resources/js/index.js"></script>
+<!-- this is loginForm js -->
+<script src="/resources/js/index.js"></script>
 </body>
 </html>

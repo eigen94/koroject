@@ -8,9 +8,11 @@ $('input[type="submit"]').mouseup(function(){
   
 });
 
-$('#loginform').click(function(){
+$('').on("click","#loginform",function(){
   $('.login').fadeToggle('slow');
   $(this).toggleClass('green');
+  alert("anjgksl");
+  
 });
 
 
