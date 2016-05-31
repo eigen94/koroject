@@ -27,7 +27,6 @@ public class memberController {
 	
 	@RequestMapping(value="/")
 	public String inert_form(Model model){
-		model.addAttribute("title", "¸â¹ö");
 		
 		return "/memberRegister/insert_form";
 	}
@@ -42,7 +41,7 @@ public class memberController {
 		member.setM_id(service.idSelect()+1);
 		member.setM_recentMember("hi");
 		service.insertMember(member);
-		model.addAttribute("title", "¸â¹ö");
+		model.addAttribute("title", "Â¸Ã¢Â¹Ã¶");
 		return  "/memberRegister/insertMember";
 	}
 	@RequestMapping(value="login_form", method=RequestMethod.GET)
