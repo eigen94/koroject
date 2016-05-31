@@ -262,7 +262,7 @@
 			    <version>2.1</version>
 			    <configuration>
 			        <!-- Path -->
-			        <path>/</path>
+			        <path>/test</path>
 			        <!-- 구동중인 톰캣의 주소 + /manager/text -->
 			        <url>http://localhost:8080/manager/text</url>
 			        <!-- 톰캣 사용자 정보 -->
