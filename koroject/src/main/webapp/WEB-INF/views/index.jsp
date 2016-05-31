@@ -629,13 +629,7 @@ Tactile
 </a>
 </h1>
 <a href="#login" id="loginform">Log In</a>
-<script>
-$('#loginform').click(function(){
-	  $('.login').fadeToggle('slow');
-	  $(this).toggleClass('green');	  
-	});
 
-</script>
 <a href="#menu">Menu</a>
 </header>    
 <div id="navthing">
@@ -828,7 +822,10 @@ USA
 <a class="button fit special" href="#">Sign Up</a>
 </li>
 <li>
-<a class="button fit" href="#" id="loginform">Log In</a>
+<a class="button fit menuLoginButton" href="#">Log In</a>
+<script type="text/javascript">
+</script>
+
 </li>
 </ul>
 <a class="close" href="#menu"></a>
@@ -836,5 +833,7 @@ USA
 
 <!-- this is loginForm js -->
 <script src="/resources/js/index.js"></script>
+<script src="/resources/js/loginForm.js"></script>
+
 </body>
 </html>
