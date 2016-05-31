@@ -2,10 +2,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script src="./items/demos_assets/jquery.min.js"></script>
-<script src="items/demos_assets/jquery.scrolly.min.js"></script>
-<script src="assets/js/skel.min.js"></script>
-<script src="assets/js/util.js">
+<meta charset="UTF-8">
+<script src="/resources/items/demos_assets/jquery.min.js"></script>
+<script src="/resources/items/demos_assets/jquery.scrolly.min.js"></script>
+<script src="/resources/assets/js/skel.min.js"></script>
+<link rel="stylesheet" href="/resources/css/style.css">
+<script src="/resources/assets/js/util.js">
+
 (function($) {
 
 	/**
@@ -594,7 +597,7 @@
 
 })(jQuery);
 </script>
-<script src="assets/js/ie/respond.min.js">
+<script src="/resources/assets/js/ie/respond.min.js">
 /*! Respond.js v1.4.2: min/max-width media query polyfill
  * Copyright 2014 Scott Jehl
  * Licensed under MIT
@@ -625,7 +628,7 @@ Tactile
 <span>by Pixelarity</span>
 </a>
 </h1>
-<a href="#">Log In</a>
+<a href="#" id="loginform">Log In</a>
 <a href="#menu">Menu</a>
 </header>
 <section id="banner">
@@ -805,11 +808,26 @@ USA
 <a class="close" href="#menu"></a>
 </nav>
 
-<script type="text/javascript">
-$(function(){
-	
+<div id="navthing">
+      <!-- <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2> -->
+    <div class="login">
+      <div class="arrow-up"></div>
+      <div class="formholder">
+        <div class="randompad">
+           <fieldset>
+             <label name="email">Email</label>
+             <input type="email" value="example@example.com" />
+             <label name="password">Password</label>
+             <input type="password" />
+             <input type="submit" value="Login" />
+ 
+           </fieldset>
+        </div>
+      </div>
+    </div>
+    </div>
+      <script src="/resources/assets/js/jquery.min.js"></script>
 
-});
-</script>
+        <script src="/resources/js/index.js"></script>
 </body>
 </html>

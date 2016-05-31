@@ -12,5 +12,10 @@ public class frontController {
 	public String index(){
 		return "index";
 	}
+	
+	@RequestMapping(value="loginForm", method=RequestMethod.GET)
+	public String loginForm(){
+		return "loginForm";
+	}
 
 }
