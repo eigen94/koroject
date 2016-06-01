@@ -44,7 +44,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	}
 	
 	@RequestMapping(value="/note_list", method = RequestMethod.GET)
-	public String listAll(@ModelAttribute("cri") SearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+	public String listAll(Model model, HttpServletRequest request)throws Exception{
 //		model.addAttribute("list", service.listCriteria(cri));
 		
 		//로그인 세션이 없으면 index로 리다이렉트 
@@ -61,13 +61,12 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 //		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
 		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
 		
-		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
 		
 //		pageMaker.setTotalCount(service.listCountCriteria(cri));
 		
-		model.addAttribute("pageMaker", pageMaker);
-		return "/note/note_list";
+		
+		return "/note/module/noteMain";
+//		return "/note/note_list";
 	}
 	
 	/*
@@ -116,6 +115,28 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	////////////////////////
+	
+	
+	@RequestMapping(value="/main")
+	public String main(Model model, HttpServletRequest request)throws Exception{
+		Member member =  (Member)request.getSession().getAttribute("member");
+		int m_id = member.getM_id();
+		List<Note> note_list = service.note_list(m_id);
+		model.addAttribute("list2", note_list);
+		return "/note/module/noteMain";
+	}
 }
 
 
