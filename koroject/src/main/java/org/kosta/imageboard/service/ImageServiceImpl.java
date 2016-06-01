@@ -4,7 +4,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.kosta.imageboard.domain.Criteria;
 import org.kosta.imageboard.domain.ImageVO;
+import org.kosta.imageboard.domain.SearchCriteria;
 import org.kosta.imageboard.persistence.ImageDAO;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +42,30 @@ public class ImageServiceImpl implements ImageService {
 	@Override
 	public List<ImageVO> listAll() throws Exception {
 		return dao.listAll();
+	}
+
+	@Override
+	public List<ImageVO> listCriteria(Criteria cri) throws Exception {
+		
+		return dao.listCriteria(cri);
+	}
+
+	@Override
+	public int listCountCriteria(Criteria cri) throws Exception {
+	
+		return dao.countPaging(cri);
+	}
+
+	@Override
+	public List<ImageVO> listSearchCriteria(SearchCriteria cri) throws Exception {
+
+		return dao.listSearch(cri);
+	}
+
+	@Override
+	public int listSearchCount(SearchCriteria cri) throws Exception {
+
+		return dao.listSerchCount(cri);
 	}
 
 }

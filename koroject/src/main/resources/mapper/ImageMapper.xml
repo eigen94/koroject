@@ -5,14 +5,16 @@
 
 <mapper namespace="org.kosta.member.mapper.ImageMapper">
 	<cache />
-	<insert id="create">
+	
+
+ 	<insert id="create">
 		insert into img_board
-			(img_bno, img_title, img_content, img_writer)
+			(img_bno, img_title, img_content, img_writer, img_regdate, img_viewcnt)
 		values
-			(#{img_bno},#{img_title},#{img_content},#{img_writer})
+			(imgboard_seq.NEXTVAL, #{img_title}, #{img_content}, #{img_writer}, SYSDATE, 0)
 	</insert>
 	
-	<select id="read" resultType="org.kosta.imageboard.domain.ImageVO">
+	 <select id="read" resultType="org.kosta.imageboard.domain.ImageVO">
 		select * from img_board where img_bno = #{img_bno}
 	</select>
 	
@@ -30,18 +32,104 @@
 		where img_bno>0
 		order by img_bno desc, img_regdate desc
 	</select>
+	
+	<select id="listPage" resultType="ImageVO">
+	  <![CDATA[
+		 select 
+		   img_rno, img_bno, img_replytext, img_replyer, img_regdate, img_updatedate
+		 from
+		   (
+		   select /*+INDEX_DESC(img_reply pk_imgreply))*/
+		     rownum rn, img_rno, img_bno, img_replytext, img_replyer, img_regdate, img_updatedate
+		   from img_reply
+		   where img_bno = #{img_bno}
+		   and img_rno > 0
+		   and rownum <= #{cri.page} * #{cri.perPageNum}
+		   )
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+	  ]]>
+	</select>
+	
+	<select id="listCriteria" resultType="ImageVO">
+	 <![CDATA[
+	 select 
+	   img_bno, img_title, img_content, img_writer, img_regdate, img_viewcnt, img_replycnt 
+	 from 
+	   img_board 
+	 where img_bno > 0 
+	 order by img_bno desc, img_regdate desc	
+	 ]]>
+	</select>
+	
+	<select id="countPaging" resultType="int">
+		 <![CDATA[
+		 select 
+		   count(img_bno) 
+		 from 
+		   img_board 
+		 where 
+		   img_bno > 0 
+		 ]]>
+	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and img_title like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and img_content like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and img_writer like '%'|| #{keyword}||'%'
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( img_title like '%'|| #{keyword}||'%' OR img_content like
+				'%'||
+				#{keyword}||'%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( img_content like '%'|| #{keyword}||'%' OR img_writer like
+				'%'||
+				#{keyword}||'%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( img_title like '%'|| #{keyword}||'%'
+				OR
+				img_content like
+				'%'|| #{keyword}||'%'
+				OR
+				img_writer like '%'|| #{keyword}||'%')
+			</if>
+		</if>
+	</sql>
+	
+	<select id="listSearch" resultType="ImageVO" parameterType="SearchCriteria">
+	<![CDATA[  
+	  select * 
+	  from img_board 
+	  where img_bno > 0   
+	]]>
+
+		<include refid="search"></include>
+	  
+	<![CDATA[    
+	  order by img_bno desc	  
+	]]>
+	</select>
+
+
+	<select id="listSearchCount" resultType="int" parameterType="SearchCriteria">
+	<![CDATA[  
+	  select count(img_bno) 
+	  from img_board 
+	  where img_bno > 0 
+	]]>
+		<include refid="search"></include>
+
+	</select>
+	
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -11,6 +11,9 @@ public class ImageVO implements Serializable {
 	private String img_writer;
 	private Date img_regdate;
 	private int img_viewcnt;
+	private int img_replycnt;
+	
+	
 	
 	
 	public Integer getImg_bno() {
@@ -49,11 +52,20 @@ public class ImageVO implements Serializable {
 	public void setImg_viewcnt(int img_viewcnt) {
 		this.img_viewcnt = img_viewcnt;
 	}
+	public int getImg_replycnt() {
+		return img_replycnt;
+	}
+	public void setImg_replycnt(int img_replycnt) {
+		this.img_replycnt = img_replycnt;
+	}
+	
 	@Override
 	public String toString() {
 		return "ImageVO [img_bno=" + img_bno + ", img_title=" + img_title + ", img_content=" + img_content
-				+ ", img_writer=" + img_writer + ", img_regdate=" + img_regdate + ", img_viewcnt=" + img_viewcnt + "]";
+				+ ", img_writer=" + img_writer + ", img_regdate=" + img_regdate + ", img_viewcnt=" + img_viewcnt
+				+ ", img_replycnt=" + img_replycnt + "]";
 	}
+	
 	
 	
 }
