@@ -7,12 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-${member}
-<form action="deleteMember" method="post">
-	<input type="hidden" name="m_email" value="${member.m_email }">
-	<input type="password" name="m_pwd">
-	<input type="submit" value="회원탈퇴">
+
+<form action="serchMember" method="post">
+	이메일<input type="text" name="m_email"><br>
+	질문<select name="m_question">
+			<option value="1">고향은?<option>
+			<option value="2">이름은?<option>
+			<option value="3">주소는?<option>
+		</select>
+	답<input type="text" name="m_answer"/><br>
+	<input type="submit" value="비밀번호 찾기">
 </form>
+<br>
 ${param.message}
 </body>
 </html>

@@ -19,6 +19,17 @@
 	<select id="loginMember" resultType="Member">
 		select * from member where m_email = #{m_email} and m_pwd = #{m_pwd}
 	</select>
+	
+	<select id="serchPWD" resultType="PassSerchCommand">
+		select m_email, m_question, m_answer from member where m_email = #{m_email}
+	</select>
+	<update id="changePwd">
+		update member set m_pwd = #{m_pwd} where m_email = #{m_email}
+	</update>
+	
+	<delete id="deleteMember">
+		delete from member where m_email=#{m_email} and m_pwd = #{m_pwd}
+	</delete>
 </mapper>
 
 

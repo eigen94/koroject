@@ -110,6 +110,13 @@
 			<version>1.2</version>
 		</dependency>
 	
+		<!-- validation -->
+	<dependency>
+		<groupId>javax.validation</groupId>
+		<artifactId>validation-api</artifactId>
+		<version>1.0.0.GA</version>
+	</dependency>
+	
 		<!-- Test -->
 		<dependency>
 			<groupId>junit</groupId>

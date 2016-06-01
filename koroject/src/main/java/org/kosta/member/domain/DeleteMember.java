@@ -2,14 +2,12 @@ package org.kosta.member.domain;
 
 import java.io.Serializable;
 
-public class LoginCommand implements Serializable {
+public class DeleteMember implements Serializable{
 
 	private String m_email;
 	private String m_pwd;
-	
-	public LoginCommand(){}
-	
-	public LoginCommand(String m_email, String m_pwd) {
+	public DeleteMember(){}
+	public DeleteMember(String m_email, String m_pwd) {
 		super();
 		this.m_email = m_email;
 		this.m_pwd = m_pwd;
@@ -26,7 +24,10 @@ public class LoginCommand implements Serializable {
 	public void setM_pwd(String m_pwd) {
 		this.m_pwd = m_pwd;
 	}
-	
+	@Override
+	public String toString() {
+		return "DeleteMember [m_email=" + m_email + ", m_pwd=" + m_pwd + "]";
+	}
 	
 	
 }

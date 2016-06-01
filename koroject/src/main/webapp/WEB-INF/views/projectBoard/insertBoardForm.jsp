@@ -7,14 +7,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-	<form action="loginMember" method="post">
-		이메일 <input type="text" name="m_email">
-		비밀번호<input type="password" name="m_pwd">
-		<input type="submit" value="로그인">
+	<form action="insertBoard" method="post">
+		프로젝트 이름 : <input type="text" name="p_name"><br>
+		프로젝트 시작일 : <input type="date" name="p_start">
+		프로젝트 종료일 : <input type="date" name="p_end"><br>
+		메모 <br>
+		<textarea rows="6" cols="70" name="p_memo"></textarea>
+		<br>
+		<input type="submit" value="등록">
 	</form>
-	<a href="serchMember"><button>비밀번호 찾기</button></a>
-	<br>
-	${param.message}
 </body>
 </html>
