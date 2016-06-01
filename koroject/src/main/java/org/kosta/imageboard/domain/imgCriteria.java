@@ -1,11 +1,19 @@
 package org.kosta.imageboard.domain;
 
-public class Criteria {
+public class imgCriteria {
 
   private int page=1;
   private int perPageNum=2;
+  
+  
+  
+  public imgCriteria(int page, int perPageNum) {
+	super();
+	this.page = page;
+	this.perPageNum = perPageNum;
+}
 
-  public Criteria() {
+  public imgCriteria() {
     this.page = 1;
     this.perPageNum = 2;
   }

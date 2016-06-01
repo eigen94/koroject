@@ -9,7 +9,7 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
 import org.kosta.imageboard.domain.ReplyVO;
 import org.springframework.stereotype.Repository;
@@ -44,7 +44,7 @@ public class ReplyDAOImpl implements ReplyDAO {
 		session.delete(namespace+".delete", img_rno);
 	}
 	@Override
-	public List<ReplyVO> listPage(Integer img_bno, Criteria cri) throws Exception {
+	public List<ReplyVO> listPage(Integer img_bno, imgCriteria cri) throws Exception {
 		
 		Map<String, Object> paramMap = new HashMap<>();
 		

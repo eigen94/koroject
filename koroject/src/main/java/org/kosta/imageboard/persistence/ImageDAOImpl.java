@@ -5,9 +5,9 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
-import org.kosta.imageboard.domain.SearchCriteria;
+import org.kosta.imageboard.domain.ImgSearchCriteria;
 import org.kosta.member.domain.Member;
 import org.springframework.stereotype.Repository;
 
@@ -57,25 +57,25 @@ public class ImageDAOImpl implements ImageDAO {
 	}
 
 	@Override
-	public List<ImageVO> listCriteria(Criteria cri) throws Exception {
+	public List<ImageVO> listCriteria(imgCriteria cri) throws Exception {
 		
 		return session.selectList(namespace+".listCriteria", cri);
 	}
 
 	@Override
-	public int countPaging(Criteria cri) throws Exception {
+	public int countPaging(imgCriteria cri) throws Exception {
 	
 		return session.selectOne(namespace+".countPaging",cri);
 	}
 
 	@Override
-	public List<ImageVO> listSearch(SearchCriteria cri) throws Exception {
+	public List<ImageVO> listSearch(ImgSearchCriteria cri) throws Exception {
 		
 		return session.selectList(namespace+".listSearch", cri);
 	}
 
 	@Override
-	public int listSerchCount(SearchCriteria cri) throws Exception {
+	public int listSerchCount(ImgSearchCriteria cri) throws Exception {
 
 		return session.selectOne(namespace+".listSearchCount", cri);
 	}

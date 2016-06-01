@@ -2,10 +2,10 @@ package org.kosta.imageboard.controller;
 
 import javax.inject.Inject;
 
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
-import org.kosta.imageboard.domain.PageMaker;
-import org.kosta.imageboard.domain.SearchCriteria;
+import org.kosta.imageboard.domain.ImgPageMaker;
+import org.kosta.imageboard.domain.ImgSearchCriteria;
 import org.kosta.imageboard.service.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,13 +27,13 @@ public class SearchBoardController {
 	private ImageService service;
 	
 	@RequestMapping(value="/list", method= RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri")SearchCriteria cri, Model model)throws Exception{
+	public void listPage(@ModelAttribute("cri")ImgSearchCriteria cri, Model model)throws Exception{
 		System.out.println(cri.toString());
 		
 		//model.addAttribute("list", service.listCriteria(cri));
 		model.addAttribute("list", service.listSearchCriteria(cri));
 		
-		PageMaker pageMaker = new PageMaker();
+		ImgPageMaker pageMaker = new ImgPageMaker();
 		pageMaker.setCri(cri);
 		
 		//pageMaker.setTotalCount(service.listCountCriteria(cri));
@@ -43,14 +43,14 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="/readPage", method=RequestMethod.GET)
-	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
+	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 		
 	}
 	
 	@RequestMapping(value="/removePage", method=RequestMethod.POST)
-	public String remove(@RequestParam("img_bno")int img_bno,SearchCriteria cri, RedirectAttributes rttr)throws Exception{
+	public String remove(@RequestParam("img_bno")int img_bno,ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		service.remove(img_bno);
 		
@@ -64,13 +64,13 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
-	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")SearchCriteria cri ,Model model)throws Exception{
+	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")ImgSearchCriteria cri ,Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 	}
 	
 	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
-	public String modifyPOST(ImageVO vo, SearchCriteria cri, RedirectAttributes rttr)throws Exception{
+	public String modifyPOST(ImageVO vo, ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		System.out.println(cri.toString());
 		service.modify(vo);

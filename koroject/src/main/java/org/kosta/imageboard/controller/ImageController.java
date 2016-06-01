@@ -2,9 +2,9 @@ package org.kosta.imageboard.controller;
 
 import javax.inject.Inject;
 
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
-import org.kosta.imageboard.domain.PageMaker;
+import org.kosta.imageboard.domain.ImgPageMaker;
 import org.kosta.imageboard.service.ImageService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -50,18 +50,18 @@ public class ImageController {
 	}
 	*/
 	@RequestMapping(value="/listCri", method=RequestMethod.GET)
-	public void listAll(Criteria cri, Model model)throws Exception{
+	public void listAll(imgCriteria cri, Model model)throws Exception{
 		System.out.println("show list Page with Criteria........!!");
 		
 		model.addAttribute("list", service.listCriteria(cri));
 	}
 	
 	@RequestMapping(value="/listPage", method=RequestMethod.GET)
-	public void listPage(Criteria cri, Model model)throws Exception{
+	public void listPage(imgCriteria cri, Model model)throws Exception{
 		System.out.println(cri.toString());
 		
 		model.addAttribute("list", service.listCriteria(cri));
-		PageMaker pageMaker = new PageMaker();
+		ImgPageMaker pageMaker = new ImgPageMaker();
 		pageMaker.setCri(cri);
 		//pageMaker.setTotalCount(123);
 		
@@ -71,12 +71,12 @@ public class ImageController {
 	}
 	
 	@RequestMapping(value="/readPage", method=RequestMethod.GET)
-	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") Criteria cri, Model model)throws Exception{
+	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") imgCriteria cri, Model model)throws Exception{
 		model.addAttribute(service.read(img_bno));
 	}
 	
 	@RequestMapping(value="/removePage", method=RequestMethod.POST)
-	public String remove(@RequestParam("img_bno")int img_bno,Criteria cri, RedirectAttributes rttr)throws Exception{
+	public String remove(@RequestParam("img_bno")int img_bno,imgCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		service.remove(img_bno);
 		
@@ -88,13 +88,13 @@ public class ImageController {
 	}
 	
 	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
-	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")Criteria cri ,Model model)throws Exception{
+	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")imgCriteria cri ,Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 	}
 	
 	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
-	public String modifyPOST(ImageVO vo, Criteria cri, RedirectAttributes rttr)throws Exception{
+	public String modifyPOST(ImageVO vo, imgCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		service.modify(vo);
 		

@@ -141,7 +141,7 @@
         <h4 class="modal-title"></h4>
       </div>
       <div class="modal-body" data-rno>
-        <p><input type="text" id="replytext" class="form-control"></p>
+        <p><input type="text" id="img_replytext" class="form-control"></p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
@@ -168,17 +168,17 @@
 </script>  
 
 
-
+<!-- handlerbars 사용 템플릿 코드 -->
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
-<li class="replyLi" data-rno={{rno}}>
+<li class="replyLi" data-rno={{img_rno}}>
 <i class="fa fa-comments bg-blue"></i>
  <div class="timeline-item" >
   <span class="time">
-    <i class="fa fa-clock-o"></i>{{prettifyDate regdate}}
+    <i class="fa fa-clock-o"></i>{{prettifyDate img_regdate}}
   </span>
-  <h3 class="timeline-header"><strong>{{rno}}</strong> -{{replyer}}</h3>
-  <div class="timeline-body">{{replytext}} </div>
+  <h3 class="timeline-header"><strong>{{img_rno}}</strong> -{{img_replyer}}</h3>
+  <div class="timeline-body">{{img_replytext}} </div>
     <div class="timeline-footer">
      <a class="btn btn-primary btn-xs" 
 	    data-toggle="modal" data-target="#modifyModal">Modify</a>
@@ -247,6 +247,7 @@
 		target.html(str);
 	};
 
+	/* 댓글 목록 이벤트 처리 */
 	$("#repliesDiv").on("click", function() {
 
 		if ($(".timeline li").size() > 1) {
@@ -256,7 +257,7 @@
 
 	});
 	
-
+	/* 댓글 페이징 이벤트 처리 */
 	$(".pagination").on("click", "li a", function(event){
 		
 		event.preventDefault();
@@ -267,13 +268,13 @@
 		
 	});
 	
-
+	/* 댓글 등록의 이벤트 처리 */
 	$("#replyAddBtn").on("click",function(){
 		 
 		 var replyerObj = $("#newReplyWriter");
 		 var replytextObj = $("#newReplyText");
-		 var replyer = replyerObj.val();
-		 var replytext = replytextObj.val();
+		 var img_replyer = replyerObj.val();
+		 var img_replytext = replytextObj.val();
 		
 		  
 		  $.ajax({
@@ -283,7 +284,7 @@
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "POST" },
 				dataType:'text',
-				data: JSON.stringify({img_bno:img_bno, replyer:replyer, replytext:replytext}),
+				data: JSON.stringify({img_bno:img_bno, img_replyer:img_replyer, img_replytext:img_replytext}),
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
@@ -296,48 +297,48 @@
 			}});
 	});
 
-
+	/* 각 댓글의 버튼 이벤트 처리 */
 	$(".timeline").on("click", ".replyLi", function(event){
 		
 		var reply = $(this);
 		
-		$("#replytext").val(reply.find('.timeline-body').text());
+		$("#img_replytext").val(reply.find('.timeline-body').text());
 		$(".modal-title").html(reply.attr("data-rno"));
 		
 	});
 	
 	
-
+	/* 수정 처리 */
 	$("#replyModBtn").on("click",function(){
 		  
-		  var rno = $(".modal-title").html();
-		  var replytext = $("#replytext").val();
+		  var img_rno = $(".modal-title").html();
+		  var img_replytext = $("#img_replytext").val();
 		  
 		  $.ajax({
 				type:'put',
-				url:'/replies/'+rno,
+				url:'/replies/'+ img_rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "PUT" },
-				data:JSON.stringify({replytext:replytext}), 
+				data:JSON.stringify({img_replytext:img_replytext}), 
 				dataType:'text', 
 				success:function(result){
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
-						getPage("/replies/"+img_bno+"/"+replyPage );
+						getPage("/replies/"+ img_bno+"/"+ replyPage );
 					}
 			}});
 	});
-
+	/* 삭제 처리 */
 	$("#replyDelBtn").on("click",function(){
 		  
-		  var rno = $(".modal-title").html();
-		  var replytext = $("#replytext").val();
+		  var img_rno = $(".modal-title").html();
+		  var img_replytext = $("#img_replytext").val();
 		  
 		  $.ajax({
 				type:'delete',
-				url:'/replies/'+rno,
+				url:'/replies/'+ img_rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "DELETE" },

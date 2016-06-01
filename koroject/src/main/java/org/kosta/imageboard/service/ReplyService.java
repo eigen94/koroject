@@ -2,7 +2,7 @@ package org.kosta.imageboard.service;
 
 import java.util.List;
 
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ReplyVO;
 
 public interface ReplyService {
@@ -15,7 +15,7 @@ public interface ReplyService {
 
   public void removeReply(Integer img_rno) throws Exception;
 
-  public List<ReplyVO> listReplyPage(Integer img_bno, Criteria cri) throws Exception;
+  public List<ReplyVO> listReplyPage(Integer img_bno, imgCriteria cri) throws Exception;
 
   public int count(Integer bno) throws Exception;
 }

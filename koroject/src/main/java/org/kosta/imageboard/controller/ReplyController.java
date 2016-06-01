@@ -6,8 +6,8 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import org.kosta.imageboard.domain.Criteria;
-import org.kosta.imageboard.domain.PageMaker;
+import org.kosta.imageboard.domain.imgCriteria;
+import org.kosta.imageboard.domain.ImgPageMaker;
 import org.kosta.imageboard.domain.ReplyVO;
 import org.kosta.imageboard.service.ReplyService;
 import org.springframework.http.HttpStatus;
@@ -98,10 +98,10 @@ public class ReplyController {
     ResponseEntity<Map<String, Object>> entity = null;
     
     try {
-      Criteria cri = new Criteria();
+      imgCriteria cri = new imgCriteria();
       cri.setPage(page);
 
-      PageMaker pageMaker = new PageMaker();
+      ImgPageMaker pageMaker = new ImgPageMaker();
       pageMaker.setCri(cri);
 
       Map<String, Object> map = new HashMap<String, Object>();

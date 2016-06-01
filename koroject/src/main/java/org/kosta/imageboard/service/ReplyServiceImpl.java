@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ReplyVO;
 import org.kosta.imageboard.persistence.ReplyDAO;
 import org.springframework.stereotype.Service;
@@ -43,7 +43,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> listReplyPage(Integer img_bno, Criteria cri) throws Exception {
+	public List<ReplyVO> listReplyPage(Integer img_bno, imgCriteria cri) throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}

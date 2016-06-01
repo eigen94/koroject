@@ -3,7 +3,7 @@ package org.kosta.imageboard.domain;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class PageMaker {
+public class ImgPageMaker {
 
   private int totalCount;
   private int startPage;
@@ -13,9 +13,9 @@ public class PageMaker {
 
   private int displayPageNum = 5;
 
-  private Criteria cri;
+  private imgCriteria cri;
 
-  public void setCri(Criteria cri) {
+  public void setCri(imgCriteria cri) {
     this.cri = cri;
   }
 
@@ -67,7 +67,7 @@ public class PageMaker {
     return displayPageNum;
   }
 
-  public Criteria getCri() {
+  public imgCriteria getCri() {
     return cri;
   }
 
@@ -88,8 +88,8 @@ public class PageMaker {
               UriComponentsBuilder.newInstance()
               .queryParam("page", page)
               .queryParam("perPageNum", cri.getPerPageNum())              
-              .queryParam("searchType", ((SearchCriteria)cri).getSearchType())
-              .queryParam("keyword", ((SearchCriteria)cri).getKeyword())
+              .queryParam("searchType", ((ImgSearchCriteria)cri).getSearchType())
+              .queryParam("keyword", ((ImgSearchCriteria)cri).getKeyword())
               .build();  
     return uriComponents.toUriString();
   } 

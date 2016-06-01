@@ -2,9 +2,9 @@ package org.kosta.imageboard.service;
 
 import java.util.List;
 
-import org.kosta.imageboard.domain.Criteria;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
-import org.kosta.imageboard.domain.SearchCriteria;
+import org.kosta.imageboard.domain.ImgSearchCriteria;
 
 
 public interface ImageService {
@@ -19,12 +19,12 @@ public interface ImageService {
 	
 	public List<ImageVO> listAll() throws Exception;
 	
-	public List<ImageVO>listCriteria(Criteria cri) throws Exception;
+	public List<ImageVO>listCriteria(imgCriteria cri) throws Exception;
 	
-	public int listCountCriteria(Criteria cri) throws Exception;
+	public int listCountCriteria(imgCriteria cri) throws Exception;
 	
-	public List<ImageVO>listSearchCriteria(SearchCriteria cri) throws Exception;
+	public List<ImageVO>listSearchCriteria(ImgSearchCriteria cri) throws Exception;
 	
-	public int listSearchCount(SearchCriteria cri) throws Exception;
+	public int listSearchCount(ImgSearchCriteria cri) throws Exception;
 	
 }
