@@ -52,4 +52,10 @@ public class NoteDaoImpl implements NoteDao{
 		return session.selectList(namespace + ".searchId", m_name);
 	}
 
+
+	@Override
+	public List<Note> note_list(int m_id) {
+		return session.selectList(namespace + ".note_list", m_id);
+	}
+
 }

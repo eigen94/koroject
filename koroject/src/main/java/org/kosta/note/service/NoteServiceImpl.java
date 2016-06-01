@@ -44,4 +44,9 @@ public class NoteServiceImpl implements NoteService{
 		return dao.searchId(m_name);
 	}
 
+	@Override
+	public List<Note> note_list(int m_id) throws Exception {
+		return dao.note_list(m_id);
+	}
+
 }
