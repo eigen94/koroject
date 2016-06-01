@@ -15,6 +15,10 @@ $('').on("click","#loginform",function(){
   
 });
 
+$('body').on("click","#startProject",function(){
+	location.href="projectPage";
+});
+
 
 
 $(document).mouseup(function (e)
