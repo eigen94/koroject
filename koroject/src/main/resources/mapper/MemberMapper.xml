@@ -15,6 +15,10 @@
 	<select id="idSelect" resultType="int">
 		select max(m_id) from member
 	</select>
+	
+	<select id="loginMember" resultType="Member">
+		select * from member where m_email = #{m_email} and m_pwd = #{m_pwd}
+	</select>
 </mapper>
 
 
