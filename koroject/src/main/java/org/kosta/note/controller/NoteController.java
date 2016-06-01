@@ -1,8 +1,13 @@
 package org.kosta.note.controller;
 
-import javax.inject.Inject;
+import java.util.List;
 
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+
+import org.kosta.member.domain.Member;
 import org.kosta.note.domain.Note;
+import org.kosta.note.domain.PageMaker;
 import org.kosta.note.domain.SearchCriteria;
 import org.kosta.note.service.NoteService;
 import org.slf4j.Logger;
@@ -24,21 +29,44 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	private NoteService service;
 	
 	@RequestMapping(value="/note_sendForm")
-	public String sendForm(Model model)throws Exception{
-		return "/note/note_sendForm";
+	public void sendForm(Model model)throws Exception{
+//		return "/note/note_sendForm";
 	}
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
-	public String send(Note note, Model model)throws Exception{
+	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
+		Member member =  (Member)request.getSession().getAttribute("member");
+		System.out.println(member.getM_email());
 		service.send(note);
 		model.addAttribute("list", service.listAll());
+		model.addAttribute("member", member);
 		return "/note/note_list";
 	}
 	
-	@RequestMapping(value="/listAll", method = RequestMethod.GET)
-	public String listAll(@ModelAttribute("cri") SearchCriteria cri, Model model)throws Exception{
-		model.addAttribute("list", service.listAll());
+	@RequestMapping(value="/note_list", method = RequestMethod.GET)
+	public String listAll(@ModelAttribute("cri") SearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+//		model.addAttribute("list", service.listCriteria(cri));
 		
+		//로그인 세션이 없으면 index로 리다이렉트 
+		if(request.getSession().getAttribute("member") == null){
+			System.out.println("노세션");
+			return "redirect:/index";
+		}
+		
+		//세션 받아 멤버에 넣음
+		Member member =  (Member)request.getSession().getAttribute("member");
+		int m_id = member.getM_id();
+		List<Note> note_list = service.note_list(m_id);
+		
+//		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
+		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		
+//		pageMaker.setTotalCount(service.listCountCriteria(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
 		return "/note/note_list";
 	}
 	
