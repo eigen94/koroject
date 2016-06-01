@@ -5,10 +5,23 @@ $(function(){
 	  $(obj).toggleClass('green');	  
 			
 	}
-
+	
+	$('.box-register').css("display","none");
+	
+	function toggleSignUpForm(){
+		$('.box-register').fadeToggle('slow');
+	}
+//	toggleSignUpForm();
+	
 	$('#loginform').click(function(){
 		toggleLoingForm(this);
 		});
+	
+	$('.signUp').click(function(){
+		toggleSignUpForm(this);
+	})
+	
+	
 	
 	
 	$('#menu').on("click",".menuLoginButton",function(){

@@ -17,28 +17,36 @@
 			<form class="form-register ng-pristine ng-valid">
 				<fieldset>
 					<legend>
-						Sign Up
+						회원가입
 					</legend>
 					<p>
 						Enter your personal details below:
 					</p>
 					<div class="form-group">
-						이름 <input type="text" class="form-control" name="name" placeholder="name">
+						이름 <input type="text" class="form-control" name="m_name" placeholder="name">
 					</div>
 					<div class="form-group">
-						e-mail <input type="text" class="form-control" name="e-mail" placeholder="e-mail">
+						e-mail <input type="text" class="form-control" name="m_email" placeholder="e-mail">
 					</div>
 					<div class="form-group">
-						비밀번호<input type="text" class="form-control" name="password" placeholder="password">
+						비밀번호<input type="text" class="form-control" name="m_pwd" placeholder="password">
 					</div>
 					<div class="form-group">
-						비밀번호 확인<input type="text" class="form-control" name="passwordCheck" placeholder="passwordCheck">
+						비밀번호 확인<input type="text" class="form-control" name="m_pwdCheck" placeholder="password Again">
+					</div>
+					<div class="form-group">
+						핸드폰 번호<input type="text" class="form-control" name="m_phone" placeholder="phone Number">
 					</div>
 					<div class="form-group">
 						<label class="block">
-							Gender
+							질문
 						</label>
-						<div class="clip-radio radio-primary">
+						<select name="m_question">
+								<option value="1">고향은?</option>
+								<option value="2">이름은?</option>
+								<option value="3">주소는?</option>
+						</select>
+						<!-- <div class="clip-radio radio-primary">
 							<input type="radio" id="rg-female" name="gender" value="female">
 							<label for="rg-female">
 								Female
@@ -47,26 +55,13 @@
 							<label for="rg-male">
 								Male
 							</label>
-						</div>
+						</div> -->
 					</div>
-					<p>
-						Enter your account details below:
-					</p>
+					
 					<div class="form-group">
-						<span class="input-icon">
-							<input type="email" class="form-control" name="email" placeholder="Email">
-							<i class="fa fa-envelope"></i> </span>
+						<input type="text" class="form-control" name="m_answer" placeholder="Answer">
 					</div>
-					<div class="form-group">
-						<span class="input-icon">
-							<input type="password" class="form-control" id="password" name="password" placeholder="Password">
-							<i class="fa fa-lock"></i> </span>
-					</div>
-					<div class="form-group">
-						<span class="input-icon">
-							<input type="password" class="form-control" name="password_again" placeholder="Password Again">
-							<i class="fa fa-lock"></i> </span>
-					</div>
+				
 					<div class="form-group">
 						<div class="checkbox clip-check check-primary">
 							<input type="checkbox" id="agree" value="agree">
@@ -83,16 +78,11 @@
 							</a>
 						</p>
 						<button type="submit" class="btn btn-primary pull-right">
-							Submit <i class="fa fa-arrow-circle-right"></i>
+							Submit
 						</button>
 					</div>
 				</fieldset>
 			</form>
-			<!-- start: COPYRIGHT -->
-			<div class="copyright ng-binding">
-				2016 © Clip-Two by ClipTheme.
-			</div>
-			<!-- end: COPYRIGHT -->
 		</div>
 		<!-- end: REGISTER BOX -->
 	</div>
