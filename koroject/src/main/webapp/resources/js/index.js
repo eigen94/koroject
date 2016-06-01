@@ -21,6 +21,8 @@ $('body').on("click","#startProject",function(){
 
 
 
+
+
 $(document).mouseup(function (e)
 {
     var container = $(".login");
