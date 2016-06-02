@@ -1,5 +1,7 @@
 package org.kosta.member.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.kosta.member.domain.DeleteMember;
@@ -49,6 +51,18 @@ public class MemberServiceImpl implements MemberService {
 	public int deleteMember(DeleteMember dm) {
 		// TODO Auto-generated method stub
 		return dao.deleteMember(dm);
+	}
+
+	@Override
+	public String emailCheck(String email) {
+		// TODO Auto-generated method stub
+		return dao.emailCheck(email);
+	}
+
+	@Override
+	public LoginCommand loginMember2(LoginCommand lc) {
+		// TODO Auto-generated method stub
+		return dao.loginMember2(lc);
 	}
 	
 	

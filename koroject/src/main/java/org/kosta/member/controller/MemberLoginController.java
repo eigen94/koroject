@@ -57,11 +57,18 @@ public class MemberLoginController {
 			return "/memberRegister/login_form";
 		}
 		
+		
+		
+		
+		
 		//로그인하기
 		@RequestMapping(value="loginMember")
 		public String loginMember(LoginCommand login,Model model){
-			login.setM_pwd(testSHA256(login.getM_pwd()));
+			System.out.println("------------------aaa");
+			System.out.println(login);
+			
 			Member member = service.loginMember(login);
+			
 			if(member == null){
 				return "/memberRegister/login_form";
 			}
@@ -69,6 +76,7 @@ public class MemberLoginController {
 			
 			return "/memberRegister/insertMember";
 		}
+		
 		//세션이 존재할때 로그인 페이지를 못가게 만듬
 		@RequestMapping(value="insertMember2")
 		public String loginMember2(){

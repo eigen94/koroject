@@ -30,6 +30,13 @@
 	<delete id="deleteMember">
 		delete from member where m_email=#{m_email} and m_pwd = #{m_pwd}
 	</delete>
+	<select id="emailCheck" resultType="String">
+		select m_email from member where m_email = #{email}
+	</select>
+	<select id="loginMember2" resultType="LoginCommand">
+		select m_email, m_pwd from member where m_email = #{m_email} and m_pwd = #{m_pwd}
+	</select>
+	
 </mapper>
 
 
