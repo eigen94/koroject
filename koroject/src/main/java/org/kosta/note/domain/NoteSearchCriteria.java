@@ -1,6 +1,6 @@
 package org.kosta.note.domain;
 
-public class SearchCriteria extends Criteria{
+public class NoteSearchCriteria extends NoteCriteria{
 
 	private String searchType;
 	private String keyword;

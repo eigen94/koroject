@@ -1,11 +1,11 @@
 package org.kosta.note.domain;
 
-public class Criteria {
+public class NoteCriteria {
 
 	private int page;	
 	private int perPageNum;
 	
-	public Criteria(){
+	public NoteCriteria(){
 		this.page = 1;
 		this.perPageNum = 10;
 	}
