@@ -107,16 +107,16 @@ koroject
 						<input type="text" class="form-control" name="m_answer" placeholder="Answer">
 					</div>
 				
-					<div class="form-group">
+			<!-- 		<div class="form-group">
 						<div class="checkbox clip-check check-primary">
 							<input type="checkbox" id="agree" value="agree">
 							<label for="agree">
 								I agree
 							</label>
 						</div>
-					</div>
+					</div> -->
 					<div class="form-actions">
-							Already have an account?
+							이미 계정이 있으신 가요?
 							<a ui-sref="login.signin" href="#/login/signin">
 								Log-in
 							</a>
@@ -294,7 +294,7 @@ USA
 <li>
 <a href="elements.html">Elements</a>
 </li>
-</ul>http://localhost:8088/form
+</ul>
 <ul class="actions vertical">
 <li>
 <a class="button fit special signUp" href="#">Sign Up</a>
