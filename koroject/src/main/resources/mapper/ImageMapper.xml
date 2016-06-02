@@ -5,7 +5,7 @@
 
 <mapper namespace="org.kosta.member.mapper.ImageMapper">
 	<cache />
-	
+<!-- 	
 
  	<insert id="create">
 		insert into img_board
@@ -128,9 +128,8 @@
 		<include refid="search"></include>
 
 	</select>
-	
+	 -->
 </mapper>
-
 
 
 
