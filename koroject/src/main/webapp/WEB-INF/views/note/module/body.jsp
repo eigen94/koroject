@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <script type="text/javascript">
+
 </script>
 <title>Insert title here</title>
 </head>
@@ -16,15 +17,14 @@
 		<ul class="message-list">
 			<c:forEach var="note" items="${list2 }">
 				<hr>
-				<li class="message-list-item">
-					<div class="clickDiv">
+				<li class="message-list-item ng-scope">
+					<a href="note_detail${note.n_id }">
 						<div class="message-list-item-header">
-							<input type="hidden" name="n_id" value="${note.n_id }">
 							<div class="time ng-binding">날짜</div>
-							<span class="ng-binding">${note.n_sender }</span>
-							<p class="ng-binding">${note.n_title }</p>
+							<span class="ng-binding">${note.n_title }</span>
+							<p class="ng-binding">${note.n_content }</p>
 						</div>
-					</div>
+					</a>
 				</li>
 			</c:forEach>
 		</ul>

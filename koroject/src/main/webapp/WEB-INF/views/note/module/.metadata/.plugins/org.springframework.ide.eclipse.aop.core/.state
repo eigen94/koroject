@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<aop-reference-model>
-<aop-project name="spring_register"/>
-<aop-project name="springAd"/>
-<aop-project name="spring_board2"/>
-<aop-project name="spring_Board"/>
-</aop-reference-model>

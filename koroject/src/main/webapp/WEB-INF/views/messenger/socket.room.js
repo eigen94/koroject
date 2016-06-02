@@ -19,14 +19,14 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on( 'connection', function(socket){
 	socket.on( 'join', function(data){
-		/*test*/console.log(data) // data : ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½
-		socket.join(data); //ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½æ¿¡ socketï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å²ï¿½ï¿½.
-		socket.room = data; //'room' ï¿½Ó¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Ô·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+		/*test*/console.log(data) // data : »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹æÀÌ¸§
+		socket.join(data); //»ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹æ¿¡ socketÀ» Âü¿©½ÃÅ²´Ù.
+		socket.room = data; //'room' ¼Ó¼º¿¡ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ¹æÀÌ¸§À» ÀúÀåÇÑ´Ù.
 	});
 	
 	socket.on( 'message', function(data){
-		//'room' ï¿½Ó¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½æ¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Clientï¿½ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
+		//'room' ¼Ó¼º°ª¿¡ ÇØ´çÇÏ´Â ¹æ¿¡ Âü¿©ÁßÀÎ Client¿¡ ¸Þ¼¼Áö¸¦ º¸³½´Ù.
 		console.log( 'id : %s, msg : %s, date : %s', data.id, data.message, data.date );
-		io.sockets.on( socket.room ).emit('message', data); //public ï¿½ï¿½ï¿½ : io.sockets.emit(...);
+		io.sockets.in( socket.room ).emit('message', data); //public Åë½Å : io.sockets.emit(...);
 	});
 });
