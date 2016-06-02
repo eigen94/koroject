@@ -5,15 +5,28 @@ $(function(){
 	  $(obj).toggleClass('green');	  
 			
 	}
-
+	
+	$('.box-register').css("display","none");
+	
+	function toggleSignUpForm(){
+		$('.box-register').fadeToggle('slow');
+	}
+//	toggleSignUpForm();
+	
 	$('#loginform').click(function(){
 		toggleLoingForm(this);
 		});
 	
+	$('.signUp').click(function(){
+		toggleSignUpForm(this);
+	})
+	
+	
+	
 	
 	$('#menu').on("click",".menuLoginButton",function(){
-		 console.log("hi");
-		 console.log(this);
+		/* console.log("hi");
+		 console.log(this);*/
 		//$(this).panel({delay: 500,hideOnClick: true,hideOnSwipe: true,resetScroll: true,resetForms: true,side: 'right', visibleClass:''});
 		console.log($(this).parent().parent().parent());
 		$(this).parent().parent().parent().removeClass('visible');

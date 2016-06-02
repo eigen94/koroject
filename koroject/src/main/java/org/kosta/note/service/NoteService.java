@@ -18,5 +18,7 @@ public interface NoteService {
 
 	public List<String> searchId(String m_name);
 
+	public List<Note> note_list(int m_id) throws Exception;
+
 	
 }

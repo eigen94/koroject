@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+  	<title>Example WebSocket</title>
+    <meta charset="utf-8">
+  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			
+			var room = prompt( '방 이름을 입력하세요.', 'room' );   
+			
+			var socket = io.connect(); //소켓서버 연결
+			socket.emit( 'join', room );
+			socket.on( 'message', function(data){
+				var output = '<p>[' + data.id +']' + data.message + '(' + data.date + ')</p>';
+				$( output ).appendTo('body');	
+			});	
+			
+			$('#button').click(function(){
+				var uid = $('#uid').val();
+				var msg = $('#msg').val();
+				
+				//서버측 'message' 이벤트를 호출한다. 이때 msg 전달
+				socket.emit('message', {
+					id : uid,
+					message : msg,
+					date : new Date().toUTCString()
+				}); //서버측 'message' 이벤트를 호출한다. 이때 msg 전달
+				
+				var msg = $('#msg').val(''); //메세지 내용 초기화
+			});
+		};
+	</script>
+</head>
+<body>
+<h1>Socket.io Test</h1>
+<hr>
+<input type="text" id="uid" />
+<input type="text" id="msg" />
+<input type="button" id="button" value="메세지" />
+<div id="content"></div>
+</body>
+</html>

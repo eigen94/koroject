@@ -34,6 +34,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		FROM member
 		WHERE m_email LIKE #{m_email }
 	</select>
+	
+	<select id="note_list" resultType="Note">
+		SELECT * FROM note WHERE n_receive = #{m_id}
+	</select>
 
 	<!-- 
 
