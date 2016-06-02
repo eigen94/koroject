@@ -8,5 +8,11 @@
 </head>
 <body>
 ${member}
+<form action="deleteMember" method="post">
+	<input type="hidden" name="m_email" value="${member.m_email }">
+	<input type="password" name="m_pwd">
+	<input type="submit" value="회원탈퇴">
+</form>
+${param.message}
 </body>
 </html>

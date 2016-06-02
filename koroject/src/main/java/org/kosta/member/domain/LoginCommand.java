@@ -1,6 +1,8 @@
 package org.kosta.member.domain;
 
-public class LoginCommand {
+import java.io.Serializable;
+
+public class LoginCommand implements Serializable {
 
 	private String m_email;
 	private String m_pwd;

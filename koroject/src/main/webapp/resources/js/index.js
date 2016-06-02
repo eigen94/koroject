@@ -10,10 +10,15 @@ $('input[type="submit"]').mouseup(function(){
 
 $('').on("click","#loginform",function(){
   $('.login').fadeToggle('slow');
-  $(this).toggleClass('green');
-  alert("anjgksl");
+ // $(this).toggleClass('green');
   
 });
+
+$('body').on("click","#startProject",function(){
+	location.href="projectPage";
+});
+
+
 
 
 

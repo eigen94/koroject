@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.kosta.member.mapper.ImageReplyMapper">
+	<cache />
+	
+	<select id="list" resultType="ReplyVO">
+		select
+		*
+		from
+		img_reply
+		where img_bno =
+		#{img_bno}
+		order by img_rno desc
+	</select>
+
+	<insert id="create">
+		insert into img_reply (img_rno, img_bno, img_replytext, img_replyer)
+		values (imgreply_seq.nextval, #{img_bno},#{img_replytext},#{img_replyer})
+	</insert>
+
+	<update id="update">
+		update img_reply set img_replytext = #{img_replytext},
+		img_updatedate = sysdate
+		where img_rno = #{img_rno}
+	</update>
+
+	<delete id="delete">
+		delete from img_reply where img_rno =#{img_rno}
+	</delete>
+	
+	<!-- 댓글 페이징 처리 -->
+	<select id="listPage" resultType="ReplyVO">
+	  <![CDATA[
+		 select 
+		   img_rno, img_bno, img_replytext, img_replyer, img_regdate, img_updatedate
+		 from
+		   (
+		   select /*+INDEX_DESC(img_reply pk_imgreply))*/
+		     rownum rn, img_rno, img_bno, img_replytext, img_replyer, img_regdate, img_updatedate
+		   from img_reply
+		   where img_bno = #{img_bno}
+		   and img_rno > 0
+		   and rownum <= #{cri.page} * #{cri.perPageNum}
+		   )
+		where rn > ( #{cri.page} -1) * #{cri.perPageNum}
+	  ]]>
+	</select>
+
+	<select id="count" resultType="int">
+		select count(img_bno) from img_reply
+		where img_bno =#{img_bno}
+	</select>
+	
+	
+</mapper>
+
+
+
+

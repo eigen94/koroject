@@ -17,4 +17,12 @@ public class frontController {
 	public String projectPage(){
 		return "projectPage";
 	}
+	@RequestMapping(value="form", method=RequestMethod.GET)
+	public String form(){
+		return "form";
+	}
+	@RequestMapping(value="template", method=RequestMethod.GET)
+	public String template(){
+		return "template";
+	}
 }
