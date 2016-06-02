@@ -1,0 +1,167 @@
+<?xml version="1.0" ?>
+<SAVED_DATA>
+	<bookmarks>
+		<jdbcDriver className="org.apache.derby.jdbc.EmbeddedDriver" name="org.apache.derby.jdbc.EmbeddedDriver" type="DERBY" version="">
+			<jar fileName="I:/수업자료/Spring/sts-bundle/sts-3.7.3.RELEASE/plugins/com.quantum.derby_3.3.0/lib/derby.jar" />
+		</jdbcDriver>
+		<jdbcDriver className="oracle.jdbc.driver.OracleDriver" name="Oracle JDBC driver" type="ORACLE" version="10.2.0.1.0XE">
+			<jar fileName="C:\Tomcat 7.0\lib\ojdbc14.jar" />
+		</jdbcDriver>
+		<bookmark>
+			<name>(Internal) Derby</name>
+			<username />
+			<password />
+			<prompt>false</prompt>
+			<connect>jdbc:derby:I:/수업자료/Spring/sts-bundle/sts-3.7.3.RELEASE/plugins/com.quantum.derby_3.3.0/data/quantum</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>true</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+			<type>DERBY</type>
+			<driverLocation>I:/수업자료/Spring/sts-bundle/sts-3.7.3.RELEASE/plugins/com.quantum.derby_3.3.0/lib/derby.jar</driverLocation>
+			<Other_Schemas schemaRule="useAll" />
+			<quickList />
+			<queryList />
+		</bookmark>
+		<bookmark>
+			<name>kosta111</name>
+			<username>kosta111</username>
+			<password>1234</password>
+			<prompt>false</prompt>
+			<connect>jdbc:oracle:thin:@localhost:1521:XE</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>false</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>oracle.jdbc.driver.OracleDriver</driver>
+			<type>ORACLE</type>
+			<driverLocation>C:\Tomcat 7.0\lib\ojdbc14.jar</driverLocation>
+			<Other_Schemas schemaRule="useAll" />
+			<quickList />
+			<queryList>
+				<query>
+					<queryString>CREATE SEQUENCE board_seq</queryString>
+				</query>
+				<query>
+					<queryString>create table board(
+	seq number,
+	title varchar2(20),
+	writer varchar2(20),
+	contents varchar2(200),
+	regdate date,
+	hitcount number
+)</queryString>
+				</query>
+				<query>
+					<queryString>update board set 
+			title = 'qqqqqq',
+			contents = 'wwwwwwwwwwwwwwwww' 
+			where seq = '1'</queryString>
+				</query>
+				<query>
+					<queryString>create sequence member_seq</queryString>
+				</query>
+				<query>
+					<queryString>create table member2(
+  id number primary key,
+  email varchar2(50),
+  password varchar2(50),
+  name varchar2(50),
+  regdate date
+)</queryString>
+				</query>
+				<query>
+					<queryString>drop table member2 purge</queryString>
+				</query>
+				<query>
+					<queryString>create table member2(
+  id number primary key,
+  email varchar2(50),
+  password varchar2(50),
+  name varchar2(50),
+  registerDate date
+)</queryString>
+				</query>
+				<query>
+					<queryString>create table order2(
+  no varchar2(20),
+  name varchar2(20),
+  price number,
+  amount number	
+)</queryString>
+				</query>
+				<query>
+					<queryString>create table item(
+  no varchar2(20),
+  name varchar2(20),
+  price number,
+  amount number
+  
+)</queryString>
+				</query>
+				<query>
+					<queryString>insert into item values('100', 'pc', 50000, 100)</queryString>
+				</query>
+				<query>
+					<queryString>select count(*) from board</queryString>
+				</query>
+				<query>
+					<queryString>alter table board
+add(filename varchar2(50))</queryString>
+				</query>
+				<query>
+					<queryString>create table tbl_member(
+	userid varchar2(50) primary key,
+	userpw varchar2(50) not null,
+	username varchar2(50) not null,
+	email varchar2(100),
+	regdate timestamp,
+	updatedate timestamp
+)</queryString>
+				</query>
+				<query>
+					<queryString>create table tbl_board(
+	bno number primary key,
+	title varchar2(50),
+	content varchar2(200),
+	writer varchar2(50),
+	regdate timestamp,
+	viewcnt number	
+)</queryString>
+				</query>
+				<query>
+					<queryString>SELECt count(*) from tbl_board</queryString>
+				</query>
+				<query>
+					<queryString>create table tbl_reply (
+ rno number,
+ bno number not null,
+ replytext varchar2(2000) not null,
+ replyer varchar2(50) not null,
+ regdate date default sysdate,
+ updatedate date default sysdate)</queryString>
+				</query>
+				<query>
+					<queryString>alter table tbl_reply add constraint pk_reply
+ primary key (rno)</queryString>
+				</query>
+				<query>
+					<queryString>alter table tbl_reply add constraint fk_board_reply
+ foreign key (bno) references tbl_board(bno)</queryString>
+				</query>
+				<query>
+					<queryString>create sequence seq_reply</queryString>
+				</query>
+			</queryList>
+		</bookmark>
+	</bookmarks>
+</SAVED_DATA>

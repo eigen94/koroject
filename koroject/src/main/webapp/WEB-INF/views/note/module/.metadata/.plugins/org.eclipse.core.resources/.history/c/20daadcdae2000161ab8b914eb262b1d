@@ -1,0 +1,46 @@
+package org.zerock.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.springframework.stereotype.Service;
+import org.zerock.domain.BoardVO;
+import org.zerock.persistence.BoardDao;
+
+@Service
+public class BoardServiceImpl implements BoardService{
+
+	@Inject
+	public BoardDao dao;
+
+	@Override
+	public void regist(BoardVO board) throws Exception {
+		dao.create(board);
+	}
+
+	@Override
+	public List<BoardVO> listAll() {
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		try {
+			list = dao.listAll();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	@Override
+	public BoardVO read(Integer bno) throws Exception {
+		return dao.read(bno);
+	}
+
+	@Override
+	public void delete(Integer bno) throws Exception {
+		dao.delete(bno);
+	}
+	
+	
+	
+}

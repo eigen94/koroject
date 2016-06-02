@@ -8,5 +8,11 @@
 </head>
 <body>
 
+	<div class="noteDetail">
+		<div class="noteTitle"></div>
+		<div class="noteContent"></div>
+	</div>
+
+
 </body>
 </html>

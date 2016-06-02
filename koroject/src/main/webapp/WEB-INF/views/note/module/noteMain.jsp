@@ -8,6 +8,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+$(function() {
+
+	$('.clickDiv').on('click', function() {
+
+		var n_id = $(this).find('input').val();
+		$.ajax({
+			url : "note_detail"+n_id,
+			dataType : 'json',
+			success : function(data) {
+				$('.noteTitle').html('');
+				$('.noteTitle').append(data.n_title);
+				$('.noteContent').html('');
+				$('.noteContent').append(data.n_content);
+			}
+		});
+	})
+})
+
+
+</script>
+
 <style type="text/css">
 .header {
 	width: 100%;
@@ -53,41 +75,40 @@
 
 .scroll {
 	/* height: 100%; */
-	overflow:auto;
-    width:100%; 
-    height:450px;
+	overflow: auto;
+	width: 100%;
+	height: 450px;
 }
 
 /* 쪽지 하나하나의 테두리 (a태그)  */
 .message-list .message-list-item a {
-    cursor: pointer;
-    display: block;
-    padding: 15px;
+	cursor: pointer;
+	display: block;
+	padding: 15px;
 }
 
 /* 제목 */
 .message-list .message-list-item a .message-list-item-header span {
-    color: #333;
+	color: #333;
 }
 
 /* 날짜 */
 .message-list .message-list-item a .time {
-    color: #b3b3b3;
-    float: right;
-    font-size: 10px;
-    font-weight: 700;
-    margin-top: 3px;
+	color: #b3b3b3;
+	float: right;
+	font-size: 10px;
+	font-weight: 700;
+	margin-top: 3px;
 }
 
 /* 내용 */
 .message-list .message-list-item a p {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
+
 p {
-    color: #7a7a7a;
+	color: #7a7a7a;
 }
-
-
 </style>
 </head>
 <body>

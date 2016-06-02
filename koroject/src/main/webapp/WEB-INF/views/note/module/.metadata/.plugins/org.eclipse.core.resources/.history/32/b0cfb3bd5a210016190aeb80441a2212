@@ -1,0 +1,101 @@
+package org.zerock.web;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.BoardVO;
+import org.zerock.domain.Criteria;
+import org.zerock.domain.SearchCriteria;
+import org.zerock.persistence.BoardDao;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
+public class BoardDaoTest {
+
+	@Inject
+	private BoardDao dao;
+	
+	Logger logger;
+
+	/*@Test
+	public void testCreate()throws Exception{
+		
+		BoardVO board = new BoardVO();
+		board.setTitle("타이틀");
+		board.setContent("컨텐트");
+		board.setWriter("작성자");
+		dao.create(board);
+	}*/
+	
+	
+	/*@Test
+	public void testListCriteria()throws Exception{
+		Criteria cri = new Criteria();
+		
+		cri.setPage(2);
+		cri.setPerPageNum(20);
+		
+		List<BoardVO> list= dao.listCriteria(cri);
+		
+		for(BoardVO boardVO : list){
+			logger.info(boardVO.getBno()+" : "+boardVO.getTitle());
+		}
+	}*/
+	
+	@Test
+	public void testDynamic()throws Exception{
+		SearchCriteria cri = new SearchCriteria();
+		cri.setPage(1);
+		cri.setKeyword("1");
+		cri.setSearchType("c");
+		
+		logger.info("=============");
+		
+		List<BoardVO> list = dao.listSearch(cri);
+		for(BoardVO board : list){
+			logger.info(board.getBno() + " : " + board.getTitle());
+		}
+		logger.info("=============");
+		logger.info("COUNT : " + dao.listSearchCount(cri));
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
