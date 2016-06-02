@@ -5,13 +5,13 @@
 >
 
 <tiles-definitions>
-	<definition name="base_layout" template="/view/template.jsp">
-		<put-attribute name="header" value="/view/header.jsp"/>
-		<put-attribute name="footer" value="/view/footer.jsp"/>
+	<definition name="base_layout" template="/WEB-INF/views/template/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header/headerNoSession.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
-	<definition name="insert_form" extends="base_layout">
-		<put-attribute name="body" value="/view/index.jsp"></put-attribute>
+	<definition name="index" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
 	</definition>
 	
 

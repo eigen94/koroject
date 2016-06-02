@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.member.domain.Member;
 import org.kosta.note.domain.Note;
-import org.kosta.note.domain.PageMaker;
-import org.kosta.note.domain.SearchCriteria;
+import org.kosta.note.domain.NotePageMaker;
+import org.kosta.note.domain.NoteSearchCriteria;
 import org.kosta.note.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,42 +28,57 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@Inject
 	private NoteService service;
 	
+	public Member getSession(HttpServletRequest request ){
+		return (Member)request.getSession().getAttribute("member");
+	}
+	
 	@RequestMapping(value="/note_sendForm")
-	public void sendForm(Model model)throws Exception{
-//		return "/note/note_sendForm";
+	public void sendForm(Model model, HttpServletRequest request)throws Exception{
+		if(getSession(request) != null){
+			model.addAttribute("m_id", getSession(request).getM_id());
+		}
 	}
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
 	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
-		Member member =  (Member)request.getSession().getAttribute("member");
+		
+		Member member =  getSession(request);
+		
 		System.out.println(member.getM_email());
+		
 		service.send(note);
-		model.addAttribute("list", service.listAll());
-		model.addAttribute("member", member);
+		
+//		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
+//		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
 		return "/note/note_list";
 	}
 	
 	@RequestMapping(value="/note_list", method = RequestMethod.GET)
-	public String listAll(Model model, HttpServletRequest request)throws Exception{
+	public String listAll(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
 //		model.addAttribute("list", service.listCriteria(cri));
-		
+		/*
 		//로그인 세션이 없으면 index로 리다이렉트 
 		if(request.getSession().getAttribute("member") == null){
 			System.out.println("노세션");
 			return "redirect:/index";
 		}
-		
 		//세션 받아 멤버에 넣음
-		Member member =  (Member)request.getSession().getAttribute("member");
-		int m_id = member.getM_id();
+//		Member member =  getSession(request);
+//		int m_id = member.getM_id();
+		int m_id = getSession(request).getM_id();
 		List<Note> note_list = service.note_list(m_id);
+		 */
+		List<Note> note_list = service.note_list(11);
 		
 //		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
-		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+//		model.addAttribute("list", service.listCriteria(cri));
+
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
 		
 		
-//		pageMaker.setTotalCount(service.listCountCriteria(cri));
-		
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "/note/module/noteMain";
 //		return "/note/note_list";
@@ -114,7 +129,27 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	}
 	
 	
-	
+	@RequestMapping(value="/note/note_search")
+	public String note_search(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+		
+//		List<Note> note_list = service.note_list(11);
+		List<Note> note_search = service.note_search(cri);
+		System.out.println("---------검색 내역--------");
+		for(int i = 0; i < note_search.size(); i++){
+			System.out.println(note_search.get(i).getN_title());
+		}
+		System.out.println("---------검색 내역--------");
+//		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+		model.addAttribute("list", note_search);	//검색한한 쪽지만 출력 
+
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
+		
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "/note/module/noteMain";
+	}
 	
 	
 	

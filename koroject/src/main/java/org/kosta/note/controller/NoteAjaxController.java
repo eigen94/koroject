@@ -1,12 +1,19 @@
 package org.kosta.note.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.note.domain.Note;
+import org.kosta.note.domain.NotePageMaker;
+import org.kosta.note.domain.NoteSearchCriteria;
 import org.kosta.note.service.NoteService;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -22,6 +29,10 @@ public class NoteAjaxController {
 		System.out.println(note.getN_title());
 		return note;
 	}
+	
+	
+	
+	
 	
 }
 

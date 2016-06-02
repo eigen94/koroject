@@ -20,23 +20,31 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
 		in the /WEB-INF/views directory -->
-	 <beans:bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
-		<beans:property name="suffix" value=".jsp" />
-	</beans:bean>
 
-	<!-- tiles setting -->
-<!-- 	<beans:bean id="tilesconfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+	<!-- 타일즈 세팅 -->
+	<beans:bean id="tilesconfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>
 				<beans:value>/WEB-INF/tiles2def.xml</beans:value>
 			</beans:list>
 		</beans:property>
+		<!-- <beans:property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/> -->
 	</beans:bean>
-	<beans:bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<beans:property name="viewClass" value="org.springframwork.web.servlet.view.tiles2.TilesView"></beans:property>
-	</beans:bean> -->
+	
+	<!-- 타일즈 뷰리졸버 세팅 : 우선 타일즈 로딩을 위해 order 1 -->
+	<beans:bean id="viewResolver2" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+		<beans:property name="order" value="1"/>
+	</beans:bean>
+	
+	<!-- 디폴트 뷰리졸버 세팅 : 타일즈 이후의 jsp로딩을 위해 order 2 -->
+	 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+		<beans:property name="order" value="2"/>
+	</beans:bean>
+	
+	<!-- auto scan -->
 	<context:component-scan base-package="org.kosta" />
 	<!-- 세션관리 인터셉터 -->
 	<beans:bean id="memberInterceptor"
