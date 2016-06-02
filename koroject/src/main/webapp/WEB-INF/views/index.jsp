@@ -31,6 +31,7 @@ d=document;function w(s){d.write(unescape(decodeURIComponent(s)));}w("%3chtml%3e
 </script>
  -->
  </head>
+ 
 <body class="">
 <header id="header">
 <h1>
@@ -49,7 +50,7 @@ koroject
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-        <form action="loginMember" method="post">
+        <form action="insertMember2" method="post">
              <label name="email">Email</label>
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
