@@ -120,7 +120,7 @@ koroject
 							<a ui-sref="login.signin" href="#/login/signin">
 								Log-in
 							</a>
-						<button type="submit" class="btn btn-primary pull-right">
+						<button type="submit" class="btn btn-primary pull-right registerSubmit">
 							Submit
 						</button>
 					</div>

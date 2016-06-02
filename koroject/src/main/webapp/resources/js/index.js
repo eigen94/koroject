@@ -10,8 +10,7 @@ $('input[type="submit"]').mouseup(function(){
 
 $('').on("click","#loginform",function(){
   $('.login').fadeToggle('slow');
-  $(this).toggleClass('green');
-  alert("anjgksl");
+ // $(this).toggleClass('green');
   
 });
 

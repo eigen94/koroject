@@ -20,4 +20,8 @@ public class frontController {
 	public String form(){
 		return "form";
 	}
+	@RequestMapping(value="template", method=RequestMethod.GET)
+	public String template(){
+		return "template";
+	}
 }
