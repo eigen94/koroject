@@ -8,6 +8,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		
+		$('.clickPoint').on('click', function(){
+			var n_id = $(this).find('input').val();
+			$.ajax({
+	            url : "note_detail"+n_id,
+	            dataType : 'json',
+	            success : function(data) {
+	               $('.noteTitle').html("");
+	               $('.noteTitle').append(data.n_title);
+	               $('.noteContent').html("");
+	               $('.noteContent').append(data.n_content);
+	            }
+			});
+		})
+	})
+
+</script>
+
 <style type="text/css">
 .header {
 	width: 100%;

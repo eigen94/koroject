@@ -12,19 +12,20 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h3>${member.m_email }의노트목록</h3>
+	<h3>${member.m_email }의 쪽지목록</h3>
 	<div class="scroll">
 		<ul class="message-list">
 			<c:forEach var="note" items="${list2 }">
 				<hr>
-				<li class="message-list-item ng-scope">
-					<a href="note_detail${note.n_id }">
+				<li class="message-list-item">
+					<div class="clickPoint">
 						<div class="message-list-item-header">
+							<input type="hidden" value="${note.n_id }">
 							<div class="time ng-binding">날짜</div>
 							<span class="ng-binding">${note.n_title }</span>
 							<p class="ng-binding">${note.n_content }</p>
 						</div>
-					</a>
+					</div>
 				</li>
 			</c:forEach>
 		</ul>

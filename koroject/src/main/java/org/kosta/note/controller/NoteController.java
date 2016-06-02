@@ -76,11 +76,11 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	}
 */
 	
-	@RequestMapping("/note_detail{n_id}")
+	/*@RequestMapping("/note_detail{n_id}")
 	public String detail(@PathVariable int n_id, Model model)throws Exception{
 		model.addAttribute("note", service.detail(n_id));
 		return "/note/note_detail";
-	}
+	}*/
 	
 	@RequestMapping("/note_updateForm{n_id}")
 	public String updateForm(@PathVariable int n_id, Model model)throws Exception{
