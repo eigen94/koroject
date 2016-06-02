@@ -39,11 +39,11 @@ $(function() {
 </head>
 <body>
 
-<!-- 
-	<form action="note_send" method="post">
+
+	<form action="note_send" method="post" id="formTag">
 		<div class="noteForm">
 			<div class="hidden_text">
-				<input type="text" name="n_sender" value="1"> <- 보낸놈(임시) 1을 $.{n_sender }로 바꾸고 type을 hidden으로
+				<input type="text" name="n_sender" value="${m_id }"> <- 보낸놈(임시) 1을 $.{n_sender }로 바꾸고 type을 hidden으로
 			</div>
 			<div class="input_text">
 				<div class="title">
@@ -69,13 +69,13 @@ $(function() {
 		</div>
 	</form>
 
- -->
 
 
 
 
 
 
+<!-- 
 	
 	<form action="note_send" method="post">
 		제목 : <input type="text" name="n_title" >
@@ -87,7 +87,7 @@ $(function() {
 	</form>
 	<a href="listAll"><button>취소</button></a>
 	
-	
+	 -->
 	
 </body>
 </html>

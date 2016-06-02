@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.kosta.member.domain.Member;
 import org.kosta.note.domain.Note;
-import org.kosta.note.domain.PageMaker;
-import org.kosta.note.domain.SearchCriteria;
 import org.kosta.note.service.NoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,18 +25,28 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@Inject
 	private NoteService service;
 	
+	public Member getSession(HttpServletRequest request ){
+		return (Member)request.getSession().getAttribute("member");
+	}
+	
 	@RequestMapping(value="/note_sendForm")
-	public void sendForm(Model model)throws Exception{
-//		return "/note/note_sendForm";
+	public void sendForm(Model model, HttpServletRequest request)throws Exception{
+		if(getSession(request) != null){
+			model.addAttribute("m_id", getSession(request).getM_id());
+		}
 	}
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
 	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
-		Member member =  (Member)request.getSession().getAttribute("member");
+		
+		Member member =  getSession(request);
+		
 		System.out.println(member.getM_email());
+		
 		service.send(note);
-		model.addAttribute("list", service.listAll());
-		model.addAttribute("member", member);
+		
+//		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
+//		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
 		return "/note/note_list";
 	}
 	
