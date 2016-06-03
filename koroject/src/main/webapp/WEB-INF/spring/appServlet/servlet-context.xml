@@ -39,7 +39,7 @@
 	
 	<!-- 디폴트 뷰리졸버 세팅 : 타일즈 이후의 jsp로딩을 위해 order 2 -->
 	 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="prefix" value="/WEB-INF/views/body/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2"/>
 	</beans:bean>

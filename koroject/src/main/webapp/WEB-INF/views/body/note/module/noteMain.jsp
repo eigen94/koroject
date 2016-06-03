@@ -25,6 +25,15 @@
 			});
 		})
 	})
+	
+	$(function(){
+		//쪽지 보내기 
+		$('.sendform button').on('click', function(){
+			
+			
+		})
+	})
+	
 
 	$(function(){	
 		//검색버튼 클릭!
@@ -145,7 +154,7 @@ p {
 	<div class="center">
 		<!-- 좌 영역 -->
 		<div class="left">
-			<jsp:include page="right.jsp"></jsp:include>
+			<jsp:include page="left.jsp"></jsp:include>
 		</div>
 		<!-- 바디영역 -->
 		<div class="body">
