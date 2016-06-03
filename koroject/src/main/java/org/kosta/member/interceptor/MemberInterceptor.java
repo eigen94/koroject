@@ -13,7 +13,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		//로그인 직전 세션을 체크 후 세션이 존재하면 메인페이지로 이동
 		if(request.getSession().getAttribute("member")!=null){
-			response.sendRedirect("insertMember2");
+			response.sendRedirect("index");
 			return false;
 		}
 		return true;
@@ -25,6 +25,7 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		Member member = (Member)mav.getModel().get("member");
 		if(member != null){
 			request.getSession().setAttribute("member", member);
+			System.out.println("interceptor :"+member);
 		}
 	}
 

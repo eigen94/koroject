@@ -58,17 +58,17 @@ public class MemberLoginController {
 		}
 		
 		//로그인하기
-		@RequestMapping(value="loginMember")
+		@RequestMapping(value="login",method=RequestMethod.POST)
 		public String loginMember(LoginCommand login,Model model){
 			login.setM_pwd(testSHA256(login.getM_pwd()));
 			Member member = service.loginMember(login);
 			if(member == null){
-				return "/memberRegister/login_form";
+				return "index";
 			}
 			model.addAttribute("member", member);
-			
-			return "/memberRegister/insertMember";
+			return "index";
 		}
+		
 		//세션이 존재할때 로그인 페이지를 못가게 만듬
 		@RequestMapping(value="insertMember2")
 		public String loginMember2(){

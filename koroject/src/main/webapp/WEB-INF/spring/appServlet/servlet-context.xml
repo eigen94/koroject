@@ -57,15 +57,15 @@
 
 	<interceptors>
 		<interceptor>
-			<mapping path="/loginMember" />
+			<mapping path="login" />
 			<beans:ref bean="memberInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/login_form" />
+			<mapping path="index" />
 			<beans:ref bean="loginCheckInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/logoutMember" />
+			<mapping path="logout" />
 			<beans:ref bean="logoutInterceptor" />
 		</interceptor>
 	</interceptors>

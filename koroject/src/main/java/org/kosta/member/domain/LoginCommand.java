@@ -26,6 +26,11 @@ public class LoginCommand implements Serializable {
 	public void setM_pwd(String m_pwd) {
 		this.m_pwd = m_pwd;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginCommand [m_email=" + m_email + ", m_pwd=" + m_pwd + "]";
+	}
 	
 	
 	

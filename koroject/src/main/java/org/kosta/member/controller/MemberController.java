@@ -42,9 +42,17 @@ public class MemberController {
 	@RequestMapping(value="/")
 	public String inert_form(Model model){
 		
-		return "/index";
+		return "index";
 	}
-	//회원가입폼
+	
+	//메인페이지
+	@RequestMapping(value="/index")
+	public String idex_form(Model model){
+			
+		return "index";
+	}
+	
+	//회원가입폼	
 	@RequestMapping(value="insert_member",method=RequestMethod.GET)
 	public String insert_form2(@ModelAttribute("registerCommand") @Valid RegisterCommand rcm,BindingResult errors){
 		

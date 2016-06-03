@@ -8,13 +8,14 @@ koroject
 <span>by kosta</span>
 </a>
 </h1>
+
 <!-- todo  -->
 <!-- 로그아웃 기능에 맞게 수정할것 -->
-<c:if test="${session!=null }">
+<c:if test="${member !=null }">
 	<a href="#logout" id="logoutform">Log Out</a>
 </c:if>
-<c:if test="${session==null }">
-	<a href="#login" id="loginform">Log In</a>
+<c:if test="${member==null }">
+	<a href="#login" id="loginform">Log In!!</a>
 </c:if>
 
 <a href="#menu">Menu</a>
@@ -26,7 +27,7 @@ koroject
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-        <form action="insertMember2" method="post">
+        <form action="/login" method="post">
              <label name="email">Email</label>
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
