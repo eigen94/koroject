@@ -10,13 +10,19 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+<<<<<<< HEAD
 
 <script type="text/javascript" src="js/static/jquery/2.0.3/jquery.js"></script>
+<script type="text/javascript" src="js/static/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+=======
+<script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
+>>>>>>> branch 'master' of https://github.com/eigen94/koroject.git
 <script type="text/javascript">
 
 $(function(){
 	
 });
+
 </script>
 </body>
 </html>

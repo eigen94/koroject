@@ -1,6 +1,8 @@
 package org.kosta.member.domain;
 
-public class LoginCommand {
+import java.io.Serializable;
+
+public class LoginCommand implements Serializable {
 
 	private String m_email;
 	private String m_pwd;
@@ -23,6 +25,11 @@ public class LoginCommand {
 	}
 	public void setM_pwd(String m_pwd) {
 		this.m_pwd = m_pwd;
+	}
+
+	@Override
+	public String toString() {
+		return "LoginCommand [m_email=" + m_email + ", m_pwd=" + m_pwd + "]";
 	}
 	
 	

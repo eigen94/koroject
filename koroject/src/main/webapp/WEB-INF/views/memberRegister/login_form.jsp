@@ -8,5 +8,13 @@
 </head>
 <body>
 
+	<form action="loginMember" method="post">
+		이메일 <input type="text" name="m_email">
+		비밀번호<input type="password" name="m_pwd">
+		<input type="submit" value="로그인">
+	</form>
+	<a href="serchMember"><button>비밀번호 찾기</button></a>
+	<br>
+	${param.message}
 </body>
 </html>
