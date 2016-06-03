@@ -26,6 +26,6 @@ io.sockets.on( 'connection', function(socket){
 	socket.on( 'message', function(data){
 		//'room' �Ӽ����� �ش��ϴ� �濡 �������� Client�� �޼����� ������.
 		console.log( 'id : %s, msg : %s, date : %s', data.id, data.message, data.date );
-		io.sockets.in( socket.room ).emit('message', data); //public ��� : io.sockets.emit(...);
+	mit('message', data); //public ��� : io.socke	io.sockets.in( socket.room ).ets.emit(...);
 	});
 });

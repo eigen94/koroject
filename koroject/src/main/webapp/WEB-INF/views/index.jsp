@@ -124,7 +124,7 @@ koroject
 								Log-in
 							</a>
 						<button type="submit" class="btn btn-primary pull-right">
-							Submit
+							회원가입
 						</button>
 					</div>
 				<p class="modal-contents"></p>

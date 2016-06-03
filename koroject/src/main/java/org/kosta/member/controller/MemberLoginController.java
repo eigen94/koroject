@@ -97,7 +97,7 @@ public class MemberLoginController {
 		@RequestMapping(value="detailMember")
 		public String detailMember(){
 			
-			return "/memberRegister/detailMember";
+			return "/myPage";
 		}
 		//회원탈퇴
 		@RequestMapping(value="deleteMember")
