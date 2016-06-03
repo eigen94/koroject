@@ -19,5 +19,9 @@ public interface MemberDAO {
 
 	public int deleteMember(DeleteMember dm);
 
+	public String emailCheck(String email);
+
+	public LoginCommand loginMember2(LoginCommand lc);
+
 	
 }

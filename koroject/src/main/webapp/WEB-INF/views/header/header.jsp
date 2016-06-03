@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <header id="header">
 <h1>
 <a href="index.html">
@@ -7,7 +8,14 @@ koroject
 <span>by kosta</span>
 </a>
 </h1>
-<a href="#login" id="loginform">Log In</a>
+<!-- todo  -->
+<!-- 로그아웃 기능에 맞게 수정할것 -->
+<c:if test="${session!=null }">
+	<a href="#logout" id="logoutform">Log Out</a>
+</c:if>
+<c:if test="${session==null }">
+	<a href="#login" id="loginform">Log In</a>
+</c:if>
 
 <a href="#menu">Menu</a>
 </header>    
