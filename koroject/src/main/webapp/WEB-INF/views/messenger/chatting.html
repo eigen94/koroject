@@ -1,53 +1,48 @@
 <!DOCTYPE HTML>
 <html lang="ko">
 <head>
-  	<title>Example WebSocket</title>
-    <meta charset="utf-8">
-  	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
- 	<script src="/socket.io/socket.io.js"></script>
-	<script type="text/javascript">
-		window.onload = function(){
+<title>Example WebSocket</title>
+<meta charset="utf-8">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<script type="text/javascript">
 
-			$.ajax({
-	            url : "getMember",
-	            dataType : 'json',
-	            success : function(data) {
-	              alert("성공");
-	            }
-			});
-			
-			
-			var room = prompt( '방 이름을 입력하세요.', 'kosta' );   
-			
-			var socket = io.connect(); //소켓서버 연결
-			socket.emit( 'join', room );
-			socket.on( 'message', function(data){
-				var output = '<p>[' + data.id +']' + data.message + '(' + data.date + ')</p>';
-				$( output ).appendTo('body');	
-			});	
-			
-			$('#button').click(function(){
-				var uid = $('#uid').val();
-				var msg = $('#msg').val();
-				
-				//서버측 'message' 이벤트를 호출한다. 이때 msg 전달
-				socket.emit('message', {
-					id : uid,
-					message : msg,
-					date : new Date().toUTCString()
-				}); //서버측 'message' 이벤트를 호출한다. 이때 msg 전달
-				
-				var msg = $('#msg').val(''); //메세지 내용 초기화
-			});
-		};
-	</script>
+	window.onload = function() {
+
+		var room = prompt('방 이름을 입력하세요.', 'kosta');
+
+		var socket = io.connect(); //소켓서버 연결
+		socket.emit('join', room);
+		socket.on('message', function(data) {
+			var output = '<p>[' + data.id + '] -> ' + data.message + '</p>';
+			/* 
+			var output = '<p>[' + data.id +']' + data.message + '(' + data.date + ')</p>';
+			 */
+			$(output).appendTo('body');
+		});
+
+		$('#button').click(function() {
+			var uid = $('#uid').val();
+			var msg = $('#msg').val();
+
+			//서버측 'message' 이벤트를 호출한다. 이때 msg 전달
+			socket.emit('message', {
+				id : uid,
+				message : msg
+			/*, date : new Date().toUTCString() */
+			}); //서버측 'message' 이벤트를 호출한다. 이때 msg 전달
+
+			var msg = $('#msg').val(''); //메세지 내용 초기화
+		});
+	};
+</script>
 </head>
 <body>
-<h1>Socket.io Test</h1>
-<hr>
-<input type="text" id="uid" value="${member.m_email}"/>
-<input type="text" id="msg" />
-<input type="button" id="button" value="메세지" />
-<div id="content"></div>
+	<h1>Socket.io Test</h1>
+	<hr>
+	<input type="text" id="uid" value="${member.m_email}" />
+	<input type="text" id="msg" />
+	<input type="button" id="button" value="메세지" />
+	<div id="content"></div>
 </body>
 </html>
