@@ -6,7 +6,7 @@
 
 <tiles-definitions>
 	<definition name="base_layout" template="/WEB-INF/views/template/template.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/header/headerNoSession.jsp"/>
+		<put-attribute name="header" value="/WEB-INF/views/header/header.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
