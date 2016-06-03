@@ -54,35 +54,40 @@ public class MemberController {
 	
 	//회원가입폼	
 	@RequestMapping(value="insert_member",method=RequestMethod.GET)
-	public String insert_form2(@ModelAttribute("registerCommand") @Valid RegisterCommand rcm,BindingResult errors){
+	public String insert_form2(){
 		
 		return "/memberRegister/insert_form";
 	}
 	//회원가입
 	@RequestMapping(value="insert_member", method=RequestMethod.POST)
-	public String insert_member(@ModelAttribute("registerCommand") @Valid RegisterCommand rcm,BindingResult errors,Model model){
-		new RegisterRequestValidator().validate(rcm, errors);
+	public String insert_member(Member member,Model model){
+		/*new RegisterRequestValidator().validate(rcm, errors);
 		if(errors.hasErrors()){
-			return "/memberRegister/insert_form";
+			return "/";
 		}
 		Member member = new Member();
-		member.setM_id(service.idSelect()+1);
+		
 		member.setM_email(rcm.getM_email());
 		member.setM_name(rcm.getM_name());
 		member.setM_phone(rcm.getM_phone());
-		member.setM_pwd(testSHA256(rcm.getM_pwd()));
+		
 		member.setM_question(rcm.getM_question());
 		member.setM_answer(rcm.getM_answer());
-		member.setM_recentMember("hi");
+		;*/
+		System.out.println("왓니");
+		member.setM_id(service.idSelect()+1);
+		member.setM_recentMember("");
+		member.setM_pwd(testSHA256(member.getM_pwd()));
 		service.insertMember(member);
-		return  "/memberRegister/login_form";
+		return  "/index";
 	}
 
-	//validation 바인드
+	
+	/*//validation 바인드
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
 		binder.setValidator(new RegisterRequestValidator());
-	}
+	}*/
 	//비밀번호 암호화
 	public String testSHA256(String str){
 		String SHA = ""; 

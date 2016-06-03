@@ -1,5 +1,7 @@
 package org.kosta.member.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -51,6 +53,18 @@ public class MemberDAOImpl implements MemberDAO{
 	public int deleteMember(DeleteMember dm) {
 		// TODO Auto-generated method stub
 		return session.delete(namespace+".deleteMember", dm);
+	}
+
+	@Override
+	public String emailCheck(String email) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".emailCheck",email);
+	}
+
+	@Override
+	public LoginCommand loginMember2(LoginCommand lc) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".loginMember2",lc);
 	}
 	
 

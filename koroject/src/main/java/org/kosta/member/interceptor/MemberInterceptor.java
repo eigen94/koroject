@@ -25,7 +25,6 @@ public class MemberInterceptor extends HandlerInterceptorAdapter {
 		Member member = (Member)mav.getModel().get("member");
 		if(member != null){
 			request.getSession().setAttribute("member", member);
-			System.out.println("interceptor :"+member);
 		}
 	}
 

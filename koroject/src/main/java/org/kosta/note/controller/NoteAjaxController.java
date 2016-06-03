@@ -30,7 +30,62 @@ public class NoteAjaxController {
 		return note;
 	}
 	
+	@RequestMapping(value="/note/note_receiveList", method = RequestMethod.GET)
+	public List<Note> note_receiveList(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+//		model.addAttribute("list", service.listCriteria(cri));
+		/*
+		//로그인 세션이 없으면 index로 리다이렉트 
+		if(request.getSession().getAttribute("member") == null){
+			System.out.println("노세션");
+			return "redirect:/index";
+		}
+		//세션 받아 멤버에 넣음
+//		Member member =  getSession(request);
+//		int m_id = member.getM_id();
+		int m_id = getSession(request).getM_id();
+		List<Note> note_list = service.note_list(m_id);
+		 */
+		List<Note> note_receiveList = service.note_receiveList(11);
+		
+		model.addAttribute("list", note_receiveList);	//로그인한 사용자가 수신한 쪽지만 출력 
+
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
+		
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return note_receiveList;
+	}
 	
+	@RequestMapping(value="/note/note_sendList", method = RequestMethod.GET)
+	public List<Note> note_sendList(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+//		model.addAttribute("list", service.listCriteria(cri));
+		/*
+		//로그인 세션이 없으면 index로 리다이렉트 
+		if(request.getSession().getAttribute("member") == null){
+			System.out.println("노세션");
+			return "redirect:/index";
+		}
+		//세션 받아 멤버에 넣음
+//		Member member =  getSession(request);
+//		int m_id = member.getM_id();
+		int m_id = getSession(request).getM_id();
+		List<Note> note_list = service.note_list(m_id);
+		 */
+		List<Note> note_sendList = service.note_sendList(1);
+		
+		model.addAttribute("list", note_sendList);	//로그인한 사용자가 발신한 쪽지만 출력 
+		
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
+		
+		
+		model.addAttribute("pageMaker", pageMaker);
+		System.out.println(note_sendList);
+		
+		return note_sendList;
+	}
 	
 	
 	
