@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.kosta.note.domain.Note;
+import org.kosta.note.domain.NoteSearchCriteria;
 import org.kosta.note.persistence.NoteDao;
 import org.springframework.stereotype.Service;
 
@@ -47,6 +48,11 @@ public class NoteServiceImpl implements NoteService{
 	@Override
 	public List<Note> note_list(int m_id) throws Exception {
 		return dao.note_list(m_id);
+	}
+
+	@Override
+	public List<Note> note_search(NoteSearchCriteria cri) {
+		return dao.note_search(cri);
 	}
 
 }

@@ -1,6 +1,6 @@
 package org.kosta.note.domain;
 
-public class NoteSearchCriteria extends NoteCriteria{
+public class NoteSearchCriteria{
 
 	private String searchType;
 	private String keyword;
@@ -16,11 +16,6 @@ public class NoteSearchCriteria extends NoteCriteria{
 	}
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
-	}
-	@Override
-	public String toString() {
-		return super.toString() + " SearchCriteria [searchType=" + searchType + ", keyword="
-				+ keyword + "]";
 	}
 }
 

@@ -14,8 +14,36 @@
 <body>
 	<h3>${member.m_email }의 쪽지목록</h3>
 	<div class="scroll">
+		<div class='box-body'>
+			<select name="searchType">
+				<option value="n"
+					<c:out value="${cri.searchType == null?'selected':''}"/>>
+					---</option>
+				<option value="t"
+					<c:out value="${cri.searchType eq 't'?'selected':''}"/>>
+					제목</option>
+				<option value="c"
+					<c:out value="${cri.searchType eq 'c'?'selected':''}"/>>
+					내용</option>
+				<option value="w"
+					<c:out value="${cri.searchType eq 'w'?'selected':''}"/>>
+					보낸이</option>
+				<option value="tc"
+					<c:out value="${cri.searchType eq 'tc'?'selected':''}"/>>
+					제목 OR 내용</option>
+				<option value="cw"
+					<c:out value="${cri.searchType eq 'cw'?'selected':''}"/>>
+					내용 OR 보낸이</option>
+				<option value="tcw"
+					<c:out value="${cri.searchType eq 'tcw'?'selected':''}"/>>
+					전체</option>
+			</select> 
+			<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
+			<button id='searchBtn'>Search</button>
+
+		</div>
 		<ul class="message-list">
-			<c:forEach var="note" items="${list2 }">
+			<c:forEach var="note" items="${list }">
 				<hr>
 				<li class="message-list-item">
 					<div class="clickPoint">
