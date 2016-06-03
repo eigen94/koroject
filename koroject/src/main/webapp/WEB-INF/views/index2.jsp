@@ -30,6 +30,7 @@ d=document;function w(s){d.write(unescape(decodeURIComponent(s)));}var btJ=18;w(
 d=document;function w(s){d.write(unescape(decodeURIComponent(s)));}w("%3chtml%3e%3cbody%3e%3cheader ");var Qc=10;if(Qc==10)w("id%3d%22header%22%3e%3ch1%3e%3ca h%72%65f%3d%22index%2ehtml%22%3e%54actile ");var GdB=27;if(Qc==13)w("In%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fnav%3e%3cs%65ction ");w("%3cspan%3eby Pix%65%6carity%3c%2fspan%3e%3c%2fa%3e%3c%2fh1%3e%3ca ");w("href%3d%22%23%22%3eL%6fg In%3c%2fa%3e%3ca hre%66%3d%22%23men%75%22%3eMenu%3c%2fa%3e%3c%2fheader%3e%3cnav ");w("id%3d%22%6d%65nu%22%3e%3cul class%3d%22l%69nks%22%3e%3cli%3e%3c%61 ");w("href%3d%22index%2ehtml%22%3e%48ome%3c%2fa%3e%3c%2fli%3e%3cli%3e%3ca ");var dl=15;w("href%3d%22gen%65ric%2ehtml%22%3eG%65n%65ric%3c%2fa%3e%3c%2fli%3e%3cli%3e%3ca%20");var YC=26;if(GdB==27)w("href%3d%22elements%2ehtml%22%3eElements%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3cul ");if(dl!=22)w("class%3d%22actions vertical%22%3e%3cli%3e%3ca ");if(GdB!=39)w("h%72ef%3d%22%23%22 class%3d%22%62utt%6fn ");if(Qc!=15)w("fit special%22%3e%53ign Up%3c%2fa%3e%3c%2fli%3e%3cli%3e%3ca ");var GjR=24;if(GjR==24)w("href%3d%22%23%22 c%6cass%3d%22button f%69t%22%3eLog ");w("I%6e%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fna%76%3e%3c%73ectio%6e ");var fS=14;w("i%64%3d%22banner%22%3e%3cdiv cla%73s%3d%22inner%22%3e%3ch2 ");var fpV=16;w("class%3d%22major spe%63ial%22%3eMagna Et ");w("Lorem%3c%2fh%32%3e%3cp%3e%53ed ");w("cond%69mentum purus nullam ");if(Qc==10)w("feugiat%20c%6fnsequa%74%3c%2fp%3e%3cul %63%6cass%3d%22actions ");var Fn=21;w("vertical%22%3e%3c%6ci%3e%3ca h%72ef%3d%22%23%22 ");var RbH=28;w("class%3d%22button special big%22%3eGet ");var Bmr=20;w("started%3c%2fa%3e%3c%2fli%3e%3cli%3e%3ca ");w("hr%65f%3d%22%23%6fne%22 class%3d%22b%75tto%6e ");w("big scr%6f%6cly%22%3eLearn more%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fdiv%3e%3c%2fs%65ction%3e%3cse%63t%69on ");w("i%64%3d%22%6fne%22 class%3d%22w%72apper alt style2%22%3e%3cul ");w("class%3d%22featur%65s%22%3e%3cli%3e%3cdiv ");if(fpV==27)w("class%3d%22actions%22%3e%3cli%3e%3ca class%3d%22button%22%3eLear%6e ");w("class%3d%22co%6e%74ent%22%3e%3cspan%20cla%73%73%3d%22ico%6e ");if(YC==34)w("class%3d%22major%22%3eElementum ");w("m%61jor fa%2dcode%22%3e%3c%2fspan%3e%3ch3%20");var HPf=8;w("class%3d%22major%22%3eSed Adipiscin%67%3c%2fh%33%3e%3cp%3eEtia%6d ");if(dl==28)w("href%3d%22%23one%22 class%3d%22button ");w("finibus pharet%72a puru%73%2c ");if(GdB==27)w("%69m%70e%72diet sagittis mauris ");w("h%65%6edrerit feu%67iat ");w("%61nt%65 %65%6cementum amet%20arcu%2e%20");w("Maecenas vulputate turpis ");var lKG=26;if(lKG==26)w("faucibus lore%6d ipsum ");w("dolor si%74 ame%74%2e%3c%2fp%3e%3cul ");var fhv=9;if(HPf!=20)w("class%3d%22ac%74ions%22%3e%3cli%3e%3ca href%3d%22%23%22 ");var Qv=22;w("%63l%61ss%3d%22button%22%3eDetails%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fdiv%3e%3c%2fli%3e%3cli%3e%3cdiv ");w("cl%61ss%3d%22conten%74%22%3e%3cspan class%3d%22icon ");w("major fa%2ddiamo%6ed%22%3e%3c%2fspa%6e%3e%3ch3 ");var rWY=23;w("class%3d%22ma%6aor%22%3eLorem %46aucibus%3c%2fh3%3e%3cp%3eEtia%6d ");var jRT=26;w("f%69nibus pharetra purus%2c imperdiet ");w("sagittis mauris%20hendrerit ");if(Fn!=21)w("Corp%2e%20All rights reser%76ed%2e%3c%2fp%3e%3c%2fdi%76%3e%3c%2ffooter%3e%3c%21%2d%2d%5bif ");w("feugiat ante elem%65ntum amet ");w("arcu%2e Maecenas %76%75lp%75t%61te ");w("turpis fau%63ibus%20lorem ipsu%6d ");w("do%6cor sit%20amet%2e%3c%2fp%3e%3cul class%3d%22act%69ons%22%3e%3c%6ci%3e%3ca ");var xFC=27;w("hre%66%3d%22%23%22 class%3d%22bu%74ton%22%3eDetails%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2f%64iv%3e%3c%2fli%3e%3cli%3e%3cdiv ");var Tm=28;w("class%3d%22conten%74%22%3e%3cspa%6e class%3d%22icon ");w("major fa%2df%69l%65s%2do%22%3e%3c%2fspan%3e%3ch3 ");w("class%3d%22major%22%3eEl%65me%6etum ");w("Amet%3c%2fh3%3e%3cp%3eEtiam finibus ");w("pha%72etra%20purus%2c%20imperdie%74 ");w("sagittis ma%75ris%20hendrerit ");w("f%65ugi%61t ante %65lemen%74um ");w("amet arcu%2e Maecenas vul%70ut%61te ");w("turpis faucibus lorem ips%75m%20");w("dol%6fr sit ame%74%2e%3c%2fp%3e%3cul ");if(GdB==32)w("id%3d%22three%22 class%3d%22w%72apper ");w("class%3d%22a%63t%69%6fns%22%3e%3cli%3e%3ca href%3d%22%23%22 ");w("class%3d%22button%22%3eDetails%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fdiv%3e%3c%2fli%3e%3cli%3e%3cdiv ");w("class%3d%22c%6fntent%22%3e%3cspan ");var QzF=1;if(RbH!=41)w("class%3d%22i%63on maj%6fr fa%2dpaper%2dplane%2do%22%3e%3c%2fspan%3e%3ch3 ");w("cl%61ss%3d%22major%22%3eVolutpat Pu%72u%73%3c%2fh3%3e%3cp%3eEtiam ");var Crk=17;if(fpV==25)w("rutrum%2e%3c%2fp%3e%3c%2fd%69v%3e%3c%2fsection%3e%3cse%63tion ");w("finibus pharetra puru%73%2c imper%64iet ");var DXZ=22;w("sagittis%20ma%75ris hendre%72it %66eu%67i%61t ");w("ante el%65mentum amet arcu%2e Maece%6eas ");w("vulputat%65%20turpis faucibus%2e%3c%2fp%3e%3c%75%6c ");w("cla%73s%3d%22actions%22%3e%3cli%3e%3ca ");w("href%3d%22%23%22 class%3d%22button%22%3eDetails%3c%2fa%3e%3c%2fli%3e%3c%2ful%3e%3c%2fdiv%3e%3c%2fli%3e%3c%2f%75l%3e%3c%2fsection%3e%3csect%69o%6e%20");w("i%64%3d%22two%22 c%6c%61%73s%3d%22w%72apper ");var KnW=4;w("alt%22%3e%3csection class%3d%22s%70otlight%22%3e%3cdiv ");w("%63lass%3d%22image%22%3e%3ci%6dg ");if(Qv==22)w("src%3d%22images%2fpic01%2ejpg%22 al%74%3d%22%22 %2f%3e%3c%2fdiv%3e%3cdi%76 ");w("c%6c%61%73s%3d%22conte%6et%22%3e%3ch3 cl%61ss%3d%22%6d%61j%6fr%22%3ePharetra ");w("Turpi%73%3c%2fh3%3e%3cp%3eEtiam finibus ");if(Tm!=29)w("pharetra purus%2c imperdiet ");var lRn=9;w("sagitt%69s%20mauris %68endrerit ");w("vita%65%2e In f%65%75giat%20");w("ante e%6cementum ame%74 arcu%2e Maecenas ");var dv=9;w("vulputat%65 tu%72pis faucibus%2c conval%6cis ");w("ante et%2c bibendum ligul%61%2e%20");w("Integer porttitor lacus eu diam ");if(Crk!=26)w("pretium%2c ac pu%72us ");w("ru%74rum%2e%3c%2fp%3e%3c%2f%64iv%3e%3c%2fsection%3e%3c%73ection ");w("class%3d%22spotlight%22%3e%3cdiv ");w("class%3d%22image%22%3e%3cimg s%72c%3d%22images%2fpi%6302%2ejpg%22 ");if(lRn==16)w("nulla arcu%2e%20Maecenas ");w("alt%3d%22%22 %2f%3e%3c%2fdiv%3e%3cdiv class%3d%22con%74%65nt%22%3e%3ch3 ");if(Qc!=10)w("v%75lputate turpis faucib%75s%2c convallis ");w("cla%73s%3d%22maj%6f%72%22%3eConvallis Bibendum%3c%2f%683%3e%3cp%3eEtiam ");if(xFC==34)w("v%65%72%74ical%22%3e%3cli%3e%3ca h%72ef%3d%22%23%22 ");w("%66i%6eibus pharet%72a%20p%75rus%2c ");var hKN=31;if(dv!=9)w("class%3d%22spotlight%22%3e%3cd%69%76 ");w("imperdiet sagittis m%61uris ");w("hendr%65rit vitae%2e In%20f%65ug%69at%20");var plm=27;w("ante eleme%6etum amet arcu%2e ");w("Maecenas vul%70utate %74urpi%73%20faucibus%2c ");var nyR=15;if(GjR!=24)w("%41met%3c%2fh3%3e%3cp%3eEtiam fi%6eibus ");w("convallis ante et%2c bibendum ligula%2e ");var lMc=33;w("Integer porttit%6fr la%63us ");var KsK=13;w("%65u diam pretium%2c%20ac pu%72u%73 rutrum%2e%3c%2fp%3e%3c%2fdi%76%3e%3c%2fs%65cti%6fn%3e%3cse%63tio%6e ");var Hxq=10;if(GdB==27)w("class%3d%22spotl%69ght%22%3e%3cdiv class%3d%22image%22%3e%3cimg ");w("src%3d%22i%6dages%2fpic%303%2ejpg%22 ");w("alt%3d%22%22 %2f%3e%3c%2fdiv%3e%3cdiv cla%73s%3d%22content%22%3e%3ch%33 ");var PF=4;w("class%3d%22m%61jor%22%3e%41rcu Sed %54empus%3c%2fh3%3e%3cp%3e%45ti%61m ");var RS=12;w("finibus ph%61r%65tra puru%73%2c ");w("%69m%70erdiet%20sagittis %6dauris ");var Mv=11;if(dl!=23)w("%68endrer%69t vitae%2e In feugiat ");if(jRT!=26)w("%7bv%61r %24window %3d %24%28window%29%2c%24body ");w("a%6et%65 elementum amet ar%63u%2e ");var DYh=29;w("Maecena%73%20vulputate ");if(Qc==10)w("tu%72pi%73 f%61ucibus%2c convalli%73 ");var pZm=2;w("ante et%2c bibend%75m lig%75la%2e In%74eg%65r ");w("por%74titor la%63us eu%20diam ");if(hKN==31)w("p%72e%74i%75m%2c ac puru%73 rutru%6d%2e%3c%2fp%3e%3c%2fdiv%3e%3c%2fsection%3e%3c%2f%73ection%3e%3csection ");w("id%3d%22thr%65e%22 class%3d%22wrapp%65r ");w("%73t%79le1 special%22%3e%3cdiv ");var BBV=5;w("class%3d%22inne%72 n%61%72%72ow%22%3e%3ch3 ");if(nyR!=15)w("tru%65%2cres%65tScroll%3a true%2cresetForms%3a ");w("class%3d%22major s%70ecial%22%3eSed ");w("Lacus%20%42%69bendum%3c%2fh3%3e%3cp%3eSag%69ttis ");w("m%61uri%73%20hendrerit vitae ");w("feugiat etiam %61%6ete elementum ");w("vulputate %66aucibus conval%6cis%20");if(fS!=26)w("bibendum ligul%61%2e%3c%2f%70%3e%3cul %63%6cass%3d%22actions%22%3e%3cl%69%3e%3ca%20");if(Fn!=25)w("href%3d%22%23%22 class%3d%22but%74on ");var dC=10;w("spe%63ial b%69g%22%3e%47et star%74ed%3c%2f%61%3e%3c%2fli%3e%3c%2f%75l%3e%3c%2fdiv%3e%3c%2fs%65c%74%69o%6e%3e%3cf%6fote%72 ");w("%69d%3d%22footer%22%3e%3cdiv class%3d%22inn%65r%22%3e%3csection ");if(KsK==25)w("faucibus l%6frem %69psum ");w("class%3d%22abo%75t%22%3e%3ch4 c%6cas%73%3d%22major%22%3eMagna ");w("Al%69q%75%61m%20Feugiat%3c%2fh4%3e%3cp%3eEtiam ");if(dC==19)w("fin%69b%75s %70%68aretra purus%2c %69mper%64iet ");w("finibu%73 p%68aretra purus%2c imperdiet ");w("sagittis mauris hendre%72it ");w("v%69tae%2e In feugiat ante%20eleme%6etum ");var HnR=24;w("nulla arcu%2e Maecenas ");var NT=11;if(BBV!=9)w("vulp%75tate faucibus%2c ");w("con%76allis ligula i%70sum dolor ");w("f%65ugiat temp%75s adipisc%69ng%2e%3c%2fp%3e%3cul ");if(DYh==29)w("class%3d%22%61cti%6fns%22%3e%3cli%3e%3ca class%3d%22button%22%3eLearn%20");var gcP=18;w("more%3c%2fa%3e%3c%2fli%3e%3c%2f%75l%3e%3c%2fsection%3e%3csection ");w("class%3d%22conta%63t%2dinfo%22%3e%3ch%34 ");if(QzF!=1)w("Maecenas v%75lputate ");w("cl%61ss%3d%22major%22%3eGet in Tou%63h%3c%2f%684%3e%3cul%20");w("%63lass%3d%22con%74act%22%3e%3cli%20class%3d%22fa%2dpho%6ee%22%3e%28000%29 ");w("000%2d0000%3c%2fli%3e%3cli cla%73s%3d%22fa%2denvelope%22%3e%3ca ");w("hre%66%3d%22%23%22%3einformation%40untitl%65d%2etld%3c%2fa%3e%3c%2fli%3e%3cli ");w("%63lass%3d%22f%61%2dtwit%74er%22%3e%3ca ");if(lMc==48)w("Nashvill%65%2c %54N 00000%3cbr ");w("href%3d%22%23%22%3e%40unti%74l%65d%2dtld%3c%2fa%3e%3c%2fli%3e%3cli ");w("class%3d%22fa%2df%61cebook%22%3e%3ca hre%66%3d%22%23%22%3efacebook%2ecom%2funtit%6c%65d%3c%2fa%3e%3c%2f%6ci%3e%3c%2ful%3e%3cul ");w("class%3d%22%63ontact%22%3e%3cl%69 class%3d%22fa%2dhome%22%3eUntitled ");if(fS==14)w("C%6frp%3cbr %2f%3e 123%34 %46ictional ");w("Road%3cbr %2f%3e Suite 5432%3cbr %2f%3e ");w("Nash%76ille%2c T%4e 00000%3cbr ");w("%2f%3e USA%3c%2fli%3e%3c%2ful%3e%3c%2fse%63tio%6e%3e%3c%2fdiv%3e%3cdiv ");w("c%6cass%3d%22copyright%22%3e%3cp%3e%26cop%79%3b Untitled ");w("Corp%2e All rights reserved%2e%3c%2fp%3e%3c%2fdiv%3e%3c%2ffooter%3e%3c%21%2d%2d%5bif ");var dLB=23;w("lte IE 8%5d%3e%3c%21%5bendif%5d%2d%2d%3e%3cscrip%74%3e%28function%28%24%29 ");w("%7b%73k%65l%2ebreakpoints%28%7bxlarge%3a %27%28max%2dwidth%3a ");w("1680px%29%27%2clarge%3a %27%28max%2dwidth%3a ");if(Tm==28)w("1280px%29%27%2cmedium%3a %27%28ma%78%2dw%69dt%68%3a ");if(lRn!=9)w("c%6cass%3d%22%61c%74ions%22%3e%3cli%3e%3ca href%3d%22%23%22 ");w("980px%29%27%2csmall%3a %27%28max%2dwidth%3a%20");var wQ=21;w("736px%29%27%2cxsmall%3a %27%28%6dax%2dwid%74h%3a 480%70x%29%27%7d%29%3b%24%28function%28%29 ");w("%7bvar %24window %3d %24%28window%29%2c%24body ");if(Tm==28)w("%3d %24%28%27bo%64y%27%29%2c%24head%65r ");w("%3d %24%28%27%23header%27%29%3b%24%62%6fdy%2ead%64Class%28%27%69s%2dloading%27%29%3b%24window%2e%6fn%28%27load%27%2c%20");if(KsK==18)w("im%70erdiet sagitt%69%73 maur%69s ");w("functi%6fn%28%29 %7bwin%64ow%2esetT%69meout%28function%28%29 ");w("%7b%24body%2e%72em%6fveClass%28%27is%2d%6coading%27%29%3b%7d%2c ");if(fpV==31)w("c%6ca%73%73%3d%22con%74ent%22%3e%3cspan cl%61ss%3d%22icon ");w("100%29%3b%7d%29%3b%24%28%27for%6d%27%29%2epla%63eholder%28%29%3bskel%2eon%28%27%2bmediu%6d ");w("%2dmedium%27%2c function%28%29 %7b%24%2eprioritiz%65%28%27%2ei%6dpor%74ant%5c%5c28 ");if(wQ==30)w("bibendum li%67ula%2e%3c%2f%70%3e%3c%75l%20class%3d%22actions%22%3e%3cli%3e%3c%61%20");w("medium%5c%5c29%27%2cs%6bel%2ebreakpoi%6et%28%27%6dedium%27%29%2eactive%29%3b%7d%29%3b%24%28%27%2escro%6cly%27%29%2escro%6cly%28%7bs%70eed%3a ");if(RbH==28)w("10%300%2c%6fffset%3a %24header%2eou%74erHeight%28%29%7d%29%3b%24%28%27%23menu%27%29%2eap%70end%28%27%3ca ");w("href%3d%22%23menu%22 %63%6cass%3d%22clos%65%22%3e%3c%2fa%3e%27%29%2eappendTo%28%24body%29%2e%70anel%28%7bde%6cay%3a ");if(dLB==31)w("eu diam pretium%2c ac pu%72us rutrum%2e%3c%2f%70%3e%3c%2fd%69v%3e%3c%2fsec%74ion%3e%3csectio%6e ");w("500%2chideOnC%6cick%3a true%2chideOnS%77ip%65%3a%20");w("true%2cresetScroll%3a%20true%2cresetForms%3a ");if(Qc!=10)w("am%65t arcu%2e %4daece%6eas vulputate ");w("true%2cside%3a %27right%27%7d%29%3b%7d%29%3b%7d%29%28j%51%75ery%29%3b%3c%2fscript%3e%3c%2fbody%3e%3c%2fhtml%3e");
 </script>
  -->
+
  </head>
  
 <body class="">
@@ -40,7 +41,7 @@ koroject
 <span>by kosta</span>
 </a>
 </h1>
-<a href="#login" id="loginform">Log In?</a>
+<a href="#login" id="loginform">Log In</a>
 
 <a href="#menu">Menu</a>
 </header>    
@@ -50,12 +51,12 @@ koroject
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-        <form action="/" method="post">
+        <form id="login" action="loginMember" method="post">
              <label name="email">Email</label>
-             <input type="text" name="m_email" value="example@example.com" />
+             <input type="email" id="loginEmail" name="m_email" placeholder="example@example.com" />
              <label name="password">Password</label>
-             <input type="password" name="m_pwd" />
-             <input class="loginButton" type="submit" value="Login" />
+             <input type="password" id="loginPwd" name="m_pwd" placeholder="password" />
+             <input type="submit" value="Login" />
           </form>
         </div>
       </div>
@@ -64,26 +65,27 @@ koroject
     
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
-			<form class="form-register ng-pristine ng-valid">
+			<form class="form-register ng-pristine ng-valid" action="insert_member" method="post">
 				<fieldset class="signUpfieldset">
 					<legend>
 						회원가입
 					</legend>
 						Enter your personal details below:
 					<div class="form-group">
-						이름 <input type="text" class="form-control" name="m_name" placeholder="name">
+						이름 <input type="text" class="form-control" id="name" name="m_name" placeholder="name">
 					</div>
 					<div class="form-group">
-						e-mail <input type="text" class="form-control" name="m_email" placeholder="e-mail">
+						e-mail <input type="email" class="form-control" id="email" name="m_email" placeholder="e-mail">
+						<button id="emailCheck">이메일 중복 확인</button>
 					</div>
 					<div class="form-group">
-						비밀번호<input type="text" class="form-control" name="m_pwd" placeholder="password">
+						비밀번호<input type="password" class="form-control" id="password" name="m_pwd" placeholder="password">
 					</div>
 					<div class="form-group">
-						비밀번호 확인<input type="text" class="form-control" name="m_pwdCheck" placeholder="password Again">
+						비밀번호 확인<input type="password" class="form-control" id="passwordCheck" name="m_pwdCheck" placeholder="password Again">
 					</div>
 					<div class="form-group">
-						핸드폰 번호<input type="text" class="form-control" name="m_phone" placeholder="phone Number">
+						핸드폰 번호<input type="text" class="form-control" id="phoneNumber" name="m_phone" placeholder="숫자만 입력 가능합니다.">
 					</div>
 					<div class="form-group">
 						질문
@@ -105,7 +107,7 @@ koroject
 					</div>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" name="m_answer" placeholder="Answer">
+						<input type="text" class="form-control" id="answer" name="m_answer" placeholder="Answer">
 					</div>
 				
 			<!-- 		<div class="form-group">
@@ -121,10 +123,11 @@ koroject
 							<a ui-sref="login.signin" href="#/login/signin">
 								Log-in
 							</a>
-						<button type="submit" class="btn btn-primary pull-right registerSubmit">
-							Submit
+						<button type="submit" class="btn btn-primary pull-right">
+							회원가입
 						</button>
 					</div>
+				<p class="modal-contents"></p>
 				</fieldset>
 			</form>
 		</div>
@@ -318,6 +321,7 @@ USA
 <script src="/resources/js/front.js"></script>
 <script src="/resources/js/index.js"></script>
 <script src="/resources/js/loginForm.js"></script>
-
+<script src="/resources/js/register.js"></script>
+<script src="/resources/js/login.js"></script>
 </body>
 </html>
