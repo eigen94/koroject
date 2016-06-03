@@ -30,20 +30,27 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@Inject
 	private NoteService service;
 	
+	//세션검사하는 메서드 
 	public Member getSession(HttpServletRequest request ){
 		return (Member)request.getSession().getAttribute("member");
 	}
 	
-	@RequestMapping(value="/main")
+	@RequestMapping(value="/main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
-		/*Member member =  (Member)request.getSession().getAttribute("member");
-		int m_id = member.getM_id();*/
-		List<Note> note_list = service.note_receiveList(11);
+		
+		Member member =  getSession(request);
+		System.out.println((Member)request.getSession().getAttribute("member"));
+		//세션이 없으면 메인으로 꺼져 ! 
+		if(member == null)
+			return "redirect:/index";
+		
+		int m_id = member.getM_id();
+		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		return "/note/module/noteMain";
 	}
 
-	@RequestMapping(value="/note_sendForm")
+	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
 	public void sendForm(Model model, HttpServletRequest request)throws Exception{
 		if(getSession(request) != null){
 			model.addAttribute("m_id", getSession(request).getM_id());
