@@ -64,11 +64,8 @@ public class MemberLoginController {
 		//로그인하기
 		@RequestMapping(value="login",method=RequestMethod.POST)
 		public String loginMember(LoginCommand login,Model model){
-			System.out.println("------------------aaa");
-			System.out.println(login);
-			
+			login.setM_pwd(testSHA256(login.getM_pwd()));
 			Member member = service.loginMember(login);
-			
 			if(member == null){
 				return "index";
 			}
