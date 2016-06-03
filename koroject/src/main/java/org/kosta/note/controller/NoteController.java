@@ -41,7 +41,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
 	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
-		
+		System.out.println("123");
 		Member member =  getSession(request);
 		
 		System.out.println(member.getM_email());
@@ -53,36 +53,11 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		return "/note/note_list";
 	}
 	
-	@RequestMapping(value="/note_list", method = RequestMethod.GET)
-	public String listAll(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
-//		model.addAttribute("list", service.listCriteria(cri));
-		/*
-		//로그인 세션이 없으면 index로 리다이렉트 
-		if(request.getSession().getAttribute("member") == null){
-			System.out.println("노세션");
-			return "redirect:/index";
-		}
-		//세션 받아 멤버에 넣음
-//		Member member =  getSession(request);
-//		int m_id = member.getM_id();
-		int m_id = getSession(request).getM_id();
-		List<Note> note_list = service.note_list(m_id);
-		 */
-		List<Note> note_list = service.note_list(11);
-		
-//		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
-		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
-//		model.addAttribute("list", service.listCriteria(cri));
-
-		NotePageMaker pageMaker = new NotePageMaker();
-		pageMaker.setCri(cri);
-		
-		
-		model.addAttribute("pageMaker", pageMaker);
-		
-		return "/note/module/noteMain";
-//		return "/note/note_list";
-	}
+	
+	
+	
+	
+	
 	
 	/*
 	@RequestMapping("/note_detail")
@@ -166,10 +141,10 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	
 	@RequestMapping(value="/main")
 	public String main(Model model, HttpServletRequest request)throws Exception{
-		Member member =  (Member)request.getSession().getAttribute("member");
-		int m_id = member.getM_id();
-		List<Note> note_list = service.note_list(m_id);
-		model.addAttribute("list2", note_list);
+		/*Member member =  (Member)request.getSession().getAttribute("member");
+		int m_id = member.getM_id();*/
+		List<Note> note_list = service.note_receiveList(11);
+		model.addAttribute("list", note_list);
 		return "/note/module/noteMain";
 	}
 }

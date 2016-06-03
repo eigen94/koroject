@@ -10,5 +10,11 @@
 	<div class="sendform">
 		<button> 쪽지 보내기 </button>
 	</div>
+	<div class="sendList">
+		<button> 보낸 쪽지함 </button>
+	</div>
+	<div class="receiveList">
+		<button> 받은 쪽지함 </button>
+	</div>
 </body>
 </html>

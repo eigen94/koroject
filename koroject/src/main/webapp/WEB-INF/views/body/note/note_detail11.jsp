@@ -10,6 +10,48 @@
 <script type="text/javascript">
 	var socket = io.connect('http://localhost:4000');
 	socket.emit('my event', ".");
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	$.ajax({
+        url : "listReceiveMessage",
+        dataType : 'json',
+        success : function(data) {
+           $('#receiveMessageTbody').html("");
+           $.each(data, function(index, sendMessage){
+              $('#receiveMessageTbody').append('<tr>');
+              $('#receiveMessageTbody').append('<td>' + sendMessage.senderMemberId + '</td>');
+              $('#receiveMessageTbody').append('<td><a id="receiveMessageRead" data-target="#receiveMessageDetail" data-toggle="modal" name="' + sendMessage.messageNum+'">' + sendMessage.messageContent + '</a></td>');
+              $('#receiveMessageTbody').append('<td>' + (sendMessage.messageReceiveDate).substr(0,16) + '</td>');
+              $('#receiveMessageTbody').append('<td>' + sendMessage.messageReadCheck + '</td>');
+              $('#receiveMessageTbody').append('</tr>');
+           });
+        }
+     });
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </script>
 <!-- jQuery -->
 <script type="text/javascript" src="../js/jquery.min.js"></script>
@@ -89,3 +131,32 @@ body {
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$.ajax({
+            url : "listReceiveMessage",
+            dataType : 'json',
+            success : function(data) {
+               $('#receiveMessageTbody').html("");
+               $.each(data, function(index, sendMessage){
+                  $('#receiveMessageTbody').append('<tr>');
+                  $('#receiveMessageTbody').append('<td>' + sendMessage.senderMemberId + '</td>');
+                  $('#receiveMessageTbody').append('<td><a id="receiveMessageRead" data-target="#receiveMessageDetail" data-toggle="modal" name="' + sendMessage.messageNum+'">' + sendMessage.messageContent + '</a></td>');
+                  $('#receiveMessageTbody').append('<td>' + (sendMessage.messageReceiveDate).substr(0,16) + '</td>');
+                  $('#receiveMessageTbody').append('<td>' + sendMessage.messageReadCheck + '</td>');
+                  $('#receiveMessageTbody').append('</tr>');
+               });
+            }
+         });

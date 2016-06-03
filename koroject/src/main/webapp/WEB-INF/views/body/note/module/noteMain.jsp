@@ -29,9 +29,52 @@
 	$(function(){
 		//쪽지 보내기 
 		$('.sendform button').on('click', function(){
-			
-			
+			location.href="note_sendForm";
 		})
+		
+		//보낸 쪽지함
+		$('.sendList button').on('click', function(){
+			$.ajax({
+	            url : "note_sendList",
+	            dataType : 'json',
+	            success : function(data) {
+	            	$('.message-list').html("");
+	            	$.each(data, function(index, sendList){
+	            		$('.message-list').append('<li class="message-list-item">');
+	            		$('.message-list').append('<div class="clickPoint">');
+	            		$('.message-list').append('<div class="message-list-item-header">');
+	            		$('.message-list').append('<input type="hidden" value="' + sendList.n_id + '">');
+	            		$('.message-list').append('<div class="time ng-binding">날짜</div>');
+	            	    $('.message-list').append('<span class="ng-binding">' + sendList.n_title  + '</span>'); 
+	            		$('.message-list').append('<p class="ng-binding">' + sendList.n_content + '</p>');
+	            		$('.message-list').append('</div></div></li>');
+	            	});
+	            }
+			});
+		})
+		
+		//받은 쪽지함
+		$('.receiveList button').on('click', function(){
+			$.ajax({
+	            url : "note_receiveList",
+	            dataType : 'json',
+	            success : function(data) {
+	            	$('.message-list').html("");
+	            	$.each(data, function(index, sendList){
+	            		$('.message-list').append('<li class="message-list-item">');
+	            		$('.message-list').append('<div class="clickPoint">');
+	            		$('.message-list').append('<div class="message-list-item-header">');
+	            		$('.message-list').append('<input type="hidden" value="' + sendList.n_id + '">');
+	            		$('.message-list').append('<div class="time ng-binding">날짜</div>');
+	            	    $('.message-list').append('<span class="ng-binding">' + sendList.n_title  + '</span>'); 
+	            		$('.message-list').append('<p class="ng-binding">' + sendList.n_content + '</p>');
+	            		$('.message-list').append('</div></div></li>');
+	            	});
+	            }
+			});
+		})
+		
+		
 	})
 	
 
