@@ -77,12 +77,16 @@ public class MemberLoginController {
 			return "/memberRegister/insertMember";
 		}
 		
+		
+		
+		
 		//세션이 존재할때 로그인 페이지를 못가게 만듬
-		@RequestMapping(value="insertMember2")
+		@RequestMapping(value="loginMember2")
 		public String loginMember2(){
 			
 			return "/memberRegister/insertMember";
 		}
+		
 		//로그아웃 세션 삭제
 		@RequestMapping(value="logoutMember")
 		public String logoutMember(){

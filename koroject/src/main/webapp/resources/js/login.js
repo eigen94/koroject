@@ -26,7 +26,7 @@ $(function(){
 			url:'/loginMember',
 			data:data,
 			success:function(){
-				location.href="insertMember2";
+				location.href="loginMember2";
 			}
 			
 		})

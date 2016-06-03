@@ -27,7 +27,8 @@
 	<beans:bean id="memberInterceptor" class="org.kosta.member.interceptor.MemberInterceptor"></beans:bean>
 	<beans:bean id="loginCheckInterceptor" class="org.kosta.member.interceptor.LoginCheckInterceptor"></beans:bean>
 	<beans:bean id="logoutInterceptor" class="org.kosta.member.interceptor.LogoutInterCeptor"></beans:bean>
-
+	<beans:bean id="SessionCheckInterceptor" class="org.kosta.member.interceptor.SessionCheckInterceptor"></beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/loginMember"/>
@@ -40,6 +41,10 @@
 		<interceptor>
 			<mapping path="/logoutMember"/>
 			<beans:ref bean="logoutInterceptor"/>
+		</interceptor>
+		<interceptor>
+			<mapping path="/loginMember2"/>
+			<beans:ref bean="SessionCheckInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
