@@ -18,9 +18,9 @@ var io = require('socket.io').listen(server);
 
 io.sockets.on( 'connection', function(socket){
 	socket.on( 'join', function(data){
-		/*test*/console.log(data) // data : ����ڰ� �Է��� ���̸�
-		socket.join(data); //����ڰ� �Է��� �濡 socket�� ������Ų��.
-		socket.room = data; //'room' �Ӽ��� ����ڰ� �Է��� ���̸��� �����Ѵ�.
+		console.log(data) // 방 이름이 무엇인고 ? 
+		socket.join(data); 	//입력한 방 이름으로 접속 !! 
+		socket.room = data; 
 	});
 	
 	socket.on( 'message', function(data){

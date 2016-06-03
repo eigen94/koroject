@@ -17,11 +17,13 @@ public interface NoteService {
 
 	public void delete(int n_id) throws Exception;
 
-	public List<String> searchId(String m_name);
+	public List<String> searchId(String m_name)throws Exception;
 
-	public List<Note> note_list(int m_id) throws Exception;
+	public List<Note> note_receiveList(int m_id) throws Exception;
 
-	public List<Note> note_search(NoteSearchCriteria cri);
+	public List<Note> note_search(NoteSearchCriteria cri) throws Exception;
+
+	public List<Note> note_sendList(int i) throws Exception;
 
 	
 }

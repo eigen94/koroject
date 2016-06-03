@@ -30,7 +30,7 @@ $(function() {
 	$('.box button').on('click', function() {
 		//히든값으로 들어가있는 n_id값
 		var id = $('.hidden_text input').val();
-		location.href="listAll";
+		location.href="note_list";
 	})
 })
 

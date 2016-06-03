@@ -34,7 +34,7 @@
 	
 	<!-- 디폴트 뷰리졸버 세팅 : 타일즈 이후의 jsp로딩을 위해 order 2 -->
 	 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="prefix" value="/WEB-INF/views/body/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2"/>
 	</beans:bean>
@@ -55,24 +55,21 @@
 	
 	<interceptors>
 		<interceptor>
-			<mapping path="/loginMember"/>
-			<beans:ref bean="memberInterceptor"/> 
+			<mapping path="login" />
+			<beans:ref bean="memberInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/login_form" />
-			<beans:ref bean="loginCheckInterceptor"/>
+			<mapping path="index" />
+			<beans:ref bean="loginCheckInterceptor" />
 		</interceptor>
 		<interceptor>
-			<mapping path="/logoutMember"/>
-			<beans:ref bean="logoutInterceptor"/>
-		</interceptor>
-		<interceptor>
-			<mapping path="/loginMember2"/>
-			<beans:ref bean="SessionCheckInterceptor"/>
+			<mapping path="logout" />
+			<beans:ref bean="logoutInterceptor" />
 		</interceptor>
 	</interceptors>
-	
-		
+
+
+
 </beans:beans>
 
 

@@ -39,10 +39,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		m_email LIKE #{m_email }
 	</select>
 
-	<select id="note_list" resultType="Note">
+	<select id="note_receiveList" resultType="Note">
 		SELECT * 
 		FROM note 
 		WHERE n_receive = #{m_id}
+	</select>
+	
+	<select id="note_sendList" resultType="Note">
+		SELECT * 
+		FROM note 
+		WHERE n_sender = #{m_id}
 	</select>
 
 	<sql id="search">

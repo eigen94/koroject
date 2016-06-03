@@ -1,2 +1,6 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=branch 'master' of https\://github.com/eigen94/koroject.git
 eclipse.preferences.version=1
-encoding//src/main/webapp/WEB-INF/views/index.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/views/index2.jsp=UTF-8
+encoding/<project>=UTF-8

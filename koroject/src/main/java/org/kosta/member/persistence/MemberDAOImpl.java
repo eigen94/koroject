@@ -32,7 +32,9 @@ public class MemberDAOImpl implements MemberDAO{
 	@Override
 	public Member loginMember(LoginCommand login) {
 		// TODO Auto-generated method stub
-		return session.selectOne(namespace+".loginMember", login);
+		Member member = new  Member();
+		member= session.selectOne(namespace+".loginMember", login);
+		return member;
 	}
 
 	@Override
