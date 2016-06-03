@@ -20,4 +20,15 @@ public class frontController {
 	public String form(){
 		return "form";
 	}
+	@RequestMapping(value="board", method=RequestMethod.GET)
+	public String board(){
+		return "board";
+	}
+	
+	@RequestMapping(value="myPage", method=RequestMethod.GET)
+	public String myPage(){
+		return "myPage";
+	}
+	
+	
 }

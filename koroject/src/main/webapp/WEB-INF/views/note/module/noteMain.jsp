@@ -8,6 +8,50 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
+<script type="text/javascript">
+	$(function(){	
+		//노트 클릭시 오른쪽에 나오게함 
+		$('.clickPoint').on('click', function(){
+			var n_id = $(this).find('input').val();
+			$.ajax({
+	            url : "note_detail"+n_id,
+	            dataType : 'json',
+	            success : function(data) {
+	               $('.noteTitle').html("");
+	               $('.noteTitle').append(data.n_title);
+	               $('.noteContent').html("");
+	               $('.noteContent').append(data.n_content);
+	            }
+			});
+		})
+	})
+
+	$(function(){	
+		//검색버튼 클릭!
+		$('#searchBtn').on('click', function(event){
+			alert("Click!");
+			self.location="note_search?searchType="+$("select option:selected").val()
+    			+"&keyword="+ $('#keywordInput').val();      
+	   
+	              /*
+			$.ajax({
+	            url : "note_search?searchType="+$("select option:selected").val()
+	            		+"&keyword="+ $('#keywordInput').val(),
+	            dataType : 'json',
+	            success : function(data) {
+	              alert("data");
+	              alert(data);
+	              $('.message-list-item-header').html("");
+	              $('.message-list-item-header').append(data); 
+	              
+	            } 
+			});
+	              */
+		})
+	})
+	
+</script>
+
 <style type="text/css">
 .header {
 	width: 100%;
@@ -105,7 +149,7 @@ p {
 		</div>
 		<!-- 바디영역 -->
 		<div class="body">
-			<jsp:include page="body.jsp"></jsp:include>
+			<jsp:include page="note_list.jsp"></jsp:include>
 		</div>
 		<!-- 우 영역 -->
 		<div class="right">

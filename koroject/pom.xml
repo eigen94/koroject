@@ -187,13 +187,13 @@
 
 
 		<!-- jsoup  -->
-		<dependency>
+		<!--  <dependency>
    			<groupId>org.jsoup</groupId>
     		<artifactId>jsoup</artifactId>
   		  	<version>1.7.2</version>
-		</dependency>
+		</dependency> 
 		
-		<dependency>
+		 <dependency>
    			<groupId>org.apache.httpcomponents</groupId>
     		<artifactId>httpclient</artifactId>
     		<version>4.3.6</version>
@@ -203,13 +203,13 @@
    			 <groupId>org.apache.httpcomponents</groupId>
   			 <artifactId>httpcore</artifactId>
   			 <version>4.3.2</version>
-		</dependency>
+		</dependency>  -->
 		
-		<dependency>
+		 <!-- <dependency>
     		<groupId>commons-logging</groupId>
     		<artifactId>commons-logging</artifactId>
     		<version>1.1.1</version>
-		</dependency>
+		</dependency>  -->
 		
 		<!-- jointJS -->
 		<!-- http://mvnrepository.com/artifact/org.webjars.bower/jointjs -->
@@ -239,7 +239,7 @@
 		</dependency>
 		
 		<!-- bootstrap -->
-		<dependency>
+		  <dependency>
 		    <groupId>org.webjars</groupId>
 		    <artifactId>bootstrap</artifactId>
 		    <version>3.3.5</version>
@@ -250,7 +250,7 @@
 			<artifactId>maven-compiler-plugin</artifactId>
 			<version>3.1</version>
 			<type>maven-plugin</type>
-		</dependency>
+		</dependency>  
 	</dependencies>
     <build>
         <plugins>

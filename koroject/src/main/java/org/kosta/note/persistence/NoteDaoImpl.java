@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.kosta.note.domain.Note;
+import org.kosta.note.domain.NoteSearchCriteria;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -56,6 +57,12 @@ public class NoteDaoImpl implements NoteDao{
 	@Override
 	public List<Note> note_list(int m_id) {
 		return session.selectList(namespace + ".note_list", m_id);
+	}
+
+
+	@Override
+	public List<Note> note_search(NoteSearchCriteria cri) {
+		return session.selectList(namespace + ".note_search", cri);
 	}
 
 }
