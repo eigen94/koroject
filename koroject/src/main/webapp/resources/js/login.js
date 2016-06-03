@@ -1,5 +1,6 @@
 $(function(){
 	$("#login").submit(function(event){
+
 		var email = $('#loginEmail').val();
 		var pwd = $('#loginPwd').val();
 		

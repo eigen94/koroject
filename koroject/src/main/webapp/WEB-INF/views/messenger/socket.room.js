@@ -24,10 +24,8 @@ io.sockets.on( 'connection', function(socket){
 	});
 	
 	socket.on( 'message', function(data){
-		console.log( 'id : %s, msg : %s', data.id, data.message );
-//		console.log( 'id : %s, msg : %s, date : %s', data.id, data.message, data.date );
-		
-		//같은 방에 접속한 사용자들에게 메세지를 뿌림 
-		io.sockets.in( socket.room ).emit('message', data); 
+		//'room' �Ӽ����� �ش��ϴ� �濡 �������� Client�� �޼����� ������.
+		console.log( 'id : %s, msg : %s, date : %s', data.id, data.message, data.date );
+	mit('message', data); //public ��� : io.socke	io.sockets.in( socket.room ).ets.emit(...);
 	});
 });
