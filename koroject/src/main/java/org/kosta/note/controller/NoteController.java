@@ -6,7 +6,9 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosta.member.domain.LoginCommand;
 import org.kosta.member.domain.Member;
+import org.kosta.member.service.MemberService;
 import org.kosta.note.domain.Note;
 import org.kosta.note.domain.NotePageMaker;
 import org.kosta.note.domain.NoteSearchCriteria;
@@ -30,20 +32,32 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@Inject
 	private NoteService service;
 	
+	@Inject
+	private MemberService m_service;
+	
 	//세션검사하는 메서드 
 	public Member getSession(HttpServletRequest request ){
-		return (Member)request.getSession().getAttribute("member");
+		if(request.getAttribute("member") == null){
+			System.out.println("세션이 없어 ? 내가 만들어 시발 ");
+			LoginCommand login = new LoginCommand();
+			login.setM_email("bbbaaa");
+			login.setM_pwd("c");
+			Member s_member = m_service.loginMember(login);
+			request.setAttribute("member", s_member);
+			System.out.println("만든세션 : " + request.getAttribute("member"));
+		}
+		return (Member)request.getAttribute("member");
 	}
 	
 	@RequestMapping(value="/main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
 		
 		Member member =  getSession(request);
-		System.out.println((Member)request.getSession().getAttribute("member"));
 		//세션이 없으면 메인으로 꺼져 ! 
-		if(member == null)
+		if(member == null){
 			return "redirect:/index";
-		
+		}
+
 		int m_id = member.getM_id();
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
@@ -52,22 +66,33 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 
 	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
 	public void sendForm(Model model, HttpServletRequest request)throws Exception{
-		if(getSession(request) != null){
-			model.addAttribute("m_id", getSession(request).getM_id());
+		Member member = getSession(request);
+		if(member != null){
+			System.out.println("쪽지전송폼에 야스세션");
+			model.addAttribute("m_id", member.getM_id());
 		}
 	}
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
-	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
-		Member member =  getSession(request);
-		
-		System.out.println(member.getM_email());
-		
+	public String send(Note note, HttpServletRequest request, Model model)throws Exception{
 		service.send(note);
-		
-//		model.addAttribute("list", service.listAll()); 모든 리스트 (안씀)
-//		model.addAttribute("list2", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
-		return "/note/note_list";
+		Member member =  getSession(request);
+		int m_id = member.getM_id();
+		List<Note> note_list = service.note_receiveList(m_id);
+		model.addAttribute("list", note_list);
+		return "/note/module/noteMain";
+	}
+	
+	@RequestMapping("/note_delete{n_id}")
+	public String delete(@PathVariable int n_id, Model model, HttpServletRequest request)throws Exception{
+		service.delete(n_id);
+
+		Member member =  getSession(request);
+
+		int m_id = member.getM_id();
+		List<Note> note_list = service.note_receiveList(m_id);
+		model.addAttribute("list", note_list);
+		return "/note/module/noteMain";
 	}
 	
 	
@@ -101,12 +126,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		return "/note/note_detail";
 	}
 	
-	@RequestMapping("/note_delete{n_id}")
-	public String delete(@PathVariable int n_id, Model model)throws Exception{
-		service.delete(n_id);
-		model.addAttribute("list", service.listAll());
-		return "/note/note_list";
-	}
+	
 	
 	@RequestMapping("/search")
 	public String search()throws Exception{

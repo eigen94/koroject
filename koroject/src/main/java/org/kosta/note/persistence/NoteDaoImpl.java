@@ -68,6 +68,7 @@ public class NoteDaoImpl implements NoteDao{
 
 	@Override
 	public List<Note> note_sendList(int m_id) {
+		System.out.println("보낸놈" + m_id);
 		return session.selectList(namespace + ".note_sendList", m_id);
 	}
 

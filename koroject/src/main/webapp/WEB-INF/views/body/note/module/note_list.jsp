@@ -40,7 +40,6 @@
 		<div class='box-body'>
 			<ul class="message-list">
 				<c:forEach var="note" items="${list }">
-					<hr>
 					<li class="message-list-item">
 						<div class="clickPoint">
 							<div class="message-list-item-header">
@@ -50,6 +49,7 @@
 								<p class="ng-binding">${note.n_content }</p>
 							</div>
 						</div>
+						<button id="noteDelete">삭제</button>
 					</li>
 				</c:forEach>
 			</ul>
