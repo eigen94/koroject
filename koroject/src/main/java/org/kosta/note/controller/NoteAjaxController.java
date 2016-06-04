@@ -31,7 +31,6 @@ public class NoteAjaxController {
 	//세션검사하는 메서드 
 		public Member getSession(HttpServletRequest request ){
 			if(request.getAttribute("member") == null){
-				System.out.println("세션이 없어 ? 내가 만들어 시발 ");
 				LoginCommand login = new LoginCommand();
 				login.setM_email("bbbaaa");
 				login.setM_pwd("c");

@@ -38,7 +38,6 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	//세션검사하는 메서드 
 	public Member getSession(HttpServletRequest request ){
 		if(request.getAttribute("member") == null){
-			System.out.println("세션이 없어 ? 내가 만들어 시발 ");
 			LoginCommand login = new LoginCommand();
 			login.setM_email("bbbaaa");
 			login.setM_pwd("c");
@@ -68,7 +67,6 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	public void sendForm(Model model, HttpServletRequest request)throws Exception{
 		Member member = getSession(request);
 		if(member != null){
-			System.out.println("쪽지전송폼에 야스세션");
 			model.addAttribute("m_id", member.getM_id());
 		}
 	}
