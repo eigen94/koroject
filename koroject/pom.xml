@@ -332,13 +332,13 @@
 				<version>2.3-SNAPSHOT</version>
 				<configuration>
 					<!-- Path -->
-					<path>/App</path>
+					<!--<path>/App</path>-->
 					<!-- 구동중인 톰캣의 주소 + /manager/text -->
-					<url>http://localhost:8080/manager/text</url>
+					<!--<url>http://localhost:8080/manager/text</url>-->
 					<!-- 톰캣 사용자 정보 -->
-					<username>tomcat</username>
-					<password>tomcat</password>
-					<update>true</update>
+					<!--<username>tomcat</username>-->
+					<!--<password>tomcat</password>-->
+					<!--<update>true</update>-->
 				</configuration>
 			</plugin>
 		</plugins>
