@@ -334,7 +334,7 @@
 					<!-- Path -->
 					<path>/koroject</path>
 					<!-- 구동중인 톰캣의 주소 + /manager/text -->
-					<url>http://67.194.225.187:8080/manager/text</url>
+					<url>http://67.194.225.187:8080/manager/html</url>
 					<!-- 톰캣 사용자 정보 -->
 					<username>tomcat</username>
 					<password>tomcat</password>
