@@ -332,9 +332,9 @@
 				<version>2.1</version>
 				<configuration>
 					<!-- Path -->
-					<path>/koroject</path>
+					<path>/</path>
 					<!-- 구동중인 톰캣의 주소 + /manager/text -->
-					<url>http://localhost:8080/manager/text</url>
+					<url>http://localhost:8080/manager/</url>
 					<!-- 톰캣 사용자 정보 -->
 					<username>tomcat</username>
 					<password>tomcat</password>
