@@ -10,6 +10,7 @@
 	<package name="org.kosta.member.domain"/>   
 	<package name="org.kosta.note.domain"/>
 	<package name="org.kosta.messenger.domain"/>
+	<package name="org.kosta.projectBoard.domain"/>
 	</typeAliases>
 	
 	
