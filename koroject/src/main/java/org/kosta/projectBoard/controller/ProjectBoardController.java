@@ -1,5 +1,7 @@
 package org.kosta.projectBoard.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.kosta.projectBoard.domain.ProjectBoard;
@@ -9,8 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/projectBoard/*")
 public class ProjectBoardController {
 	
@@ -24,15 +27,17 @@ public class ProjectBoardController {
 	}
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
-	public void createPost(ProjectBoard pb)
+	public void createPost(@RequestParam("projectName") String p_name)
 	{
+		ProjectBoard pb = new ProjectBoard();
+		pb.setP_name(p_name);
 		service.create(pb);
 	}
 	
-	@RequestMapping(value="list", method=RequestMethod.GET)
-	public void list(Model model)
+	@RequestMapping(value="list", method=RequestMethod.POST)
+	public List<ProjectBoard> list()//todo 해당 회원이 정보를 가져올 수 있도록 회원 아이디를 파라미터로 추가할 것.
 	{
-		model.addAttribute("list", service.list());
+		return service.list();
 	}
 	
 	@RequestMapping(value="read", method=RequestMethod.GET)

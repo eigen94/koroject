@@ -36,7 +36,9 @@
 		</div>
 	</div>
 	<!-- end projectPageContainer div -->
-
+	<div class="projectList">
+		
+	</div>
 		<!-- registerFormMoadl -->
 	<div id="projectCreateModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -92,7 +94,7 @@
 		        </div>
 			  	<div class="form-group">
 			    	<div class="col-sm-offset-3 col-sm-9">
-			      		<button type="submit" class="btn btn-default p-createButton">프로젝트 생성</button>
+			      		<button class="btn btn-default p-createButton">프로젝트 생성</button>
 			    	</div>
 			  	</div>
 			</form>
@@ -110,9 +112,11 @@
 		src="js/static/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js"></script>
 	<script type="text/javascript">
  $(function(){
-	    $('#datetimepicker1').datetimepicker({format: 'YYYY-MM-DD'});
-	    $('#datetimepicker2').datetimepicker({format: 'YYYY-MM-DD'});
- 
+	    //$('#datetimepicker1').datetimepicker({format: 'YYYY-MM-DD'});
+	    //$('#datetimepicker2').datetimepicker({format: 'YYYY-MM-DD'});
+ $(".form-horizontal").on("click",function(e){
+	 e.preventDefault();
+ });
  $("#plusButton").mousedown(function(){
 	 $("#plusImg").attr("src","/images/plus02.jpg");
  })
@@ -135,8 +139,50 @@
 	setInputFormDate();
 	
  $("body").on("click",".p-createButton",function(){
-	 
- })
+	 var projectName = $('#inputName').val();
+	 console.log("name : "+projectName);
+	 if(projectName==""){
+		 
+	 } else {
+		 $.ajax({
+			url : "projectBoard/create",
+			method : "POST",
+			data : {
+				projectName : projectName
+			},
+			success : function(){
+				loadProjectList();
+				$("#projectCreateModal").modal("toggle");
+				
+			}
+		 });
+		 
+	 }
+ });
+ function makeProjectHtml(p_id,p_name){
+	 var returnHtml = "<div class='projects'><div> 아이디 : "+p_id+"</div>";
+	 returnHtml += "<div> 프로젝트이름 : "+p_name+"</div></div>";
+	 return returnHtml;
+ }
+ 
+ function loadProjectList(){
+	 $.ajax({
+		url : "projectBoard/list" ,
+		method : "POST",
+		//회원이 가지고 있는 프로젝트를 조회하여 가져와야 하므로 data로 회원 아이디 추가할 것.
+		success : function(data){
+			console.log(data);
+			$(".projects").remove();
+			for(var i=0;i<data.length;i++){
+				var p_id = data[i].p_Id;
+				var p_name = data[i].p_name;
+				var projectHtml = makeProjectHtml(p_id, p_name);
+				$(".projectList").append(projectHtml);
+			}
+		}
+	 });
+ }
+ loadProjectList();
  
  });
  </script>
