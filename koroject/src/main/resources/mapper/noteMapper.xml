@@ -84,13 +84,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</sql>
 
-	<select id="note_search" resultType="Note">
+	<select id="note_searchSen" resultType="Note">
 		<![CDATA[
-			SELEST *
-			FROM note
-			WHERE n_id > 0 
-			AND n_sender = #{m_id }
-			AND n_receive = #{m_id}
+			select *
+			from note
+			where n_sender = #{m_id }
+		]]>
+
+		<include refid="search"></include>
+  
+		<![CDATA[    
+  			order by n_id desc
+		]]>
+	</select>
+	
+	<select id="note_searchRec" resultType="Note">
+		<![CDATA[
+			select *
+			from note
+			where n_receive = #{m_id }
 		]]>
 
 		<include refid="search"></include>

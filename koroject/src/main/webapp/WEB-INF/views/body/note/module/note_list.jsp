@@ -14,8 +14,8 @@
 <body>
 	<h3>${member.m_email }의쪽지목록</h3>
 	<div class="note_search">
-		<input type="text" id="m_id" value="${m_id }">
-		<select name="searchType">
+		<input type="text" id="m_id" value="${m_id }"> <select
+			name="searchType">
 			<option value="n"
 				<c:out value="${cri.searchType == null?'selected':''}"/>>
 				---</option>
@@ -36,7 +36,8 @@
 				전체</option>
 		</select> <input type="text" name='keyword' id="keywordInput"
 			value='${cri.keyword }'>
-		<button id='searchBtn'>Search</button>
+		<button id='sen_btn'>받은쪽지검색</button>
+		<button id='rec_btn'>보낸쪽지검색</button>
 	</div>
 	<div class="scroll">
 		<div class='box-body'>

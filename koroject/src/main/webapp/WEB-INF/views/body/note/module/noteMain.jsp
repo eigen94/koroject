@@ -74,10 +74,17 @@
 
 	$(function(){	
 		//검색버튼 클릭!
-		$('#searchBtn').on('click', function(event){
-			alert($('#m_id').val());
-			self.location="note_search?m_id" + $('#m_id').val();
-				+"searchType=" + $("select option:selected").val()
+		//받은쪽지
+		$('#sen_btn').on('click', function(event){
+			self.location="note_searchSen?m_id=" + $('#m_id').val()
+				+"&searchType=" + $("select option:selected").val()
+    			+"&keyword=" + $('#keywordInput').val();      
+		})
+		
+		//보낸쪽지
+		$('#rec_btn').on('click', function(event){
+			self.location="note_searchRec?m_id=" + $('#m_id').val()
+				+"&searchType=" + $("select option:selected").val()
     			+"&keyword=" + $('#keywordInput').val();      
 		})
 	})
