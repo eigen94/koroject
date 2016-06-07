@@ -15,7 +15,7 @@ start with 100
 --member
 create table member(
 	m_id number primary key,
-	m_name varchar2(20) not null,
+	m_name varchar2(20) not null
 	m_email varchar2(50) not null unique,
 	m_pwd varchar2(100) not null,
 	m_phone varchar2(20) not null,
