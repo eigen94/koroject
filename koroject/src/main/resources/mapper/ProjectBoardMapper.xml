@@ -7,12 +7,13 @@
 	<cache />
 	
 	<insert id="create">
-		insert into project(p_id, p_name, p_start, p_end)
-			values(NVL((select MAX(p_id) from project)+1,0), #{p_name}, sysdate, sysdate)
+		insert into project(p_id, p_name, p_pmid, p_start, p_end)
+			values(NVL((select MAX(p_id) from project)+1,0), #{p_name}, #{p_pmid}, #{p_start}, #{p_end})
 	</insert>
 	
+	<!-- 생성한 프로젝트 뿐만 아니라 참여한 프로젝트도 불러오는 기능 추가필요 -->
 	<select id="list" resultType="ProjectBoard">
-		select * from project
+		select * from project where p_pmid = p_pmid
 	</select>
 	
 	<select id="read" resultType="ProjectBoard">

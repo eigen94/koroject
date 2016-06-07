@@ -8,7 +8,7 @@ public interface ProjectBoardDAO {
 
 	void create(ProjectBoard pb);
 
-	List<ProjectBoard> list();
+	List<ProjectBoard> list(int pId);
 
 	ProjectBoard read(int pId);
 

@@ -21,8 +21,8 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 	}
 
 	@Override
-	public List<ProjectBoard> list() {		
-		return session.selectList(namespace+".list");
+	public List<ProjectBoard> list(int p_pmid) {		
+		return session.selectList(namespace+".list",p_pmid);
 	}
 
 	@Override
