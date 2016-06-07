@@ -7,12 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="insertBoard" method="post">
-		프로젝트 이름 : <input type="text" name="p_name"><br>
-		프로젝트 시작일 : <input type="date" name="p_start">
-		프로젝트 종료일 : <input type="date" name="p_end"><br>
+	<form action="create" method="post">
+		프로젝트 이름 : <input type="text" name="pTitle"><br>
+		프로젝트 시작일 : <input type="date" name="pStart">
+		프로젝트 종료일 : <input type="date" name="pEnd"><br>
 		메모 <br>
-		<textarea rows="6" cols="70" name="p_memo"></textarea>
+		<textarea rows="6" cols="70" name="pContent"></textarea>
 		<br>
 		<input type="submit" value="등록">
 	</form>

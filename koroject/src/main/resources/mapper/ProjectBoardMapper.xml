@@ -3,8 +3,33 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="org.kosta.member.mapper.ProjectBoardMapper">
+<mapper namespace="org.kosta.mapper.ProjectBoardMapper">
 	<cache />
+	
+	<insert id="create">
+		insert into projectBoard(PID, PTITLE, PWRITER, PREGDATE, PCONTENT)
+			values(projectBoard_seq.nextval, #{pTitle}, #{pWriter}, sysdate, #{pContent})
+	</insert>
+	
+	<select id="list" resultType="ProjectBoard">
+		select * from projectBoard
+	</select>
+	
+	<select id="read" resultType="ProjectBoard">
+		select * from projectBoard
+			where PID = #{pId}
+	</select>
+	
+	<update id="update">
+		update projectBoard
+			set ptitle = #{pTitle}, pcontent = #{pContent}
+			where pid = #{pId}
+	</update>
+	
+	<delete id="delete">
+		delete from projectBoard
+			where pid = #{pId}
+	</delete>
 	
 </mapper>
 
