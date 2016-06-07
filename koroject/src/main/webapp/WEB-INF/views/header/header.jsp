@@ -17,15 +17,16 @@ koroject
 	<a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다.
 	  <nav id="menu">
 <ul class="links">
-<ul>
+<li>
 <a href="projectPage">Project</a>
+</li>
 <li>
 프로젝트1
 </li>
 <li>
 프로젝트2
 </li>
-</ul>
+
 <li>
 <a href="generic.html">공지사항</a>
 </li>
@@ -102,12 +103,12 @@ koroject
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-        <form action="/login" method="post">
+        <form id="login" action="/login" method="post">
              <label name="email">Email</label>
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
              <input type="password" name="m_pwd" />
-             <input class="loginButton" type="submit" value="Login" />
+             <input class="loginButton" type="submit" value="Loginaaa" />
           </form>
         </div>
       </div>
@@ -117,7 +118,7 @@ koroject
 
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
-			<form class="form-register ng-pristine ng-valid">
+			<form action="insert_member" class="form-register ng-pristine ng-valid">
 				<fieldset class="signUpfieldset">
 					<legend>
 						회원가입

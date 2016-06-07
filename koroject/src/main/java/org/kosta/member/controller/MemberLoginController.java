@@ -63,13 +63,14 @@ public class MemberLoginController {
 		
 		//로그인하기
 		@RequestMapping(value="login",method=RequestMethod.POST)
-		public String loginMember(LoginCommand login,Model model){
+		public String loginMember(LoginCommand login,Model model,HttpServletRequest request){
 			login.setM_pwd(testSHA256(login.getM_pwd()));
 			Member member = service.loginMember(login);
 			if(member == null){
 				return "index";
 			}
-			model.addAttribute("member", member);
+			request.getSession().setAttribute("member", member);
+			/*model.addAttribute("member", member);*/
 			return "index";
 		}
 		
@@ -86,8 +87,8 @@ public class MemberLoginController {
 		
 		//로그아웃 세션 삭제
 		@RequestMapping(value="logout")
-		public String logoutMember(){
-			
+		public String logoutMember(HttpServletRequest request){
+			request.getSession().removeAttribute("member");
 			return "redirect:/index";
 		}
 		//회원정보보기
