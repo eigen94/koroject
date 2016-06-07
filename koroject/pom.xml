@@ -322,10 +322,7 @@
 					<webXml>src/main/webapp/WEB-INF/web.xml</webXml>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>tomcat-maven-plugin</artifactId> 
-				<version>1.1</version> <configuration> <url>http://127.0.0.1:8080/manager</url> 
-				<path>/</path> <username>tomcat</username> <password>tomcat</password> </configuration> 
-				</plugin> -->
+
 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
