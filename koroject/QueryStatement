@@ -10,3 +10,102 @@ start with 100
 --메신저 저장을 위한 메신저 시퀀스--
 create sequence msg_seq
 start with 100
+
+
+--member
+create table member(
+	m_id number primary key,
+	m_name varchar2(20) not null,
+	m_email varchar2(50) not null unique,
+	m_pwd varchar2(100) not null,
+	m_phone varchar2(20) not null,
+	m_question number not null,
+	m_answer varchar2(100) not null,
+	m_recentMember varchar2(1000),
+    m_image varchar2(1000)
+);
+--note
+create table note(
+	n_id number primary key,
+	n_title varchar2(100) not null,
+	n_content varchar2(500) not null,
+	n_sender number,
+	n_receive number,
+	n_date date,
+CONSTRAINT fk_note_recevie FOREIGN KEY (n_receive) REFERENCES member(m_id),
+CONSTRAINT fk_note_sender FOREIGN KEY (n_sender) REFERENCES member(m_id)
+);
+--note inbox
+create table inbox(
+	i_id number primary key,
+	i_forder varchar2(50) not null,
+	i_member number,
+	i_note number,
+	CONSTRAINT fk_inbox_member FOREIGN KEY (i_member) REFERENCES member(m_id),
+	CONSTRAINT fk_inbox_note FOREIGN KEY (i_note) REFERENCES note(n_id)
+);
+--project
+create table project(
+	p_id number primary key,
+	p_name varchar2(200),
+	p_start date,
+	p_end date,
+	p_pmid number,
+	p_crew varchar2(200),
+	p_memo varchar2(1000),
+	CONSTRAINT fk_project_member FOREIGN KEY (p_pmid) REFERENCES member(m_id)
+);
+--messenger
+create table msg(
+	msg_id number primary key,
+	msg_content varchar2(3000) not null,
+	msg_sender number,
+	msg_projectid number,
+	msg_date date,
+	CONSTRAINT fk_msg_member FOREIGN KEY (msg_sender) REFERENCES member(m_id),
+	CONSTRAINT fk_msg_note FOREIGN KEY (msg_projectid) REFERENCES project(p_id)
+);
+--work schedule
+CREATE TABLE checkList(
+	check_id number primary key,
+	check_name varchar2(400),
+	check_projectId number,
+	check_start date,
+	check_end date,
+	check_manager number,
+	check_sign number,
+	check_type number,
+	check_content varchar2(4000),
+	CONSTRAINT fk_schedule_member FOREIGN KEY (check_manager) REFERENCES member(m_id),
+	CONSTRAINT fk_schedule_project FOREIGN KEY (check_projectid) REFERENCES project(p_id)
+);
+--data archive
+CREATE TABLE datalist(
+	data_id number primary key,
+	data_projectId number,
+	CONSTRAINT fk_datalist_projectId FOREIGN KEY (data_projectID) REFERENCES project(p_id)
+);
+
+--data detail
+CREATE TABLE datadetail(
+	dDetail_id number primary key,
+	dDetail_dListId number,
+	dDetail_title varchar2(300),
+	dDetail_contents varchar2(3000),
+	dDetail_date date,
+	dDetail_writer number,
+	dDetail_fName varchar2(100),
+	dDetail_hit number,
+	CONSTRAINT fk_datadetail_datalist_id FOREIGN KEY (dDetail_dListID) REFERENCES datalist(data_id),
+	CONSTRAINT fk_datadetail_writer FOREIGN KEY (dDetail_writer) REFERENCES member(m_id)
+);
+--reply
+CREATE TABLE reply(
+	r_id number primary key,
+	r_dDetailId number,
+	r_writer number,
+	r_content varchar2(1000),
+	r_date date,
+	CONSTRAINT fk_reply_datadetail_id FOREIGN KEY (r_dDetailID) REFERENCES datadetail(dDetail_id),
+	CONSTRAINT fk_reply_writer FOREIGN KEY (r_writer) REFERENCES member(m_id)
+);

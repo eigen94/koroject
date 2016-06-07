@@ -4,18 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>사이드</title>
 </head>
 <body>
-<a class="sidebar-mobile-toggler pull-left hidden-md hidden-lg" ng-click="toggle('sidebar')" href="#">
-<i class="ti-align-justify"></i>
-</a>
-<a class="navbar-brand" ui-sref="app.dashboard" href="#/app/dashboard">
-<img alt="Clip-Two" ng-src="assets/images/logo.png" src="assets/images/logo.png">
-</a>
-<a class="sidebar-toggler pull-right visible-md visible-lg" ng-click="app.layout.isSidebarClosed = !app.layout.isSidebarClosed" href="#">
-<i class="ti-align-justify"></i>
-</a>
+<!-- 
 <a id="menu-toggler" class="pull-right menu-toggler visible-xs-block" ng-click="navbarCollapsed = !navbarCollapsed">
 <span class="sr-only">Toggle navigation</span>
 <i class="ti-view-grid"></i>
@@ -26,7 +18,6 @@
 <div id="toast-container" class="ng-scope toast-top-right" ng-class="[config.position, config.animation]" toaster-options="{'position-class': 'toast-top-right', 'close-button':true}"></div>
 <div id="sidebar" class="sidebar app-aside hidden-print ng-scope" parent-active-class="app-slide-off" toggleable="">
 <div class="sidebar-container ps-container ps-active-y" suppress-scroll-x="true" wheel-propagation="false" perfect-scrollbar="" data-ps-id="fe14d788-2c65-f827-6d24-4879d68474f1">
-<div ng-transclude="">
 <div class="ng-scope" data-ng-include=" 'assets/views/partials/sidebar.html' " style="">
 <nav class="ng-scope" data-ng-include=" 'assets/views/partials/nav.html' " style="">
 <div class="search-form ng-scope">
@@ -676,7 +667,33 @@
 <div class="ps-scrollbar-y" style="top: 187px; height: 79px;"></div>
 </div>
 </div>
-</div>
+</div> -->
+
+
+<nav id="menu">
+<ul class="links">
+<li>
+<a href="projectPage">Project</a>
+</li>
+<li>
+<a href="generic.html">Generic</a>
+</li>
+<li>
+<a href="elements.html">Elements</a>
+</li>
+</ul>
+<ul class="actions vertical">
+
+<li>
+<a class="button fit menuLogOutButton" href="logout">Log Out</a>
+
+</li>
+</ul>
+<a class="close" href="#menu"></a>
+</nav>
+
+
+
 
 
 </body>

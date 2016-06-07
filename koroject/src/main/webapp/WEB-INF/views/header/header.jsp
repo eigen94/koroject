@@ -17,11 +17,17 @@ koroject
 	<a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다.
 	  <nav id="menu">
 <ul class="links">
-<li>
+<ul>
 <a href="projectPage">Project</a>
+<li>
+프로젝트1
 </li>
 <li>
-<a href="generic.html">Generic</a>
+프로젝트2
+</li>
+</ul>
+<li>
+<a href="generic.html">공지사항</a>
 </li>
 <li>
 <a href="elements.html">Elements</a>
