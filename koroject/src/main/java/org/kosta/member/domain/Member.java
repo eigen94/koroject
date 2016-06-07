@@ -11,6 +11,14 @@ public class Member implements Serializable {
 	private int m_question;
 	private String m_answer;
 	private String m_recentMember;
+	private String m_image;
+	
+	public String getM_image() {
+		return m_image;
+	}
+	public void setM_image(String m_image) {
+		this.m_image = m_image;
+	}
 	public int getM_id() {
 		return m_id;
 	}
@@ -63,9 +71,8 @@ public class Member implements Serializable {
 	public String toString() {
 		return "Member [m_id=" + m_id + ", m_name=" + m_name + ", m_email=" + m_email + ", m_pwd=" + m_pwd
 				+ ", m_phone=" + m_phone + ", m_question=" + m_question + ", m_answer=" + m_answer + ", m_recentMember="
-				+ m_recentMember + "]";
+				+ m_recentMember + ", m_image=" + m_image + "]";
 	}
-
 	
 	
 	

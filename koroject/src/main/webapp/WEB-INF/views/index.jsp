@@ -65,7 +65,7 @@ koroject
     
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
-			<form class="form-register ng-pristine ng-valid" method="post">
+			<form class="form-register ng-pristine ng-valid" action="insert_member" method="post">
 				<fieldset class="signUpfieldset">
 					<legend>
 						회원가입

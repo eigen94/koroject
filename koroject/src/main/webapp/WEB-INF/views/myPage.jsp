@@ -104,32 +104,34 @@ input[type=text], input[type=email], input[type=password], select {
 </style>
 </head>
 <body>
+
 	<div class="tab-pane ng-scope active" style="">
 		<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email"
-			role="form" action="#">
+			role="form" action="#" id="formMy">
 			<fieldset>
+			<input type="hidden" id="m_id" name="m_id" value="${member.m_id }">
 				<legend> 회원 정보 </legend>
 				<div class="row">
 					<div class="leftMyPage">
 						<div class="form-group">
 							<label class="control-label">이름 </label><br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="firstname">
+								type="text" name="m_name" value="${member.m_name }">
 						</div>
 						<div class="form-group">
 							<label class="control-label">이메일</label><br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="lastname">
+								type="email" name="m_email" value="${member.m_email }">
 						</div>
 						<div class="form-group">
 							<label class="control-label">비밀번호 </label><br> <input
 								class="form-control ng-pristine ng-untouched ng-valid ng-valid-email"
-								type="email" name="email">
+								type="password" name="m_pwd">
 						</div>
 						<div class="form-group">
 							<label class="control-label">핸드폰 번호</label><Br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="phone">
+								type="text" name="m_phone" value="${member.m_phone }">
 						</div>
 						<div class="form-group">
 							<label class="control-label">질문</label><br> <select
@@ -142,40 +144,47 @@ input[type=text], input[type=email], input[type=password], select {
 						<div class="form-group">
 							<label class="control-label">답변</label><Br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="answer">
+								type="text" name="m_answer" value="member.m_answer">
 						</div>
 					</div>
 				</div>
 
-				<div class="rightMyPage">
-					<div class="form-group">
-						<label> Image Upload </label>
-						<div class="ng-scope">
-							<div class="user-image">
-								<div class="thumbnailMyPage">
-									<img class="ng-scope" alt="" src="/images/defaultImage.gif">
-								</div>
-							</div>
-							<div class="user-image-buttons-edit ng-scope">
-								<!-- <span class="btn btn-primary" flow-btn=""> <i
-									class="fa fa-pencil"></i> <input type="file"
-									style="visibility: hidden; position: absolute;">
-								</span> <span class="btn btn-danger ng-scope"> <i
-									class="fa fa-times"></i>
-								</span> -->
-								
-								 <input class="thumbnailMyPageUpdate" type="button" value="수정">
-								 <input class="thumbnailMyPageDelete" type="button" value="삭제"> 
-							</div>
-						</div>
-					</div>
-				</div>
+				
 						 <input class="MyPageButton" type="button" value="submit">
 	</div>
 	</div>
 	</fieldset>
 	</form>
+	<form id="imgForm" action="proImg" method="POST" enctype="multipart/form-data">
+		<div class="rightMyPage">
+			<div class="form-group">
+				<label> 프로필 사진 </label>
+				<div class="ng-scope">
+					<div class="user-image">
+						<div class="thumbnailMyPage">
+							<img class="ng-scope" alt="" src="/images/defaultImage.gif">
+						</div>
+					</div>
+					<div class="user-image-buttons-edit ng-scope">
+						<!-- <span class="btn btn-primary" flow-btn=""> <i
+									class="fa fa-pencil"></i> <input type="file"
+									style="visibility: hidden; position: absolute;">
+								</span> <span class="btn btn-danger ng-scope"> <i
+									class="fa fa-times"></i>
+								</span> -->
+						<p>JPG,PNG 파일만 사용가능</p>
+						<input type="file" id="image" name="file"><br> <input
+							class="thumbnailMyPageUpdate" type="submit" value="프로필사진 수정">
+						<input class="thumbnailMyPageDelete" type="button"
+							value="프로필사진 삭제">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 	</div>
-
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/jquery.scrolly.min.js"></script>
+<script src="/resources/js/imageUpload.js"></script>
 </body>
 </html>

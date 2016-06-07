@@ -8,8 +8,13 @@
 </head>
 <body>
 	<div class="noteDetail">
-		<div class="noteTitle"></div>
-		<div class="noteContent"></div>
+		<input type="hidden" name="noteId" value="">
+		<div class="noteTitle">
+			<span id="noteTitle"></span>
+		</div>
+		<div class="noteContent">
+			<p id="noteContent"></p>
+		</div>
 	</div>
 </body>
 </html>

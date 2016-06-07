@@ -9,22 +9,7 @@
 <title>Insert title here</title>
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript">
-	$(function(){	
-		//노트 클릭시 오른쪽에 나오게함 
-		$('.clickPoint').on('click', function(){
-			var n_id = $(this).find('input').val();
-			$.ajax({
-	            url : "note_detail"+n_id,
-	            dataType : 'json',
-	            success : function(data) {
-	               $('.noteTitle').html("");
-	               $('.noteTitle').append(data.n_title);
-	               $('.noteContent').html("");
-	               $('.noteContent').append(data.n_content);
-	            }
-			});
-		})
-	})
+	
 	
 	$(function(){
 		//쪽지 보내기 
@@ -38,17 +23,19 @@
 	            url : "note_sendList",
 	            dataType : 'json',
 	            success : function(data) {
-	            	$('.message-list').html("");
-	            	$.each(data, function(index, sendList){
-	            		$('.message-list').append('<li class="message-list-item">');
-	            		$('.message-list').append('<div class="clickPoint">');
-	            		$('.message-list').append('<div class="message-list-item-header">');
-	            		$('.message-list').append('<input type="hidden" value="' + sendList.n_id + '">');
-	            		$('.message-list').append('<div class="time ng-binding">날짜</div>');
-	            	    $('.message-list').append('<span class="ng-binding">' + sendList.n_title  + '</span>'); 
-	            		$('.message-list').append('<p class="ng-binding">' + sendList.n_content + '</p>');
-	            		$('.message-list').append('</div></div></li>');
+	            	var $html = "";
+	            	$('.message-list').empty();
+	            	$.each(data, function(index, list){
+	            		$html += '<li class="message-list-item">';
+	            		$html += '<div class="clickPoint">';
+	            		$html += '<div class="message-list-item-header">';
+	            		$html += '<input type="hidden" value="' + list.n_id + '">';
+	            		$html += '<div class="time ng-binding">날짜</div>';
+	            		$html += '<span class="ng-binding">' + list.n_title  + '</span>'; 
+	            		$html += '<p class="ng-binding">' + list.n_content + '</p>';
+	            		$html += '</div></div><button id="noteDelete">삭제</button></li>';
 	            	});
+	            	$('.message-list').append($html);
 	            }
 			});
 		})
@@ -59,46 +46,59 @@
 	            url : "note_receiveList",
 	            dataType : 'json',
 	            success : function(data) {
-	            	$('.message-list').html("");
-	            	$.each(data, function(index, sendList){
-	            		$('.message-list').append('<li class="message-list-item">');
-	            		$('.message-list').append('<div class="clickPoint">');
-	            		$('.message-list').append('<div class="message-list-item-header">');
-	            		$('.message-list').append('<input type="hidden" value="' + sendList.n_id + '">');
-	            		$('.message-list').append('<div class="time ng-binding">날짜</div>');
-	            	    $('.message-list').append('<span class="ng-binding">' + sendList.n_title  + '</span>'); 
-	            		$('.message-list').append('<p class="ng-binding">' + sendList.n_content + '</p>');
-	            		$('.message-list').append('</div></div></li>');
+	            	var $html = "";
+	            	$('.message-list').empty();
+	            	$.each(data, function(index, list){
+	            		$html += '<li class="message-list-item">';
+	            		$html += '<div class="clickPoint">';
+	            		$html += '<div class="message-list-item-header">';
+	            		$html += '<input type="hidden" value="' + list.n_id + '">';
+	            		$html += '<div class="time ng-binding">날짜</div>';
+	            		$html += '<span class="ng-binding">' + list.n_title  + '</span>'; 
+	            		$html += '<p class="ng-binding">' + list.n_content + '</p>';
+	            		$html += '</div></div><button id="noteDelete">삭제</button></li>';
 	            	});
+	            	$('.message-list').append($html);
 	            }
-			});
+			})
 		})
-		
-		
 	})
 	
 
 	$(function(){	
+		//노트 삭제 
+		$(document).on('click', '#noteDelete', function(){
+			var noteId = $(this).prev().find('input').val();
+			self.location="note_delete" + noteId;
+		})
+	})
+
+	$(function(){	
 		//검색버튼 클릭!
 		$('#searchBtn').on('click', function(event){
-			alert("Click!");
 			self.location="note_search?searchType="+$("select option:selected").val()
     			+"&keyword="+ $('#keywordInput').val();      
-	   
-	              /*
+		})
+	})
+	
+	$(function(){	
+		//노트 클릭시 오른쪽에 나오게함 
+		$(document).on('click', '.clickPoint', function(){
+			var n_id = $(this).find('input').val();
+			var $html = "";
 			$.ajax({
-	            url : "note_search?searchType="+$("select option:selected").val()
-	            		+"&keyword="+ $('#keywordInput').val(),
+	            url : "note_detail"+n_id,
 	            dataType : 'json',
 	            success : function(data) {
-	              alert("data");
-	              alert(data);
-	              $('.message-list-item-header').html("");
-	              $('.message-list-item-header').append(data); 
-	              
-	            } 
+	            	$('.noteDetail').empty();
+	            	$html += '<input type="text" name="noteId" value="' + data.n_id + '">';
+	            	$html += '<div class="noteTitle">';
+	            	$html += '<span id="noteTitle">' + data.n_title + '</span></div>';
+	            	$html += '<div class="noteContent">';
+	            	$html += '<p id="noteContent">' + data.n_content + '</p></div>';
+	            	$('.noteDetail').append($html);
+	            }
 			});
-	              */
 		})
 	})
 	
