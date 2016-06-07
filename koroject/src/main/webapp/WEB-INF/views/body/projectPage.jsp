@@ -4,10 +4,31 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<style type="text/css">
+#plusButton{
+	background: #e6e8e8;
+	width: 170px;
+	height: 200px;
+}
+#plusImg{
+    padding-left: 70%;
+    padding-top: 80%;
+}
+#projectPage{
+	margin:40px;
+}
+
+</style>
+<title>projectPage</title>
 </head>
 <body>
- hihihi
+<div id="projectPage">
+<div id="plusButton">
+ <a>
+ 	<img id="plusImg" src="/images/plus01.jpg">
+ </a>
+</div>
+</div>
 
 </body>
 </html>

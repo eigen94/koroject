@@ -14,6 +14,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
 	</definition>
 	
+	<definition name="projectPage" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectPage.jsp"></put-attribute>
+	</definition>
+	
 
 </tiles-definitions>
 
