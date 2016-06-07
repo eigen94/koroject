@@ -72,4 +72,10 @@ public class NoteDaoImpl implements NoteDao{
 		return session.selectList(namespace + ".note_sendList", m_id);
 	}
 
+
+	@Override
+	public int getM_id(String email) throws Exception {
+		return session.selectOne(namespace + ".getM_id", email);
+	}
+
 }

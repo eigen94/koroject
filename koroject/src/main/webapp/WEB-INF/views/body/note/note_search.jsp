@@ -24,7 +24,6 @@ $(function() {
 	$('.list a').on('click', function() {
 		var email = $(this).html();
 		window.opener.receive(email);
-		/*window.opener.document.getElementById("n_receive").innerHTML = email;*/
 		self.close();
 	})
 	

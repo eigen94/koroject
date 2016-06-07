@@ -60,4 +60,9 @@ public class NoteServiceImpl implements NoteService{
 		return dao.note_sendList(m_id);
 	}
 
+	@Override
+	public int getM_id(String email) throws Exception {
+		return dao.getM_id(email);
+	}
+
 }

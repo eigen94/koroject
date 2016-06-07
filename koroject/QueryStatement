@@ -35,6 +35,12 @@ create table note(
 CONSTRAINT fk_note_recevie FOREIGN KEY (n_receive) REFERENCES member(m_id),
 CONSTRAINT fk_note_sender FOREIGN KEY (n_sender) REFERENCES member(m_id)
 );
+
+--inbox 대신 folder 컬럼을 추가해서 기본 0번 폴더로 설정함 
+--folder컬럼의 값: ex)1,2,3,4번 폴더 별로 정렬하면 Good! 
+ALTER TABLE note ADD(folder NUMBER DEFAULT 0);
+
+
 --note inbox
 create table inbox(
 	i_id number primary key,

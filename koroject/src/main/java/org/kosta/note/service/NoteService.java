@@ -25,5 +25,7 @@ public interface NoteService {
 
 	public List<Note> note_sendList(int i) throws Exception;
 
+	public int getM_id(String email) throws Exception;
+
 	
 }

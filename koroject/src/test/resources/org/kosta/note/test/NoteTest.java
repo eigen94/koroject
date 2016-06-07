@@ -20,8 +20,8 @@ public class NoteTest {
 	public void InsertTest() throws Exception{
 		Note note = new Note();
 		
-		note.setN_content("Ä¿³×Æ®Ã÷");
-		note.setN_receive(2);
+		note.setN_content("Ä¿ï¿½ï¿½Æ®ï¿½ï¿½");
+		note.setN_receive(0);
 		note.setN_sender(1);
 		note.setN_title("asd");
 		dao.send(note);

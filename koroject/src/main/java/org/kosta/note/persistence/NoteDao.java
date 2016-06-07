@@ -25,4 +25,6 @@ public interface NoteDao {
 
 	public List<Note> note_sendList(int m_id) throws Exception;
 
+	public int getM_id(String email) throws Exception;
+
 }
