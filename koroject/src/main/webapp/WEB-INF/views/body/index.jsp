@@ -129,31 +129,7 @@
 </section>
 
 
-<nav id="menu">
-<ul class="links">
-<li>
-<a href="projectPage">Project</a>
-</li>
-<li>
-<a href="generic.html">Generic</a>
-</li>
-<li>
-<a href="elements.html">Elements</a>
-</li>
-</ul>
-<ul class="actions vertical">
-<li>
-<a class="button fit special signUp" href="#">Sign Up</a>
-</li>
-<li>
-<a class="button fit menuLoginButton" href="#">Log In</a>
-<script type="text/javascript">
-</script>
 
-</li>
-</ul>
-<a class="close" href="#menu"></a>
-</nav>
 
 <!-- this is loginForm js -->
 <script src="/resources/js/jquery.min.js"></script>

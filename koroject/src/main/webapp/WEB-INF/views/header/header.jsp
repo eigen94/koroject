@@ -12,15 +12,84 @@ koroject
 <!-- todo  -->
 <!-- 로그아웃 기능에 맞게 수정할것 -->
 <c:if test="${member !=null }">
-	<a href="#logout" id="logoutform">Log Out</a>
+
+	<%-- <a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다. --%>
+	<a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다.
+	  <nav id="menu">
+<ul class="links">
+<li>
+<a href="projectPage">Project</a>
+</li>
+<li>
+<a href="generic.html">Generic</a>
+</li>
+<li>
+<a href="elements.html">Elements</a>
+</li>
+</ul>
+<ul class="actions vertical">
+<li>
+</li>
+<li>
+<a class="button fit menuLogOutButton" href="logout">Log Out</a>
+
+</li>
+</ul>
+<a class="close" href="#menu"></a>
+</nav>
+
+
+<!-- 로그인 세팅폼-->
+<div class="settingNav" style="display:none;">
+    <div class="loginSetting">
+        <div class="randompad">
+             <label name="SettingMyPage">마이페이지</label>
+             <label name="SettingNote">쪽지</label>
+             <label name="SettingLogOut">로그아웃</label>
+        </div>
+    </div>
+  </div>
+  
+  
+        
+                
+    
 </c:if>
 <c:if test="${member==null }">
 	<a href="#login" id="loginform">Log In!!</a>
+	
+	
+	  <nav id="menu">
+<ul class="links">
+<li>
+<a href="projectPage">Project</a>
+</li>
+<li>
+<a href="generic.html">Generic</a>
+</li>
+<li>
+<a href="elements.html">Elements</a>
+</li>
+</ul>
+<ul class="actions vertical">
+<li>
+<a class="button fit special signUp" href="#">Sign Up</a>
+</li>
+<li>
+<a class="button fit menuLoginButton" href="#">Log In</a>
+
+</li>
+</ul>
+<a class="close" href="#menu"></a>
+</nav>
+    
 </c:if>
 
 <a href="#menu">Menu</a>
 </header>    
 
+
+<!-- 로그인 폼 -->
 <div id="navthing">
       <!-- <h2><a href="#" id="loginform">Login</a> | <a href="#">Register</a></h2> -->
     <div class="login">
@@ -38,7 +107,8 @@ koroject
       </div>
     </div>
   </div>
-    
+  
+
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
 			<form class="form-register ng-pristine ng-valid">

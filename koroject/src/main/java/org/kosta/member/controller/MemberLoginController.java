@@ -85,7 +85,7 @@ public class MemberLoginController {
 		}
 		
 		//로그아웃 세션 삭제
-		@RequestMapping(value="logoutMember")
+		@RequestMapping(value="logout")
 		public String logoutMember(){
 			
 			return "redirect:/index";

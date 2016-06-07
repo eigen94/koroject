@@ -14,6 +14,17 @@ $('').on("click","#loginform",function(){
   
 });
 
+
+//로그인세팅클릭 
+$('body').on("click","#settingLogin",function(){
+	   console.log(this);
+	   $('.settingNav').fadeToggle('slow');
+	   
+	   
+	 });		
+
+ 
+
 $('body').on("click","#startProject",function(){
 	location.href="projectPage";
 });

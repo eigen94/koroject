@@ -13,7 +13,7 @@
 </head>
 <body>
 
-		<!-- start: REGISTER BOX -->
+<%-- 		<!-- start: REGISTER BOX -->
 		<div class="box-register">
 			<f:form class="form-register ng-pristine ng-valid" action="insert_member" commandName="registerCommand">
 				<fieldset>
@@ -84,6 +84,8 @@
 			</f:form>
 		</div>
 		<!-- end: REGISTER BOX -->
-	</div>
+	</div> --%>
+	
+	
 </body>
 </html>
