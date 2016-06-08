@@ -63,7 +63,6 @@
 			})
 		})
 	})
-	
 
 	$(function(){	
 		//노트 삭제 
@@ -75,9 +74,18 @@
 
 	$(function(){	
 		//검색버튼 클릭!
-		$('#searchBtn').on('click', function(event){
-			self.location="note_search?searchType="+$("select option:selected").val()
-    			+"&keyword="+ $('#keywordInput').val();      
+		//받은쪽지
+		$('#sen_btn').on('click', function(event){
+			self.location="note_searchSen?m_id=" + $('#m_id').val()
+				+"&searchType=" + $("select option:selected").val()
+    			+"&keyword=" + $('#keywordInput').val();      
+		})
+		
+		//보낸쪽지
+		$('#rec_btn').on('click', function(event){
+			self.location="note_searchRec?m_id=" + $('#m_id').val()
+				+"&searchType=" + $("select option:selected").val()
+    			+"&keyword=" + $('#keywordInput').val();      
 		})
 	})
 	
@@ -91,7 +99,7 @@
 	            dataType : 'json',
 	            success : function(data) {
 	            	$('.noteDetail').empty();
-	            	$html += '<input type="text" name="noteId" value="' + data.n_id + '">';
+	            	/* $html += '<input type="text" name="noteId" value="' + data.n_id + '">'; */
 	            	$html += '<div class="noteTitle">';
 	            	$html += '<span id="noteTitle">' + data.n_title + '</span></div>';
 	            	$html += '<div class="noteContent">';

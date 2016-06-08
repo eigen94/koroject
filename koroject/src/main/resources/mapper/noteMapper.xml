@@ -6,9 +6,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="org.kosta.mapper.noteMapper">
 
 	<insert id="send">
-		INSERT INTO note
+		INSERT INTO note (n_id, n_title, n_content, n_sender, n_receive, n_date, folder)
 		values(note_seq.nextval, #{n_title},
-		#{n_content}, #{n_sender}, #{n_receive}, SYSDATE)
+		#{n_content}, #{n_sender}, #{n_receive}, SYSDATE, 0)
 	</insert>
 
 	<select id="listAll" resultType="Note">
@@ -19,6 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="detail" resultType="Note">
 		SELECT * FROM note WHERE n_id =
 		#{n_id}
+	</select>
+	
+	<select id="getM_id" resultType="Integer">
+		SELECT m_id FROM member WHERE m_email = #{m_email }
 	</select>
 
 	<update id="update">
@@ -43,12 +47,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * 
 		FROM note 
 		WHERE n_receive = #{m_id}
+		ORDER BY n_id DESC
 	</select>
 	
 	<select id="note_sendList" resultType="Note">
 		SELECT * 
 		FROM note 
 		WHERE n_sender = #{m_id}
+		ORDER BY n_id DESC
 	</select>
 
 	<sql id="search">
@@ -78,11 +84,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</if>
 	</sql>
 
-	<select id="note_search" resultType="Note">
+	<select id="note_searchSen" resultType="Note">
 		<![CDATA[
 			select *
 			from note
-			where n_id > 0 
+			where n_sender = #{m_id }
+		]]>
+
+		<include refid="search"></include>
+  
+		<![CDATA[    
+  			order by n_id desc
+		]]>
+	</select>
+	
+	<select id="note_searchRec" resultType="Note">
+		<![CDATA[
+			select *
+			from note
+			where n_receive = #{m_id }
 		]]>
 
 		<include refid="search"></include>

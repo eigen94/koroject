@@ -51,13 +51,23 @@ public class NoteServiceImpl implements NoteService{
 	}
 
 	@Override
-	public List<Note> note_search(NoteSearchCriteria cri) throws Exception {
-		return dao.note_search(cri);
+	public List<Note> note_searchSen(NoteSearchCriteria cri) throws Exception {
+		return dao.note_searchSen(cri);
+	}
+	
+	@Override
+	public List<Note> note_searchRec(NoteSearchCriteria cri) throws Exception {
+		return dao.note_searchRec(cri);
 	}
 
 	@Override
 	public List<Note> note_sendList(int m_id) throws Exception {
 		return dao.note_sendList(m_id);
+	}
+
+	@Override
+	public int getM_id(String email) throws Exception {
+		return dao.getM_id(email);
 	}
 
 }

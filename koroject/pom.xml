@@ -225,6 +225,14 @@
 			<artifactId>jquery</artifactId>
 			<version>2.0.3</version>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.webjars/jquery -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>2.1.1</version>
+		</dependency>
+		
+				
 		<!-- http://mvnrepository.com/artifact/org.webjars.npm/lodash -->
 		<dependency>
 			<groupId>org.webjars.npm</groupId>
@@ -271,6 +279,40 @@
 		<artifactId>imgscalr-lib</artifactId>
 		<version>4.2</version>
 	</dependency>
+	
+	
+	<!-- http://mvnrepository.com/artifact/org.webjars/bootstrap-datepicker -->
+	<dependency>
+    	<groupId>org.webjars</groupId>
+    	<artifactId>bootstrap-datepicker</artifactId>
+    	<version>1.0.1</version>
+	</dependency>
+		
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>bootstrap-datepicker</artifactId>
+	    <version>1.4.0</version>
+	</dependency>
+
+	<!-- http://mvnrepository.com/artifact/org.webjars/Eonasdan-bootstrap-datetimepicker -->
+	<!-- 부트스트랩용 데이트 피커가 적용 안되서 퍼옴 -->
+	<!-- https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>Eonasdan-bootstrap-datetimepicker</artifactId>
+	    <version>4.15.35</version>
+	</dependency>
+	
+		
+	<!-- http://mvnrepository.com/artifact/org.webjars/bootstrap-datepicker -->
+	<dependency>
+	    <groupId>org.webjars</groupId>
+	    <artifactId>bootstrap-datepicker</artifactId>
+	    <version>1.6.1</version>
+	</dependency>
+
+	
+	
 
 	</dependencies>
 	<build>
@@ -312,6 +354,8 @@
 					<showDeprecation>true</showDeprecation>
 				</configuration>
 			</plugin>
+			
+			
 			<!-- maven plugin -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

@@ -11,6 +11,14 @@ public class Note {
 	private int n_receive;
 	private Timestamp n_date;
 	
+	
+	@Override
+	public String toString() {
+		return "Note [n_title=" + n_title + ", n_content=" + n_content + ", n_sender=" + n_sender + ", n_receive="
+				+ n_receive + "]";
+	}
+	
+	
 	public int getN_id() {
 		return n_id;
 	}

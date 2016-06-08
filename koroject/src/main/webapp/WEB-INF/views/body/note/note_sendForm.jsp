@@ -7,8 +7,20 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+
 function receive(email) {
-	$('.receive input').val(email);
+
+	$('.receive #n_receiveEmail').val(email);
+	
+	$.ajax({
+        url : "getM_id?m_id=" + email,
+        dataType : 'json',
+        success : function(data) {
+			$('.receive #n_receive').val(data);
+        }
+	});
+	
+	
 }
 //noteForm
 $(function() {
@@ -43,14 +55,15 @@ $(function() {
 	<form action="note_send" method="post" id="formTag">
 		<div class="noteForm">
 			<div class="hidden_text">
-				<input type="text" name="n_sender" value="${m_id }"> <- 보낸놈(임시) 1을 $.{n_sender }로 바꾸고 type을 hidden으로
+				<input type="hidden" name="n_sender" value="${m_id }">
 			</div>
 			<div class="input_text">
 				<div class="title">
 					제목: <input type="text" name="n_title">
 				</div>
 				<div class="receive">
-					받는사람: <input type="text" name="n_receive">
+					받는사람: <input type="text" id="n_receiveEmail" name="n_receiveEmail">
+					<input type="hidden" id="n_receive" name="n_receive">
 					<button class="searchOpen">이메일 검색</button>
 				</div>
 				<div class="content">

@@ -21,9 +21,13 @@ public interface NoteService {
 
 	public List<Note> note_receiveList(int m_id) throws Exception;
 
-	public List<Note> note_search(NoteSearchCriteria cri) throws Exception;
+	public List<Note> note_searchSen(NoteSearchCriteria cri) throws Exception;
 
 	public List<Note> note_sendList(int i) throws Exception;
+
+	public int getM_id(String email) throws Exception;
+
+	public List<Note> note_searchRec(NoteSearchCriteria cri) throws Exception;
 
 	
 }

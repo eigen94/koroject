@@ -3,8 +3,34 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="org.kosta.member.mapper.ProjectBoardMapper">
+<mapper namespace="org.kosta.mapper.ProjectBoardMapper">
 	<cache />
+	
+	<insert id="create">
+		insert into project(p_id, p_name, p_pmid, p_start, p_end)
+			values(NVL((select MAX(p_id) from project)+1,0), #{p_name}, #{p_pmid}, #{p_start}, #{p_end})
+	</insert>
+	
+	<!-- 생성한 프로젝트 뿐만 아니라 참여한 프로젝트도 불러오는 기능 추가필요 -->
+	<select id="list" resultType="ProjectBoard">
+		select * from project where p_pmid = p_pmid
+	</select>
+	
+	<select id="read" resultType="ProjectBoard">
+		select * from project
+			where p_id = #{p_id}
+	</select>
+	
+	<update id="update">
+		update project
+			set p_name = #{p_name}, p_memo = #{p_memo}
+			where p_id = #{p_id}
+	</update>
+	
+	<delete id="delete">
+		delete from project
+			where p_id = #{p_id}
+	</delete>
 	
 </mapper>
 

@@ -32,26 +32,23 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@Inject
 	private NoteService service;
 	
-	@Inject
-	private MemberService m_service;
-	
-	//세션검사하는 메서드 
+	/*//세션검사하는 메서드 
 	public Member getSession(HttpServletRequest request ){
 		if(request.getAttribute("member") == null){
 			LoginCommand login = new LoginCommand();
-			login.setM_email("bbbaaa");
-			login.setM_pwd("c");
+			login.setM_email("a@a.com");
+			login.setM_pwd("a");
 			Member s_member = m_service.loginMember(login);
 			request.setAttribute("member", s_member);
 			System.out.println("만든세션 : " + request.getAttribute("member"));
 		}
 		return (Member)request.getAttribute("member");
-	}
+	}*/
 	
 	@RequestMapping(value="/main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
+		Member member = (Member)request.getSession().getAttribute("member");
 		
-		Member member =  getSession(request);
 		//세션이 없으면 메인으로 꺼져 ! 
 		if(member == null){
 			return "redirect:/index";
@@ -60,24 +57,27 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		int m_id = member.getM_id();
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
+		model.addAttribute("m_id", m_id);
 		return "/note/module/noteMain";
 	}
 
 	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
 	public void sendForm(Model model, HttpServletRequest request)throws Exception{
-		Member member = getSession(request);
+		Member member = (Member)request.getSession().getAttribute("member");
 		if(member != null){
 			model.addAttribute("m_id", member.getM_id());
 		}
 	}
 
 	@RequestMapping(value="/note_send", method = RequestMethod.POST )
-	public String send(Note note, HttpServletRequest request, Model model)throws Exception{
+	public String send(Note note, Model model, HttpServletRequest request)throws Exception{
+		Member member = (Member)request.getSession().getAttribute("member");
+		
 		service.send(note);
-		Member member =  getSession(request);
 		int m_id = member.getM_id();
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
+		model.addAttribute("m_id", m_id);
 		return "/note/module/noteMain";
 	}
 	
@@ -85,7 +85,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	public String delete(@PathVariable int n_id, Model model, HttpServletRequest request)throws Exception{
 		service.delete(n_id);
 
-		Member member =  getSession(request);
+		Member member = (Member)request.getSession().getAttribute("member");
 
 		int m_id = member.getM_id();
 		List<Note> note_list = service.note_receiveList(m_id);
@@ -93,7 +93,58 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		return "/note/module/noteMain";
 	}
 	
+	//ID검색창 열자 
+	@RequestMapping("/search")
+	public String search()throws Exception{
+		return "/note/note_search";
+	}
 	
+	//검색한 아이디를 출력하자
+	@RequestMapping("/searchId")
+	public String searchId(@RequestParam("name") String name, Model model)throws Exception{
+		String m_name = "%" + name + "%";
+		model.addAttribute("list", service.searchId(m_name));
+		
+		return "/note/note_search";
+	}
+	
+	@RequestMapping(value="/note_searchSen")
+	public String note_searchSen(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+
+		Member member = (Member)request.getSession().getAttribute("member");
+		List<Note> note_searchSen = service.note_searchSen(cri);
+		int m_id = member.getM_id();
+		
+//		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+		model.addAttribute("list", note_searchSen);	//검색한한 쪽지만 출력 
+
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("m_id", m_id);
+		
+		return "/note/module/noteMain";
+	}
+	
+	@RequestMapping(value="/note_searchRec")
+	public String note_searchRec(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
+		
+		Member member = (Member)request.getSession().getAttribute("member");
+		List<Note> note_searchRec = service.note_searchRec(cri);
+		int m_id = member.getM_id();
+		
+//		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
+		model.addAttribute("list", note_searchRec);	//검색한한 쪽지만 출력 
+		
+		NotePageMaker pageMaker = new NotePageMaker();
+		pageMaker.setCri(cri);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("m_id", m_id);
+		
+		return "/note/module/noteMain";
+	}
 	
 	
 	
@@ -126,40 +177,10 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	
 	
 	
-	@RequestMapping("/search")
-	public String search()throws Exception{
-		return "/note/note_search";
-	}
-	
-	@RequestMapping("/searchId")
-	public String searchId(@RequestParam("name") String name, Model model)throws Exception{
-		String m_name = "%" + name + "%";
-		model.addAttribute("list", service.searchId(m_name));
-		return "/note/note_search";
-	}
 	
 	
-	@RequestMapping(value="/note/note_search")
-	public String note_search(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
-		
-//		List<Note> note_list = service.note_list(11);
-		List<Note> note_search = service.note_search(cri);
-		System.out.println("---------검색 내역--------");
-		for(int i = 0; i < note_search.size(); i++){
-			System.out.println(note_search.get(i).getN_title());
-		}
-		System.out.println("---------검색 내역--------");
-//		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
-		model.addAttribute("list", note_search);	//검색한한 쪽지만 출력 
-
-		NotePageMaker pageMaker = new NotePageMaker();
-		pageMaker.setCri(cri);
-		
-		
-		model.addAttribute("pageMaker", pageMaker);
-		
-		return "/note/module/noteMain";
-	}
+	
+	
 	
 	
 	

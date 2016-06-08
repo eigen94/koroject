@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -25,21 +26,21 @@ public class NoteAjaxController {
 	@Inject
 	private NoteService service;
 	
-	@Inject
+	/*@Inject
 	private MemberService m_service;
-	
-	//세션검사하는 메서드 
-		public Member getSession(HttpServletRequest request ){
-			if(request.getAttribute("member") == null){
-				LoginCommand login = new LoginCommand();
-				login.setM_email("bbbaaa");
-				login.setM_pwd("c");
-				Member s_member = m_service.loginMember(login);
-				request.setAttribute("member", s_member);
-				System.out.println("만든세션 : " + request.getAttribute("member"));
-			}
-			return (Member)request.getAttribute("member");
+
+	// 세션검사하는 메서드
+	public Member getSession(HttpServletRequest request) {
+		if (request.getAttribute("member") == null) {
+			LoginCommand login = new LoginCommand();
+			login.setM_email("bbbaaa");
+			login.setM_pwd("c");
+			Member s_member = m_service.loginMember(login);
+			request.setAttribute("member", s_member);
+			System.out.println("만든세션 : " + request.getAttribute("member"));
 		}
+		return (Member) request.getAttribute("member");
+	}*/
 	
 	@RequestMapping("/note/note_detail{n_id}")
 	public Note detail(@PathVariable int n_id)throws Exception{
@@ -51,7 +52,7 @@ public class NoteAjaxController {
 	public List<Note> note_receiveList(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
 
 		//세션 받아 멤버에 넣음
-		Member member =  getSession(request);
+		Member member = (Member)request.getSession().getAttribute("member");
 		int m_id = member.getM_id();
 
 		List<Note> note_receiveList = service.note_receiveList(m_id);
@@ -63,6 +64,7 @@ public class NoteAjaxController {
 		
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("m_id", m_id);
 		
 		return note_receiveList;
 	}
@@ -71,8 +73,8 @@ public class NoteAjaxController {
 	public List<Note> note_sendList(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
 
 		//세션 받아 멤버에 넣음
-		Member member =  getSession(request);
-		int m_id = getSession(request).getM_id();
+		Member member = (Member)request.getSession().getAttribute("member");
+		int m_id = member.getM_id();
 		
 		List<Note> note_sendList = service.note_sendList(m_id);
 		
@@ -83,9 +85,17 @@ public class NoteAjaxController {
 		
 		
 		model.addAttribute("pageMaker", pageMaker);
-		System.out.println(note_sendList);
+		model.addAttribute("m_id", m_id);
 		
 		return note_sendList;
+	}
+	
+	@RequestMapping("/note/getM_id")
+	public int getM_id(@RequestParam("m_id") String email, Model model)throws Exception{
+		int m_id = service.getM_id(email);
+		System.out.println("에이작스에 있는 m_id" + m_id);
+		model.addAttribute("m_id", m_id);
+		return m_id;
 	}
 	
 	

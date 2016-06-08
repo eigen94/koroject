@@ -12,7 +12,8 @@ $(function(){
 	}
 
 
-	$('#loginform').click(function(){
+	$('#loginform').click(function(e){
+		e.preventDefault();
 		toggleLoingForm(this);
 		
 		//top으로 가기 
