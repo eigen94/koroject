@@ -210,7 +210,7 @@
 	 function makeProjectHtml(p_id,p_name){//간단하게 아이디, 프로젝트 이름만 넣음, 추후에 정보 수정필요
 		 var returnHtml = "<div class='projectThumbnail'><div class='projectContainer'>"
 		     returnHtml += "<p class='prjectName'> 프로젝트이름 : "+p_name+"</p>";
-		     returnHtml += "<a type='button' href='projectBoard/read?p_id="+p_id+"'>프로젝트 시작</a></div></div>"
+		     returnHtml += "<a type='button' href='projectBoard/read?p_id="+p_id+"&util=0'>프로젝트 시작</a></div></div>"
 		 return returnHtml;
 	 }
 	 
