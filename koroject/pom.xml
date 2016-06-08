@@ -33,6 +33,20 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+		
+		
+		<!-- npm module -->
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>connect</artifactId>
+			<version>3.3.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mongodb</groupId>
+			<artifactId>mongo-java-driver</artifactId>
+			<version>3.2.2</version>
+		</dependency>
+		
 
 		<!-- AspectJ -->
 		<dependency>
@@ -136,6 +150,10 @@
 			<artifactId>spring-test</artifactId>
 			<version>${org.springframework-version}</version>
 		</dependency>
+
+
+
+
 
 
 		<!-- mybatis -->
