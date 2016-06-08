@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.kosta.mapper.ProjectChecklistMapper">
+	<cache />
+	
+	<insert id="create">
+		insert into checklist(check_id, check_name, check_projectid, check_start, check_end, check_manager, check_type)
+			values(NVL((select MAX(check_id) from project)+1,0), #{check_name}, #{check_projectid}, sysdate, sysdate, #{check_manager}, #{check_type})
+<!-- 			values(NVL((select MAX(check_id) from project)+1,0), #{check_name}, #{check_projectid}, #{check_start}, #{check_end}, #{check_manager}, #{check_type}) -->
+	</insert>
+	
+	<!-- 생성한 프로젝트 뿐만 아니라 참여한 프로젝트도 불러오는 기능 추가필요 -->
+	<select id="list" resultType="ProjectChecklist">
+		select * from checklist where check_projectid = check_projectid
+	</select>
+	
+	<select id="read" resultType="ProjectChecklist">
+		select * from checklist
+			where check_id = #{check_id}
+	</select>
+	
+	<update id="update">
+		update checklist
+			set check_name = #{check_name}, check_memo = #{check_memo}
+			where check_id = #{check_id}
+	</update>
+	
+	<delete id="delete">
+		delete from checklist
+			where check_id = #{check_id}
+	</delete>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
