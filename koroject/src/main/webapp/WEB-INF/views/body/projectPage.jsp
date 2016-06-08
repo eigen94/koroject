@@ -9,6 +9,7 @@
 	background: #e6e8e8;
 	width: 170px;
 	height: 200px;
+	margin-right:40px;
 	display: inline-block;
 }
 
@@ -27,7 +28,6 @@
 }
 .projectThumbnail{
 	background: #e6e8e8;
-	border-radius: 10px;
 	width: 170px;
 	height: 200px;
 	display: inline-block;
@@ -42,8 +42,34 @@
 	
 .projectContainer{
 	margin-top: 10px;
-	font-size: x-small;
+	margin-left: 10px;
+	width: 150px;
+	height: 180px;
+	padding-left: 15px;
+	padding-top:15px;
+	position:relative;
 }
+
+
+.startPageButton{
+	border:1px solid;
+	color:black;
+	font-weight: bold;
+ 	padding: 5px;
+ 	margin-top: 100px;
+}
+
+.startPageButton:hover{
+	border:1px solid;
+	color:white;
+	font-weight: bold;
+}
+.minusButton{
+	position: absolute;
+	top: -25px;
+    left: 138px;
+}
+
 </style>
 
 <title>projectPage</title>
@@ -51,15 +77,17 @@
 <body>
 	<H3 id="projectH3">프로젝트 관리</H3>
 	<div id="projectPageContainer">
+	   <div class="projectList">
 		<div id="plusButton" data-toggle="modal" data-target="#projectCreateModal">
 			<a> <img id="plusImg" src="/images/plus01.jpg">
 			</a>
 		</div>
+	   </div>
 	</div>
 	<!-- end projectPageContainer div -->
-	<div class="projectList">
+	<!-- <div class="projectList">
 		
-	</div>
+	</div> -->
 		<!-- registerFormMoadl -->
 	<div id="projectCreateModal" class="modal fade" role="dialog">
 	  <div class="modal-dialog">
@@ -209,8 +237,8 @@
 	 //불러온 프로젝트정보를 html태그로 변환해주는 함수 
 	 function makeProjectHtml(p_id,p_name){//간단하게 아이디, 프로젝트 이름만 넣음, 추후에 정보 수정필요
 		 var returnHtml = "<div class='projectThumbnail'><div class='projectContainer'>"
-		     returnHtml += "<p class='prjectName'> 프로젝트이름 : "+p_name+"</p>";
-		     returnHtml += "<a type='button' href='projectBoard/read?p_id="+p_id+"&util=0'>프로젝트 시작</a></div></div>"
+		     returnHtml += "<img class='minusButton' src='/images/minus01.jpg' style='display:none'><p class='prjectName'>"+p_name+"</p>";
+		     returnHtml += "<a class='startPageButton' type='button' href='projectBoard/read?p_id="+p_id+"&util=0'>프로젝트 시작</a></div></div>"
 		 return returnHtml;
 	 }
 	 
@@ -238,6 +266,13 @@
 	 
 	 //페이지를 열었을때 회원이 속해있는 프로젝트리스트 불러오기 위한 함수 호출 
 	 loadProjectList();
+	  
+	 $("body").on("mouseenter",".projectThumbnail",function(){
+		 $(this).children().children().eq(0).css("display","inline");
+	 })
+	  $("body").on("mouseleave",".projectThumbnail",function(){
+		 $(this).children().children().eq(0).css("display","none");
+	 }) 
  
  });
  </script>
