@@ -243,7 +243,7 @@ input[type=text], input[type=email], input[type=password], select {
 </form>
 
 </div>
-<input class="MyPageButton" type="button" value="">
+<input class="MyPageButton" type="button" value="마이페이지 수정">
 </fieldset>
 
 

@@ -21,14 +21,35 @@
 }
 
 #projectPageContainer {
-	margin: 40px;
+	margin-left: 60px;
+	margin-right: 60px;
 	margin-bottom: 300px;
+}
+.projectThumbnail{
+	background: #e6e8e8;
+	border-radius: 10px;
+	width: 170px;
+	height: 200px;
+	display: inline-block;
+	margin-left: 30px;
+	margin-bottom: 30px;
+}
+
+#projectH3{
+	margin-top: 20px;
+	margin-left:50px;
+	}
+	
+.projectContainer{
+	margin-top: 10px;
+	font-size: x-small;
 }
 </style>
 
 <title>projectPage</title>
 </head>
 <body>
+	<H3 id="projectH3">프로젝트 관리</H3>
 	<div id="projectPageContainer">
 		<div id="plusButton" data-toggle="modal" data-target="#projectCreateModal">
 			<a> <img id="plusImg" src="/images/plus01.jpg">
@@ -120,9 +141,9 @@
  $("#plusButton").mouseover(function(){
 	 $("#plusImg").attr("src","/images/plus02.jpg");
  })
- /*  $("#plusButton").mouseup(function(){
+ $("#plusButton").mouseout(function(){
 	 $("#plusImg").attr("src","/images/plus01.jpg");
- }) */
+ })
  
  function setInputFormDate(){//set modal default dateValue
 		var dateObj = new Date; 
@@ -141,13 +162,7 @@
      $(".form-horizontal").on("click",function(e){
 		 e.preventDefault();
 	 });
-	 $("#plusButton").mousedown(function(){
-		 $("#plusImg").attr("src","/images/plus02.jpg");
-	 })
-	  $("#plusButton").mouseup(function(){
-		 $("#plusImg").attr("src","/images/plus01.jpg");
-	 })
-	 
+
 	 function setInputFormDate(){//데이트 피커의 모달에 오늘 날짜를 기본으로 설정해주는 부분 
 			var dateObj = new Date; 
 			var modalDefaultYear = dateObj.getFullYear();
@@ -193,8 +208,9 @@
 	 
 	 //불러온 프로젝트정보를 html태그로 변환해주는 함수 
 	 function makeProjectHtml(p_id,p_name){//간단하게 아이디, 프로젝트 이름만 넣음, 추후에 정보 수정필요
-		 var returnHtml = "<div class='projects'><div> 아이디 : "+p_id+"</div>";
-		 returnHtml += "<div> 프로젝트이름 : "+p_name+"</div></div>";
+		 var returnHtml = "<div class='projectThumbnail'><div class='projectContainer'>"
+		     returnHtml += "<p class='prjectName'> 프로젝트이름 : "+p_name+"</p>";
+		     returnHtml += "<a type='button' href='projectBoard/read?p_id="+p_id+"'>프로젝트 시작</a></div></div>"
 		 return returnHtml;
 	 }
 	 
@@ -208,12 +224,13 @@
 			},
 			success : function(data){
 				console.log(data);
-				$(".projects").remove();
+				$(".projectThumbnail").remove();
 				for(var i=0;i<data.length;i++){
 					var p_id = data[i].p_Id;
 					var p_name = data[i].p_name;
 					var projectHtml = makeProjectHtml(p_id, p_name);
 					$(".projectList").append(projectHtml);
+					//$(".projectList").append($("#plusButton").clone());
 				}
 			}
 		 });
