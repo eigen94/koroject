@@ -1,48 +1,99 @@
-<!DOCTYPE HTML>
-<html lang="ko">
+<!DOCTYPE html>
+<html>
 <head>
-<title>Example WebSocket</title>
 <meta charset="utf-8">
-<script src="//code.jquery.com/jquery.min.js"></script>
-<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+<title>채팅</title>
+<meta name="viewport" content="width=device-width, initial-scale = 1" />
+<link rel="stylesheet"
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.7.1.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
 
-	window.onload = function() {
-
+	$(document).ready(function() {
 		var room = prompt('방 이름을 입력하세요.', 'kosta');
+		var socket = io.connect();
 
-		var socket = io.connect(); //소켓서버 연결
-		socket.emit('join', room);
-		socket.on('message', function(data) {
-			var output = '<p>[' + data.id + '] -> ' + data.message + '</p>';
-			/* 
-			var output = '<p>[' + data.id +']' + data.message + '(' + data.date + ')</p>';
-			 */
-			$(output).appendTo('body');
+		socket.emit('room', room);
+		
+		//채팅내역 가져오기 버튼
+		$(document).on('click', '.btn button', function() {
+			$('#content').empty();
+			socket.emit('breakdown');
+		})
+		
+		//대화내용 가져오기
+		socket.on('preload', function(data) {
+			var output = '';
+			output += '<div class="alert alert-info"><strong>';
+			output += data.name;
+			output += '</strong> : ';
+			output += data.message;
+			output += '</div>';
+			$(output).prependTo('#content');
 		});
 
+		//보내기버튼 클릭
 		$('#button').click(function() {
-			var uid = $('#uid').val();
-			var msg = $('#msg').val();
-
-			//서버측 'message' 이벤트를 호출한다. 이때 msg 전달
 			socket.emit('message', {
-				id : uid,
-				message : msg
-			/*, date : new Date().toUTCString() */
-			}); //서버측 'message' 이벤트를 호출한다. 이때 msg 전달
-
-			var msg = $('#msg').val(''); //메세지 내용 초기화
+				name : $('#name').val(),
+				message : $('#message').val(),
+				roomname : room
+			});
+			$('#message').val('');
 		});
-	};
+
+		//엔터키 누름 
+		$('#message').keydown(function(e) {
+			if (e.which == 13) {/* 13 == enter key@ascii */
+				socket.emit('message', {
+					name : $('#name').val(),
+					message : $('#message').val(),
+					roomname : room
+				});
+				$('#message').val('');
+			}
+		});
+		
+		//채팅내역 표시
+		socket.on('message', function(data) {
+			if(data.roomname == room){
+				var output = '';
+				output += '<div class="alert alert-info"><strong>';
+				output += data.name;
+				output += '</strong> : ';
+				output += data.message;
+				output += '</div>';
+				$(output).prependTo('#content');
+			}
+		});
+		
+	});
 </script>
 </head>
+
 <body>
-	<h1>Socket.io Test</h1>
-	<hr>
-	<input type="text" id="uid" value="${member.m_email}" />
-	<input type="text" id="msg" />
-	<input type="button" id="button" value="메세지" />
-	<div id="content"></div>
+	<div style="width: 500px; margin: 50px">
+		<h1>채팅</h1>
+		<div class="btn"><button>가져오기</button></div>
+		<div class="form-group">
+			<label for="User Name">user name</label> <input type="text"
+				class="form-control" id="name" placeholder="User Name" />
+		</div>
+		<div class="form-group">
+			<label for="Message">message</label> <input type="text"
+				class="form-control" id="message" placeholder="Message" />
+		</div>
+		<div class="form-group">
+			<button id='button' type="button" class="btn btn-default"
+				style="width: 100%">send message</button>
+		</div>
+		
+		<div id="content">
+			<div></div>
+		</div>
+	</div>
 </body>
 </html>
