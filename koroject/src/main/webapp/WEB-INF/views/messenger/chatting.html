@@ -11,28 +11,30 @@
 <script src="http://code.jquery.com/jquery-1.7.1.js"></script>
 <script src="/socket.io/socket.io.js"></script>
 <script type="text/javascript">
-
 	$(document).ready(function() {
+
 		var room = prompt('방 이름을 입력하세요.', 'kosta');
 		var socket = io.connect();
 
 		socket.emit('room', room);
-		
+
 		//채팅내역 가져오기 버튼
 		$(document).on('click', '.btn button', function() {
 			$('#content').empty();
 			socket.emit('breakdown');
 		})
-		
+
 		//대화내용 가져오기
 		socket.on('preload', function(data) {
-			var output = '';
-			output += '<div class="alert alert-info"><strong>';
-			output += data.name;
-			output += '</strong> : ';
-			output += data.message;
-			output += '</div>';
-			$(output).prependTo('#content');
+			if (data.roomname == room) {
+				var output = '';
+				output += '<div class="alert alert-info"><strong>';
+				output += data.name;
+				output += '</strong> : ';
+				output += data.message;
+				output += '</div>';
+				$(output).prependTo('#content');
+			}
 		});
 
 		//보내기버튼 클릭
@@ -56,10 +58,10 @@
 				$('#message').val('');
 			}
 		});
-		
+
 		//채팅내역 표시
 		socket.on('message', function(data) {
-			if(data.roomname == room){
+			if (data.roomname == room) {
 				var output = '';
 				output += '<div class="alert alert-info"><strong>';
 				output += data.name;
@@ -69,7 +71,11 @@
 				$(output).prependTo('#content');
 			}
 		});
-		
+
+		socket.on('nameSet', function(data) {
+			$('#name').val(data);
+		})
+
 	});
 </script>
 </head>
@@ -77,20 +83,21 @@
 <body>
 	<div style="width: 500px; margin: 50px">
 		<h1>채팅</h1>
-		<div class="btn"><button>가져오기</button></div>
-		<div class="form-group">
-			<label for="User Name">user name</label> <input type="text"
-				class="form-control" id="name" placeholder="User Name" />
+		<div class="btn">
+			<button>가져오기</button>
 		</div>
 		<div class="form-group">
-			<label for="Message">message</label> <input type="text"
-				class="form-control" id="message" placeholder="Message" />
+			<!-- <label for="User Name">user name</label>  -->
+			<input type="hidden" class="form-control" id="name" placeholder="User Name" />
 		</div>
 		<div class="form-group">
-			<button id='button' type="button" class="btn btn-default"
-				style="width: 100%">send message</button>
+			<label for="Message">message</label> 
+			<input type="text" class="form-control" id="message" placeholder="Message" />
 		</div>
-		
+		<div class="form-group">
+			<button id='button' type="button" class="btn btn-default" style="width: 100%">send message</button>
+		</div>
+
 		<div id="content">
 			<div></div>
 		</div>
