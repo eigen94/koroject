@@ -10,12 +10,33 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
+	<definition name="project_layout" template="/WEB-INF/views/template/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header/projectHeader.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
+	</definition>
+	
 	<definition name="index" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="projectPage" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/projectPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="progress" extends="project_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/progress.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="checklist" extends="project_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/checklist.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="essence" extends="project_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="integration" extends="project_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
 	</definition>
 	
 
