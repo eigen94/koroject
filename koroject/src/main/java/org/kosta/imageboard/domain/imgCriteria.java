@@ -2,8 +2,8 @@ package org.kosta.imageboard.domain;
 
 public class imgCriteria {
 
-  private int page=1;
-  private int perPageNum=2;
+  private int page;
+  private int perPageNum;
   
   
   
@@ -15,13 +15,13 @@ public class imgCriteria {
 
   public imgCriteria() {
     this.page = 1;
-    this.perPageNum = 2;
+    this.perPageNum = 5;
   }
 
   public void setPage(int page) {
 
     if (page <= 0) {
-      this.page = page;
+      this.page = 1;
       return;
     }
 
@@ -31,7 +31,7 @@ public class imgCriteria {
   public void setPerPageNum(int perPageNum) {
 
     if (perPageNum <= 0 || perPageNum > 100) {
-      this.perPageNum = 2;
+      this.perPageNum = 5;
       return;
     }
 

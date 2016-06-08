@@ -1,8 +1,9 @@
 package org.kosta.imageboard.domain;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ReplyVO {
+public class ReplyVO implements Serializable{
 
 	private Integer img_rno;
 	private Integer img_bno;

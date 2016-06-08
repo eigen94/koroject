@@ -4,6 +4,9 @@
 
 <script type="text/javascript" src="/resources/js/upload.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script type="text/javascript" src="/js/static/bootstrap/3.3.5/js/bootstrap.js"></script>
 <!-- Main content -->
     <style type="text/css">
     .popup {position: absolute;}
@@ -168,7 +171,7 @@
 </script>  
 
 
-<!-- handlerbars 사용 템플릿 코드 -->
+<!-- 댓글 페이징 처리해서 화면에 보여주는 handlerbars 사용 템플릿 코드 -->
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
 <li class="replyLi" data-rno={{img_rno}}>
@@ -187,9 +190,9 @@
 </li>
 {{/each}}
 </script>
+<script type="text/javascript">
 
-<script>
-	Handlebars.registerHelper("prettifyDate", function(timeValue) {
+Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();
 		var month = dateObj.getMonth() + 1;
@@ -308,7 +311,7 @@
 	});
 	
 	
-	/* 수정 처리 */
+	/* 댓글 상세 수정 처리 */
 	$("#replyModBtn").on("click",function(){
 		  
 		  var img_rno = $(".modal-title").html();
@@ -330,7 +333,7 @@
 					}
 			}});
 	});
-	/* 삭제 처리 */
+	/* 댓글 상세 삭제 처리 */
 	$("#replyDelBtn").on("click",function(){
 		  
 		  var img_rno = $(".modal-title").html();
@@ -404,7 +407,7 @@ $(document).ready(function(){
 		formObj.submit();
 	});
 	
-	var bno = ${imageVO.img_bno};
+	var img_bno = ${imageVO.img_bno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
 	$.getJSON("/imagee/getAttach/"+img_bno,function(list){

@@ -27,4 +27,7 @@ public interface ImageService {
 	
 	public int listSearchCount(ImgSearchCriteria cri) throws Exception;
 	
+	public List<String> getAttach(Integer img_bno)throws Exception;
+	
+	public Integer maxNum()throws Exception;
 }

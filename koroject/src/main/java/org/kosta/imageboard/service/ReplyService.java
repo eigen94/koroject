@@ -17,5 +17,5 @@ public interface ReplyService {
 
   public List<ReplyVO> listReplyPage(Integer img_bno, imgCriteria cri) throws Exception;
 
-  public int count(Integer bno) throws Exception;
+  public int count(Integer img_bno) throws Exception;
 }

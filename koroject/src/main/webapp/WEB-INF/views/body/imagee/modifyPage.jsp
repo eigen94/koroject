@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
+<script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 <style>
 .fileDrop {
   width: 80%;
@@ -185,10 +186,10 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 });
 
 
-var bno = ${boardVO.bno};
+var img_bno = ${imageVO.img_bno};
 var template = Handlebars.compile($("#template").html());
 
-$.getJSON("/sboard/getAttach/"+bno,function(list){
+$.getJSON("/imagee/getAttach/"+img_bno,function(list){
 	$(list).each(function(){
 		
 		var fileInfo = getFileInfo(this);

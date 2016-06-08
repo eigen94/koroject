@@ -59,6 +59,11 @@ public class ReplyDAOImpl implements ReplyDAO {
 
 		return session.selectOne(namespace+".count", img_bno);
 	}
+	@Override
+	public int getBno(Integer img_rno) throws Exception {
+		
+		return session.selectOne(namespace+".getBno", img_rno);
+	}
 	
 
 }

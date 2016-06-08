@@ -5,13 +5,12 @@
 
 <mapper namespace="org.kosta.member.mapper.ImageMapper">
 	<cache />
-<!-- 	
 
  	<insert id="create">
 		insert into img_board
 			(img_bno, img_title, img_content, img_writer, img_regdate, img_viewcnt)
 		values
-			(imgboard_seq.NEXTVAL, #{img_title}, #{img_content}, #{img_writer}, SYSDATE, 0)
+			(imgboard_seq.NEXTVAL, #{img_title}, #{img_content}, #{img_writer}, SYSDATE, #{img_viewcnt})
 	</insert>
 	
 	 <select id="read" resultType="org.kosta.imageboard.domain.ImageVO">
@@ -89,9 +88,7 @@
 				#{keyword}||'%')
 			</if>
 			<if test="searchType == 'cw'.toString()">
-				and ( img_content like '%'|| #{keyword}||'%' OR img_writer like
-				'%'||
-				#{keyword}||'%')
+				and ( img_content like '%'|| #{keyword}||'%' OR img_writer like '%'|| #{keyword}||'%')
 			</if>
 			<if test="searchType == 'tcw'.toString()">
 				and ( img_title like '%'|| #{keyword}||'%'
@@ -104,7 +101,7 @@
 		</if>
 	</sql>
 	
-	<select id="listSearch" resultType="ImageVO" parameterType="SearchCriteria">
+	<select id="listSearch" resultType="ImageVO" parameterType="ImgSearchCriteria">
 	<![CDATA[  
 	  select * 
 	  from img_board 
@@ -119,7 +116,7 @@
 	</select>
 
 
-	<select id="listSearchCount" resultType="int" parameterType="SearchCriteria">
+	<select id="listSearchCount" resultType="int" parameterType="ImgSearchCriteria">
 	<![CDATA[  
 	  select count(img_bno) 
 	  from img_board 
@@ -128,7 +125,36 @@
 		<include refid="search"></include>
 
 	</select>
-	 -->
+	
+	<update id="updateReplyCnt">
+		update img_board set img_replycnt = img_replycnt + #{amount}
+		where img_bno = #{img_bno}
+	</update>
+	
+	<update id="updateViewCnt">
+		update img_board set img_viewcnt = img_viewcnt+1 where img_bno = #{img_bno}
+	</update>
+
+	<insert id="addAttach">
+		insert into img_attach(img_fullname, img_bno, img_regdate) values (#{fullName}, #{img_bno}, sysdate)
+	</insert>
+	
+	<select id="getAttach" resultType="string">
+		select img_fullname from img_attach where img_bno = #{img_bno}
+	</select> 
+	
+	<delete id="deleteAttach">
+		delete from img_attach where img_bno = #{img_bno}
+	</delete>
+
+	<insert id="replaceAttach">
+		insert into img_attach(img_fullname, img_bno) values (#{fullName}, #{img_bno})
+	</insert>	
+
+	<select id="maxNum" resultType="Integer">
+		select MAX(img_bno) from img_board
+	</select>
+
 </mapper>
 
 

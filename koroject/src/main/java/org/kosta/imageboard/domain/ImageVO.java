@@ -1,6 +1,7 @@
 package org.kosta.imageboard.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 public class ImageVO implements Serializable {
@@ -13,7 +14,7 @@ public class ImageVO implements Serializable {
 	private int img_viewcnt;
 	private int img_replycnt;
 	
-	
+	private String[] files;
 	
 	
 	public Integer getImg_bno() {
@@ -58,12 +59,17 @@ public class ImageVO implements Serializable {
 	public void setImg_replycnt(int img_replycnt) {
 		this.img_replycnt = img_replycnt;
 	}
-	
+	public String[] getFiles() {
+		return files;
+	}
+	public void setFiles(String[] files) {
+		this.files = files;
+	}
 	@Override
 	public String toString() {
 		return "ImageVO [img_bno=" + img_bno + ", img_title=" + img_title + ", img_content=" + img_content
 				+ ", img_writer=" + img_writer + ", img_regdate=" + img_regdate + ", img_viewcnt=" + img_viewcnt
-				+ ", img_replycnt=" + img_replycnt + "]";
+				+ ", img_replycnt=" + img_replycnt + ", files=" + Arrays.toString(files) + "]";
 	}
 	
 	

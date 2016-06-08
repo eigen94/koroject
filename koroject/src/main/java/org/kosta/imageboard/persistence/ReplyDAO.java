@@ -19,4 +19,5 @@ public interface ReplyDAO {
 	
 	public int count(Integer img_bno)throws Exception;
 	
+	public int getBno(Integer img_rno)throws Exception;
 }

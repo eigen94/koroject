@@ -23,7 +23,7 @@
 
 	<update id="update">
 		update img_reply set img_replytext = #{img_replytext},
-		img_updatedate = sysdate
+		img_updatedate = SYSDATE
 		where img_rno = #{img_rno}
 	</update>
 
@@ -54,6 +54,9 @@
 		where img_bno =#{img_bno}
 	</select>
 	
+	<select id="getBno" resultType="int">
+		select img_bno from img_reply where img_rno = #{img_rno}
+	</select>
 	
 </mapper>
 

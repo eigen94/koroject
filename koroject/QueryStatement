@@ -109,3 +109,4 @@ CREATE TABLE reply(
 	CONSTRAINT fk_reply_datadetail_id FOREIGN KEY (r_dDetailID) REFERENCES datadetail(dDetail_id),
 	CONSTRAINT fk_reply_writer FOREIGN KEY (r_writer) REFERENCES member(m_id)
 );
+

@@ -1,8 +1,9 @@
 package org.kosta.imageboard.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
-import org.kosta.imageboard.domain.imgCriteria;
 import org.kosta.imageboard.domain.ImageVO;
 import org.kosta.imageboard.domain.ImgPageMaker;
 import org.kosta.imageboard.domain.ImgSearchCriteria;
@@ -12,9 +13,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -100,7 +103,11 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		//return "image/success";
 		return "redirect:/imagee/list";
+	}
+	@RequestMapping("/getAttach/{img_bno}")
+	@ResponseBody
+	public List<String> getAttach(@PathVariable("img_bno")Integer img_bno)throws Exception{
+		return service.getAttach(img_bno);
 	}
 }
