@@ -13,9 +13,9 @@ legend {
 	font-weight: bold;
 }
 
-fieldset {
+.myPagefiledset {
 	border: 1px solid #e6e8e8;
-	border-radius: 5px;
+	border-radius: 10px;
 	margin: 20px 0;
 	padding: 25px;
 	width: 64%;
@@ -56,12 +56,14 @@ input[type=text], input[type=email], input[type=password], select {
 
 
 .leftMyPage {
+	border:1px solid;
 	position: relative;
 	float:left;
 	width: 50%;
 }
 
 .rightMyPage {
+	border:1px solid;
 	width:35%;
 	position:relative;
 	float:right;
@@ -104,7 +106,7 @@ input[type=text], input[type=email], input[type=password], select {
 </style>
 </head>
 <body>
-
+<%-- 
 	<div class="tab-pane ng-scope active" style="">
 		<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email"
 			role="form" action="#" id="formMy">
@@ -144,7 +146,7 @@ input[type=text], input[type=email], input[type=password], select {
 						<div class="form-group">
 							<label class="control-label">답변</label><Br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="m_answer" value="member.m_answer">
+								type="text" name="m_answer" value="${ member.m_answer}">
 						</div>
 					</div>
 				</div>
@@ -152,9 +154,10 @@ input[type=text], input[type=email], input[type=password], select {
 				
 						 <input class="MyPageButton" type="button" value="submit">
 	</div>
-	</div>
+	
 	</fieldset>
 	</form>
+	
 	<form id="imgForm" action="proImg" method="POST" enctype="multipart/form-data">
 		<div class="rightMyPage">
 			<div class="form-group">
@@ -162,17 +165,11 @@ input[type=text], input[type=email], input[type=password], select {
 				<div class="ng-scope">
 					<div class="user-image">
 						<div class="thumbnailMyPage">
-							<img class="ng-scope" alt="" src="/images/defaultImage.gif">
+							<img class="ng-scope" alt="" src="/images/defaultImage.jpg">
 						</div>
 					</div>
 					<div class="user-image-buttons-edit ng-scope">
-						<!-- <span class="btn btn-primary" flow-btn=""> <i
-									class="fa fa-pencil"></i> <input type="file"
-									style="visibility: hidden; position: absolute;">
-								</span> <span class="btn btn-danger ng-scope"> <i
-									class="fa fa-times"></i>
-								</span> -->
-						<p>JPG,PNG 파일만 사용가능</p>
+						<p>JPG파일만 사용가능</p>
 						<input type="file" id="image" name="file"><br> <input
 							class="thumbnailMyPageUpdate" type="submit" value="프로필사진 수정">
 						<input class="thumbnailMyPageDelete" type="button"
@@ -182,7 +179,76 @@ input[type=text], input[type=email], input[type=password], select {
 			</div>
 		</div>
 	</form>
-	</div>
+	
+	</div> --%>
+	
+<div class="tab-pane ng-scope active" style="">
+<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email" role="form" action="#">
+<fieldset class="myPagefiledset">
+<legend> 마이페이지 </legend>
+<div class="row">
+<div class="leftMyPage">
+<div class="form-group">
+<label class="control-label"> 이 름 </label>
+<input class="form-control ng-pristine ng-untouched ng-valid" type="text"  name="m_name" value="${member.m_name }">
+</div>
+<div class="form-group">
+<label class="control-label"> 이메일 </label>
+<input class="form-control ng-pristine ng-untouched ng-valid ng-valid-email" type="email" name="m_email" value="${member.m_email }">
+</div>
+<div class="form-group">
+<label class="control-label"> 비밀번호 </label>
+<input class="form-control ng-pristine ng-untouched ng-valid" type="password" name="m_pwd">
+</div>
+<div class="form-group">
+<label class="control-label"> 핸드폰 번호 </label>
+<input class="form-control ng-pristine ng-untouched ng-valid" type="text" name="m_phone" value="${member.m_phone }">
+</div>
+		<div class="form-group">
+							<label class="control-label">질문</label><br> <select
+								name="m_question">
+								<option value="1">고향은?</option>
+								<option value="2">이름은?</option>
+								<option value="3">주소는?</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label class="control-label">답변</label><Br> <input
+								class="form-control ng-pristine ng-untouched ng-valid"
+								type="text" name="m_answer" value="${ member.m_answer}">
+						</div>
+</div><!-- 왼쪽 div 끝 -->
+
+<form id="imgForm" action="proImg" method="POST" enctype="multipart/form-data">
+<div class="rightMyPage">
+
+<div class="form-group">
+<label> 프로필 이미지 </label>
+<div class="ng-scope">
+<div class="user-image">
+<div class="thumbnail margin-bottom-5">
+<img class="ng-scope" alt="" src="/images/defaultImage.jpg">
+</div>
+</div>
+<div class="user-image-buttons-edit ng-scope">
+<p>JPG파일만 사용가능</p>
+						<input type="file" id="image" name="file"><br> <input
+							class="thumbnailMyPageUpdate" type="submit" value="수정">
+						<input class="thumbnailMyPageDelete" type="button"
+							value="삭제">
+</div>
+</div>
+</div>
+</div><!-- right div 끝 -->
+</form>
+
+</div>
+<input class="MyPageButton" type="button" value="">
+</fieldset>
+
+
+</form>
+</div>
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/jquery.scrolly.min.js"></script>
 <script src="/resources/js/imageUpload.js"></script>
