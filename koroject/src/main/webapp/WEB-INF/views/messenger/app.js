@@ -3,9 +3,21 @@ var fs = require('fs');
 
 // creates WebServer
 var http = require('http');
-var connect = require('connect');
+//var connect = require('connect');
+var connect = require('express');
 var app = connect();
 var socketio = require('socket.io');
+var url = require('url');
+var email = "";
+
+/*var express = require('express');
+var exApp = express();
+
+exApp.get('/message', function(req, res){
+	var mail = req.body.gogogo;
+	console.log(mail);
+});*/
+
 
 // open mongoose
 var mongoose = require('mongoose');
@@ -36,6 +48,11 @@ var Chat = mongoose.model('Chat', userSchema);
 
 // 웹에서 요청이 온 경우
 app.use('/', function(req, res, next) {
+	var uri = req.url;
+	var query = url.parse(uri, true).query;
+	email = query.email;
+	console.log(email);
+	
 	if (req.url != '/favicon.ico') {
 		fs.readFile(__dirname + '/chatting.html', function(error, data) {
 			res.writeHead(200, {
@@ -59,6 +76,8 @@ var io = socketio.listen(server);
 // 웹소켓이 연결되는 순간 실행된다.
 io.sockets.on('connection', function(socket) {
 
+	io.sockets.emit('nameSet', email);
+	
 	// 입력한 방 이름별로
 	socket.on('room', function(data) {
 		console.log(data) // 방 이름이 무엇인고 ?
@@ -72,7 +91,8 @@ io.sockets.on('connection', function(socket) {
 			for (var i = 0; i < result.length; i++) {
 				var dbData = {
 					name : result[i].username,
-					message : result[i].message
+					message : result[i].message,
+					roomname : result[i].roomname
 				};
 				io.sockets.sockets[socket.id].emit('preload', dbData);
 			}
@@ -83,8 +103,8 @@ io.sockets.on('connection', function(socket) {
 	socket.on('message', function(data) {
 		//웹상에 채팅 내역을 보여준다. 
 		io.sockets.emit('message', data);
-		
 		console.log(data.roomname);
+		
 		//데이터 저장을 위해 변수에 넣고 
 		var chat = new Chat({
 			username : data.name,

@@ -110,6 +110,17 @@
 		})
 	})
 	
+	
+	
+	
+	$(function(){	
+		$('.openChatting button').on('click', function(){
+			var m_email = $('#m_email').val();
+			location.href="http://localhost:7777/?email="+m_email;
+			
+		})
+	})
+	
 </script>
 
 <style type="text/css">
@@ -200,6 +211,16 @@ p {
 	<!-- header.jsp가 여기(insertAttri~)로 들어온다  -->
 	<div class="header">
 		<jsp:include page="right.jsp"></jsp:include>
+		<div class="openChatting">
+			<button>고고고고고고</button>
+			<input type="text" id="m_email" value="Email">
+			<!-- 
+			<a href="http://localhost:7777/?email=30">가자!</a>
+			<form action="http://localhost:7777/message" method="post">
+				<input type="text" id="gogogo" value="30">
+				<input type="submit" value="나와라 채팅창">
+			</form> -->
+		</div>
 	</div>
 
 	<div class="center">
