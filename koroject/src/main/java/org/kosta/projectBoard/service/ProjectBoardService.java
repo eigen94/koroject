@@ -8,7 +8,7 @@ public interface ProjectBoardService {
 
 	public void create(ProjectBoard pb);
 
-	public List<ProjectBoard> list();
+	public List<ProjectBoard> list(int pId);
 
 	public ProjectBoard read(int pId);
 

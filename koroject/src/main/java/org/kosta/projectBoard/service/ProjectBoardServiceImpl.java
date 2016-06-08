@@ -21,8 +21,8 @@ public class ProjectBoardServiceImpl implements ProjectBoardService {
 	}
 
 	@Override
-	public List<ProjectBoard> list() {		
-		return dao.list();
+	public List<ProjectBoard> list(int pId) {		
+		return dao.list(pId);
 	}
 
 	@Override
