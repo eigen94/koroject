@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping
+@RequestMapping("/projectBoard/checklist/*")
 public class ProjectChecklistController {
 
 	@Inject
@@ -29,20 +29,37 @@ public class ProjectChecklistController {
 		service.create(pc);
 	}
 	
-	@RequestMapping(value="list", method=RequestMethod.POST)
+	@RequestMapping(value="/projectBoard/checklist/list", method=RequestMethod.POST)
 	@ResponseBody
 	public List<ProjectChecklist> list(int check_projectid){
 		return service.list(check_projectid);
 	}
 	
 	@RequestMapping(value="delete", method=RequestMethod.POST)
-	public void delete(int check_projectid){
-		service.delete(check_projectid);
+	@ResponseBody
+	public int delete(int check_id){
+		service.delete(check_id);
+		return 1;
 	}
 	
-	@RequestMapping(value="read", method=RequestMethod.POST)
-	public void read(int check_id){
-		service.read(check_id);
+	@RequestMapping(value="read", method=RequestMethod.GET)
+	public String read(int check_id){
+		ProjectChecklist pc = service.read(check_id);
+		int check_type = pc.getCheck_type();
+		switch (check_type) {
+		case 1:
+			return "usecase";
+		case 2:
+			return "usecasediagram";
+		case 3:
+			return "umldiagram";
+		case 4:
+			return "erddiagram";
+		case 5:
+			return "image";
+		default :
+			return "checklist";
+		}
 	}
 	
 }

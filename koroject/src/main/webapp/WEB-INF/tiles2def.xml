@@ -15,6 +15,11 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
+	<definition name="checklist_layout" template="/WEB-INF/views/template/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header/projectHeader.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
+	</definition>
+	
 	<definition name="index" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
 	</definition>
@@ -37,6 +42,26 @@
 	
 	<definition name="integration" extends="project_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="usecase" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="usecasediagram" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="umldiagram" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/uml/umlMain.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="erddiagram" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="image" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/register.jsp"></put-attribute>
 	</definition>
 	
 

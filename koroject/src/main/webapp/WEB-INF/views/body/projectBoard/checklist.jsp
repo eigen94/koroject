@@ -20,7 +20,7 @@
 <body>
 <button data-toggle="modal" data-target="#checkCreateModal">일정생성</button>
 
-
+<div class="checklistContainer"></div>
 
 <div id='calendar'></div>
 
@@ -100,6 +100,7 @@ $(function(){
 
 	});
 	
+	//체크리스트 생성부분
 	$("#createCheckListBtn").click(function(){
 		$.ajax({
 			url : "/projectBoard/checklist/create",
@@ -113,14 +114,53 @@ $(function(){
 				check_type : $("#checkListCheckType").val()
 			},
 			success : function(){
-				
+				$("#checkListName").val("")
+				getChecklist();
 			}
 		});
 	});
 	
-	function getChecklist(){
-		$.ajax
+	$("body").on("click",".deleteChecklistBtn",function(){
+		console.log();
+		var check_id = $(this).prev().attr("href").replace("/projectBoard/checklist/read?check_id=","");
+		$.ajax({
+			url : "/projectBoard/checklist/delete",
+			data : {
+				check_id : check_id
+			},
+			method : "POST",
+			success : function(){
+				getChecklist();
+			}
+		});
+	});
+	
+	//개별 html태그 생성함수
+	function generateChecklistHtml(i, check_id, check_name){
+		var returnHtml = '<div class="checklists"><a href=/projectBoard/checklist/read?check_id='+check_id+'>'+i+'체크리스트 : '+check_name;
+		returnHtml += '</a><button class="deleteChecklistBtn">삭제</button></div>';
+		return returnHtml;
 	}
+	
+	//체크리스트 호출 함수
+	function getChecklist(){
+		$.ajax({
+			url : "/projectBoard/checklist/list",
+			data : {
+				check_projectid : $("#checkListProjectId").val()
+			},
+			method : "POST",
+			success : function(data){
+				$(".checklists").remove();
+				for(var i=0; i<data.length; i++){
+					var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
+					$('.checklistContainer').append(html);
+				}
+			}
+		});
+	}
+	//시작하자마자 체크리스트 불러오는 부분
+	getChecklist();
 	
 });
 </script>
