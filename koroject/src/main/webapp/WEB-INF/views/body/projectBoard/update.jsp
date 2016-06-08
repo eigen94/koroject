@@ -8,7 +8,7 @@
 </head>
 <body>
 	<form action="update" method="post">
-		<input type="hidden" name="pId" value="${pId }">
+		<input type="hidden" name="pId" value="${p_Id }">
 		프로젝트 이름 : <input type="text" name="pTitle"><br>
 		프로젝트 시작일 : <input type="date" name="pStart">
 		프로젝트 종료일 : <input type="date" name="pEnd"><br>
