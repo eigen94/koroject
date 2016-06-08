@@ -113,12 +113,12 @@
 	    $('#datetimepicker1').datetimepicker({format: 'YYYY-MM-DD'});
 	    $('#datetimepicker2').datetimepicker({format: 'YYYY-MM-DD'});
  
- $("#plusButton").mousedown(function(){
+ $("#plusButton").mouseover(function(){
 	 $("#plusImg").attr("src","/images/plus02.jpg");
  })
-  $("#plusButton").mouseup(function(){
+ /*  $("#plusButton").mouseup(function(){
 	 $("#plusImg").attr("src","/images/plus01.jpg");
- })
+ }) */
  
  function setInputFormDate(){//set modal default dateValue
 		var dateObj = new Date; 
