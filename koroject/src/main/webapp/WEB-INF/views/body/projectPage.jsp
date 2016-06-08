@@ -233,7 +233,7 @@
 				success : function(){
 					loadProjectList();
 					$("#projectCreateModal").modal("toggle");
-					
+					$("#inputName").val("");
 				}
 			 });
 			 
