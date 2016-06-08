@@ -84,11 +84,12 @@ public class ProjectBoardController {
 		return "redirect:/projectBoard/list";
 	}
 	
-	@RequestMapping(value="delete", method=RequestMethod.GET)
-	public String delete(@RequestParam int pId)
+	@RequestMapping(value="delete", method=RequestMethod.POST)
+	@ResponseBody
+	public int delete(@RequestParam int pId)
 	{
 		service.delete(pId);
-		return "redirect:/projectBoard/list";
+		return 1;
 	}
 	
 	

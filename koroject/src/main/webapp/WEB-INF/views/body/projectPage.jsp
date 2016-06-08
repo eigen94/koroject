@@ -243,7 +243,7 @@
 	 //불러온 프로젝트정보를 html태그로 변환해주는 함수 
 	 function makeProjectHtml(p_id,p_name){//간단하게 아이디, 프로젝트 이름만 넣음, 추후에 정보 수정필요
 		 var returnHtml = "<div class='projectThumbnail'><div class='projectContainer'>"
-		     returnHtml += "<img class='minusButton' src='/images/minus01.jpg' style='display:none'><p class='prjectName'>"+p_name+"</p>";
+		     returnHtml += "<img class='minusButton' src='/images/minus01.jpg' style='display:none' value="+p_id+"><p class='prjectName'>"+p_name+"</p>";
 		     returnHtml += "<a class='startPageButton' type='button' href='projectBoard/read?p_id="+p_id+"&util=0'>프로젝트 시작</a></div></div>"
 		 return returnHtml;
 	 }
@@ -275,11 +275,26 @@
 	  
 	 $("body").on("mouseenter",".projectThumbnail",function(){
 		 $(this).children().children().eq(0).css("display","inline");
-	 })
+	 });
 	  $("body").on("mouseleave",".projectThumbnail",function(){
 		 $(this).children().children().eq(0).css("display","none");
-	 }) 
+	 }); 
  
+	  $("body").on("click",".minusButton",function(){
+		  var p_id = $(this).attr("value");
+		  $.ajax({
+			 url : "projectBoard/delete",
+			 data : {
+				 pId : p_id
+			 },
+			 method : "POST",
+			 success : function(data){
+				 loadProjectList();
+			 }
+			 
+		  });
+		  console.log();
+	  });
  });
  </script>
 </body>
