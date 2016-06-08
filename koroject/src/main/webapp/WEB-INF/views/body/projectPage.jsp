@@ -9,7 +9,7 @@
 	background: #e6e8e8;
 	width: 170px;
 	height: 200px;
-	margin-right:40px;
+	margin-right:50px;
 	display: inline-block;
 }
 
@@ -25,6 +25,7 @@
 	margin-left: 60px;
 	margin-right: 60px;
 	margin-bottom: 300px;
+	display: inline-block;
 }
 .projectThumbnail{
 	background: #e6e8e8;
@@ -33,6 +34,7 @@
 	display: inline-block;
 	margin-left: 30px;
 	margin-bottom: 30px;
+	display: inline-block;
 }
 
 #projectH3{
@@ -69,6 +71,10 @@
 	top: -25px;
     left: 138px;
 }
+.projectList{
+	display: inline-block;
+	vertical-align: bottom;
+}
 
 </style>
 
@@ -77,8 +83,8 @@
 <body>
 	<H3 id="projectH3">프로젝트 관리</H3>
 	<div id="projectPageContainer">
-	   <div class="projectList">
-		<div id="plusButton" data-toggle="modal" data-target="#projectCreateModal">
+	   <div class="projectList" >
+		<div id="plusButton" class="col-sm-3" data-toggle="modal" data-target="#projectCreateModal">
 			<a> <img id="plusImg" src="/images/plus01.jpg">
 			</a>
 		</div>
