@@ -26,8 +26,13 @@ $('body').on("click","#settingLogin",function(){
  
 
 $('body').on("click","#startProject",function(){
-	location.href="projectPage";
+	location.href="projectBoard";
 });
+
+$('#temp').click(function(){
+	// $('#settingNav').fadeToggle('slow');
+	$('#settingNav').css("display","inline-block");
+})
 
 
 

@@ -38,8 +38,8 @@
 	</definition>
 	
 	<!-- 프로젝트페이지 -->
-	<definition name="projectPage" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectPage.jsp"></put-attribute>
+	<definition name="projectBoard" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/projectBoard.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="progress" extends="project_layout">
@@ -75,8 +75,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
 	</definition>
 	
+	<!-- 이미지 게시 -->
+	
 	<definition name="image" extends="checklist_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/imagee/register.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
 	</definition>
 	
 

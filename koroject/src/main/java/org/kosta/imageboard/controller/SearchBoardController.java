@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/imagee/*")
+@RequestMapping("/projectBoard/{p_id}/checklist/{check_id}/*")
 public class SearchBoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
@@ -29,7 +29,7 @@ public class SearchBoardController {
 	@Inject
 	private ImageService service;
 	
-	@RequestMapping(value="/list", method= RequestMethod.GET)
+	@RequestMapping(value="list", method= RequestMethod.GET)
 	public void listPage(@ModelAttribute("cri")ImgSearchCriteria cri, Model model)throws Exception{
 		System.out.println(cri.toString());
 		
@@ -45,14 +45,14 @@ public class SearchBoardController {
 		model.addAttribute("pageMaker", pageMaker);
 	}
 	
-	@RequestMapping(value="/readPage", method=RequestMethod.GET)
+	@RequestMapping(value="readPage", method=RequestMethod.GET)
 	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 		
 	}
 	
-	@RequestMapping(value="/removePage", method=RequestMethod.POST)
+	@RequestMapping(value="removePage", method=RequestMethod.POST)
 	public String remove(@RequestParam("img_bno")int img_bno,ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		service.remove(img_bno);
@@ -66,13 +66,13 @@ public class SearchBoardController {
 		return "redirect:/imagee/list";
 	}
 	
-	@RequestMapping(value="/modifyPage", method=RequestMethod.GET)
+	@RequestMapping(value="modifyPage", method=RequestMethod.GET)
 	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")ImgSearchCriteria cri ,Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 	}
 	
-	@RequestMapping(value="/modifyPage", method=RequestMethod.POST)
+	@RequestMapping(value="modifyPage", method=RequestMethod.POST)
 	public String modifyPOST(ImageVO vo, ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
 		
 		System.out.println(cri.toString());
@@ -89,12 +89,13 @@ public class SearchBoardController {
 		return "redirect:/imagee/list";
 	}
 	
-	@RequestMapping(value="/register", method= RequestMethod.GET)
-	public void registerGET()throws Exception{
+	@RequestMapping(value="register", method= RequestMethod.GET)
+	public String registerGET()throws Exception{
 		System.out.println("register get...");
+		return "1";
 	}
 	
-	@RequestMapping(value="/register", method= RequestMethod.POST)
+	@RequestMapping(value="register", method= RequestMethod.POST)
 	public String registerPOST(ImageVO vo, RedirectAttributes rttr)throws Exception{
 		System.out.println("register post...");
 		System.out.println(vo.toString());
@@ -105,7 +106,7 @@ public class SearchBoardController {
 		
 		return "redirect:/imagee/list";
 	}
-	@RequestMapping("/getAttach/{img_bno}")
+	@RequestMapping("getAttach/{img_bno}")
 	@ResponseBody
 	public List<String> getAttach(@PathVariable("img_bno")Integer img_bno)throws Exception{
 		return service.getAttach(img_bno);

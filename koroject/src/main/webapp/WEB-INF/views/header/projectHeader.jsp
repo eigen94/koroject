@@ -26,34 +26,34 @@ koroject
 	  <nav id="menu">
 <ul class="links">
 <li>
-<a href="/projectPage">Project</a>
+<a href="/projectBoard">Project관리</a>
 </li>
 <li>
-<a href="/projectBoard/read?p_id=${p_id }&util=0">
-첫페이지
+<a href="/projectBoard/${p_id }/progress">
+진행상황
 </a>
 </li>
 <li>
-<a href="/projectBoard/read?p_id=${p_id }&util=1">
+<a href="/projectBoard/${p_id }/checklist">
 체크리스트
 </a>
 </li>
 <li>
-<a href="/projectBoard/read?p_id=${p_id }&util=2">
+<a href="/projectBoard/${p_id }/essence">
 에센스
 </a>
 </li>
 <li>
-<a href="/projectBoard/read?p_id=${p_id }&util=3">
+<a href="/projectBoard/${p_id }/integration">
 통합
 </a>
 </li>
 
 <li>
-<a href="generic.html">공지사항</a>
+<a href="/index">공지사항</a>
 </li>
 <li>
-<a href="elements.html">Elements</a>
+<a href="/note/main">쪽지</a>
 </li>
 </ul>
 <ul class="actions vertical">
