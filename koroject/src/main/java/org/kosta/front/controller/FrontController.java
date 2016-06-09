@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class FrontController {
 	
-	//get주소줄로 요청, post-> data전달은 다 post
+	//get주소줄로 요청, post-> data전달은 다 post..
 	/*@RequestMapping(value="index", method=RequestMethod.GET)
 	public String index(){
 		return "index";
