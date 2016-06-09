@@ -54,7 +54,7 @@
 
 
 .startPageButton{
-	border:1px solid;
+	border:1px solid black;
 	color:black;
 	font-weight: bold;
  	padding: 5px;

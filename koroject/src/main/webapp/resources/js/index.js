@@ -34,6 +34,16 @@ $('#temp').mouseover(function(){
 	//$('#settingNav').css("position","absolute");
 })
 
+	//특정영역 제외한 곳 클릭하면 사라지기 
+	$("body").click(function(e){
+		if($("#list").css("display")=="block"){
+			if(!$("#list").has(e.target).length){
+				$("#list").fadeToggle("slow");
+			}
+			
+		}
+	})
+
 
 //회원정보에 대한 네비게이션 링크 걸어둠
 $('#settingMypage').click(function(){

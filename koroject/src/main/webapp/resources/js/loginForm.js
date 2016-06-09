@@ -33,7 +33,6 @@ $(function(){
 		/* console.log("hi");
 		 console.log(this);*/
 		//$(this).panel({delay: 500,hideOnClick: true,hideOnSwipe: true,resetScroll: true,resetForms: true,side: 'right', visibleClass:''});
-		console.log($(this).parent().parent().parent());
 		$(this).parent().parent().parent().removeClass('visible');
 		//이벤트 중지
 		/*this.stopPropagation();*/
@@ -47,14 +46,7 @@ $(function(){
 
 
 	
-/*	$('body').on("click","",function(){
-		
-		if($(".box-register").css("display")=="block"){
-			toggleSignUpForm();
-		}
-		
-	})*/
-	
+
 	
 	//특정영역 제외한 곳 클릭하면 사라지기 
 	$("body").click(function(e){
