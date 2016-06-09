@@ -8,6 +8,7 @@ import org.kosta.projectBoard.domain.ProjectBoard;
 import org.kosta.projectBoard.service.ProjectBoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,22 +49,22 @@ public class ProjectBoardController {
 		return service.list(p_pmid);
 	}
 	
-	@RequestMapping(value="read", method=RequestMethod.GET)
-	public String read(@RequestParam int p_id, @RequestParam int util, Model model)
+	@RequestMapping(value="{p_id}/{util}", method=RequestMethod.GET)
+	public String read(@PathVariable int p_id, @PathVariable String util, Model model)
 	{
 		model.addAttribute("pb", service.read(p_id));
 		
 		switch (util) {
-		case 0 : 
+		case "progress" : 
 			model.addAttribute("p_id", p_id);
 			return "progress";
-		case 1 :
+		case "checklist" :
 			model.addAttribute("p_id", p_id);
 			return "checklist";
-		case 2 :
+		case "essence" :
 			model.addAttribute("p_id", p_id);
 			return "essence";
-		case 3 :
+		case "integration" :
 			model.addAttribute("p_id", p_id);
 			return "integration";
 		default:
@@ -71,24 +72,24 @@ public class ProjectBoardController {
 		}
 	}
 	
-	@RequestMapping(value="update", method=RequestMethod.GET)
-	public void update(@RequestParam int pId, Model model)
+	@RequestMapping(value="{p_id}/update", method=RequestMethod.GET)
+	public void update(@PathVariable int p_id, Model model)
 	{
-		model.addAttribute("pId", pId);
+		model.addAttribute("p_id", p_id);
 	}
 	
-	@RequestMapping(value="update", method=RequestMethod.POST)
+	@RequestMapping(value="{p_id}/update", method=RequestMethod.POST)
 	public String updatePost(ProjectBoard pb)
 	{
 		service.update(pb);
 		return "redirect:/projectBoard/list";
 	}
 	
-	@RequestMapping(value="delete", method=RequestMethod.POST)
+	@RequestMapping(value="{p_id}/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public int delete(@RequestParam int pId)
+	public int delete(@PathVariable int p_id)
 	{
-		service.delete(pId);
+		service.delete(p_id);
 		return 1;
 	}
 	

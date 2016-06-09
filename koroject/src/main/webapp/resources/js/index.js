@@ -26,7 +26,7 @@ $('body').on("click","#settingLogin",function(){
  
 
 $('body').on("click","#startProject",function(){
-	location.href="projectPage";
+	location.href="projectBoard";
 });
 
 
