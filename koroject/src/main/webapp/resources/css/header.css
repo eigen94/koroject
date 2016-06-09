@@ -3274,4 +3274,7 @@ $time-2: ($time-1/1.54);
 .settingP::before{
 	size:10px;
 }
-
+#temp:hover{
+	font-weight: bold;
+	
+}
