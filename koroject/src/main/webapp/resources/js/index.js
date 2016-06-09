@@ -31,8 +31,8 @@ $('body').on("click","#startProject",function(){
 
 //로그인 하고 나서 나오는 회원정보에서의 네비게이션
 $('#temp').click(function(){
-	 $('#settingNav').fadeToggle('slow');
-	$('#settingNav').css("position","absolute");
+	 $('#list').fadeToggle('slow');
+	//$('#settingNav').css("position","absolute");
 })
 
 

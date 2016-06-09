@@ -51,8 +51,7 @@ koroject
 
 
 <!-- 로그인 세팅폼-->
-<div id="settingNav" style="display:none">
-<ul id="list">
+<ul id="list" style="display:none;">
   <li class="linka">
     <p class="settingP"><a class="settingA" href="#">마이페이지</a></p>
     <span class="entypo-user settingSpan"></span>
@@ -70,7 +69,6 @@ koroject
     <span class="entypo-logout settingSpan"></span>
   </li>
 </ul> 
-  </div>
 
   
   
