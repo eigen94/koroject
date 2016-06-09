@@ -56,7 +56,8 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="removePage", method=RequestMethod.POST)
-	public String remove(@RequestParam("img_bno")int img_bno,ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
+	public String remove(@RequestParam("img_bno")int img_bno,ImgSearchCriteria cri, RedirectAttributes rttr
+			,@PathVariable int p_id, @PathVariable int check_id)throws Exception{
 		
 		service.remove(img_bno);
 		
@@ -66,7 +67,7 @@ public class SearchBoardController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		
-		return "redirect:/imagee/list";
+		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
 	}
 	
 	@RequestMapping(value="modifyPage", method=RequestMethod.GET)
@@ -78,7 +79,7 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="modifyPage", method=RequestMethod.POST)
-	public String modifyPOST(ImageVO vo, ImgSearchCriteria cri, RedirectAttributes rttr)throws Exception{
+	public String modifyPOST(ImageVO vo, ImgSearchCriteria cri, RedirectAttributes rttr,@PathVariable int p_id, @PathVariable int check_id)throws Exception{
 		
 		System.out.println(cri.toString());
 		service.modify(vo);
@@ -88,10 +89,10 @@ public class SearchBoardController {
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+		rttr.addFlashAttribute("p_id", p_id);
 		System.out.println(rttr.toString());
 		
-		return "redirect:/imagee/list";
+		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
 	}
 	
 	@RequestMapping(value="register", method= RequestMethod.GET)

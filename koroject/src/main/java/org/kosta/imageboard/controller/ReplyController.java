@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/replies")
+@RequestMapping("/projectBoard/{p_id}/checklist/{check_id}/replies/*")
 public class ReplyController {
 
   @Inject

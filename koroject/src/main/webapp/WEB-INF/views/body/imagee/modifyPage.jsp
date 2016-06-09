@@ -148,7 +148,7 @@ $(".fileDrop").on("drop", function(event){
 	formData.append("file", file);	
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: 'modify/uploadAjax',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
@@ -173,7 +173,7 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 	var that = $(this);
 	 
 	$.ajax({
-	   url:"/deleteFile",
+	   url:"deleteFile",
 	   type:"post",
 	   data: {fileName:$(this).attr("href")},
 	   dataType:"text",
@@ -189,7 +189,7 @@ $(".uploadedList").on("click", ".delbtn", function(event){
 var img_bno = ${imageVO.img_bno};
 var template = Handlebars.compile($("#template").html());
 
-$.getJSON("/imagee/getAttach/"+img_bno,function(list){
+$.getJSON("getAttach/"+img_bno,function(list){
 	$(list).each(function(){
 		
 		var fileInfo = getFileInfo(this);

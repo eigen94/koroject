@@ -293,7 +293,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/replies/"+img_bno+"/"+replyPage );
+						getPage("replies/"+img_bno+"/"+replyPage );
 						replyerObj.val("");
 						replytextObj.val("");
 					}
@@ -329,7 +329,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
-						getPage("/replies/"+ img_bno+"/"+ replyPage );
+						getPage("replies/"+ img_bno+"/"+ replyPage );
 					}
 			}});
 	});
@@ -350,7 +350,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("삭제 되었습니다.");
-						getPage("/replies/"+img_bno+"/"+replyPage );
+						getPage("replies/"+img_bno+"/"+replyPage );
 					}
 			}});
 	});
@@ -397,7 +397,7 @@ $(document).ready(function(){
 			});
 		}
 		
-		formObj.attr("action", "/imagee/removePage");
+		formObj.attr("action", "removePage");
 		formObj.submit();
 	});	
 	

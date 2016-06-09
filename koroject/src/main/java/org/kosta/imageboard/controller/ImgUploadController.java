@@ -76,7 +76,7 @@ public class ImgUploadController {
 
  
   @ResponseBody
-  @RequestMapping(value ="register/uploadAjax", method=RequestMethod.POST, 
+  @RequestMapping(value ="{register}/uploadAjax", method=RequestMethod.POST, 
                   produces = "text/plain;charset=UTF-8")
   public ResponseEntity<String> uploadAjax(MultipartFile file, HttpServletRequest req)throws Exception{
 	  
