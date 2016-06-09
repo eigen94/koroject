@@ -21,7 +21,8 @@ koroject
 
 	<%-- <a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다. --%>
 	<!-- 여기에 쪽지 링크 주소 요청 할것 -->
-	<a href="/note/main" id="">${member.m_name}님 </a> 반갑 습니다.
+	<a id="temp">잠깐만 </a>
+	<a href="/note/main" id="">${member.m_name}님 </a> 안녕하세요.
 	  <nav id="menu">
 <ul class="links">
 <li>
@@ -48,15 +49,27 @@ koroject
 
 
 <!-- 로그인 세팅폼-->
-<div class="settingNav" style="display:none;">
-    <div class="loginSetting">
-        <div class="randompad">
-             <label name="SettingMyPage">마이페이지</label>
-             <label name="SettingNote">쪽지</label>
-             <label name="SettingLogOut">로그아웃</label>
-        </div>
-    </div>
+<div id="settingNav">
+<ul id="list">
+  <li class="linka">
+    <p><a href="#">마이페이지</a></p>
+    <span class="entypo-user"></span>
+  </li>
+  <li class="linka">
+    <p><a href="#">쪽지</a></p>
+    <span class="entypo-chat"></span>
+  </li>
+  <li class="linka">
+    <p><a href="#">메신저</a></p>
+    <span class="entypo-chat"></span>
+  </li>
+  <li class="linka">
+    <p><a href="#">로그아웃</a></p>
+    <span class="entypo-logout"></span>
+  </li>
+</ul> 
   </div>
+
   
   
         
@@ -109,7 +122,7 @@ koroject
              <input type="text" name="m_email" value="example@example.com" />
              <label name="password">Password</label>
              <input type="password" name="m_pwd" />
-             <input class="loginButton" type="submit" value="Loginaaa" />
+             <input class="loginButton" type="submit" value="Login" />
           </form>
         </div>
       </div>
@@ -194,4 +207,14 @@ koroject
 <script src="/resources/js/front.js"></script>
 <script src="/resources/js/index.js"></script>
 <script src="/resources/js/loginForm.js"></script>
+<script>
+(function(){
+/* $('#temp').click(function(){
+	console.log("이거 뜨니?");
+	$('.settingNav').css("display","inline-block");
+}) */
+	
+});
+
+</script>
 	
