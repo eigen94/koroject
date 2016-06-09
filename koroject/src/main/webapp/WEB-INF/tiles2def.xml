@@ -78,10 +78,26 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
 	</definition>
 	
-	<!-- 이미지 게시 -->
+	<!-- 이미지 게시판 -->
 	
 	<definition name="image" extends="checklist_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imagelist" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageRead" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/readPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageModify" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/modifyPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageRegister" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/register.jsp"></put-attribute>
 	</definition>
 	
 

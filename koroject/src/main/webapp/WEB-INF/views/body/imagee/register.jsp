@@ -113,7 +113,7 @@ $(".fileDrop").on("drop", function(event){
 	
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: window.location.pathname+'/uploadAjax',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
