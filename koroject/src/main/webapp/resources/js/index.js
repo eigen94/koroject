@@ -29,9 +29,10 @@ $('body').on("click","#startProject",function(){
 	location.href="projectBoard";
 });
 
+//로그인 하고 나서 나오는 회원정보에서의 네비게이션
 $('#temp').click(function(){
-	// $('#settingNav').fadeToggle('slow');
-	$('#settingNav').css("display","inline-block");
+	 $('#settingNav').fadeToggle('slow');
+	$('#settingNav').css("position","absolute");
 })
 
 

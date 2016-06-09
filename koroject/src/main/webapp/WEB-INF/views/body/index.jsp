@@ -9,7 +9,9 @@
 <title>koroject</title>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
+<style type="text/css">
 
+</style>
 </head>
  
 <body class="">
@@ -22,10 +24,10 @@
 <p>안녕하세요 koroject 입니다.</p>
 <ul class="actions vertical">
 <li>
-<a class="button special big" id="startProject" href="#">Get started</a>
+<a class="button special big" id="startProject" href="#">project go!</a>
 </li>
 <li>
-<a class="button big scrolly" href="#one">Learn more</a>
+<a class="button big scrolly" href="#one">뉴스 보기</a>
 </li>
 </ul>
 </div>

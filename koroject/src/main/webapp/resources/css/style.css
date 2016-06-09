@@ -99,7 +99,7 @@ fieldset {
   color: #ef7f5b;
 }
 
-a {
+a:not(.settiongA){
   color: #ecf0f1;
   text-decoration: none;
 }
