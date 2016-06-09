@@ -101,16 +101,16 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="register", method= RequestMethod.POST)
-	public String registerPOST(ImageVO vo, RedirectAttributes rttr)throws Exception{
+	public String registerPOST(ImageVO vo, RedirectAttributes rttr, @PathVariable int p_id, @PathVariable int check_id)throws Exception{
 		System.out.println("register post...");
 		System.out.println(vo.toString());
 		
 		service.regist(vo);
 		
 		rttr.addFlashAttribute("msg", "success");
-		
-//		return "redirect:image";
-		return "image";
+		rttr.addFlashAttribute("p_id", p_id);
+		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
+//		return "image";
 	}
 	@RequestMapping("getAttach/{img_bno}")
 	@ResponseBody

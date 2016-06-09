@@ -142,7 +142,7 @@ $("#registerForm").submit(function(event){
 	});
 	
 	that.append(str);
-
+	
 	that.get(0).submit();
 });
 

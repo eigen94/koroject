@@ -48,7 +48,7 @@ public class ImgUploadController {
 	  System.out.println("originalName: " + file.getOriginalFilename());
 	  System.out.println("size: " + file.getSize());
 	  System.out.println("contentType: " + file.getContentType());
-	  String uploadPath = req.getSession().getServletContext().getRealPath("/uploadImage");
+	  String uploadPath = req.getSession().getServletContext().getRealPath("/");
     String savedName = uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath);
 
     model.addAttribute("savedName", uploadPath+savedName);
@@ -81,7 +81,7 @@ public class ImgUploadController {
   public ResponseEntity<String> uploadAjax(MultipartFile file, HttpServletRequest req)throws Exception{
 	  
     logger.info("originalName: " + file.getOriginalFilename());
-    String uploadPath = req.getSession().getServletContext().getRealPath("/uploadImage");
+    String uploadPath = req.getSession().getServletContext().getRealPath("/");
     //return new ResponseEntity<>(file.getOriginalFilename(), HttpStatus.CREATED);
     System.out.println("file : "+file);
    System.out.println("uploadPath : "+uploadPath);
@@ -96,7 +96,7 @@ public class ImgUploadController {
  
     
   @ResponseBody
-  @RequestMapping("register/displayFile")
+  @RequestMapping("{register}/displayFile")
   public ResponseEntity<byte[]>  displayFile(String fileName, HttpServletRequest req)throws Exception{
     
     InputStream in = null; 
@@ -106,7 +106,7 @@ public class ImgUploadController {
     
     try{
       
-    	String uploadPath = req.getSession().getServletContext().getRealPath("/uploadImage");
+    	String uploadPath = req.getSession().getServletContext().getRealPath("/");
     	
       String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
       
@@ -146,7 +146,7 @@ public class ImgUploadController {
     
     String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
     
-    String uploadPath = req.getSession().getServletContext().getRealPath("/uploadImage");
+    String uploadPath = req.getSession().getServletContext().getRealPath("/");
     
     MediaType mType = ImgMediaUtils.getMediaType(formatName);
     

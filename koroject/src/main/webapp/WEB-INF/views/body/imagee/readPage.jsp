@@ -410,7 +410,7 @@ $(document).ready(function(){
 	var img_bno = ${imageVO.img_bno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
-	$.getJSON("/imagee/getAttach/"+img_bno,function(list){
+	$.getJSON("getAttach/"+img_bno,function(list){
 		$(list).each(function(){
 			
 			var fileInfo = getFileInfo(this);

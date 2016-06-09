@@ -151,8 +151,8 @@
 						});
 
 				$('#newBtn').on("click", function(evt) {
-					console.log()
-					self.location = window.location.pathname+"register";
+					//console.log((window.location.pathname).replace("/list",""))
+					self.location = window.location.pathname.replace("/list","")+"/register";
 
 				});
 
