@@ -150,8 +150,8 @@
 						});
 
 				$('#newBtn').on("click", function(evt) {
-
-					self.location = "register";
+					console.log()
+					self.location = window.location.pathname+"/register";
 
 				});
 

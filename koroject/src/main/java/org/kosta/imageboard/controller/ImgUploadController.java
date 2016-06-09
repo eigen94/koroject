@@ -26,12 +26,14 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 @Controller
+@RequestMapping("/projectBoard/{p_id}/checklist/{check_id}/*")
 public class ImgUploadController {
 
   private static final Logger logger = LoggerFactory.getLogger(ImgUploadController.class);
 
   //@Resource(name = "uploadPath")
-  private String uploadPath = "C:\\Users\\Ryu\\Pictures\\Screenshots";
+//  private String uploadPath = "C:\\Users\\Ryu\\Pictures\\Screenshots";
+  private String uploadPath = "/koroject/src/main/webapp/uploadImage";
 
   @RequestMapping(value = "/uploadForm", method = RequestMethod.GET)
   public void uploadForm() {

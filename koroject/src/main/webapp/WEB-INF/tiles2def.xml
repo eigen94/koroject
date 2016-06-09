@@ -75,8 +75,10 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
 	</definition>
 	
+	<!-- 이미지 게시 -->
+	
 	<definition name="image" extends="checklist_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/imagee/register.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
 	</definition>
 	
 
