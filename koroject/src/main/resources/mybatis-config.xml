@@ -12,6 +12,8 @@
 	<package name="org.kosta.messenger.domain"/>
 	<package name="org.kosta.projectBoard.domain"/>
 	<package name="org.kosta.projectChecklist.domain"/>
+	<package name="org.kosta.uml.domain"/>
+	<package name="org.kosta.erd.domain"/>
 	</typeAliases>
 	
 	

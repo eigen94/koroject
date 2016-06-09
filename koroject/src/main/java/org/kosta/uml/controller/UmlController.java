@@ -16,9 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/uml/*")
 public class UmlController {
 	
-	@Inject
-	private UmlService service;
-
 	@RequestMapping(value="umlMain", method=RequestMethod.GET)
 	public void umlMain()
 	{

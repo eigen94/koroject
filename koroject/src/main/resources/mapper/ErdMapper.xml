@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.kosta.erd.ErdMapper">
+	<cache />
+	
+<insert id="save" parameterType="String">
+	update erd set content = #{content}
+		where pid = 1
+</insert>
+
+<select id="load" parameterType="int" resultType="String">
+	select content from erd where pid = #{pid}
+</select>
+
+</mapper>

@@ -14,10 +14,10 @@
 #inspector-holder {
 	position: absolute;
 	top: 0;
-	left: 1500px;
+	left: 1500px;	
 	bottom: 0;
 	width: 300px;
-	height: 600px;
+	height: 600px;	
 	background-color: #333;
 	color: #bcbcbc;
 }
@@ -25,13 +25,13 @@
 #paper-holder {
 	left: 300px;
 	height: 600px;
-	width: 1200px;
+	width: 1200px;	
 	position: relative;
 }
 
 #stencil-holder {
 	width: 300px;
-	height: 600px;
+	height: 600px;	
 	position: absolute;
 }
 </style>
@@ -195,27 +195,37 @@
 			ct.on('action:Generalization', function() { 				
 				var g = new uml.Generalization({ source: { id: source }, target: { id: target }});				
 				graph.addCell(g)
-				realLink.remove()				
+				realLink.remove()
+				console.log($(this).parent())
+				
 			});
 			ct.on('action:Implementation', function() {				
 				var g = new uml.Implementation({ source: { id: source }, target: { id: target }});				
 				graph.addCell(g)
 				realLink.remove()
+				$(this).parent().toggle();
 			});
 			ct.on('action:Aggregation', function() {				
 				var g = new uml.Aggregation({ source: { id: source }, target: { id: target }});
 				
 				graph.addCell(g)
 				realLink.remove()
+				$(this).parent().toggle();
 			});
 			ct.on('action:Composition', function() {				
 				var g = new uml.Composition({ source: { id: source }, target: { id: target }});				
 				graph.addCell(g)
 				realLink.remove()
+				$(this).parent().toggle();
 			});
 
 			ct.render();
+			
+			
 		}); // end of relation change
+		
+		
+		
 	})//end jquery 
 	
 	var createClass = function()
