@@ -38,8 +38,8 @@
 	</definition>
 	
 	<!-- 프로젝트페이지 -->
-	<definition name="projectPage" extends="base_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectPage.jsp"></put-attribute>
+	<definition name="projectBoard" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/projectBoard.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="progress" extends="project_layout">

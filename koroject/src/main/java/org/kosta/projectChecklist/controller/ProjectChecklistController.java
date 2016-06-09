@@ -8,42 +8,41 @@ import org.kosta.projectChecklist.domain.ProjectChecklist;
 import org.kosta.projectChecklist.service.ProjectChecklistService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-@RequestMapping("/projectBoard/checklist/*")
+@RequestMapping("/projectBoard/{p_id}/checklist/*")
 public class ProjectChecklistController {
 
 	@Inject
 	ProjectChecklistService service;
 	
-	@RequestMapping(value="/projectBoard/checklist/create", method=RequestMethod.POST)
+	@RequestMapping(value="create", method=RequestMethod.POST)
 	@ResponseBody
 	public void create(String check_name,int check_projectid, String check_start,
 			String check_end, int check_manager, int check_type){
-		System.out.println("get req");
 		ProjectChecklist pc = new ProjectChecklist(0, check_name, check_projectid, check_start, check_end, check_manager, 0, check_type, "");
-		System.out.println(pc);
 		service.create(pc);
 	}
 	
-	@RequestMapping(value="/projectBoard/checklist/list", method=RequestMethod.POST)
+	@RequestMapping(value="list", method=RequestMethod.POST)
 	@ResponseBody
-	public List<ProjectChecklist> list(int check_projectid){
-		return service.list(check_projectid);
+	public List<ProjectChecklist> list(@PathVariable int p_id){
+		return service.list(p_id);
 	}
 	
-	@RequestMapping(value="delete", method=RequestMethod.POST)
+	@RequestMapping(value="{check_id}/delete", method=RequestMethod.POST)
 	@ResponseBody
-	public int delete(int check_id){
+	public int delete(@PathVariable int check_id){
 		service.delete(check_id);
 		return 1;
 	}
 	
-	@RequestMapping(value="read", method=RequestMethod.GET)
-	public String read(int check_id){
+	@RequestMapping(value="{check_id}", method=RequestMethod.GET)
+	public String read(@PathVariable int check_id){
 		ProjectChecklist pc = service.read(check_id);
 		int check_type = pc.getCheck_type();
 		switch (check_type) {

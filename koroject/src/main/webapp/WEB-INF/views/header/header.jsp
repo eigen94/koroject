@@ -9,7 +9,7 @@
 
 <header id="header">
 <h1>
-<a href="index.html">
+<a href="/">
 koroject
 <span>by kosta</span>
 </a>
@@ -26,14 +26,14 @@ koroject
 	  <nav id="menu">
 <ul class="links">
 <li>
-<a href="projectPage">Project</a>
+<a href="/projectBoard">Project관리</a>
 </li>
 
 <li>
 <a href="generic.html">공지사항</a>
 </li>
 <li>
-<a href="elements.html">Elements</a>
+<a href="/note/main">쪽지</a>
 </li>
 </ul>
 <ul class="actions vertical">

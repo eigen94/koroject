@@ -96,6 +96,7 @@
 <script type="text/javascript">
 $(function(){
 
+	var projectid = (window.location.pathname).replace("/projectBoard/","").replace("/checklist","");
 	$('#calendar').fullCalendar({
 
 	});
@@ -103,7 +104,7 @@ $(function(){
 	//체크리스트 생성부분
 	$("#createCheckListBtn").click(function(){
 		$.ajax({
-			url : "/projectBoard/checklist/create",
+			url : "/projectBoard/"+projectid+"/checklist/create",
 			method : "POST",
 			data : {
 				check_name : $("#checkListName").val(),
@@ -121,13 +122,9 @@ $(function(){
 	});
 	
 	$("body").on("click",".deleteChecklistBtn",function(){
-		console.log();
-		var check_id = $(this).prev().attr("href").replace("/projectBoard/checklist/read?check_id=","");
+		var check_path = $(this).prev().attr("href");
 		$.ajax({
-			url : "/projectBoard/checklist/delete",
-			data : {
-				check_id : check_id
-			},
+			url : check_path+"/delete",
 			method : "POST",
 			success : function(){
 				getChecklist();
@@ -137,7 +134,7 @@ $(function(){
 	
 	//개별 html태그 생성함수
 	function generateChecklistHtml(i, check_id, check_name){
-		var returnHtml = '<div class="checklists"><a href=/projectBoard/checklist/read?check_id='+check_id+'>'+i+'체크리스트 : '+check_name;
+		var returnHtml = '<div class="checklists"><a href=/projectBoard/'+projectid+'/checklist/'+check_id+'>'+i+'체크리스트 : '+check_name;
 		returnHtml += '</a><button class="deleteChecklistBtn">삭제</button></div>';
 		return returnHtml;
 	}
@@ -145,10 +142,7 @@ $(function(){
 	//체크리스트 호출 함수
 	function getChecklist(){
 		$.ajax({
-			url : "/projectBoard/checklist/list",
-			data : {
-				check_projectid : $("#checkListProjectId").val()
-			},
+			url : "/projectBoard/"+projectid+"/checklist/list",
 			method : "POST",
 			success : function(data){
 				$(".checklists").remove();
