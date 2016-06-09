@@ -29,6 +29,11 @@ $('body').on("click","#startProject",function(){
 	location.href="projectBoard";
 });
 
+$('#temp').click(function(){
+
+	$('.settingNav').css("display","inline-block");
+})
+
 
 
 
