@@ -17,7 +17,6 @@ $('').on("click","#loginform",function(){
 
 //로그인세팅클릭 
 $('body').on("click","#settingLogin",function(){
-	   console.log(this);
 	   $('.settingNav').fadeToggle('slow');
 	   
 	   
@@ -33,6 +32,25 @@ $('body').on("click","#startProject",function(){
 $('#temp').click(function(){
 	 $('#list').fadeToggle('slow');
 	//$('#settingNav').css("position","absolute");
+})
+
+
+//회원정보에 대한 네비게이션 링크 걸어둠
+$('#settingMypage').click(function(){
+	location.href="myPage";
+})
+$('#settingNote').click(function(){
+	location.href="note/main";
+})
+$('#settingMessenger').click(function(){
+	location.href="note/main";
+})
+$('#settingLogOut').click(function(){
+	location.href="logout";
+})
+
+$('.settingA').click(function(e){
+	e.preventDefault();
 })
 
 

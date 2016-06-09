@@ -23,8 +23,7 @@ koroject
 
 	<%-- <a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다. --%>
 	<!-- 여기에 쪽지 링크 주소 요청 할것 -->
-	<a id="temp">잠깐만 </a>
-	<a href="/note/main" id="">${member.m_name}님 </a> 안녕하세요.
+	<a id="temp">${member.m_name}님 </a> 안녕하세요.
 	  <nav id="menu">
 <ul class="links">
 <li>
@@ -53,19 +52,19 @@ koroject
 <!-- 로그인 세팅폼-->
 <ul id="list" style="display:none;">
   <li class="linka">
-    <p class="settingP"><a class="settingA" href="#">마이페이지</a></p>
+    <p class="settingP" id="settingMypage"><a class="settingA" href="#">마이페이지</a></p>
     <span class="entypo-user settingSpan"></span>
   </li>
   <li class="linka">
-    <p class="settingP"><a class="settingA" href="#">쪽지</a></p>
+    <p class="settingP" id="settingNote"><a class="settingA" href="/note/main">쪽지</a></p>
     <span class="entypo-chat settingSpan"></span>
   </li>
   <li class="linka">
-    <p class="settingP"><a class="settingA" href="#">메신저</a></p>
+    <p class="settingP" id="settingMessenger"><a class="settingA" href="#">메신저</a></p>
     <span class="entypo-chat settingSpan"></span>
   </li>
   <li class="linka">
-    <p class="settingP"><a class="settingA" href="#">로그아웃</a></p>
+    <p class="settingP" id="settingLogOut"><a class="settingA" href="logout">로그아웃</a></p>
     <span class="entypo-logout settingSpan"></span>
   </li>
 </ul> 

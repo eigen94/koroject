@@ -31,6 +31,9 @@
 	<definition name="index" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
 	</definition>
+	<definition name="myPage" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/myPage.jsp"></put-attribute>
+	</definition>
 	
 	<!-- 쪽지페이지 -->
 	<definition name="noteMain" extends="base_layout"><!-- name 은 컨트롤러 요청과 일치 -->
