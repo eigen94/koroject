@@ -34,7 +34,7 @@
 	
 	<!-- 쪽지페이지 -->
 	<definition name="noteMain" extends="base_layout"><!-- name 은 컨트롤러 요청과 일치 -->
-		<put-attribute name="body" value="/WEB-INF/views/body/note/module/noteMain.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/note/noteMain.jsp"></put-attribute>
 	</definition>
 	
 	<!-- 프로젝트페이지 -->

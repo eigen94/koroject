@@ -79,7 +79,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		model.addAttribute("m_id", m_id);
-		return "/note/module/noteMain";
+		return "noteMain";
 	}
 	
 	@RequestMapping("/note_delete{n_id}")
@@ -91,7 +91,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		int m_id = member.getM_id();
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
-		return "/note/module/noteMain";
+		return "noteMain";
 	}
 	
 	//ID검색창 열자 
@@ -112,6 +112,10 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@RequestMapping(value="/note_searchSen")
 	public String note_searchSen(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
 
+		System.out.println(cri.getM_id());
+		System.out.println(cri.getKeyword());
+		System.out.println("타입 " + cri.getSearchType() + "아뭔데 도대체 ???");
+
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Note> note_searchSen = service.note_searchSen(cri);
 		int m_id = member.getM_id();
@@ -125,7 +129,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("m_id", m_id);
 		
-		return "/note/module/noteMain";
+		return "noteMain";
 	}
 	
 	@RequestMapping(value="/note_searchRec")
@@ -144,7 +148,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		model.addAttribute("pageMaker", pageMaker);
 		model.addAttribute("m_id", m_id);
 		
-		return "/note/module/noteMain";
+		return "noteMain";
 	}
 	
 	
@@ -193,7 +197,6 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	
 	
 	
-	////////////////////////
 	
 	
 }
