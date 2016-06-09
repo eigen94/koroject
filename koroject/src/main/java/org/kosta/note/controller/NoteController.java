@@ -112,10 +112,6 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	@RequestMapping(value="/note_searchSen")
 	public String note_searchSen(@ModelAttribute("cri") NoteSearchCriteria cri, Model model, HttpServletRequest request)throws Exception{
 
-		System.out.println(cri.getM_id());
-		System.out.println(cri.getKeyword());
-		System.out.println("타입 " + cri.getSearchType() + "아뭔데 도대체 ???");
-
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Note> note_searchSen = service.note_searchSen(cri);
 		int m_id = member.getM_id();

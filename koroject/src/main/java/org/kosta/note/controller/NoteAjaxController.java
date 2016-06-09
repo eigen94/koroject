@@ -93,7 +93,6 @@ public class NoteAjaxController {
 	@RequestMapping("/note/getM_id")
 	public int getM_id(@RequestParam("m_id") String email, Model model)throws Exception{
 		int m_id = service.getM_id(email);
-		System.out.println("에이작스에 있는 m_id" + m_id);
 		model.addAttribute("m_id", m_id);
 		return m_id;
 	}

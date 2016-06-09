@@ -23,7 +23,7 @@ exApp.get('/message', function(req, res){
 var mongoose = require('mongoose');
 
 // connects to MongoDB / the name of DB is set to 'messenger'
-mongoose.connect('mongodb://localhost/messenger');
+mongoose.connect('mongodb://dinky.iptime.org/messenger');
 
 // get the connection from mongoose
 var db = mongoose.connection;

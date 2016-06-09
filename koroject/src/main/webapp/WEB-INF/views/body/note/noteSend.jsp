@@ -7,46 +7,45 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
+	function receive(email) {
 
-function receive(email) {
+		$('.receive #n_receiveEmail').val(email);
 
-	$('.receive #n_receiveEmail').val(email);
-	
-	$.ajax({
-        url : "getM_id?m_id=" + email,
-        dataType : 'json',
-        success : function(data) {
-			$('.receive #n_receive').val(data);
-        }
+		$.ajax({
+			url : "getM_id?m_id=" + email,
+			dataType : 'json',
+			success : function(data) {
+				$('.receive #n_receive').val(data);
+			}
+		});
+
+	}
+	//noteForm
+	$(function() {
+
+		$('#formTag button').click(function() {
+			return false;
+		});
+
+		$('.searchOpen')
+				.on(
+						'click',
+						function() {
+							var popUrl = "search"; //팝업창에 출력될 페이지 URL
+							var popOption = "width=370, height=360, resizable=no, scrollbars=no, "
+									+ "status=no; scrollbars = no; resizable = no"; //팝업창 옵션(optoin)
+							window.open(popUrl, "", popOption);
+						})
 	});
-	
-	
-}
-//noteForm
-$(function() {
-	
-	$('#formTag button').click( function() {
-	    return false;
-	}); 
-	
-	$('.searchOpen').on('click', function() {
-		var popUrl = "search";    //팝업창에 출력될 페이지 URL
-	    var popOption = "width=370, height=360, resizable=no, scrollbars=no, " +
-	    		"status=no; scrollbars = no; resizable = no";    //팝업창 옵션(optoin)
-	    window.open(popUrl,"",popOption);
+
+	//storage
+	$(function() {
+		$('.box button').on('click', function() {
+			//히든값으로 들어가있는 n_id값
+			var id = $('.hidden_text input').val();
+			location.href = "note_list";
+		})
 	})
-});
-
-//storage
-$(function() {	
-	$('.box button').on('click', function() {
-		//히든값으로 들어가있는 n_id값
-		var id = $('.hidden_text input').val();
-		location.href="note_list";
-	})
-})
-
-
 </script>
 </head>
 <body>
@@ -54,31 +53,20 @@ $(function() {
 
 	<form action="note_send" method="post" id="formTag">
 		<div class="noteForm">
-			<div class="hidden_text">
-				<input type="hidden" name="n_sender" value="${m_id }">
-			</div>
+			<div class="hidden_text"><input type="hidden" name="n_sender" value="${m_id }"></div>
 			<div class="input_text">
-				<div class="title">
-					제목: <input type="text" name="n_title">
-				</div>
+				<div class="title">제목: <input type="text" name="n_title"></div>
 				<div class="receive">
 					받는사람: <input type="text" id="n_receiveEmail" name="n_receiveEmail">
 					<input type="hidden" id="n_receive" name="n_receive">
 					<button class="searchOpen">이메일 검색</button>
 				</div>
-				<div class="content">
-					내용 :
-					<textarea name="n_content"></textarea>
-				</div>
+				<div class="content"> 내용 : <textarea name="n_content"></textarea></div>
 			</div>
 		</div>
-		<div class="bottom">
-			<div class="box">
-				<button>쪽지함</button>
-			</div>
-			<div class="send">
-				<input type="submit" value="전송">
-			</div>
+
+		<div class="send">
+			<input type="submit" value="전송">
 		</div>
 	</form>
 
@@ -88,7 +76,7 @@ $(function() {
 
 
 
-<!-- 
+	<!-- 
 	
 	<form action="note_send" method="post">
 		제목 : <input type="text" name="n_title" >
@@ -101,6 +89,6 @@ $(function() {
 	<a href="listAll"><button>취소</button></a>
 	
 	 -->
-	
+
 </body>
 </html>
