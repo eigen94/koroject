@@ -45,6 +45,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		return (Member)request.getAttribute("member");
 	}*/
 	
+//	타일즈 불러올 페이지를 리턴값으로 적어줄것
 	@RequestMapping(value="/main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
 		Member member = (Member)request.getSession().getAttribute("member");
@@ -58,7 +59,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		model.addAttribute("m_id", m_id);
-		return "/note/module/noteMain";
+		return "noteMain";
 	}
 
 	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
