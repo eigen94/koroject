@@ -74,7 +74,8 @@
 							<tr>
 								<td>${imageVO.img_bno}</td>
 								<td><a
-									href='/imagee/readPage${pageMaker.makeSearch(pageMaker.cri.page) 
+<%-- 									href='/imagee/readPage${pageMaker.makeSearch(pageMaker.cri.page) --%> 
+									href='readPage${pageMaker.makeSearch(pageMaker.cri.page) 
 									}&img_bno=${imageVO.img_bno}'> ${imageVO.img_title} <strong>[ ${imageVO.img_replycnt} ]</strong>
 								</a></td>
 								<td>${imageVO.img_writer}</td>
@@ -151,7 +152,7 @@
 
 				$('#newBtn').on("click", function(evt) {
 					console.log()
-					self.location = window.location.pathname+"/register";
+					self.location = window.location.pathname+"register";
 
 				});
 

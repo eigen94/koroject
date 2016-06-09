@@ -30,7 +30,7 @@ public class SearchBoardController {
 	private ImageService service;
 	
 	@RequestMapping(value="list", method= RequestMethod.GET)
-	public void listPage(@ModelAttribute("cri")ImgSearchCriteria cri, Model model)throws Exception{
+	public String listPage(@ModelAttribute("cri")ImgSearchCriteria cri, Model model)throws Exception{
 		System.out.println(cri.toString());
 		
 		//model.addAttribute("list", service.listCriteria(cri));
@@ -43,13 +43,16 @@ public class SearchBoardController {
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
+		
+		return "imagelist";
 	}
 	
 	@RequestMapping(value="readPage", method=RequestMethod.GET)
-	public void read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model)throws Exception{
+	public String read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
 		
+		return "imageRead";
 	}
 	
 	@RequestMapping(value="removePage", method=RequestMethod.POST)
@@ -67,9 +70,11 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="modifyPage", method=RequestMethod.GET)
-	public void modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")ImgSearchCriteria cri ,Model model)throws Exception{
+	public String modifyGET(@RequestParam("img_bno") int img_bno, @ModelAttribute("cri")ImgSearchCriteria cri ,Model model)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
+		
+		return "imageModify";
 	}
 	
 	@RequestMapping(value="modifyPage", method=RequestMethod.POST)
@@ -92,7 +97,7 @@ public class SearchBoardController {
 	@RequestMapping(value="register", method= RequestMethod.GET)
 	public String registerGET()throws Exception{
 		System.out.println("register get...");
-		return "1";
+		return "imageRegister";
 	}
 	
 	@RequestMapping(value="register", method= RequestMethod.POST)
@@ -104,7 +109,8 @@ public class SearchBoardController {
 		
 		rttr.addFlashAttribute("msg", "success");
 		
-		return "redirect:/imagee/list";
+//		return "redirect:image";
+		return "image";
 	}
 	@RequestMapping("getAttach/{img_bno}")
 	@ResponseBody
