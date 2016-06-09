@@ -30,8 +30,8 @@ $('body').on("click","#startProject",function(){
 });
 
 $('#temp').click(function(){
-
-	$('.settingNav').css("display","inline-block");
+	// $('#settingNav').fadeToggle('slow');
+	$('#settingNav').css("display","inline-block");
 })
 
 
