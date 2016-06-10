@@ -132,7 +132,7 @@
 
 	if (result == 'SUCCESS') {
 		alert("처리가 완료되었습니다.");
-		location.replace(self.location);
+		//location.replace(self.location);
 	}
 </script>
 <script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>

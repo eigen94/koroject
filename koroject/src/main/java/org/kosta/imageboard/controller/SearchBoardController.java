@@ -48,10 +48,10 @@ public class SearchBoardController {
 	}
 	
 	@RequestMapping(value="readPage", method=RequestMethod.GET)
-	public String read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model)throws Exception{
+	public String read(@RequestParam("img_bno")int img_bno,@ModelAttribute("cri") ImgSearchCriteria cri, Model model, @PathVariable int p_id)throws Exception{
 		
 		model.addAttribute(service.read(img_bno));
-		
+		model.addAttribute("p_id", p_id);
 		return "imageRead";
 	}
 	
@@ -66,7 +66,8 @@ public class SearchBoardController {
 		rttr.addAttribute("searchType", cri.getSearchType());
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
-		
+		rttr.addAttribute("p_id", p_id);
+		System.out.println("삭제요청");
 		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
 	}
 	
