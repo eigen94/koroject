@@ -23,7 +23,7 @@ koroject
 
 	<%-- <a href="logout" id="settingLogin">${member.m_name}님 </a> 반갑 습니다. --%>
 	<!-- 여기에 쪽지 링크 주소 요청 할것 -->
-	<a href="/note/main" id="">${member.m_name}님 </a> 반갑 습니다.
+	<a id="temp">${member.m_name}님 </a> 안녕하세요.
 	  <nav id="menu">
 <ul class="links">
 <li>
