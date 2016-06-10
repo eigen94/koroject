@@ -81,6 +81,31 @@ public class MemberController {
 		service.insertMember(member);
 		return  "/index";
 	}
+	
+	//회원수정
+	@RequestMapping(value="memberModify")
+	public String memberModify(RegisterCommand rc,Model model,HttpServletRequest req){
+		System.out.println(rc.getM_email()+", "+rc.getM_pwd());
+		rc.setM_pwd(testSHA256(rc.getM_pwd()));
+		Member member = service.serchEmail(rc);
+		System.out.println(member);
+		if(member == null){
+			System.out.println("실패?");
+			model.addAttribute("false", "비밀번호를 잘못 입력하셧습니다.");
+			return "myPage";
+		}
+		member.setM_pwd(testSHA256(rc.getM_pwdCheck()));
+		member.setM_name(rc.getM_name());
+		member.setM_phone(rc.getM_phone());
+		member.setM_question(rc.getM_question());
+		member.setM_answer(rc.getM_answer());
+		System.out.println(member);
+		service.memberModify(member);
+		
+		req.getSession().removeAttribute("member");
+		req.getSession().setAttribute("member", member);
+		return "redirect:/myPage";
+	}
 
 	
 	/*//validation 바인드
