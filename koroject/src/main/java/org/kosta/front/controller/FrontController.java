@@ -29,7 +29,12 @@ public class FrontController {
 	public String myPage(){
 		return "myPage";
 	}
+
 	
+	@RequestMapping(value="indexMember", method=RequestMethod.GET)
+	public String indexMember(){
+		return "indexMember";
+	}
 	
 }
 

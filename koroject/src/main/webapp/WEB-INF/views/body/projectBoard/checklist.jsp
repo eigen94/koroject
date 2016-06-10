@@ -9,10 +9,21 @@
 
 	#calendar {
 		width: 700px;
-		margin: 0 auto;
+		margin-left:30px;
+		padding:10px;
+		border: 1px solid;
+	}
+	.checkListContainer{
+		border:1px solid;
 	}
 	.modal-dialog{
 		margin-top: 100px;
+	}
+	
+	
+	#checklistPage{
+		border: 1px solid;
+		width: 90%;
 	}
 
 </style>
@@ -20,9 +31,13 @@
 <body>
 <button data-toggle="modal" data-target="#checkCreateModal">일정생성</button>
 
-<div class="checklistContainer"></div>
+<div id="checklistPage" class="container-fluid">
 
-<div id='calendar'></div>
+<div class="checklistContainer col-md-4" ></div>
+
+<div id='calendar' class="col-md-8"></div>
+
+</div>
 
 
 	<!-- Modal -->

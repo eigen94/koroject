@@ -7,11 +7,65 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
-
 <style>
-@import url(http://weloveiconfonts.com/api/?family=entypo);
+	label{
+		font-size:18px;
+		margin-left:10px;
+	}
+	.example{
+		padding-bottom:10px;
+	}
+	
+	.bb {
+			width:100px;
+			height:18px;
+			border: 3px dotted #666666;
+			display: inline-block;
+			cursor:pointer;
+			color: #9b0e0e;
+			position:relative;
+		}
 
-</style>		
+		.bt {
+			width:100px;
+			font-size: 18px;
+			font-family: verdana;
+			position:relative;
+			top:-5px;
+			text-align:center;
+			border: 2px solid #9b0e0e;
+			-moz-transform: rotate(-5deg);
+			-webkit-transform: rotate(-5deg);
+			-o-transform: rotate(-5deg);
+			-ms-transform: rotate(-5deg);
+			transform: rotate(-5deg);
+			position:absolute;
+		}
+
+		.bb.disabled {
+			border: 3px dotted #898989;
+			background:#ededed;
+		}
+
+		.bt.disabled {
+			color: #898989;
+			border: 2px solid #898989;
+		}
+	
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="/resources/js/betterCheckbox.js"></script>
+ <script type="text/javascript">
+    jQuery(document).ready(function(){ 
+		
+		$('#b').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
+		$('#b-dis').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
+		$('#b-dis').betterCheckbox('disable');
+		
+	});
+	</script>
+
+
 </head>
 <body>
 
@@ -88,26 +142,9 @@
 		<!-- end: REGISTER BOX -->
 	</div> --%>
 	
-	
-	<div id="settingNav" style="">
-<ul id="list">
-  <li class="linka">
-    <p class="settingP"><a href="#">마이페이지</a></p>
-    <span class="entypo-user settingSpan"></span>
-  </li>
-  <li class="linka">
-    <p class="settingP"><a href="#">쪽지</a></p>
-    <span class="entypo-chat settingSpan"></span>
-  </li>
-  <li class="linka">
-    <p class="settingP"><a href="#">메신저</a></p>
-    <span class="entypo-chat settingSpan"></span>
-  </li>
-  <li class="linka">
-    <p class="settingP"><a href="#">로그아웃</a></p>
-    <span class="entypo-logout settingSpan"></span>
-  </li>
-</ul> 
-  </div>
+	<h2>stamp</h2>
+	<div class="example"><input id="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"><div class="bt">approved</div></div> <label for="b">Enabled</label></div>
+	<div class="example"><input id="b-dis" checked="checked" type="checkbox" disabled="" name="b" value="b" style="display: none;"><div class="bb disabled" style="-webkit-user-select: none;"><div class="bt disabled">approved</div></div> <label for="b-dis">Disabled</label></div>
+
 </body>
 </html>
