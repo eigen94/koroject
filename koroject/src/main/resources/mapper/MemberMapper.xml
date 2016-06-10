@@ -17,7 +17,7 @@
 	</select>
 	
 	<select id="loginMember" resultType="Member">
-		select * from member where m_email = #{m_email} and m_pwd = #{m_pwd}
+		select * from member where m_email = #{m_email} and m_pwd =#{m_pwd}
 	</select>
 	
 	<select id="serchPWD" resultType="PassSerchCommand">

@@ -56,7 +56,7 @@ public class MemberController {
 	@RequestMapping(value="insert_member",method=RequestMethod.GET)
 	public String insert_form2(){
 		
-		return "/memberRegister/insert_form";
+		return "index";
 	}
 	//회원가입
 	@RequestMapping(value="insert_member", method=RequestMethod.POST)

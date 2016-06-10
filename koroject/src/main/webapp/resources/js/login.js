@@ -1,9 +1,21 @@
 $(function(){
+	function login(data){
+		$.ajax({
+			type: "post",
+			url:'/login?m_email='+data.m_email,
+			success:function(){
+				alert('성공');
+			},error:function(){
+				alert('fuck')
+			}
+			
+		})
+	}
+	
+	
 	$("#login").submit(function(event){
-
 		var email = $('#loginEmail').val();
 		var pwd = $('#loginPwd').val();
-		
 		$.ajax({
 			url: '/loginCheck?email='+email+'&pwd='+pwd,
 			dataType: "json",
@@ -15,27 +27,14 @@ $(function(){
 					 alert('로그인성공ㅎㅎ');
 					 login(data);
 				 }
+			 },error:function(){
+				 alert('실패')
 			 }
 		})
+		
 	});
 	
-	function login(data){
-		alert("갓태광 집에가자");
-		alert(data.m_email);
-		$.ajax({
-			type: "post",
-			url:'/loginMember',
-			data:data,
-			success:function(){
-				location.href="loginMember2";
-			}
-			
-		})
-	}
-	/*$('#login').on('click', function(){
-		alert('aaaa');
-		return false;
-	})*/
+	
 	
 	
 });
