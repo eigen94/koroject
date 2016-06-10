@@ -249,7 +249,14 @@
 		    <artifactId>jquery</artifactId>
 		    <version>2.1.1</version>
 		</dependency>
+		<!-- http://mvnrepository.com/artifact/org.webjars/jquery-ui -->
+		<dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>jquery-ui</artifactId>
+		    <version>1.9.2</version>
+		</dependency>
 		
+				
 				
 		<!-- http://mvnrepository.com/artifact/org.webjars.npm/lodash -->
 		<dependency>
