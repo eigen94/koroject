@@ -13,32 +13,34 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		var room = prompt('방 이름을 입력하세요.', 'kosta');
+//		var room = prompt('방 이름을 입력하세요.', 'kosta');
 		var socket = io.connect();
 
-		socket.emit('room', room);
+//		socket.emit('room', room);
 
 		//채팅내역 가져오기 버튼
 		$(document).on('click', '.btn button', function() {
-			$('#content').empty();
+			$('.top').empty();
 			socket.emit('breakdown');
 		})
 
 		//대화내용 가져오기
 		socket.on('preload', function(data) {
-			if (data.roomname == room) {
+			if (data.roomname == $('#room').val()) {
 				var output = '';
-				output += '<div class="alert alert-info"><strong>';
-				output += data.name;
-				output += '</strong> : ';
-				output += data.message;
-				output += '</div>';
-				$(output).prependTo('#content');
+				output += '<div class="chatList">';
+				output += '<div class="chat">';		
+				output += '<strong>' + data.name + '</strong> : ';
+				output += data.message + '</div></div>';
+				$('.top').append(output);
 			}
+			$('.top').scrollTop(9999);
 		});
-
+		
+		
+		/* 
 		//보내기버튼 클릭
-		$('#button').click(function() {
+		$('#button').click(function() {	//보내기버튼 없애버림
 			socket.emit('message', {
 				name : $('#name').val(),
 				message : $('#message').val(),
@@ -46,14 +48,15 @@
 			});
 			$('#message').val('');
 		});
-
+ */
+		
 		//엔터키 누름 
 		$('#message').keydown(function(e) {
 			if (e.which == 13) {/* 13 == enter key@ascii */
 				socket.emit('message', {
 					name : $('#name').val(),
 					message : $('#message').val(),
-					roomname : room
+					roomname : $('#room').val()
 				});
 				$('#message').val('');
 			}
@@ -61,14 +64,14 @@
 
 		//채팅내역 표시
 		socket.on('message', function(data) {
-			if (data.roomname == room) {
+			if (data.roomname == $('#room').val()) {
 				var output = '';
-				output += '<div class="alert alert-info"><strong>';
-				output += data.name;
-				output += '</strong> : ';
-				output += data.message;
-				output += '</div>';
-				$(output).prependTo('#content');
+				output += '<div class="chatList">';
+				output += '<div class="chat">';		
+				output += '<strong>' + data.name + '</strong> : ';
+				output += data.message + '</div></div>';
+				$('.top').append(output);
+				$('.top').scrollTop(9999);
 			}
 		});
 
@@ -76,30 +79,53 @@
 			$('#name').val(data);
 		})
 
+		socket.on('roomSet', function(data) {
+			$('#room').val(data);
+		})
+
 	});
 </script>
+
+<style type="text/css">
+
+.top {
+	position: fixed;
+	width: 100%;
+	height: 70%;
+	overflow:auto;
+	background-color : white;
+}
+
+.bottom {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	height : 20%;
+	width: 100%;
+	display:inline-block;
+}
+</style>
+
 </head>
 
 <body>
-	<div style="width: 500px; margin: 50px">
-		<h1>채팅</h1>
-		<div class="btn">
-			<button>가져오기</button>
-		</div>
+	<div class="chatArea">
+	
 		<div class="form-group">
-			<!-- <label for="User Name">user name</label>  -->
-			<input type="hidden" class="form-control" id="name" placeholder="User Name" />
+			<input type="hidden" id="name"  />
+			<input type="hidden" id="room" />
 		</div>
-		<div class="form-group">
-			<label for="Message">message</label> 
-			<input type="text" class="form-control" id="message" placeholder="Message" />
-		</div>
-		<div class="form-group">
-			<button id='button' type="button" class="btn btn-default" style="width: 100%">send message</button>
+		
+		<div class="top">
 		</div>
 
-		<div id="content">
-			<div></div>
+		<div class="bottom">
+			<div class="form-group">
+				<input type="text" class="form-control" id="message" placeholder="Message" />
+			</div>
+			<div class="btn">
+				<button>가져오기</button>
+			</div>
 		</div>
 	</div>
 </body>

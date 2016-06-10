@@ -247,17 +247,6 @@ p {
 	})
 	
 	
-	
-	
-	$(function(){	
-		//채팅창 열기위한 버튼 (임시)
-		$('.openChatting button').on('click', function(){
-			var m_email = $('#m_email').val();
-			location.href="http://localhost:7777/?email="+m_email;
-			
-		})
-	})
-	
 </script>
 
 
@@ -271,10 +260,6 @@ p {
 			<div class="sendform">	<button> 쪽지 보내기 </button>	</div>
 			<div class="sendList"><button> 보낸 쪽지함 </button></div>
 			<div class="receiveList"><button> 받은 쪽지함 </button></div>
-			<div class="openChatting">
-				<button>채팅채팅</button>
-				<input type="text" id="m_email" value="Email">
-			</div>
 		</div>
 		
 		<!-- 우측 영역 -->
