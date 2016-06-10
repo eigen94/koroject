@@ -116,3 +116,49 @@ CREATE TABLE reply(
 	CONSTRAINT fk_reply_writer FOREIGN KEY (r_writer) REFERENCES member(m_id)
 );
 
+--이미지 게시판
+create table img_board(
+	img_bno number primary key,
+	img_title varchar2(200),
+	img_content varchar2(4000),
+	img_writer varchar2(50),
+	img_regdate timestamp,
+	img_viewcnt number,
+	img_replycnt number default 0	
+);
+
+--이미지 게시판 댓글
+create table img_reply (
+ img_rno number,
+ img_bno number not null,
+ img_replytext varchar2(2000) not null,
+ img_replyer varchar2(50) not null,
+ img_regdate date default sysdate,
+ img_updatedate date default sysdate);
+ 
+ --이미지 게시판 PK
+ alter table img_reply add constraint pk_imgreply
+ primary key (img_rno);
+
+--이미지 게시판 파일
+create table img_attach(
+   img_fullName varchar(1000) not null,
+   img_bno NUMBER not null,
+   img_regdate timestamp,
+   primary key(img_fullName)
+);
+
+--이미지 게시판 img_bno 와 댓글 img_bno FK 제약조건
+ alter table img_reply add constraint fk_board_imgreply
+ foreign key (img_bno) references img_board(img_bno) on delete cascade;
+ 
+--이미지 게시판 img_bno 와 파일 img_bno FK 제약조건
+alter table img_attach add constraint fk_imgboard_attach
+foreign key (img_bno) references img_board(img_bno) on delete cascade;
+
+--이미지 게시판과 댓글 시퀀스
+CREATE SEQUENCE imgboard_seq;
+CREATE SEQUENCE imgreply_seq;
+
+
+
