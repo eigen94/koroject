@@ -23,7 +23,7 @@
 	
 	#checklistPage{
 		border: 1px solid;
-		width: 90%;
+		width: auto;
 	}
 
 </style>
