@@ -7,35 +7,92 @@
 <!-- <link rel="stylesheet" type="text/css" href="/js/static/fullcalendar/2.6.1/fullcalendar.print.css"> -->
 <style type="text/css">
 
+	.checkListA:hover{
+		font-weight: bold;
+		
+	}
 	#calendar {
 		width: 700px;
-		margin-left:30px;
+		 margin-left:30px; 
 		padding:10px;
-		border: 1px solid;
 	}
-	.checkListContainer{
+	.checkListDiv{
+		margin-top: 60px;
+		margin-left: 10px;
 		border:1px solid;
+		padding:10px;
+		width: 25%;
 	}
 	.modal-dialog{
 		margin-top: 100px;
 	}
 	
-	
 	#checklistPage{
-		border: 1px solid;
-		width: auto;
+		width: 90%;
+		background: white;
 	}
+	body{
+	background: #e6e8e8;
+	}
+	label{
+		font-size:18px;
+		margin-left:10px;
+	}
+	.example{
+		padding-bottom:10px;
+	}
+	
+	.bb {
+			width:40px;
+			height:25px;
+			border: 3px dotted #666666;
+			display: inline-block;
+			cursor:pointer;
+			color: #9b0e0e;
+			position:relative;
+		}
 
+		.bt {
+			width:40px;
+			font-size: 14px;
+			font-family: verdana;
+			position:relative;
+			top:-5px;
+			text-align:center;
+			border: 2px solid #9b0e0e;
+			-moz-transform: rotate(-5deg);
+			-webkit-transform: rotate(-5deg);
+			-o-transform: rotate(-5deg);
+			-ms-transform: rotate(-5deg);
+			transform: rotate(-5deg);
+			position:absolute;
+		}
+
+		.bb.disabled {
+			border: 3px dotted #898989;
+			background:#ededed;
+		}
+
+		.bt.disabled {
+			color: #898989;
+			border: 2px solid #898989;
+		}
+
+	#checkListPlus{
+		margin-top: 10px;
+		}
 </style>
 </head>
 <body>
-<button data-toggle="modal" data-target="#checkCreateModal">일정생성</button>
 
 <div id="checklistPage" class="container-fluid">
-
-<div class="checklistContainer col-md-4" ></div>
-
-<div id='calendar' class="col-md-8"></div>
+<a data-toggle="modal" data-target="#checkCreateModal"  id="checkListPlus">
+	<img alt="checkPlus" src="/images/checkPlus.jpg">
+</a>
+<div class="checkListDiv col-md-4">
+<div class="checklistContainer" ></div>
+</div>
+<div id='calendar' class="col-md-5"></div>
 
 </div>
 
@@ -108,6 +165,7 @@
 <script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
 <script type="text/javascript" src="/js/static/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script type="text/javascript" src="/js/static/fullcalendar/2.6.1/fullcalendar.js"></script>
+<script src="/resources/js/betterCheckbox.js"></script>
 <script type="text/javascript">
 $(function(){
 
@@ -137,7 +195,7 @@ $(function(){
 	});
 	
 	$("body").on("click",".deleteChecklistBtn",function(){
-		var check_path = $(this).prev().attr("href");
+		var check_path = $(this).next().attr("href");
 		$.ajax({
 			url : check_path+"/delete",
 			method : "POST",
@@ -149,8 +207,8 @@ $(function(){
 	
 	//개별 html태그 생성함수
 	function generateChecklistHtml(i, check_id, check_name){
-		var returnHtml = '<div class="checklists"><a href=/projectBoard/'+projectid+'/checklist/'+check_id+'>'+i+'체크리스트 : '+check_name;
-		returnHtml += '</a><button class="deleteChecklistBtn">삭제</button></div>';
+		var returnHtml = '<div class="checklists"><img class="deleteChecklistBtn" src="/images/CheckMinus.jpg" style="cursor:pointer"><a class="checkListA" href=/projectBoard/'+projectid+'/checklist/'+check_id+' style="color:black;" >'+i+" : "+check_name;
+		returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"></div></div>';
 		return returnHtml;
 	}
 	
@@ -162,16 +220,28 @@ $(function(){
 			success : function(data){
 				$(".checklists").remove();
 				for(var i=0; i<data.length; i++){
+					console.log(data[i]);
 					var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
 					$('.checklistContainer').append(html);
 				}
+				$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
 			}
 		});
 	}
 	//시작하자마자 체크리스트 불러오는 부분
 	getChecklist();
+
 	
 });
 </script>
+<!-- <script type="text/javascript">
+    jQuery(document).ready(function(){ 
+		
+		$('.b').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
+		$('#b-dis').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
+		$('#b-dis').betterCheckbox('disable');
+	});
+	</script> -->
+
 </body>
 </html>
