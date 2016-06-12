@@ -49,6 +49,7 @@ public class ImgUploadController {
 	  System.out.println("size: " + file.getSize());
 	  System.out.println("contentType: " + file.getContentType());
 	  String uploadPath = req.getSession().getServletContext().getRealPath("/");
+	  System.out.println(uploadPath);
     String savedName = uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath);
 
     model.addAttribute("savedName", uploadPath+savedName);

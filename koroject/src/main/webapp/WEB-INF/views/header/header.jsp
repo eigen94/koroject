@@ -116,13 +116,13 @@ koroject
       <div class="arrow-up"></div>
       <div class="formholder">
         <div class="randompad">
-        <form id="login" action="/login" method="post">
+        <form id="login" action="login" method="post">
              <label name="email">Email</label>
-             <input type="text" name="m_email" value="example@example.com" />
+             <input type="email" id="loginEmail" name="m_email" placeholder="example@example.com" />
              <label name="password">Password</label>
-             <input type="password" name="m_pwd" />
-             <input class="loginButton" type="submit" value="Login" />
-          </form>
+             <input type="password" id="loginPwd" name="m_pwd" placeholder="password" />
+             <input type="submit" value="Login" />
+         </form>
         </div>
       </div>
     </div>
@@ -131,26 +131,27 @@ koroject
 
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
-			<form action="insert_member" class="form-register ng-pristine ng-valid">
+			<form id="register" action="insert_member" class="form-register ng-pristine ng-valid">
 				<fieldset class="signUpfieldset">
 					<legend>
 						회원가입
 					</legend>
 						Enter your personal details below:
 					<div class="form-group">
-						이름 <input type="text" class="form-control" name="m_name" placeholder="name">
+						이름 <input type="text" class="form-control" id="name" name="m_name" placeholder="name">
 					</div>
 					<div class="form-group">
-						e-mail <input type="text" class="form-control" name="m_email" placeholder="e-mail">
+						e-mail <input type="email" class="form-control" id="email" name="m_email" placeholder="e-mail">
+						<button id="emailCheck">이메일 중복 확인</button>
 					</div>
 					<div class="form-group">
-						비밀번호<input type="text" class="form-control" name="m_pwd" placeholder="password">
+						비밀번호<input type="password" class="form-control" id="password" name="m_pwd" placeholder="password">
 					</div>
 					<div class="form-group">
-						비밀번호 확인<input type="text" class="form-control" name="m_pwdCheck" placeholder="password Again">
+						비밀번호 확인<input type="password" class="form-control" id="passwordCheck" name="m_pwdCheck" placeholder="password Again">
 					</div>
 					<div class="form-group">
-						핸드폰 번호<input type="text" class="form-control" name="m_phone" placeholder="phone Number">
+						핸드폰 번호<input type="text" class="form-control" id="phoneNumber" name="m_phone" placeholder="숫자만 입력 가능합니다.">
 					</div>
 					<div class="form-group">
 						질문
@@ -172,7 +173,7 @@ koroject
 					</div>
 					
 					<div class="form-group">
-						<input type="text" class="form-control" name="m_answer" placeholder="Answer">
+						<input type="text" class="form-control" id="answer" name="m_answer" placeholder="Answer">
 					</div>
 				
 			<!-- 		<div class="form-group">
@@ -188,10 +189,11 @@ koroject
 							<a ui-sref="login.signin" href="#/login/signin">
 								Log-in
 							</a>
-						<button type="submit" class="btn btn-primary pull-right registerSubmit">
-							Submit
+						<button type="submit" class="btn btn-primary pull-right">
+							회원가입
 						</button>
 					</div>
+					<p class="modal-contents"></p>
 				</fieldset>
 			</form>
 		</div>
@@ -206,5 +208,7 @@ koroject
 <script src="/resources/js/front.js"></script>
 <script src="/resources/js/index.js"></script>
 <script src="/resources/js/loginForm.js"></script>
+<script src="/resources/js/register.js"></script>
+<!-- <script src="/resources/js/login.js"></script> -->
 
 	

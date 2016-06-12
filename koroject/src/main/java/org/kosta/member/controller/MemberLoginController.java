@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class MemberLoginController {
@@ -58,12 +59,9 @@ public class MemberLoginController {
 		}
 		
 		
-		
-		
-		
 		//로그인하기
 		@RequestMapping(value="login",method=RequestMethod.POST)
-		public String loginMember(LoginCommand login,Model model,HttpServletRequest request){
+		public String loginMember(/*@RequestParam("m_email") String email*/LoginCommand login , Model model,HttpServletRequest request){
 			login.setM_pwd(testSHA256(login.getM_pwd()));
 			Member member = service.loginMember(login);
 			if(member == null){

@@ -30,22 +30,21 @@
     	 $.ajax({
     		 url: '/emailCheck?email='+email,
     		 success:function(data){
-    			 if(!(emailCheck.test(email))){
+    			 if(email == ""){
+    				 alert('이메일을 입력 해주세요.')
+    			 }else if(!(emailCheck.test(email))){
     				 alert('이메일 형식이 아닙니다.')
     			 }else if(data == ""){
-    				 alert('사용 가능한 이메일 입니다.')
     				 check=1;
-    			 }else if(email == ""){
-    				 alert('이메일을 입력 해주세요.')
+    				 alert('사용 가능한 이메일 입니다.')
     			 }else if(email == data){
     				 alert('중복된 이메일 입니다.')	 
     			 }
     	      }
     	 })
-
      })
      
-     $( "form" ).submit(function( event ) {
+     $( "#register" ).submit(function( event ) {
          var divPassword = $('#divPassword');
          var divPasswordCheck = $('#divPasswordCheck');
          var divName = $('#divName');
@@ -86,6 +85,7 @@
          //이메일 중복 체크 확인 여부
          if(check==0){
         	 alert('이메일 중복 체크를 확인해 주세요.')
+        	 return false;
          }
          
        //패스워드 검사

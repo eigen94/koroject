@@ -1,5 +1,4 @@
 (function( $ ){
-
   var methods = {
     init : function( options ) {
 	 
@@ -22,8 +21,9 @@
 			root.tickinner=settings.tickInnerHTML;
 			root.disbgclass=settings.disabledBoxClass;
 			root.distickclass=settings.disabledTickClass;
-		/*	
-			$this.css('display', 'none');
+			root.cnt=0;
+			
+		/*	$(".bt").css('display', 'none');
 			$this.after('<div class="'+settings.boxClass+'"></div>');
 			$this.next().css('user-select', 'none');
 			if(root.checked) {
@@ -34,8 +34,15 @@
 				$this.next().children().addClass(root.distickclass);
 			}*/
 			
+			
 			$this.next().on('click', function() {
 				if(!root.disabled) {
+					if(root.cnt==0){
+						root.cnt=1;
+						$(this).empty();
+						root.checked = false;
+						$this.prop('checked', false);
+					}
 					if(root.checked) {
 						$(this).empty();
 						root.checked = false;
@@ -127,10 +134,15 @@
   $.fn.betterCheckbox = function( method ) {
 
     if ( methods[method] ) {
+    	console.log("in 1");
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof method === 'object' || ! method ) {
+    	console.log("in 2");
+    	console.log(this);
+    	console.log(arguments);
       return methods.init.apply( this, arguments );
     } else {
+    	console.log("in 3");
       $.error( 'Method ' +  method + ' does not exist on jQuery.betterCheckbox' );
     }    
   
