@@ -40,7 +40,7 @@
 
 	<div id="progressArea">
 		<div id="btn">
-			<input type="text" id="m_email" value="세션에있는이메일">
+			<input type="text" id="m_email" value="Email">
 			<input type="text" id="p_id" value="kosta">
 			<button>채팅창을 열어주는 임시버튼</button>
 		</div>
