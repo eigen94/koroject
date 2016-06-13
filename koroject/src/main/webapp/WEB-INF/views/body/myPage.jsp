@@ -104,6 +104,7 @@ input[type=text], input[type=email], input[type=password], select {
 	background: #ef7f5b
 }
 </style>
+
 </head>
 <body>
 	<%-- 
@@ -199,6 +200,7 @@ input[type=text], input[type=email], input[type=password], select {
 							<label class="control-label"> 이메일 </label> <label>${member.m_email }</label>
 								<input class="form-control ng-pristine ng-untouched ng-valid ng-valid-email"
 								type="hidden" name="m_email" value="${member.m_email }">
+								
 						</div>
 						<div class="form-group">
 							<label class="control-label"> 현재 비밀번호 </label> <input
@@ -253,10 +255,11 @@ input[type=text], input[type=email], input[type=password], select {
 								</div>
 								<div class="user-image-buttons-edit ng-scope">
 									<p>JPG파일만 사용가능</p>
-									<form action="proImg" method="POST"	enctype="multipart/form-data">
+									<form id="imgForm" action="proImg" method="POST"	enctype="multipart/form-data">
+									<input id="ck" name="tae" type="hidden" value="${member.m_email }">
 										<input type="file" id="image" name="file"><br> <input
 											class="thumbnailMyPageUpdate" type="submit" value="수정">
-										<input class="thumbnailMyPageDelete" type="button" value="삭제">
+										<input id="delete" class="thumbnailMyPageDelete"type="button"value="삭제">
 									</form>
 								</div>
 							</div>
