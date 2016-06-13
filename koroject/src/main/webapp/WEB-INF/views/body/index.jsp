@@ -5,6 +5,46 @@
 <head>
 <meta charset="UTF-8">
 
+<style type="text/css">
+.newsDiv{
+	border: 1px solid white;
+	width: 100%;
+	height: 500px;
+	
+}
+.newsDivRight{
+	overflow:auto;
+	border: 1px solid white;
+	width:50%;
+	height: 500px;
+	padding:10px; 
+	display: inline-block;
+	
+	
+}
+.newsDivLeft{
+	/* overflow:auto; */
+	border: 1px solid white;
+	width:50%;
+	height: 500px;
+	background: black;
+	display: inline-block;
+	float:left
+}
+.newsDivRightTop{
+	border: 1px solid white;
+	background: black;
+	height:250px;
+}
+.newsDivRightBottom{
+	border: 1px solid white;
+	background: black;
+	height:250px;
+}
+
+
+</style>
+
 
 <title>koroject</title>
 <meta charset="utf-8">
@@ -13,7 +53,71 @@
 
 </style>
 </head>
- 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="/resources/js/jquery.min.js"></script>
+<script src="/resources/js/jquery.scrolly.min.js"></script>
+<script type="text/javascript">
+$(function(){
+		var href = "";
+		var count = 0;
+		$.ajax({
+			url: '/croll',
+			dataType: "json",
+			 success:function(data){
+				 
+				$.each(data,function(){
+//					$('.newsDivLeft').append('<ul><li>'+this+'</li></ul>');
+//					href = $('.newsDivLeft').children().children().children().last().attr('href');
+					$('.newsDivLeft').append('<li>'+this+'</li>');
+					href = $('.newsDivLeft').children().children().last().attr('href');
+					$('.newsDivLeft').children().last().attr('href', '');
+					$('.newsDivLeft').append('<input type="hidden" class="href" value="'+href+'">');
+					
+					$('.newsDivLeft a').addClass('link')
+				})					
+				
+			 }
+		});
+	
+	
+	
+	$("body").on('click',".link",function(event){
+		event.preventDefault()
+//		var href = $(this).parent().parent().next().val();
+		var href = $(this).parent().next().val();
+		$(".newsDivRight").empty();
+		$.ajax({
+			url: '/news?href='+href,
+			dataType: "json",
+			 success:function(data){
+				 $.each(data,function(){
+					
+				 	$(".newsDivRight").append('<br>');
+				 	$(".newsDivRight").append(this);
+				 })
+			 }
+		});
+	});
+});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$.ajax({
+			url:"http://api.wunderground.com/api/dfadac8b2b673cb5/forecast/conditions/q/Korea/Seoul.json",
+			dataType:"jsonp",
+			success:function(parsed_json){
+				console.log(parsed_json); //파싱된 날씨 데이터를 콘솔에 출력
+				
+				var weather = parsed_json['current_observation']['weather'];//현재날씨
+				
+				var temp_c = parsed_json['current_observation']['temp_c'];//현재 기온(섭씨)
+				
+				$('#result').html('현재날씨 :' + weather + '<br>현재 기온 : ' + temp_c + '도')//result <div>태그 출력
+			}
+		});
+	});
+</script>
+  
 <body class="">
 
 
@@ -32,58 +136,30 @@
 </ul>
 </div>
 </section>
+
+<!-- 뉴스 시작  -->
 <section id="one" class="wrapper alt style2">
-<ul class="features">
-<li>
-<div class="content">
-<span class="icon major fa-code"></span>
-<h3 class="major">Sed Adipiscing</h3>
-<p>Etiam finibus pharetra purus, imperdiet sagittis mauris hendrerit feugiat ante elementum amet arcu. Maecenas vulputate turpis faucibus lorem ipsum dolor sit amet.</p>
-<ul class="actions">
-<li>
-<a class="button" href="#">Details</a>
-</li>
-</ul>
+<div class="newsDiv">
+<div class="newsDivLeft">
+<h3><strong>최신 IT뉴스 기사 리스트 top 10 </strong></h3>
+출처 : http://www.itnews.or.kr/
+<!-- 기사 들어갈곳 -->
 </div>
-</li>
-<li>
-<div class="content">
-<span class="icon major fa-diamond"></span>
-<h3 class="major">Lorem Faucibus</h3>
-<p>Etiam finibus pharetra purus, imperdiet sagittis mauris hendrerit feugiat ante elementum amet arcu. Maecenas vulputate turpis faucibus lorem ipsum dolor sit amet.</p>
-<ul class="actions">
-<li>
-<a class="button" href="#">Details</a>
-</li>
-</ul>
+<div class="newsDivRight">
+<!-- 컨텐츠 들어갈곳 -->
+
+<div class="newsDivRightTop">
+최신 IT 뉴스를 만나보세요.<br>
+기사 제목을 누르시면 기사가 보여집니다.
 </div>
-</li>
-<li>
-<div class="content">
-<span class="icon major fa-files-o"></span>
-<h3 class="major">Elementum Amet</h3>
-<p>Etiam finibus pharetra purus, imperdiet sagittis mauris hendrerit feugiat ante elementum amet arcu. Maecenas vulputate turpis faucibus lorem ipsum dolor sit amet.</p>
-<ul class="actions">
-<li>
-<a class="button" href="#">Details</a>
-</li>
-</ul>
+
+<div class="newsDivRightBottom">
+	<div id="result"></div>
 </div>
-</li>
-<li>
-<div class="content">
-<span class="icon major fa-paper-plane-o"></span>
-<h3 class="major">Volutpat Purus</h3>
-<p>Etiam finibus pharetra purus, imperdiet sagittis mauris hendrerit feugiat ante elementum amet arcu. Maecenas vulputate turpis faucibus.</p>
-<ul class="actions">
-<li>
-<a class="button" href="#">Details</a>
-</li>
-</ul>
 </div>
-</li>
-</ul>
+</div>
 </section>
+<!-- 뉴스 끝  -->
 <section id="two" class="wrapper alt">
 <section class="spotlight">
 <div class="image">
