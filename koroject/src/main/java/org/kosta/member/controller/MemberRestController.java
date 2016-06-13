@@ -26,7 +26,6 @@ public class MemberRestController {
 	//가입시 이메일  중복 체크
 	@RequestMapping(value="/emailCheck")
 	public String emailCheck(@RequestParam("email") String email){
-		
 		String m_email = service.emailCheck(email);
 		
 		return m_email;

@@ -256,7 +256,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		if ($(".timeline li").size() > 1) {
 			return;
 		}
-		getPage("/replies/" + img_bno + "/1");
+		getPage("replies/" + img_bno + "/1");
 
 	});
 	
@@ -267,7 +267,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		
 		replyPage = $(this).attr("href");
 		
-		getPage("/replies/"+img_bno+"/"+replyPage);
+		getPage("replies/"+img_bno+"/"+replyPage);
 		
 	});
 	
@@ -282,7 +282,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		  
 		  $.ajax({
 				type:'post',
-				url:'/replies/',
+				url:'replies/',
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "POST" },
@@ -293,7 +293,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					if(result == 'SUCCESS'){
 						alert("등록 되었습니다.");
 						replyPage = 1;
-						getPage("/replies/"+img_bno+"/"+replyPage );
+						getPage("replies/"+img_bno+"/"+replyPage );
 						replyerObj.val("");
 						replytextObj.val("");
 					}
@@ -319,7 +319,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		  
 		  $.ajax({
 				type:'put',
-				url:'/replies/'+ img_rno,
+				url:'replies/'+ img_rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "PUT" },
@@ -329,7 +329,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("수정 되었습니다.");
-						getPage("/replies/"+ img_bno+"/"+ replyPage );
+						getPage("replies/"+ img_bno+"/"+ replyPage );
 					}
 			}});
 	});
@@ -341,7 +341,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 		  
 		  $.ajax({
 				type:'delete',
-				url:'/replies/'+ img_rno,
+				url:'replies/'+ img_rno,
 				headers: { 
 				      "Content-Type": "application/json",
 				      "X-HTTP-Method-Override": "DELETE" },
@@ -350,7 +350,7 @@ Handlebars.registerHelper("prettifyDate", function(timeValue) {
 					console.log("result: " + result);
 					if(result == 'SUCCESS'){
 						alert("삭제 되었습니다.");
-						getPage("/replies/"+img_bno+"/"+replyPage );
+						getPage("replies/"+img_bno+"/"+replyPage );
 					}
 			}});
 	});
@@ -366,7 +366,7 @@ $(document).ready(function(){
 	console.log(formObj);
 	
 	$("#modifyBtn").on("click", function(){
-		formObj.attr("action", "/imagee/modifyPage");
+		formObj.attr("action", "modifyPage");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
@@ -392,25 +392,25 @@ $(document).ready(function(){
 		});
 		
 		if(arr.length > 0){
-			$.post("/deleteAllFiles",{files:arr}, function(){
+			$.post("deleteAllFiles",{files:arr}, function(){
 				
 			});
 		}
 		
-		formObj.attr("action", "/imagee/removePage");
+		formObj.attr("action", "removePage");
 		formObj.submit();
 	});	
 	
 	$("#goListBtn ").on("click", function(){
 		formObj.attr("method", "get");
-		formObj.attr("action", "/imagee/list");
+		formObj.attr("action", "list");
 		formObj.submit();
 	});
 	
 	var img_bno = ${imageVO.img_bno};
 	var template = Handlebars.compile($("#templateAttach").html());
 	
-	$.getJSON("/imagee/getAttach/"+img_bno,function(list){
+	$.getJSON("getAttach/"+img_bno,function(list){
 		$(list).each(function(){
 			
 			var fileInfo = getFileInfo(this);

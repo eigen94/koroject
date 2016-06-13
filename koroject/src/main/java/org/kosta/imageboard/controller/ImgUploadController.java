@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.util.UUID;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
 import org.kosta.imageboard.util.ImgMediaUtils;
@@ -30,31 +32,32 @@ import org.springframework.web.multipart.MultipartFile;
 public class ImgUploadController {
 
   private static final Logger logger = LoggerFactory.getLogger(ImgUploadController.class);
-
+  
   //@Resource(name = "uploadPath")
 //  private String uploadPath = "C:\\Users\\Ryu\\Pictures\\Screenshots";
-  private String uploadPath = "/koroject/src/main/webapp/uploadImage";
+//  private String uploadPath = "http://dinky.iptime.org:10000/";
 
-  @RequestMapping(value = "/uploadForm", method = RequestMethod.GET)
+  @RequestMapping(value = "uploadForm", method = RequestMethod.GET)
   public void uploadForm() {
 	
   } 
 
  
-  @RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
-  public String uploadForm(MultipartFile file, Model model) throws Exception {
+  @RequestMapping(value = "uploadForm", method = RequestMethod.POST)
+  public String uploadForm(MultipartFile file, Model model, HttpServletRequest req) throws Exception {
 	  System.out.println("originalName: " + file.getOriginalFilename());
 	  System.out.println("size: " + file.getSize());
 	  System.out.println("contentType: " + file.getContentType());
+	  String uploadPath = req.getSession().getServletContext().getRealPath("/");
+	  System.out.println(uploadPath);
+    String savedName = uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath);
 
-    String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-
-    model.addAttribute("savedName", savedName);
+    model.addAttribute("savedName", uploadPath+savedName);
 
     return "uploadResult";
   }
   
-  private String uploadFile(String originalName, byte[] fileData) throws Exception {
+  private String uploadFile(String originalName, byte[] fileData, String uploadPath) throws Exception {
 
 	    UUID uid = UUID.randomUUID();
 
@@ -68,20 +71,21 @@ public class ImgUploadController {
 
 	  }
   
-  @RequestMapping(value = "/uploadAjax", method = RequestMethod.GET)
+  @RequestMapping(value = "uploadAjax", method = RequestMethod.GET)
   public void uploadAjax() {
   }
 
  
   @ResponseBody
-  @RequestMapping(value ="/uploadAjax", method=RequestMethod.POST, 
+  @RequestMapping(value ="{register}/uploadAjax", method=RequestMethod.POST, 
                   produces = "text/plain;charset=UTF-8")
-  public ResponseEntity<String> uploadAjax(MultipartFile file)throws Exception{
-    
+  public ResponseEntity<String> uploadAjax(MultipartFile file, HttpServletRequest req)throws Exception{
+	  
     logger.info("originalName: " + file.getOriginalFilename());
-    
+    String uploadPath = req.getSession().getServletContext().getRealPath("/");
     //return new ResponseEntity<>(file.getOriginalFilename(), HttpStatus.CREATED);
-   
+    System.out.println("file : "+file);
+   System.out.println("uploadPath : "+uploadPath);
    return 
       new ResponseEntity<>(
           ImgUploadFileUtils.uploadFile(uploadPath, 
@@ -93,8 +97,8 @@ public class ImgUploadController {
  
     
   @ResponseBody
-  @RequestMapping("/displayFile")
-  public ResponseEntity<byte[]>  displayFile(String fileName)throws Exception{
+  @RequestMapping("{register}/displayFile")
+  public ResponseEntity<byte[]>  displayFile(String fileName, HttpServletRequest req)throws Exception{
     
     InputStream in = null; 
     ResponseEntity<byte[]> entity = null;
@@ -103,6 +107,8 @@ public class ImgUploadController {
     
     try{
       
+    	String uploadPath = req.getSession().getServletContext().getRealPath("/");
+    	
       String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
       
       MediaType mType = ImgMediaUtils.getMediaType(formatName);
@@ -134,12 +140,14 @@ public class ImgUploadController {
   }
 
   @ResponseBody
-  @RequestMapping(value="/deleteFile", method=RequestMethod.POST)
-  public ResponseEntity<String> deleteFile(String fileName){
+  @RequestMapping(value="deleteFile", method=RequestMethod.POST)
+  public ResponseEntity<String> deleteFile(String fileName, HttpServletRequest req){
     
     logger.info("delete file: "+ fileName);
     
     String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
+    
+    String uploadPath = req.getSession().getServletContext().getRealPath("/");
     
     MediaType mType = ImgMediaUtils.getMediaType(formatName);
     

@@ -113,7 +113,7 @@ $(".fileDrop").on("drop", function(event){
 	
 	
 	$.ajax({
-		  url: '/uploadAjax',
+		  url: window.location.pathname+'/uploadAjax',
 		  data: formData,
 		  dataType:'text',
 		  processData: false,
@@ -142,7 +142,7 @@ $("#registerForm").submit(function(event){
 	});
 	
 	that.append(str);
-
+	
 	that.get(0).submit();
 });
 

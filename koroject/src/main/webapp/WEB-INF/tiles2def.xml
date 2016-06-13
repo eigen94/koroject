@@ -11,11 +11,12 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
-	<definition name="project_layout" template="/WEB-INF/views/template/template.jsp">
+	<definition name="project_layout" template="/WEB-INF/views/template/projectTemplate.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header/projectHeader.jsp"/>
 		<!-- 
 		<put-attribute name="messenger" value="/WEB-INF/views/note/module/noteMain.jsp"/>
 		 -->
+		<put-attribute name="messenger" value="/WEB-INF/views/messenger/messenger.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
 	</definition>
 	
@@ -25,11 +26,27 @@
 	</definition>
 	
 	
+	<definition name="essence_layout" template="/WEB-INF/views/template/essenceTemplate.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header/projectHeader.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/header/essenceNav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer/footer.jsp"/>
+	</definition>
+	
+	
 	
 	<!-- 개별 요청 처리 받는곳 -->
 	<!-- 인덱스페이지 -->
 	<definition name="index" extends="base_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/index.jsp"></put-attribute>
+	</definition>
+	<definition name="myPage" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/myPage.jsp"></put-attribute>
+	</definition>
+	<definition name="searchID" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/searchID.jsp"></put-attribute>
+	</definition>
+		<definition name="matchingID" extends="base_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/matchingID.jsp"></put-attribute>
 	</definition>
 	
 	<!-- 쪽지페이지 -->
@@ -50,7 +67,7 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/checklist.jsp"></put-attribute>
 	</definition>
 	
-	<definition name="essence" extends="project_layout">
+	<definition name="essence" extends="essence_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence.jsp"></put-attribute>
 	</definition>
 	
@@ -75,10 +92,43 @@
 		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
 	</definition>
 	
-	<!-- 이미지 게시 -->
+	<!-- 이미지 게시판 -->
 	
 	<definition name="image" extends="checklist_layout">
 		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imagelist" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/list.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageRead" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/readPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageModify" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/modifyPage.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="imageRegister" extends="checklist_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/imagee/register.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 체크리스트 에센스->마일스톤 -->
+	<definition name="essence/milestone" extends="essence_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence/milestone.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="essence/checklist" extends="essence_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence/checklist.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="essence/alphastate" extends="essence_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence/alphastate.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="essence/activity" extends="essence_layout">
+		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/essence/activity.jsp"></put-attribute>
 	</definition>
 	
 

@@ -8,6 +8,7 @@ import org.kosta.member.domain.DeleteMember;
 import org.kosta.member.domain.LoginCommand;
 import org.kosta.member.domain.Member;
 import org.kosta.member.domain.PassSerchCommand;
+import org.kosta.member.domain.RegisterCommand;
 import org.kosta.member.persistence.MemberDAO;
 import org.springframework.stereotype.Service;
 
@@ -63,6 +64,42 @@ public class MemberServiceImpl implements MemberService {
 	public LoginCommand loginMember2(LoginCommand lc) {
 		// TODO Auto-generated method stub
 		return dao.loginMember2(lc);
+	}
+
+	@Override
+	public void profile(Member member) {
+		// TODO Auto-generated method stub
+		dao.profile(member);
+	}
+
+	@Override
+	public Member serchEmail(RegisterCommand rc) {
+		// TODO Auto-generated method stub
+		return dao.serchEmail(rc);
+	}
+
+	@Override
+	public void memberModify(Member member) {
+		// TODO Auto-generated method stub
+		dao.memberModify(member);
+	}
+
+	@Override
+	public void proDelete(String email) {
+		// TODO Auto-generated method stub
+		dao.proDelete(email);
+	}
+
+	@Override
+	public String getImage(String email) {
+		// TODO Auto-generated method stub
+		return dao.getImage(email);
+	}
+
+	@Override
+	public Member member(String email) {
+		// TODO Auto-generated method stub
+		return dao.member(email);
 	}
 	
 	

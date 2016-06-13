@@ -74,7 +74,8 @@
 							<tr>
 								<td>${imageVO.img_bno}</td>
 								<td><a
-									href='/imagee/readPage${pageMaker.makeSearch(pageMaker.cri.page) 
+<%-- 									href='/imagee/readPage${pageMaker.makeSearch(pageMaker.cri.page) --%> 
+									href='readPage${pageMaker.makeSearch(pageMaker.cri.page) 
 									}&img_bno=${imageVO.img_bno}'> ${imageVO.img_title} <strong>[ ${imageVO.img_replycnt} ]</strong>
 								</a></td>
 								<td>${imageVO.img_writer}</td>
@@ -131,7 +132,7 @@
 
 	if (result == 'SUCCESS') {
 		alert("처리가 완료되었습니다.");
-		location.replace(self.location);
+		//location.replace(self.location);
 	}
 </script>
 <script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
@@ -150,8 +151,8 @@
 						});
 
 				$('#newBtn').on("click", function(evt) {
-					console.log()
-					self.location = window.location.pathname+"/register";
+					//console.log((window.location.pathname).replace("/list",""))
+					self.location = window.location.pathname.replace("/list","")+"/register";
 
 				});
 
