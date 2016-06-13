@@ -13,15 +13,17 @@
 	}
 	#calendar {
 		width: 700px;
-		 margin-left:30px; 
+		 margin-left:80px; 
 		padding:10px;
 	}
 	.checkListDiv{
 		margin-top: 60px;
-		margin-left: 10px;
+		margin-left: 70px;
 		border:1px solid;
 		padding:10px;
 		width: 25%;
+		height: 30%;
+	    overflow:auto;
 	}
 	.modal-dialog{
 		margin-top: 100px;
@@ -77,10 +79,15 @@
 			color: #898989;
 			border: 2px solid #898989;
 		}
-
 	#checkListPlus{
-		margin-top: 10px;
+		margin-top: 20px;
+		position: absolute;
+		margin-left:70px;
 		}
+	.checklists{
+		border-bottom: 1px solid
+	} 
+	
 </style>
 </head>
 <body>
@@ -100,40 +107,40 @@
 	<!-- Modal -->
 
 	<!-- checkCreateModal -->
-	<div id="checkCreateModal" class="modal fade" role="dialog">
+	<div id="checkCreateModal" class="modal fade" role="dialog" style="padding: 20px;">
 	  <div class="modal-dialog">
 	
 	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-body">
+	    <div class="modal-content" style="width: 480px; height: 330px;">
+	      <div class="modal-body" style="padding:20px; padding-left:40px;">
 	      <!-- to projectDetail.do -->
 	        <form action="#" method="post" class="form-horizontal">
 		        <div class="form-group">
-	       			<label for="inputName" class="col-sm-2 control-label">일정이름</label>
-	   				<div class="col-sm-10">
-						<input class="form-control" id="checkListName" type="text" name="check_name" size="20" placeholder="체크리스트 이름을 입력하세요"><br>
+	       			<label for="inputName" style="display: inline-block; margin-bottom: 0px; font-size:14px" >일정이름</label>
+	   				<div class="">
+						<input class="" id="checkListName" type="text" name="check_name" size="10" style="width:60%; display: inline-block;"  placeholder="체크리스트 이름을 입력하세요">
 					</div>
-	       			<label for="inputStartDate" class="col-sm-2 control-label">시작일</label>
-	   				<div class="col-sm-4">
+					
+					<div class="StartEndDate" style="display: inline-block; width:200px; float:left; margin-right:20px; ">
+	       			<label for="inputStartDate" style="margin-bottom: 0px; font-size: 14px">시작일</label>
 		                <div class='input-group date' id='datetimepicker1'>
 		                    <input type='text' id="checkListStartDate" class="form-control" name="check_start" value="1"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
-					</div>
-	       			<label for="inputEndDate" class="col-sm-2 control-label">종료일</label>
-	   				<div class="col-sm-4">
+	       			<label for="inputEndDate" style="margin-bottom: 0px; font-size: 14px">종료일</label>
 		                <div class='input-group date' id='datetimepicker2'>
 		                    <input type='text' id="checkListEndDate" class="form-control" name="check_end" value="1"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
-		                <br>
 					</div>
-	       			<label for="inputPwdCheck" class="col-sm-2 control-label">일정타입</label>
-	   				<div class="col-sm-4">
+					
+					<div class="typePM" style="display: inline-block; width:200px;">
+	       			<label for="inputPwdCheck" style="margin-bottom: 0px; font-size:14px;">일정타입</label>
+	   				<div>
 					  <select class="form-control" id="checkListCheckType" name="check_type">
 					    <option value="1">기능명세(usecase)</option>
 					    <option value="2">기능명세(usecase diaram)</option>
@@ -142,15 +149,19 @@
 					    <option value="5">화면명세</option>
 					  </select>
 					</div>
-	       			<label for="inputPhone" class="col-sm-2 control-label">담당자</label>
-	   				<div class="col-sm-4">
-						<input class="form-control" id="checkListManager" type="text" name="check_manager" size="20" placeholder="담당자를 입력하세요" value="1"><br>
+	       			<label for="inputPhone" style="margin-bottom: 0px; font-size:14px;">담당자</label>
+	   				<div>
+						<input class="form-control" id="checkListManager" type="text" name="check_manager" size="20" placeholder="담당자를 입력하세요" value="1">
 					</div>
-					<input type="hidden" id="checkListProjectId" name="check_projectId" value="${p_id }">
+					
+					</div>
+					
+				 
+							<input type="hidden" id="checkListProjectId" name="check_projectId" value="${p_id }">
 		        </div><!-- end of form group -->
 		        
 			  	<div class="form-group">
-			    	<div class="col-sm-offset-2 col-sm-10">
+			    	<div style="float:right;">
 			      		<button id="createCheckListBtn" class="btn btn-default" data-dismiss="modal">일정 생성</button>
 			    	</div>
 			  	</div>
