@@ -14,6 +14,8 @@
 	<package name="org.kosta.projectChecklist.domain"/>
 	<package name="org.kosta.uml.domain"/>
 	<package name="org.kosta.erd.domain"/>
+	<package name="org.kosta.usecase.domain"/>
+	<package name="org.kosta.usecaseDescription.domain"/>
 	</typeAliases>
 	
 	
