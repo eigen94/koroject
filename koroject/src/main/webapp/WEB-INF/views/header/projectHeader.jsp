@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/header.css">
 <style>
  @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css);@import url("https://fonts.googleapis.com/css?family=Raleway:300,700");/*Tactile by Pixelaritypixelarity.com @pixelarityLicense: pixelarity.com/license*/ 
+	@import url(http://weloveiconfonts.com/api/?family=entypo);
 </style>
 
 <header id="header">

@@ -36,5 +36,17 @@ public class FrontController {
 		return "indexMember";
 	}
 	
+	@RequestMapping(value="searchID", method=RequestMethod.GET)
+	public String searchID(){
+		return "searchID";
+	}
+	
+	@RequestMapping(value="matchingID", method=RequestMethod.GET)
+	public String matchingID(){
+		return "matchingID";
+	}
+	
+	
+	
 }
 

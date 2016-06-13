@@ -17,7 +17,7 @@
 	}
 	
 	.bb {
-			width:100px;
+			width:40px;
 			height:18px;
 			border: 3px dotted #666666;
 			display: inline-block;
@@ -27,8 +27,8 @@
 		}
 
 		.bt {
-			width:100px;
-			font-size: 18px;
+			width:40px;
+			font-size: 14px;
 			font-family: verdana;
 			position:relative;
 			top:-5px;
@@ -58,10 +58,9 @@
  <script type="text/javascript">
     jQuery(document).ready(function(){ 
 		
-		$('#b').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
-		$('#b-dis').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "approved"});
-		$('#b-dis').betterCheckbox('disable');
-		
+		$('#b').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+		//$('#b-dis').betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+		//$('#b-dis').betterCheckbox('disable');
 	});
 	</script>
 
@@ -143,8 +142,19 @@
 	</div> --%>
 	
 	<h2>stamp</h2>
-	<div class="example"><input id="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"><div class="bt">approved</div></div> <label for="b">Enabled</label></div>
-	<div class="example"><input id="b-dis" checked="checked" type="checkbox" disabled="" name="b" value="b" style="display: none;"><div class="bb disabled" style="-webkit-user-select: none;"><div class="bt disabled">approved</div></div> <label for="b-dis">Disabled</label></div>
+	<div class="example">
+		<input id="b" checked="true" type="checkbox" name="b" value="b" style="display: none;">
+		<div class="bb" style="-webkit-user-select: none;">
+
+		</div> 
+		<!-- <label for="b">Enabled</label> -->
+	</div>
+	<div class="example">
+		<input id="b-dis" checked="checked" type="checkbox" disabled="" name="b" value="b" style="display: none;">
+		<div class="bb disabled" style="-webkit-user-select: none;">
+		<div class="bt disabled">승인</div>
+		</div> <label for="b-dis">Disabled</label>
+	</div>
 
 </body>
 </html>
