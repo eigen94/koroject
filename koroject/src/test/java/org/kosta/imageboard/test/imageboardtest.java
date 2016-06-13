@@ -26,17 +26,17 @@ public class imageboardtest {
 	@Inject
 	private ImageDAO dao;
 	
-	/*@Test
+	@Test
 	public void testCreate() throws Exception{
 		ImageVO vo = new ImageVO();
 		
-		vo.setImg_bno(2);
+		vo.setImg_bno(88);
 		vo.setImg_title("새로운 글 작성");
 		vo.setImg_content("새로운 글 작성");
 		
 		
 		dao.create(vo);
-	}*/
+	}
 	
 	/*@Test
 	public void testRead()throws Exception{
