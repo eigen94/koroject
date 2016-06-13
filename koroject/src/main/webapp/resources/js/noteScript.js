@@ -49,6 +49,7 @@ function receive(email) {
 	            		$html += '<div class="message-list-item-header">';
 	            		$html += '<input type="hidden" value="' + list.n_id + '">';
 	            		$html += '<span class="note_title">' + list.n_title  + '</span>'; 
+	            		$html += '<span class="text ng-binding">' + list.n_date + '</span>';
 	            		$html += '<p class="note_content">' + list.n_content + '</p>';
 	            		$html += '</div></div></li>';
 	            	});
@@ -74,6 +75,7 @@ function receive(email) {
 	            		$html += '<div class="message-list-item-header">';
 	            		$html += '<input type="hidden" value="' + list.n_id + '">';
 	            		$html += '<span class="note_title">' + list.n_title  + '</span>'; 
+	            		$html += '<span class="note_date">' + list.n_date + '</span>';
 	            		$html += '<p class="note_content">' + list.n_content + '</p>';
 	            		$html += '</div></div></li>';
 	            	});
@@ -101,19 +103,33 @@ function receive(email) {
 	})
 
 	$(function(){	
+		
+		function check(word) {
+			var $word = $('#keywordInput').val();
+			alert($word)
+			if($word == null){
+				alert("검색어를 입력하세요");
+			}
+		}
+		
+		
 		//검색버튼 클릭!
 		//보낸쪽지
 		$('#sen_btn').on('click', function(event){
+			var $word = $('#keywordInput').val();
+			check($word);
 			self.location="note_searchSen?m_id=" + $('#m_id').val()
 				+"&searchType=" + $('#searchType option:selected').val()
-    			+"&keyword=" + $('#keywordInput').val();
+    			+"&keyword=" + $word;
 		})
 		
 		//받은쪽지
 		$('#rec_btn').on('click', function(event){
+			var $word = $('#keywordInput').val();
+			check($word);
 			self.location="note_searchRec?m_id=" + $('#m_id').val()
 				+"&searchType=" + $('#searchType option:selected').val()
-    			+"&keyword=" + $('#keywordInput').val();  
+    			+"&keyword=" + $word;  
 		})
 	})
 	
@@ -145,6 +161,7 @@ function receive(email) {
 		$('.left #toggleBtn').on('click', function(){
 			$('.noteBody .toggleDiv').toggle(1000);
 		})
+		
 		
 	})
 

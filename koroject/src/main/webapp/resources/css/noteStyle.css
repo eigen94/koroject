@@ -1,5 +1,6 @@
 /* 전체 */
 .noteBody {
+	border:1;
 	margin: 100px 50px;
 	height: 100%;
 	width: 100%;
@@ -9,6 +10,7 @@
 
 /* 좌측 */
 .left {
+	border:1;
 	float: left;
 	width: 20%;
 	height: 100%;
@@ -19,13 +21,33 @@
 
 /* 좌측 버튼 */
 
+.toggleDiv #over{
+	background-color: #ccc;
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    z-index: 24;
+}
+
+.toggleDiv #over:hover{
+	background-color: #ccc;
+    color: #000;
+    position: relative;
+    text-decoration: none;
+    z-index: 24;
+}
+
 .left button {
-	width: 100%;
 	margin: 10px;
+	height: 50px;
+	width: 200px;
+	border: 0;
+	outline: 0;
 }
 
 .left #toggleBtn {
-	height: 30px;
+	height: 200px;
+	width: 35px;
 }
 
 /* 좌측 버튼 끝 */
