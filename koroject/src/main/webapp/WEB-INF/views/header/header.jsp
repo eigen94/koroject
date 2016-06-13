@@ -117,11 +117,15 @@ koroject
       <div class="formholder">
         <div class="randompad">
         <form id="login" action="login" method="post">
-             <label name="email">Email</label>
-             <input type="email" id="loginEmail" name="m_email" placeholder="example@example.com" />
-             <label name="password">Password</label>
-             <input type="password" id="loginPwd" name="m_pwd" placeholder="password" />
+             <label name="email" style="margin-bottom: 0px;">Email</label>
+             <input type="email" id="loginEmail" name="m_email" placeholder="example@example.com" style="margin-top: 0px;" />
+             <label name="password" style="margin-bottom: 0px;">Password</label>
+             <input type="password" id="loginPwd" name="m_pwd" placeholder="password" style="margin-top: 0px;" />
              <input type="submit" value="Login" />
+             <div style="margin-bottom: 0px; margin-top: 10px;">
+             <a class="searchID" href="searchID">아이디</a>를 잊어버렸나요?
+             </div>
+             
          </form>
         </div>
       </div>
@@ -131,7 +135,7 @@ koroject
 
     		<!-- start: REGISTER BOX -->
 		<div class="box-register">
-			<form id="register" action="insert_member" class="form-register ng-pristine ng-valid">
+			<form id="register" action="insert_member" method="post" class="form-register ng-pristine ng-valid">
 				<fieldset class="signUpfieldset">
 					<legend>
 						회원가입

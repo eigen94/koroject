@@ -85,6 +85,24 @@ public class MemberDAOImpl implements MemberDAO{
 		// TODO Auto-generated method stub
 		session.update(namespace+".memberModify", member);
 	}
+
+	@Override
+	public void proDelete(String email) {
+		// TODO Auto-generated method stub
+		session.update(namespace+".proDelete", email);
+	}
+
+	@Override
+	public String getImage(String email) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".getImage",email);
+	}
+
+	@Override
+	public Member member(String email) {
+		// TODO Auto-generated method stub
+		return session.selectOne(namespace+".member",email);
+	}
 	
 
 

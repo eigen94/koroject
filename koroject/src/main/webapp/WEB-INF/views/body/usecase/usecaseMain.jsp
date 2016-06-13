@@ -14,10 +14,10 @@
 #inspector-holder {
 	position: absolute;
 	top: 0;
-	left: 1500px;
+	left: 1500px;	
 	bottom: 0;
 	width: 300px;
-	height: 600px;
+	height: 600px;	
 	background-color: #333;
 	color: #bcbcbc;
 }
@@ -25,13 +25,13 @@
 #paper-holder {
 	left: 300px;
 	height: 600px;
-	width: 1200px;
+	width: 1200px;	
 	position: relative;
 }
 
 #stencil-holder {
 	width: 300px;
-	height: 600px;
+	height: 600px;	
 	position: absolute;
 }
 </style>
@@ -43,39 +43,36 @@
 <script src="http://jointjs.com/js/rappid.min.js"></script>
 
 <script type="text/javascript">
-	var erd = joint.shapes.erd;
-
-	$(function() {
+	var uml = joint.shapes.uml;
+	
+	$(function(){
 		var graph = new joint.dia.Graph();
-
+		
 		var paper = new joint.dia.Paper({
 			el : $('#paper-holder'),
 			width : 1150,
 			height : 600,
 			gridSize : 1,
 			model : graph
-		});
-
-		var stencil = new joint.ui.Stencil({
-			graph : graph,
-			paper : paper,
-			width : 300,
-			height : 600
-		});
-
-		$('#stencil-holder').append(stencil.render().el);
-
-		var c = createEntity();
-		var i = createIsa();
-		var a = createRelationship();
-		var n = createNormal();
-		var k = createKey();
-
-		stencil.load([ c, i, a, n, k ]);
-		//stencil.load();
-
+		});		
+		
+		var stencil = new joint.ui.Stencil({ 
+	        graph: graph, 
+	        paper: paper,
+	        width: 300,
+	        height: 600
+	    });	
+		
+	    $('#stencil-holder').append(stencil.render().el);
+	    
+	    var actor = createActor();
+	    var usecase = createUsecase();
+	    var system = createSystem();
+		
+		stencil.load([actor, usecase, system]);  
+		
 		var inspector;
-
+		
 		function createInspector(cellView) {
 			if (!inspector || inspector.options.cellView !== cellView) {
 				if (inspector) {
@@ -84,8 +81,7 @@
 				}
 
 				inspector = new joint.ui.Inspector({
-					inputs : {
-						
+					inputs : {						
 						
 						labels: {
 			                type: 'list',
@@ -142,168 +138,129 @@
 			}
 		}
 		; //end of createInspector
-
+		
 		paper.on('cell:pointerdown', function(cellView) {
-			createInspector(cellView);
-		});
+	        createInspector(cellView);	        
+	    });
+		
+		paper.on('cell:pointerup', function(cellView) {	        
+	        if (cellView.model instanceof joint.dia.Link) return;
 
-		paper.on('cell:pointerup', function(cellView) {
-			if (cellView.model instanceof joint.dia.Link)
-				return;
-
-			var halo = new joint.ui.Halo({
-				cellView : cellView
-			});
-			halo.removeHandle('clone');
-			halo.removeHandle('fork');
-			halo.removeHandle('rotate');
-			halo.render();
-		});
-
+	        var halo = new joint.ui.Halo({ cellView: cellView });
+	        halo.removeHandle('clone');
+	        halo.removeHandle('fork');
+	        halo.removeHandle('rotate');
+	        halo.render();
+	    });
+				
 		var json;
-		$("#save").click(function() {
+		$("#save").click(function(){			
 			json = graph.toJSON();
 			//console.log(json);
 			$.ajax({
 				type : "post",
 				url : "save",
-				data : {
-					"jsonData" : JSON.stringify(json)
-				},
+				data : { "jsonData" : JSON.stringify(json) },
 				dataType : "text",
-				success : function() {
+				success : function(){
 					graph.clear();
 				}
-			})
+			})					
 		});
-
-		$("#load").click(function() {
+		
+		$("#load").click(function(){
 			$.ajax({
-				type : "post",
+				type:"post",
 				url : "load",
-				dataType : "json",
-				success : function(data) {
+				dataType: "json",				
+				success : function(data){					
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
-				error : function() {
+				error : function(){
 					console.log("실패")
-				}
-			})
-		})
+				}			
+			})			
+		})	
 		
 		
-
+		
+		
+		
 		
 	})//end jquery 
-
-	var createEntity = function() {
-		var c = new erd.Entity({
+	
+	var createActor = function()
+	{
+		return (new joint.shapes.basic.Image({
 			position : {
 				x : 20,
 				y : 20
 			},
 			size : {
-				width : 100,
-				height : 50,
+				width : 250,
+				height : 150,
 			},
 			attrs : {
-				text : {
-					//'font-size':18
-					text : "Entity"
-
-				}
-			},
-
-		});
-		return c;
+				image : {
+					width : 100,
+					height : 100,
+					"xlink:href" : "/images/actor.jpg"
+					//src : "/images/actor.jpg"
+				},
+				text: { text: 'Actor', 'font-size': 18, display: '', stroke: '#000000', 'stroke-width': 0 }
+			}
+		}));
 	}
-
-	var createIsa = function() {
-		var i = new erd.ISA({
-			position : {
-				x : 130,
-				y : 20
-			},
-			size : {
-				width : 100,
-				height : 50,
-			},
-			attrs : {
-				text : {//'font-size':18
-					text : "ISA"
-				}
-			},
-
-		});
-		return i;
-	}
-
-	var createRelationship = function() {
-		var a = new erd.Relationship({
+	
+	var createUsecase = function()
+	{
+		return ( new joint.shapes.basic.Circle({
 			position : {
 				x : 20,
-				y : 100
+				y : 220
 			},
 			size : {
-				width : 100,
-				height : 50,
+				width : 250,
+				height : 150,
 			},
-			attrs : {
-				text : {
-					//'font-size':18
-					text : "Relationship"
-				}
+            attrs: {
+                circle: { width: 50, height: 30, },
+                text: { text: 'usecase', 'font-size': 18, stroke: '#000000', 'stroke-width': 0 }
+            }
+        }));
+	}
+	
+	var createSystem = function()
+	{
+		return (new joint.shapes.basic.Rect({
+			position : {
+				x : 20,
+				y : 390
 			},
+			size : {
+				width : 250,
+				height : 150,
+			},
+            attrs: {
+                rect: {
+                    rx: 2, ry: 2, width: 50, height: 30,
+                    //fill: '#27AE60'
+                },
+                text: { text: 'System', 'font-size': 18, stroke: '#000000', 'stroke-width': 0 }
+            }
+        }));
+	}
 
-		});
-		return a;
-	}
-	
-	var createKey = function(){
-		return (new erd.Key({
-		    position: { x: 130, y: 100 },
-		    size : {
-				width : 100,
-				height : 50,
-			},
-		    attrs: {
-		        text: {		            
-		            text: 'Key'		           
-		        }
-		    }
-		}))
-		
-	}
-		
-		
-	
-	
-	var createNormal = function(){
-		return(new erd.Normal({
-		    position: { x: 20, y: 180 },
-		    size : {
-				width : 100,
-				height : 50,
-			},
-		    attrs: {
-		        text: {		            
-		            text: 'Normal'
-		            
-		        }
-		    }
-		}))
-	}
-		
-		
 </script>
 
 
 </head>
 <body>
 	<div>
-		<button id="save">저장</button>
-		<button id="load">불러오기</button>
-		<button id="convert">convert</button>
+	<button id="save">저장</button>
+	<button id="load">불러오기</button>
+	<button id="convert">convert</button>
+	
 	</div>
 	<div id="stencil-holder"></div>
 	<div id="paper-holder" class="paper"></div>

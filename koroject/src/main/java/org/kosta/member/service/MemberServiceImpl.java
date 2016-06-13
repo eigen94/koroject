@@ -83,6 +83,24 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		dao.memberModify(member);
 	}
+
+	@Override
+	public void proDelete(String email) {
+		// TODO Auto-generated method stub
+		dao.proDelete(email);
+	}
+
+	@Override
+	public String getImage(String email) {
+		// TODO Auto-generated method stub
+		return dao.getImage(email);
+	}
+
+	@Override
+	public Member member(String email) {
+		// TODO Auto-generated method stub
+		return dao.member(email);
+	}
 	
 	
 

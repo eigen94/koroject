@@ -5,8 +5,18 @@ $('input[type="submit"]').mousedown(function(){
 $('input[type="submit"]').mouseup(function(){
   $(this).css('background', '#ef7f5b');
   $(this).css('color', '#fff');
-  
 });
+
+
+$('input[type="button"]').mousedown(function(){
+	  $(this).css('background', ' #f19172');
+	  $(this).css('color','white');
+	});
+$('input[type="button"]').mouseup(function(){
+	  $(this).css('background', '#ef7f5b');
+	  $(this).css('color','white');
+	});
+
 
 $('').on("click","#loginform",function(){
   $('.login').fadeToggle('slow');

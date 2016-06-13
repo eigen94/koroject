@@ -54,6 +54,17 @@
 		 m_answer = #{m_answer} 
 		where m_email = #{m_email}
 	</update>
+	
+	<update id="proDelete">
+		update member set m_image = NULL where m_email = #{email}
+	</update>
+	
+	<select id="getImage" resultType="String">
+		select m_image from member where m_email = #{email}
+	</select>
+	<select id="member" resultType="Member">
+		select * from member where m_email = #{email}
+	</select>
 </mapper>
 
 

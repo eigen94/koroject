@@ -29,5 +29,11 @@ public interface MemberService {
 	public Member serchEmail(RegisterCommand rc);
 
 	public void memberModify(Member member);
+
+	public void proDelete(String email);
+
+	public String getImage(String email);
+
+	public Member member(String email);
 	
 }
