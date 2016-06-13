@@ -30,5 +30,11 @@ public interface MemberDAO {
 
 	public void memberModify(Member member);
 
+	public void proDelete(String email);
+
+	public String getImage(String email);
+
+	public Member member(String email);
+
 	
 }

@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -79,7 +80,7 @@ public class MemberController {
 		member.setM_recentMember("");
 		member.setM_pwd(testSHA256(member.getM_pwd()));
 		service.insertMember(member);
-		return  "/index";
+		return  "redirect:/";
 	}
 	
 	//회원수정
@@ -91,7 +92,7 @@ public class MemberController {
 		System.out.println(member);
 		if(member == null){
 			System.out.println("실패?");
-			model.addAttribute("false", "비밀번호를 잘못 입력하셧습니다.");
+			model.addAttribute("pwdFalse", "비밀번호를 잘못 입력하셧습니다.");
 			return "myPage";
 		}
 		member.setM_pwd(testSHA256(rc.getM_pwdCheck()));
@@ -106,7 +107,19 @@ public class MemberController {
 		req.getSession().setAttribute("member", member);
 		return "redirect:/myPage";
 	}
-
+	
+	//프로필 사진 삭제
+	@RequestMapping(value="proDelete")
+	public String proDelete(@RequestParam("email") String email, HttpServletRequest req){
+		service.proDelete(email);
+		req.getSession().removeAttribute("member");
+		
+		Member member = service.member(email);
+	
+		req.getSession().setAttribute("member", member);
+		
+		return "redirect:/myPage";
+	}
 	
 	/*//validation 바인드
 	@InitBinder
