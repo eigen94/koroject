@@ -63,6 +63,9 @@
 <script type="text/javascript">
 $(function(){
 
+	var lastAddedAlphaName;
+	var lastAddedAlphaCode;
+	var lastAddedAlphaHashId;
 	var editorMode =0;
 	var alphaState = makeListHtml();
 	//초기 객체 생성
@@ -70,7 +73,7 @@ $(function(){
 			$this : this,
 			milestone : [],
 			set : function(hashId,attr,newValue,newValue2,newValue3){
-				console.log("set start");
+				//console.log("set start");
 				for(var i=0; i<(this.milestone).length; i++){
 					if((this.milestone[i]).hashId==hashId){
 						if(attr=="name"){
@@ -149,7 +152,7 @@ $(function(){
 						
 						//수행테스크
 						
-						console.log(this.milestone);
+						//console.log(this.milestone);
 					}
 				}
 			},
@@ -230,7 +233,7 @@ $(function(){
 	//헬퍼 html코드 부분
 	function createAlphaHtml(code,name,hashId){
 //		console.log(obj)
-		this.returnHtml= '<li value='+code+' id='+hashId+' class="pure-menu-item alphaLists ui-sortable"><a class="pure-menu-link" href="" style="display: block;">'+name+'<div class="removeAlphastate">x</div></a></li>'
+		this.returnHtml= '<li value='+code+' id='+hashId+' class="pure-menu-item addedAlphaLists ui-sortable"><a class="pure-menu-link" href="" style="display: block;">'+name+'</a><div class="removeAlphastate">x</div></li>'
 		return this.returnHtml;
 	}
 	
@@ -238,17 +241,14 @@ $(function(){
 	function addClassDraggable(target){
 		$(target).each(function(){
 			var $this = $(this);
-			var alphaID = $(this).attr('value');
-			var sortableNumber = alphaID.substr(1,1);
+			var sortableNumber = ($(this).attr('value')).substr(1,1);
 			var connectToSortableStr = ".sortable"+sortableNumber;
-			var hashId ="";
-			var name = "";
 			$this.draggable({
  				helper : function(e){
-					name = $(this).find("a").html();
-					hashId = createHashID();
-					//console.log($(this).attr("value"));
-					var returnHtml = createAlphaHtml(alphaID,name,hashId); 
+ 					lastAddedAlphaCode = $(this).attr('value');
+ 					lastAddedAlphaName = $(this).find("a").html();
+ 					lastAddedAlphaHashId = createHashID();
+					var returnHtml = createAlphaHtml(lastAddedAlphaCode,lastAddedAlphaName,lastAddedAlphaHashId); 
 					return returnHtml;
 				},
 				connectToSortable : connectToSortableStr,
@@ -257,9 +257,9 @@ $(function(){
 					var milestoneHashID=$(e.toElement).closest('tr').attr('id');
 					//마일스톤 등록
 					if(milestoneHashID!=undefined){
-						essence.set(milestoneHashID,"addAlpha",alphaID,name,hashId);
+						essence.set(milestoneHashID,"addAlpha",lastAddedAlphaCode,lastAddedAlphaName,lastAddedAlphaHashId);
 					}
-				}
+				} 
 			});
 		});
 	}
@@ -278,6 +278,20 @@ $(function(){
 			$("#"+hashId+" .milestoneResult textarea").val(essence.milestone[i].milestoneResult);
 			$("#"+hashId+" .milestoneTask textarea").val(essence.milestone[i].milestoneTask);
 			$("#"+hashId+" .milestoneNote2 textarea").val(essence.milestone[i].milestoneNote2);
+			if(editorMode==1&&essence.milestone[i].alphaState!=undefined){
+				for(var j=0; j<(essence.milestone[i].alphaState).length; j++){
+					console.log("alpha load ");
+					console.log(essence.milestone[i].alphaState);
+					var code = essence.milestone[i].alphaState[j].alphaID;
+					var name = essence.milestone[i].alphaState[j].name;
+					var alphaHashId = essence.milestone[i].alphaState[j].hashId;
+					var returnHtml = createAlphaHtml(code,name,alphaHashId);
+					console.log(code);
+					console.log(code.substr(1,1));
+					console.log($("#"+hashId+" sortable"+code.substr(1,1)));
+					$("#"+hashId+" .sortable"+code.substr(1,1)).append(returnHtml);
+				}
+			}
 		}
 		$("td").css("vertical-align","middle");
 		addSortable();
@@ -306,10 +320,36 @@ $(function(){
 			$(".sortable"+i).sortable({
 				connectWith : ".sortable"+i,
 				update : function(e,ui){
-					console.log()
 					console.log("update!")
+				
+					console.log("event : ");
 					console.log(e);
-					console.log(ui);
+					var targetId = $(e.target).closest("tr").attr("id");
+					var toElId = $(e.toElement).closest("tr").attr("id");
+					
+					var alphaID= lastAddedAlphaCode;
+					var name = lastAddedAlphaName;
+					var hashId = lastAddedAlphaHashId;
+					console.log("alphaID :"+alphaID+" name :"+name+" hashId :"+hashId);
+					console.log();
+ 					if(targetId==toElId){
+						console.log("same");
+						console.log("add");
+						//같은 마일 스톤이므로 객체 순서 스캔 후 수정
+
+					} else {
+						//이동 했으므로 삭제 후 등록 target을 삭제하고 toEl을 등록
+						var milestoneHashID=$(e.toElement).closest('tr').attr('id');
+						//마일스톤 등록
+						//이동시 중복현상 해결할것
+						essence.set(targetId,"removeAlpha",hashId);
+						if(milestoneHashID!=undefined){
+							console.log("add");
+							essence.set(milestoneHashID,"addAlpha",alphaID,name,hashId);
+						}
+						
+					}
+					//console.log(ui);
 					}
 			});
 		}
@@ -336,6 +376,7 @@ $(function(){
 	$(".taskBtn").click(function(){
 		editorMode=2;
 		$(".milestoneField").empty().append(drawTable(2,0));
+		//
 		drawMilestone();
 	});
 	$(".essencemenu").click(function(){
@@ -379,6 +420,9 @@ $(function(){
 		essence.set(targetId,attr,textValue);
 		
 		console.log();
+	});
+	$('.milestoneField').on("click","a",function(e){
+		e.preventDefault();
 	});
 	$('body').on("click",".removeAlphastate",function(e){
 		e.preventDefault();
