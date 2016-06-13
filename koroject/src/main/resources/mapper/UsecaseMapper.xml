@@ -3,16 +3,16 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 
-<mapper namespace="org.kosta.erd.ErdMapper">
+<mapper namespace="org.kosta.usecase.UsecaseMapper">
 	<cache />
 	
 <update id="save" parameterType="String">
-	update erd set content = #{content}
+	update usecase set content = #{content}
 		where pid = 1
 </update>
 
 <select id="load" parameterType="int" resultType="String">
-	select content from erd where pid = #{pid}
+	select content from usecase where pid = #{pid}
 </select>
 
 </mapper>
