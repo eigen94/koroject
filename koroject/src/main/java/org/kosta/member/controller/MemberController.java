@@ -79,7 +79,7 @@ public class MemberController {
 		member.setM_recentMember("");
 		member.setM_pwd(testSHA256(member.getM_pwd()));
 		service.insertMember(member);
-		return  "/index";
+		return  "redirect:/";
 	}
 	
 	//회원수정
@@ -91,7 +91,7 @@ public class MemberController {
 		System.out.println(member);
 		if(member == null){
 			System.out.println("실패?");
-			model.addAttribute("false", "비밀번호를 잘못 입력하셧습니다.");
+			model.addAttribute("pwdFalse", "비밀번호를 잘못 입력하셧습니다.");
 			return "myPage";
 		}
 		member.setM_pwd(testSHA256(rc.getM_pwdCheck()));

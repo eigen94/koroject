@@ -227,7 +227,8 @@ input[type=text], input[type=email], input[type=password], select {
 						<div class="form-group">
 							<label class="control-label">답변</label><Br> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="m_answer" value="${ member.m_answer}">
+								type="text" name="m_answer" value="${ member.m_answer}"><br>
+								<p>${pwdFalse }</p>
 						</div>
 						<input class="MyPageButton" type="submit" value="마이페이지 수정">
 						</form>
