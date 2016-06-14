@@ -18,14 +18,6 @@ public class ImgUploadFileUtils {
   private static final Logger logger = 
       LoggerFactory.getLogger(ImgUploadFileUtils.class);
 
-//  public static String uploadFile(String uploadPath, 
-//      String originalName, 
-//      byte[] fileData)throws Exception{
-//    
-//    return null;
-//  }
-//  
-
   
   public static String uploadFile(String uploadPath, 
                               String originalName, 

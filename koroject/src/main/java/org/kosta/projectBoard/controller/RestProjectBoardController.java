@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/projectBoard/*")
 public class RestProjectBoardController {
 
-	@Inject
-	private ProjectBoardService service;
+	@Inject	private ProjectBoardService service;
 	
 	@RequestMapping(value="memberList")
 	public List<Member> memberlist(@RequestParam("search") String search){

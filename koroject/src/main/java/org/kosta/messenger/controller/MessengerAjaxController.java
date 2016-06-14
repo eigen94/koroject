@@ -12,12 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MessengerAjaxController {
 
-	@Inject
-	private NoteService service;
+	@Inject	private NoteService service;
 
 	@RequestMapping("/getMember")
 	public void getSession(Model model, HttpServletRequest request) throws Exception{
-		System.out.println("들어오니 ? ");
 		Member member = (Member)request.getSession().getAttribute("member");
 	
 		model.addAttribute("member", member);

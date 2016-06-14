@@ -19,8 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/projectBoard/{p_id}/checklist/*")
 public class ProjectChecklistController {
 
-	@Inject
-	ProjectChecklistService service;
+	@Inject	ProjectChecklistService service;
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	@ResponseBody
