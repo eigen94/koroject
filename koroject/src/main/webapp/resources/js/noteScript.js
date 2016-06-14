@@ -73,7 +73,8 @@ function receive(email) {
 	            		$html += '<div class="clickPoint">';
 	            		$html += '<div class="message-list-item-header">';
 	            		$html += '<input type="hidden" value="' + list.n_id + '">';
-	            		$html += '<span class="note_title">' + list.n_title  + '</span>'; 
+	            		$html += '<span class="note_senderEmail"note_senderEmail>' + list.senderEmail + '</span>';
+	            		$html += '<p class="note_title">' + list.n_title  + '</p>'; 
 	            		$html += '<p class="note_content">' + list.n_content + '</p>';
 	            		$html += '</div></div></li>';
 	            	});

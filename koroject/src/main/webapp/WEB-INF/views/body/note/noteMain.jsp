@@ -21,6 +21,7 @@
 		<!-- 좌측에 버튼들 -->
 		<div class="left">
 			<div class="clickToggle"><button id="toggleBtn" style="margin-left:50px;">V</button></div><br>
+			<hr style="margin:8px;">
 			<div class="toggleDiv">
 				<div class="sendform">	<button id="button"> 쪽지 보내기 </button>	</div>
 				<div class="sendList"><button id="button"> 보낸 쪽지함 </button></div>
@@ -83,6 +84,7 @@
 							<button id='rec_btn'>받은쪽지검색</button>
 						</div>
 					</div>
+					<div class="listlist">
 					<div class="scroll">
 						<div class='box-body'>
 							<ul class="message-list">
@@ -93,8 +95,9 @@
 										<div class="clickPoint">
 											<div class="message-list-item-header">
 												<input type="hidden" value="${note.n_id }">
-												<span class="dd">${note.senderEmail }</span>
-												<span class="note_title">${note.n_title }</span>
+												<span class="note_senderEmail">${note.senderEmail }</span>
+												<hr style="margin: 2px;">
+												<p class="note_title">${note.n_title }</p>
 												<p class="note_content">${note.n_content }</p>
 											</div>
 										</div>
@@ -103,6 +106,7 @@
 								</c:forEach>
 							</ul>
 						</div>
+					</div>
 					</div>
 				</div>
 			
