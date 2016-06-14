@@ -3,7 +3,7 @@ var express = require('express')
 	,app = express()
 	,server = http.createServer(app);
 var bodyParser = require('body-parser');
-var tmpSave;
+var tmpSave={};
 
 var cnt=0;
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
@@ -29,11 +29,15 @@ app.post('/', function(req, res, next) {
 
 app.post('/export', function(req, res, next) {
 	// Handle the post for this route
-	console.log(req)
+	console.log(req.body.milestone)
+	console.log(req.body.p_id)
+	tmpSave[req.body.p_id] = req.body.milestone;
+	console.log(tmpSave)
 });
 
 app.post('/import', function(req, res, next) {
 	// Handle the post for this route
+	res.send(tmpSave[req.body.p_id]);
 });
 
 app.post('/more', function(req, res, next) {

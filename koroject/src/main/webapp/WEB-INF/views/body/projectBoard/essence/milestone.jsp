@@ -65,6 +65,10 @@
 <script type="text/javascript">
 $(function(){
 
+	var numberP_id=window.location.href;
+	var regExp = /(\/\d+)/g;
+	var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+	
 	var lastAddedAlphaName;
 	var lastAddedAlphaCode;
 	var lastAddedAlphaHashId;
@@ -164,7 +168,12 @@ $(function(){
 				console.log(attr);
 			},
 			importJson : function(data){
-				this.milestone = JSON.parse(data);
+				//console.log(data);
+				var obj = data;
+				console.log("importJson : ");
+				console.log(obj);
+				console.log(JSON.parse(obj));
+				this.milestone = JSON.parse(obj);
 				//this.milestone = data;
 			},
 			exportJson : function(){
@@ -413,7 +422,8 @@ $(function(){
 		$.ajax({
 			url : "http://localhost:10000/export",
 			data : {
-				milestone : sendData
+				milestone : sendData,
+				p_id : p_id
 			},
 			method : "POST",
 			success : function(){
@@ -425,15 +435,20 @@ $(function(){
 	//로드
 	$("body").on("click","#essenceLoad",function(){
 		$.ajax({
-			url : "localhost:10000/import",
+			url : "http://localhost:10000/import",
 			method : "POST",
+			data : {
+				p_id : p_id
+			},
 			success : function(data){
 				console.log("load done");
 				console.log(data);
+				essence.importJson(data);
 			}
 		})
 		
 	});
+	
 	
 	//마일스톤을 누르면 행 추가
 	$("body").on("click",".addMilestoneBtn",function(){
@@ -476,9 +491,26 @@ $(function(){
 		//뷰제거
 		$(this).closest("li").remove();
 	});
-	//1.정의 테이블 보여주기, 정의 선택
-	$(".milestoneField").append(drawTable(0,0));
-	$(".definitionBtn").css("color","black");
+	
+
+	$.ajax({
+		url : "http://localhost:10000/import",
+		method : "POST",
+		data : {
+			p_id : p_id
+		},
+		success : function(data){
+			console.log("load done");
+			console.log(data);
+			essence.importJson(data);
+			
+			
+			//1.정의 테이블 보여주기, 정의 선택
+			$(".milestoneField").append(drawTable(0,0));
+			$(".definitionBtn").css("color","black");
+			drawMilestone();
+		}
+	})
 	
 	
 });
