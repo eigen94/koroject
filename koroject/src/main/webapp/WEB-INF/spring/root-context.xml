@@ -33,10 +33,11 @@
 
 	<context:component-scan base-package="org.kosta"/>
 
-	<!-- validation -->
+	<!-- validation 
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="message.validation"/>
 		<property name="defaultEncoding" value="UTF-8"/>
 	</bean>
+	-->
 	
 </beans>
