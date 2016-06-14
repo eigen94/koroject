@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
 import org.springframework.stereotype.Repository;
 
@@ -38,6 +39,12 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 	@Override
 	public void delete(int pId) {
 		session.delete(namespace+".delete", pId);
+	}
+
+	@Override
+	public List<Member> memberList(String search) {
+		// TODO Auto-generated method stub
+		return session.selectList(namespace+".memberList", search);
 	}
 	
 	

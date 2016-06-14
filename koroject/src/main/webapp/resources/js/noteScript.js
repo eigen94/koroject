@@ -143,7 +143,7 @@ function receive(email) {
 	$(function(){
 		
 		$('.left #toggleBtn').on('click', function(){
-			$('.noteBody .toggleDiv').toggle(1000);
+			$('.noteBody .toggleDiv').toggle();
 		})
 		
 	})

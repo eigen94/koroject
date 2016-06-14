@@ -1,4 +1,7 @@
 $(function(){
+	
+
+	
 	function toggleLoingForm(obj){
 
 		$('.login').fadeToggle('slow');
