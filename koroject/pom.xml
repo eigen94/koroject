@@ -365,7 +365,6 @@
 		    <artifactId>purecss</artifactId>
 		    <version>0.6.0</version>
 		</dependency>
-		
 
 
 	</dependencies>
