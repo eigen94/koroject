@@ -93,6 +93,7 @@
 										<div class="clickPoint">
 											<div class="message-list-item-header">
 												<input type="hidden" value="${note.n_id }">
+												<span class="dd">${note.senderEmail }</span>
 												<span class="note_title">${note.n_title }</span>
 												<p class="note_content">${note.n_content }</p>
 											</div>

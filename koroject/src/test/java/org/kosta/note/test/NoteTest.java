@@ -20,7 +20,7 @@ public class NoteTest {
 	public void InsertTest() throws Exception{
 		Note note = new Note();
 		
-		note.setN_content("Ŀ��Ʈ��");
+		note.setN_content("이제 안깨ㅈ,ㅁ/");
 		note.setN_receive(0);
 		note.setN_sender(1);
 		note.setN_title("asd");
