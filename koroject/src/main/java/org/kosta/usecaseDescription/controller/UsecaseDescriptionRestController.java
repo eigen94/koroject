@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/usecaseDescription/*")
 public class UsecaseDescriptionRestController {
-	@Inject
-	private UsecaseDescriptionService service;
+	@Inject	private UsecaseDescriptionService service;
 
 	@RequestMapping(value="save", method=RequestMethod.POST)
 	public void save(@RequestParam("jsonData") String jsonData) throws Exception

@@ -4,7 +4,6 @@ import javax.inject.Inject;
 
 import org.kosta.erd.domain.JsonErd;
 import org.kosta.erd.service.ErdService;
-import org.kosta.uml.domain.JsonUml;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,8 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/erd/*")
 public class ErdRestController {
 
-	@Inject
-	private ErdService service;
+	@Inject private ErdService service;
 
 	@RequestMapping(value="save", method=RequestMethod.POST)
 	public void save(@RequestParam("jsonData") String jsonData) throws Exception

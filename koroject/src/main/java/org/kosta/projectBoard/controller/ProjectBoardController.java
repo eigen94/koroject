@@ -20,8 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/projectBoard/*")
 public class ProjectBoardController {
 	
-	@Inject
-	private ProjectBoardService service;
+	@Inject	private ProjectBoardService service;
 		
 	@RequestMapping(value="create", method=RequestMethod.GET)
 	public void create()

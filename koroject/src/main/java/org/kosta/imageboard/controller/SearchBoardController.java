@@ -26,20 +26,17 @@ public class SearchBoardController {
 
 	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 	
-	@Inject
-	private ImageService service;
+	@Inject private ImageService service;
 	
 	@RequestMapping(value="list", method= RequestMethod.GET)
 	public String listPage(@ModelAttribute("cri")ImgSearchCriteria cri, Model model)throws Exception{
 		System.out.println(cri.toString());
 		
-		//model.addAttribute("list", service.listCriteria(cri));
 		model.addAttribute("list", service.listSearchCriteria(cri));
 		
 		ImgPageMaker pageMaker = new ImgPageMaker();
 		pageMaker.setCri(cri);
 		
-		//pageMaker.setTotalCount(service.listCountCriteria(cri));
 		pageMaker.setTotalCount(service.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
@@ -67,7 +64,6 @@ public class SearchBoardController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		rttr.addAttribute("p_id", p_id);
-		System.out.println("삭제요청");
 		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
 	}
 	
@@ -82,7 +78,6 @@ public class SearchBoardController {
 	@RequestMapping(value="modifyPage", method=RequestMethod.POST)
 	public String modifyPOST(ImageVO vo, ImgSearchCriteria cri, RedirectAttributes rttr,@PathVariable int p_id, @PathVariable int check_id)throws Exception{
 		
-		System.out.println(cri.toString());
 		service.modify(vo);
 		
 		rttr.addAttribute("page",cri.getPage());
@@ -91,28 +86,23 @@ public class SearchBoardController {
 		rttr.addAttribute("keyword", cri.getKeyword());
 		rttr.addFlashAttribute("msg", "SUCCESS");
 		rttr.addFlashAttribute("p_id", p_id);
-		System.out.println(rttr.toString());
 		
 		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
 	}
 	
 	@RequestMapping(value="register", method= RequestMethod.GET)
 	public String registerGET()throws Exception{
-		System.out.println("register get...");
 		return "imageRegister";
 	}
 	
 	@RequestMapping(value="register", method= RequestMethod.POST)
 	public String registerPOST(ImageVO vo, RedirectAttributes rttr, @PathVariable int p_id, @PathVariable int check_id)throws Exception{
-		System.out.println("register post...");
-		System.out.println(vo.toString());
 		
 		service.regist(vo);
 		
 		rttr.addFlashAttribute("msg", "success");
 		rttr.addFlashAttribute("p_id", p_id);
 		return "redirect:/projectBoard/"+p_id+"/checklist/"+check_id+"/list";
-//		return "image";
 	}
 	@RequestMapping("getAttach/{img_bno}")
 	@ResponseBody

@@ -12,7 +12,6 @@ public class ProjectBoard implements Serializable {
 	private String p_memo;
 	public ProjectBoard() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public int getP_Id() {
 		return p_Id;
