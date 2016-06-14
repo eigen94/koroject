@@ -7,7 +7,6 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.kosta.imageboard.domain.FileVO;
 import org.kosta.imageboard.domain.ImageVO;
 import org.kosta.imageboard.domain.ImgSearchCriteria;
 import org.kosta.imageboard.domain.imgCriteria;
@@ -16,13 +15,11 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ImageDAOImpl implements ImageDAO {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
 	private static String namespace = "org.kosta.member.mapper.ImageMapper";
 
 	@Override
 	public void create(ImageVO vo) throws Exception {
-		System.out.println("-------------------" + vo);
 		session.insert(namespace + ".create", vo);
 
 	}
@@ -109,7 +106,6 @@ public class ImageDAOImpl implements ImageDAO {
 
 		paramMap.put("fullName", fullName);
 		paramMap.put("img_bno", maxNum);
-		System.out.println("paramMap :" + paramMap);
 		
 		session.insert(namespace + ".addAttach", paramMap);
 

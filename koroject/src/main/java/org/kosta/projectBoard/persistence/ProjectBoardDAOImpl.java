@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
+	
 	private static String namespace = "org.kosta.mapper.ProjectBoardMapper";
 	
 	@Override
@@ -43,7 +43,6 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 
 	@Override
 	public List<Member> memberList(String search) {
-		// TODO Auto-generated method stub
 		return session.selectList(namespace+".memberList", search);
 	}
 	

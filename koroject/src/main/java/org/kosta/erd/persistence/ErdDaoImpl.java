@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ErdDaoImpl implements ErdDao {
 	
-	@Inject
-	private SqlSession session;
+	@Inject private SqlSession session;
 	
 	private static String namespace = "org.kosta.erd.ErdMapper";
 

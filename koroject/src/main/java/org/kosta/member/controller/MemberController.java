@@ -31,8 +31,7 @@ public class MemberController {
 
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
 
-	@Inject
-	private MemberService service;
+	@Inject	private MemberService service;
 
 	@Autowired
 	public void setService(MemberService service) {
@@ -63,17 +62,6 @@ public class MemberController {
 	// 회원가입
 	@RequestMapping(value = "insert_member", method = RequestMethod.POST)
 	public String insert_member(Member member, Model model) {
-		/*
-		 * new RegisterRequestValidator().validate(rcm, errors);
-		 * if(errors.hasErrors()){ return "/"; } Member member = new Member();
-		 * 
-		 * member.setM_email(rcm.getM_email());
-		 * member.setM_name(rcm.getM_name());
-		 * member.setM_phone(rcm.getM_phone());
-		 * 
-		 * member.setM_question(rcm.getM_question());
-		 * member.setM_answer(rcm.getM_answer()); ;
-		 */
 		
 		member.setM_id(service.idSelect() + 1);
 		member.setM_recentMember("");
@@ -137,7 +125,6 @@ public class MemberController {
 			return "index";
 		}
 		request.getSession().setAttribute("member", member);
-		/* model.addAttribute("member", member); */
 		return "index";
 	}
 
@@ -253,12 +240,7 @@ public class MemberController {
 		return "myPage";
 	}
 
-	/*
-	 * //validation 바인드
-	 * 
-	 * @InitBinder protected void initBinder(WebDataBinder binder){
-	 * binder.setValidator(new RegisterRequestValidator()); }
-	 */
+	
 	// 비밀번호 암호화
 	public String testSHA256(String str) {
 		String SHA = "";
