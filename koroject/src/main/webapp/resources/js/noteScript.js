@@ -43,13 +43,13 @@ function receive(email) {
 	            	var $html = "";
 	            	$('.message-list').empty();
 	            	$.each(data, function(index, list){
-	            		$html += '<li class="message-list-item">';
+	            		$html += '<li class="message-list-item" style="border-bottom: 1px solid #e6e8e8;">';
 	            		$html += '<button id="noteDelete">X</button>';
 	            		$html += '<div class="clickPoint">';
 	            		$html += '<div class="message-list-item-header">';
 	            		$html += '<input type="hidden" value="' + list.n_id + '">';
-	            		$html += '<span class="note_title">' + list.n_title  + '</span>'; 
-	            		$html += '<p class="note_content">' + list.n_content + '</p>';
+	            		$html += '<p class="note_title" style="color:black; margin-bottom: 0px;">' + list.n_title  + '</p>'; 
+	            		$html += '<p class="note_content" style="color:#aeacb4; margin-bottom: 3px;">' + list.n_content + '</p>';
 	            		$html += '</div></div></li>';
 	            	});
 	            	$('.message-list').append($html);
@@ -68,14 +68,15 @@ function receive(email) {
 	            	var $html = "";
 	            	$('.message-list').empty();
 	            	$.each(data, function(index, list){
-	            		$html += '<li class="message-list-item">';
+	            		$html += '<li class="message-list-item" style="border-bottom: 1px solid #e6e8e8;">';
 	            		$html += '<button id="noteDelete">X</button>';
 	            		$html += '<div class="clickPoint">';
 	            		$html += '<div class="message-list-item-header">';
 	            		$html += '<input type="hidden" value="' + list.n_id + '">';
-	            		$html += '<span class="note_senderEmail"note_senderEmail>' + list.senderEmail + '</span>';
-	            		$html += '<p class="note_title">' + list.n_title  + '</p>'; 
-	            		$html += '<p class="note_content">' + list.n_content + '</p>';
+	            		$html += '<p class="note_senderEmail"note_senderEmail style="color: #777; margin-bottom:0px; font-weight: bold;">' + list.senderEmail + '</p>';
+	            		$html += '<hr style="margin: 2px;">'
+	            		$html += '<p class="note_title" style="color:black; margin-bottom: 0px;">' + list.n_title  + '</p>'; 
+	            		$html += '<p class="note_content" style="color:#aeacb4; margin-bottom: 3px;">' + list.n_content + '</p>';
 	            		$html += '</div></div></li>';
 	            	});
 	            	$('.message-list').append($html);
@@ -129,11 +130,16 @@ function receive(email) {
 	            success : function(data) {
 	            	$('.noteDetail').empty();
 	            	/* $html += '<input type="text" name="noteId" value="' + data.n_id + '">'; */
-	            	$html += '<div class="noteTitle">';
+	            	$html += '<p>' + data.n_date + '</p>';
+	            	/*$html += '<fmt:formatDate value="'+data.n_date +'" pattern="yy-MM-dd hh:mm"/>';*/
+	            	$html += '<p style="display: inline-block; margin-bottom:0px;">보내는 사람: &nbsp</p><p style="font-weight:bold; display:inline-block; margin-bottom:3px;">&lt'+ data.senderEmail + '&gt</p><br>';
+	            	$html += '<p style="display:inline-block;">제목: &nbsp</p><p style="font-weight:bold; display:inline-block;">'+data.n_title+'</p>'
+	            	$html += '<div style="border:1px solid #e6e8e8; height:300px; "><p>'+data.n_content+'</p><div>'
+	            	/*$html += '<div class="noteTitle">';
 	            	$html += '<span id="noteTitle">' + data.n_title + '</span></div>';
 	            	$html += '<div class="noteContent">';
 	            	$html += '<p id="noteContent">' + data.n_content + '</p></div>';
-	            	$('.noteDetail').append($html);
+*/	            	$('.noteDetail').append($html);
 	            }
 			});
 		})
