@@ -102,7 +102,7 @@
 			memberList = memberList + $('#memberAddList').children().eq(i).text().split(',')[1];
 		
 		 }
-		 console.log("name : "+projectName);
+		
 		 if(projectName==""){//제목이 없으면 실행 되지 않게 함 todo : 제목에 벨리데이션 추가할것
 			 
 		 } else {
@@ -144,7 +144,7 @@
 				memberid : $('#projectCreator').val()
 			},
 			success : function(data){
-				console.log(data);
+			
 				$(".projectThumbnail").remove();
 				for(var i=0;i<data.length;i++){
 					var p_id = data[i].p_Id;
@@ -177,6 +177,6 @@
 			 }
 			 
 		  });
-		  console.log();
+		
 	  });
  });
