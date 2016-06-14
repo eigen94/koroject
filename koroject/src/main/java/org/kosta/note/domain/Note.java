@@ -10,7 +10,7 @@ public class Note {
 	private int n_sender;
 	private int n_receive;
 	private Timestamp n_date;
-	
+	private String senderEmail;
 	
 	@Override
 	public String toString() {
@@ -18,6 +18,14 @@ public class Note {
 				+ n_receive + "]";
 	}
 	
+	public String getSenderEmail() {
+		return senderEmail;
+	}
+
+
+	public void setSenderEmail(String senderEmail) {
+		this.senderEmail = senderEmail;
+	}
 	
 	public int getN_id() {
 		return n_id;
