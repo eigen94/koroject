@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
 import org.kosta.projectBoard.persistence.ProjectBoardDAO;
 import org.springframework.stereotype.Service;
@@ -38,5 +39,11 @@ public class ProjectBoardServiceImpl implements ProjectBoardService {
 	@Override
 	public void delete(int pId) {
 		dao.delete(pId);		
+	}
+
+	@Override
+	public List<Member> memberList(String search) {
+		// TODO Auto-generated method stub
+		return dao.memberList(search);
 	}
 }
