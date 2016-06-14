@@ -74,7 +74,7 @@ public class MemberController {
 		 * member.setM_question(rcm.getM_question());
 		 * member.setM_answer(rcm.getM_answer()); ;
 		 */
-		System.out.println("왓니");
+		
 		member.setM_id(service.idSelect() + 1);
 		member.setM_recentMember("");
 		member.setM_pwd(testSHA256(member.getM_pwd()));
@@ -85,12 +85,12 @@ public class MemberController {
 	// 회원수정
 	@RequestMapping(value = "memberModify")
 	public String memberModify(RegisterCommand rc, Model model, HttpServletRequest req) {
-		System.out.println(rc.getM_email() + ", " + rc.getM_pwd());
+	
 		rc.setM_pwd(testSHA256(rc.getM_pwd()));
 		Member member = service.serchEmail(rc);
-		System.out.println(member);
+		
 		if (member == null) {
-			System.out.println("실패?");
+			
 			model.addAttribute("pwdFalse", "비밀번호를 잘못 입력하셧습니다.");
 			return "myPage";
 		}
@@ -99,7 +99,7 @@ public class MemberController {
 		member.setM_phone(rc.getM_phone());
 		member.setM_question(rc.getM_question());
 		member.setM_answer(rc.getM_answer());
-		System.out.println(member);
+		
 		service.memberModify(member);
 
 		req.getSession().removeAttribute("member");
@@ -214,13 +214,12 @@ public class MemberController {
 	@RequestMapping(value = "proImg", method = RequestMethod.POST)
 	public String upload(MultipartFile file, Model model, HttpServletRequest req) throws IOException {
 
-		System.out.println("-----------------");
-		System.out.println("originalName: " + file.getOriginalFilename());
+	
 		String filename = file.getOriginalFilename(); // 업로드 파일 이름 받음
 		// String path = "C:/Intel";
 		File tempfile = new File(req.getSession().getServletContext().getRealPath("/profile/"),
 				file.getOriginalFilename()); // 파일 생성후
-		System.out.println(req.getSession().getServletContext().getRealPath("/profile/"));
+		
 		if (tempfile.exists() && tempfile.isFile()) { // 이미 존재하는 파일일경우 현재시간을
 														// 가져와서 리네임
 
@@ -234,7 +233,7 @@ public class MemberController {
 		file.transferTo(tempfile);
 
 		Member member = (Member) req.getSession().getAttribute("member");
-		System.out.println(member.getM_id());
+		
 		// 업로드 디렉토리로 파일 이동
 
 		// 이미지 리사이즈
