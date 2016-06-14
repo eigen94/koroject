@@ -15,12 +15,12 @@
 </head>
 <body>
 
-	<h3>${member.m_email }의쪽지목록</h3>
+	<h3 style="margin:20px 0px 20px 70px;">${member.m_name }님의 쪽지목록</h3>
 	
 	<div class="noteBody">
 		<!-- 좌측에 버튼들 -->
 		<div class="left">
-			<div class="clickToggle"><button id="toggleBtn">V</button></div>
+			<div class="clickToggle"><button id="toggleBtn" style="margin-left:50px;">V</button></div><br>
 			<div class="toggleDiv">
 				<div class="sendform">	<button id="button"> 쪽지 보내기 </button>	</div>
 				<div class="sendList"><button id="button"> 보낸 쪽지함 </button></div>
@@ -114,7 +114,7 @@
 							<span id="noteTitle"></span>
 						</div>
 						<div class="noteContent">
-							<p id="noteContent"><h1> 선택된 쪽지가 없습니다</h1></p>
+							<p id="noteContent"><h1> 선택된 쪽지가 <br>없습니다</h1></p>
 						</div>
 					</div>
 				</div>
