@@ -7,8 +7,8 @@
 	<cache />
 	
 	<insert id="create">
-		insert into project(p_id, p_name, p_pmid, p_start, p_end)
-			values(NVL((select MAX(p_id) from project)+1,0), #{p_name}, #{p_pmid}, #{p_start}, #{p_end})
+		insert into project(p_id, p_name, p_pmid, p_start, p_end, p_crew, p_memo)
+			values(NVL((select MAX(p_id) from project)+1,0), #{p_name}, #{p_pmid}, #{p_start}, #{p_end},#{p_crew},#{p_memo})
 	</insert>
 	
 	<!-- 생성한 프로젝트 뿐만 아니라 참여한 프로젝트도 불러오는 기능 추가필요 -->
@@ -32,6 +32,11 @@
 			where p_id = #{p_id}
 	</delete>
 	
+	<select id="memberList" resultType="Member">
+		select * from member where m_email like '%'|| #{email}||'%' or m_name like '%'|| #{email}||'%'
+		
+		
+	</select>
 </mapper>
 
 
