@@ -1,4 +1,4 @@
-package org.kosta.note.test;
+package org.kosta.messenger.test;
 
 import javax.inject.Inject;
 
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
-public class NoteTest {
+public class MessengerTest {
 	
 	@Inject
 	private MessengerDao dao;
