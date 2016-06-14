@@ -14,19 +14,19 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/noteStyle.css">
 
 </head>
-<body>
+<body >
 
 	<h3 style="margin:20px 0px 20px 70px;">${member.m_name }님의 쪽지목록</h3>
 	
 	<div class="noteBody">
 		<!-- 좌측에 버튼들 -->
 		<div class="left">
-			<div class="clickToggle"><button id="toggleBtn" style="margin-left:50px;">V</button></div><br>
+			<div class="clickToggle"><button id="toggleBtn" style="margin-left:30px; border-radius:0px;">V</button></div><br>
 			<hr style="margin:8px;">
 			<div class="toggleDiv">
-				<div class="sendform">	<button id="button"> 쪽지 보내기 </button>	</div>
-				<div class="sendList"><button id="button"> 보낸 쪽지함 </button></div>
-				<div class="receiveList"><button id="button"> 받은 쪽지함 </button></div>
+				<div class="sendform">	<button id="button" style="border-radius:0px;"> 쪽지 보내기 </button>	</div>
+				<div class="sendList"><button id="button" style="border-radius:0px;"> 보낸 쪽지함 </button></div>
+				<div class="receiveList"><button id="button" style="border-radius:0px;"> 받은 쪽지함 </button></div>
 			</div>
 		</div>
 		
@@ -48,7 +48,7 @@
 							<div class="receive" style="margin-bottom: 5px;">
 							<h3 style="margin-bottom: 3px;"> 받는사람 </h3>
 								<input type="text" id="n_receiveEmail" name="n_receiveEmail" style="width: 500px; display:inline-block;">
-								<button class="searchOpen" style="padding: 0px;">이메일 검색</button>
+								<button class="searchOpen" style="padding: 0px;border-radius:0px; height:40px;;">이메일 검색</button>
 								<input type="hidden" id="n_receive" name="n_receive">
 							</div>
 							<div class="content" style="margin-bottom: 5px;">
@@ -59,7 +59,7 @@
 					</div>
 
 					<div class="send">
-						<input type="submit" value="전송" style="float: right; margin-right: 20px;">
+						<input type="submit" value="전송" style="float: right; margin-right: 20px; height:40px; border-radius:0px;">
 					</div>
 				</form>
 			</div>
@@ -93,7 +93,7 @@
 							<ul class="message-list">
 								<c:forEach var="note" items="${list }">
 								
-									<li class="message-list-item" style="border-bottom: 1px solid #e6e8e8;">
+									<li class="message-list-item" style=" background: #bbd5ef">
 										<button id="noteDelete">X</button>
 										<div class="clickPoint">
 											<div class="message-list-item-header">

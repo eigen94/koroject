@@ -35,7 +35,8 @@
 }
 
 #button{
-	width: 50%;
+	width: 70%;
+	height: 10%;
 	padding:0px;
 }
 
@@ -185,7 +186,7 @@ ul {
 }
 
 /* 제목 */
-.noteTitle #noteTitle {
+.note #noteTitle {
 	color: black;
 	text-align: center;
 	font-size: 50px;

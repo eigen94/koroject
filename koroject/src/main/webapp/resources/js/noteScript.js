@@ -43,7 +43,7 @@ function receive(email) {
 	            	var $html = "";
 	            	$('.message-list').empty();
 	            	$.each(data, function(index, list){
-	            		$html += '<li class="message-list-item" style="border-bottom: 1px solid #e6e8e8;">';
+	            		$html += '<li class="message-list-item" style="background:#bbd5ef;">';
 	            		$html += '<button id="noteDelete">X</button>';
 	            		$html += '<div class="clickPoint">';
 	            		$html += '<div class="message-list-item-header">';
@@ -68,7 +68,7 @@ function receive(email) {
 	            	var $html = "";
 	            	$('.message-list').empty();
 	            	$.each(data, function(index, list){
-	            		$html += '<li class="message-list-item" style="border-bottom: 1px solid #e6e8e8;">';
+	            		$html += '<li class="message-list-item" style="background:#bbd5ef;">';
 	            		$html += '<button id="noteDelete">X</button>';
 	            		$html += '<div class="clickPoint">';
 	            		$html += '<div class="message-list-item-header">';
