@@ -33,12 +33,13 @@ public class PdfController {
 	    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	    final String temperotyFilePath = tempDirectory.getAbsolutePath();
  
-	    String fileName = "total.pdf";
+	    String fileName = "ddd.pdf";
 	    response.setContentType("application/pdf");
-	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
+	    response.setHeader("Content-disposition", "attachment; fileName="+ fileName);
  
 	    try {
- 
+	    	System.out.println("temperotyFilePath :" + temperotyFilePath.toString() +"\\" + fileName);
+	    	System.out.println(servletContext);
 	        CreatePDF.createPDF(temperotyFilePath+"\\"+fileName, request);
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);

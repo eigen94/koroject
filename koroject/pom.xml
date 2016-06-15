@@ -354,6 +354,17 @@
 		    <artifactId>itextpdf</artifactId>
 		    <version>5.4.2</version>
 		</dependency> 
+		 <dependency>
+			<groupId>org.codehaus.jackson</groupId>
+			<artifactId>jackson-mapper-asl</artifactId>
+			<version>1.9.12</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.json</groupId>
+		    <artifactId>json</artifactId>
+		    <version>20140107</version>
+		</dependency>
+				
 		<!-- <dependency>
 			<groupId>org.codehaus.castor</groupId>
 			<artifactId>castor</artifactId>
@@ -368,11 +379,6 @@
 		    <groupId>org.apache.poi</groupId>
 		    <artifactId>poi</artifactId>
 		    <version>3.9</version>
-		</dependency>
-		 <dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.9.12</version>
 		</dependency>
         <dependency>
 			<groupId>org.codehaus.jackson</groupId>
