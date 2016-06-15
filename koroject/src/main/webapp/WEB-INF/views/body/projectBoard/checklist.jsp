@@ -199,6 +199,7 @@ $(function(){
 				check_type : $("#checkListCheckType").val()
 			},
 			success : function(){
+				console.log("성공");
 				$("#checkListName").val("")
 				getChecklist();
 			}
@@ -221,7 +222,7 @@ $(function(){
 		
 		var returnHtml = '<div class="checklists"><img class="deleteChecklistBtn" src="/images/CheckMinus.jpg" style="cursor:pointer"><a class="checkListA" href=/projectBoard/'+projectid+'/checklist/'+check_id+' style="color:black;" >'+i+" : "+check_name;
 		if(checkNumber==1){//pm일경우
-			
+		
 		} else {//맴버일경우
 			
 		}
@@ -241,8 +242,9 @@ $(function(){
 					data : {
 						"projectId": projectid
 					},
-					success : function(data){
-						var pmid = data;
+					success : function(pmid){
+						console.log("호출 성공")
+						var pmid = pmid;
 						var memberid = $("#memberid");
 						var checkNumber=-1;
 						if(pmid==memberid){
