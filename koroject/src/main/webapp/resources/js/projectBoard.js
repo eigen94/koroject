@@ -144,7 +144,6 @@
 				memberid : $('#projectCreator').val()
 			},
 			success : function(data){
-			
 				$(".projectThumbnail").remove();
 				for(var i=0;i<data.length;i++){
 					var p_id = data[i].p_Id;
