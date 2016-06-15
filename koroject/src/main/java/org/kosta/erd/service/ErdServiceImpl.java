@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ErdServiceImpl implements ErdService {
 	
-	@Inject
-	private ErdDao dao;
+	@Inject	private ErdDao dao;
 
 	@Override
 	public void save(Map<String, String> map) {

@@ -81,7 +81,7 @@ koroject
     <span class="entypo-chat settingSpan"></span>
   </li>
   <li class="linka">
-    <p class="settingP" id="settingMessenger"><a class="settingA" href="#">메신저</a></p>
+    <p class="settingP" id="settingMessenger"><a class="settingA">메신저</a></p>
     <span class="entypo-chat settingSpan"></span>
   </li>
   <li class="linka">

@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/erd/*")
 public class ErdRestController {
 
-	@Inject
-	private ErdService service;
+	@Inject private ErdService service;
 
 	@RequestMapping(value="save", method=RequestMethod.POST)
 	public void save(int id, @RequestParam("jsonData") String jsonData) throws Exception

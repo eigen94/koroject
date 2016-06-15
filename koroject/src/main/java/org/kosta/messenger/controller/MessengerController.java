@@ -16,13 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MessengerController {
 	private static final Logger logger = LoggerFactory.getLogger(NoteController.class);
 
-	@Inject
-	private MessengerService service;
+	@Inject	private MessengerService service;
 	
 	@RequestMapping(value="/postMessenge")
 	public void postMessenge(Msg msg) throws Exception{
-		System.out.println("넘어옴");
-//		service.postMessenge(msg);
 	}
 	
 	

@@ -38,9 +38,7 @@ public class RegisterRequestValidator implements Validator {
 				errors.rejectValue("m_email", "bad");
 			}
 		}
-	/*	ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "required");
-		ValidationUtils.rejectIfEmpty(errors, "password", "required");
-		ValidationUtils.rejectIfEmpty(errors, "confirmPassword", "required");*/
+
 	}
 
 }

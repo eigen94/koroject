@@ -9,17 +9,16 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.kosta.imageboard.domain.imgCriteria;
-import org.kosta.imageboard.domain.ImageVO;
 import org.kosta.imageboard.domain.ReplyVO;
+import org.kosta.imageboard.domain.imgCriteria;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
 public class ReplyDAOImpl implements ReplyDAO {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
+	
 	private static String namespace = "org.kosta.member.mapper.ImageReplyMapper";
 	
 	@Override

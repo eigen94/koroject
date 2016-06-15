@@ -170,7 +170,7 @@
 	    </div><!-- end of modal contents -->
 	  </div><!-- end of modal dialog -->
 	</div><!--end of checkCreateModal -->
-	
+	<input type="hidden" id="memberid" value="${member.m_id }">
 
 <script type="text/javascript" src="/js/static/momentjs/2.10.3/moment.js"></script>
 <script type="text/javascript" src="/js/static/jquery/2.0.3/jquery.js"></script>
@@ -218,6 +218,7 @@ $(function(){
 	
 	//개별 html태그 생성함수
 	function generateChecklistHtml(i, check_id, check_name){
+		
 		var returnHtml = '<div class="checklists"><img class="deleteChecklistBtn" src="/images/CheckMinus.jpg" style="cursor:pointer"><a class="checkListA" href=/projectBoard/'+projectid+'/checklist/'+check_id+' style="color:black;" >'+i+" : "+check_name;
 		returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"></div></div>';
 		return returnHtml;
@@ -229,19 +230,37 @@ $(function(){
 			url : "/projectBoard/"+projectid+"/checklist/list",
 			method : "POST",
 			success : function(data){
-				$(".checklists").remove();
-				for(var i=0; i<data.length; i++){
-					console.log(data[i]);
-					var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
-					$('.checklistContainer').append(html);
-				}
-				$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+				$.ajax({
+					url : "/projectBoard/getPMid",
+					method : "POST",
+					data : {
+						"projectId": projectid
+					},
+					success : function(pmid){
+						var pmid = pmid;
+						var memberid = $("#memberid").val();
+						var checkNumber=-1;
+						if(pmid==memberid){
+							checkNumber = 1;
+						}
+						console.log("p: "+pmid+" m: "+memberid);
+						console.log(checkNumber);
+						$(".checklists").remove();
+						for(var i=0; i<data.length; i++){
+							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
+							$('.checklistContainer').append(html);
+						}
+						if(checkNumber==1){
+							$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+						}
+						
+					}
+				});//end of call pmid ajax
 			}
 		});
 	}
 	//시작하자마자 체크리스트 불러오는 부분
 	getChecklist();
-
 	
 });
 </script>

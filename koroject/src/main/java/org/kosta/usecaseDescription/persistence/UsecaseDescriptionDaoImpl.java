@@ -10,8 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class UsecaseDescriptionDaoImpl implements UsecaseDescriptionDao {
 	
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
 	
 	private static String namespace = "org.kosta.usecaseDescription.UsecaseDescriptionMapper";
 

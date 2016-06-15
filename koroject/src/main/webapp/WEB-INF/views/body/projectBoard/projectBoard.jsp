@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,7 +30,7 @@
 	    <div class="modal-content">
 	      <div class="modal-body">
 	      
-	        <form class="form-horizontal">
+	        <form id="createProject" class="form-horizontal">
 		        <div class="form-group">
 	       			<label for="inputName" class="col-sm-3 control-label">프로젝트 이름</label>
 	   				<div class="col-sm-7">
@@ -68,12 +69,20 @@
 		                    </span>
 	                    </div>
 					</div>
-					<div id="memberAddPoint">
-					</div>
+					
 					<!-- 맴버 전송을 위한 히든폼 -->
 					<input type="hidden" id="projectCrew" name="p_crew">
 					<input type="hidden" id="projectCreator" name="p_pmid" value="${member.m_id }">
 		        </div>
+		        <p>추가할 인원을 선택하시오.</p>
+		        <div id="memberAddPoint" class="memberAdd">
+						
+				</div>
+				<p>추가된 인원</p>
+				<div id="memberAddList" class="memberAdd">
+				
+				</div>
+		        
 			  	<div class="form-group">
 			    	<div class="col-sm-offset-3 col-sm-9">
 			      		<button class="btn btn-default p-createButton">프로젝트 생성</button>
@@ -96,5 +105,6 @@
 	<script type="text/javascript" src="js/static/Eonasdan-bootstrap-datetimepicker/4.15.35/js/bootstrap-datetimepicker.js"></script>
 	<!-- 프로젝트보드에 관한거 여기에 정리해놓음 -->
 	<script type="text/javascript" src="/resources/js/projectBoard.js"></script>
+
 </body>
 </html>

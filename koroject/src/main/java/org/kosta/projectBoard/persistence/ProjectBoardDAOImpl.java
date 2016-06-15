@@ -5,14 +5,15 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
+	
 	private static String namespace = "org.kosta.mapper.ProjectBoardMapper";
 	
 	@Override
@@ -38,6 +39,16 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 	@Override
 	public void delete(int pId) {
 		session.delete(namespace+".delete", pId);
+	}
+
+	@Override
+	public List<Member> memberList(String search) {
+		return session.selectList(namespace+".memberList", search);
+	}
+
+	@Override
+	public int getPmid(int projectId) {
+		return session.selectOne(namespace+".getPmid", projectId);
 	}
 	
 	

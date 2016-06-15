@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UmlServiceImpl implements UmlService {
 	
-	@Inject
-	private UmlDao dao;
+	@Inject	private UmlDao dao;
 
 	@Override
 	public void save(Map<String, String> map) {

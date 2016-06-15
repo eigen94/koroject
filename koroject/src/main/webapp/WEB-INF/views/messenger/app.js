@@ -3,7 +3,7 @@ var fs = require('fs');
 
 // creates WebServer
 var http = require('http');
-//var connect = require('connect');
+
 var connect = require('express');
 var app = connect();
 var socketio = require('socket.io');
@@ -27,7 +27,7 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // 정상 실행될 경우 메세지
 db.once('open', function callback() {
 	// if connection open succeeds print out the following in the console
-	console.log("열렸어요");
+
 });
 
 // MongoDB를위한 스키마 생성 / requires 'username' & 'message'
@@ -77,13 +77,7 @@ io.sockets.on('connection', function(socket) {
 	io.sockets.emit('roomSet', roomName);
 	socket.join(roomName); // 입력한 방 이름으로 접속 !!
 	
-	/*
-	// 입력한 방 이름별로
-	socket.on('room', function(data) {
-		console.log(data) // 방 이름이 무엇인고 ?
-		socket.join(data); // 입력한 방 이름으로 접속 !!
-		socket.room = data;
-	});*/
+	
 
 	socket.on('breakdown', function(data) {
 		// DB에서 최근 대화내역을 불러온다.

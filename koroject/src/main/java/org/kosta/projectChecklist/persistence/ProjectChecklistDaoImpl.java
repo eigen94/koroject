@@ -11,8 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class ProjectChecklistDaoImpl implements ProjectChecklistDao {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
+	
 	private static String namespace = "org.kosta.mapper.ProjectChecklistMapper";
 	
 	private static String umlNamespace = "org.kosta.uml.UmlMapper";

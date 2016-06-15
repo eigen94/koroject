@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UsecaseServiceImpl implements UsecaseService {
 	
-	@Inject
-	private UsecaseDao dao;
+	@Inject	private UsecaseDao dao;
 
 	@Override
 	public void save(Map<String, String> map) {
