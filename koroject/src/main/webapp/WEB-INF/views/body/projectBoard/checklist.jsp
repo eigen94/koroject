@@ -217,15 +217,10 @@ $(function(){
 	});
 	
 	//개별 html태그 생성함수
-	function generateChecklistHtml(i, check_id, check_name, checkNumber){
+	function generateChecklistHtml(i, check_id, check_name){
 		
 		var returnHtml = '<div class="checklists"><img class="deleteChecklistBtn" src="/images/CheckMinus.jpg" style="cursor:pointer"><a class="checkListA" href=/projectBoard/'+projectid+'/checklist/'+check_id+' style="color:black;" >'+i+" : "+check_name;
-		if(checkNumber==1){//pm일경우
-			returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"></div></div>';
-		} else {//맴버일경우
-			
 		returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"></div></div>';
-		}
 		return returnHtml;
 	}
 	
@@ -251,11 +246,13 @@ $(function(){
 						
 						$(".checklists").remove();
 						for(var i=0; i<data.length; i++){
-							console.log(data[i]);
-							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name,checkNumber);
+							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
 							$('.checklistContainer').append(html);
 						}
-						$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+						if(checkNumber==1){
+							$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+						}
+						
 					}
 				});//end of call pmid ajax
 			}
@@ -263,7 +260,6 @@ $(function(){
 	}
 	//시작하자마자 체크리스트 불러오는 부분
 	getChecklist();
-
 	
 });
 </script>
