@@ -44,4 +44,9 @@ public class ProjectBoardServiceImpl implements ProjectBoardService {
 	public List<Member> memberList(String search) {
 		return dao.memberList(search);
 	}
+
+	@Override
+	public int getPmid(int projectId) {
+		return dao.getPmid(projectId);
+	}
 }

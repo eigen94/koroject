@@ -45,6 +45,11 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 	public List<Member> memberList(String search) {
 		return session.selectList(namespace+".memberList", search);
 	}
+
+	@Override
+	public int getPmid(int projectId) {
+		return session.selectOne(namespace+".getPmid", projectId);
+	}
 	
 	
 }

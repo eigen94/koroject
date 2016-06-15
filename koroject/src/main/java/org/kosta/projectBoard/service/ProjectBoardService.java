@@ -19,4 +19,6 @@ public interface ProjectBoardService {
 
 	public List<Member> memberList(String search);
 
+	public int getPmid(int projectId);
+	
 }
