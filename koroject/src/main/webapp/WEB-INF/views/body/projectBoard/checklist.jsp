@@ -241,8 +241,8 @@ $(function(){
 					data : {
 						"projectId": projectid
 					},
-					success : function(data){
-						var pmid = data;
+					success : function(pmid){
+						var pmid = pmid;
 						var memberid = $("#memberid");
 						var checkNumber=-1;
 						if(pmid==memberid){
