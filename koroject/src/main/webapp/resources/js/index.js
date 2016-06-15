@@ -63,7 +63,8 @@ $('#settingNote').click(function(){
 	location.href="/note/main";
 })
 $('#settingMessenger').click(function(){
-	location.href="/note/main";
+	$('#list').hide();
+	$('#progressArea').fadeToggle("slow");
 })
 $('#settingLogOut').click(function(){
 	location.href="/logout";

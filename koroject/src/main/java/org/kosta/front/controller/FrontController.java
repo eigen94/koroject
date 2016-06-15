@@ -45,6 +45,10 @@ public class FrontController {
 	public String matchingID(){
 		return "matchingID";
 	}
+/*	@RequestMapping(value="footerProject", method=RequestMethod.GET)
+	public String footerProject(){
+		return "footerProject";
+	}*/
 	
 	
 	
