@@ -91,7 +91,6 @@
 </style>
 </head>
 <body>
-
 <div id="checklistPage" class="container-fluid">
 <a data-toggle="modal" data-target="#checkCreateModal"  id="checkListPlus">
 	<img alt="checkPlus" src="/images/checkPlus.jpg">
@@ -217,10 +216,15 @@ $(function(){
 	});
 	
 	//개별 html태그 생성함수
-	function generateChecklistHtml(i, check_id, check_name){
+	function generateChecklistHtml(i, check_id, check_name,check_sign){
 		
 		var returnHtml = '<div class="checklists"><img class="deleteChecklistBtn" src="/images/CheckMinus.jpg" style="cursor:pointer"><a class="checkListA" href=/projectBoard/'+projectid+'/checklist/'+check_id+' style="color:black;" >'+i+" : "+check_name;
-		returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;"><div class="bb" style="-webkit-user-select: none;"></div></div>';
+		returnHtml += '</a>&nbsp&nbsp<input class="b" checked="checked" type="checkbox" name="b" value="b" style="display: none;">'
+		returnHtml += '<div class="bb" style="-webkit-user-select: none;" value="'+check_id+'">';
+		if(check_sign==1){
+			returnHtml += '<div class="bt">승인</div>'
+		}
+		returnHtml += '</div></div>';
 		return returnHtml;
 	}
 	
@@ -243,15 +247,17 @@ $(function(){
 						if(pmid==memberid){
 							checkNumber = 1;
 						}
-						console.log("p: "+pmid+" m: "+memberid);
-						console.log(checkNumber);
+						console.log(data);
 						$(".checklists").remove();
 						for(var i=0; i<data.length; i++){
-							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);
+							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name,data[i].check_sign);
 							$('.checklistContainer').append(html);
-						}
-						if(checkNumber==1){
-							$(".b").betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+							if(checkNumber==1){
+								$(".b").eq(i).betterCheckbox({boxClass: 'bb', tickClass: 'bt', tickInnerHTML: "승인"});
+								if(data[i].check_sign==1){
+									$(".b").eq(i).betterCheckbox("check");
+								}
+							}
 						}
 						
 					}
@@ -259,6 +265,9 @@ $(function(){
 			}
 		});
 	}
+	
+
+	
 	//시작하자마자 체크리스트 불러오는 부분
 	getChecklist();
 	

@@ -24,7 +24,7 @@
 	
 	<update id="update">
 		update checklist
-			set check_name = #{check_name}, check_memo = #{check_memo}
+			set check_sign = #{check_sign}
 			where check_id = #{check_id}
 	</update>
 	

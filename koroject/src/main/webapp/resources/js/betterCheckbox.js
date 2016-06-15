@@ -44,10 +44,26 @@
 						$this.prop('checked', false);
 					}
 					if(root.checked) {
+						var check_id = $(this).attr("value");
+						$.ajax({
+							url : "checklist/"+check_id+"/update",
+							data : {
+								check_sign : 0
+							},
+							method : "POST"
+						});
 						$(this).empty();
 						root.checked = false;
 						$this.prop('checked', false);
 					} else {
+						var check_id = $(this).attr("value");
+						$.ajax({
+							url : "checklist/"+check_id+"/update",
+							data : {
+								check_sign : 1
+							},
+							method : "POST"
+						});
 						$(this).append('<div class="'+settings.tickClass+'">'+settings.tickInnerHTML+'</div>');
 						root.checked = true;
 						$this.prop('checked', true);
@@ -112,6 +128,7 @@
 				if(root.disabled) {
 					$this.next().children().addClass(root.distickclass);
 				}
+				root.cnt = 1;
 				root.checked = true;
 				$this.prop('checked', true);
 				return this;

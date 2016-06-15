@@ -42,6 +42,16 @@ public class ProjectChecklistController {
 		return 1;
 	}
 	
+	@RequestMapping(value="{check_id}/update", method=RequestMethod.POST)
+	@ResponseBody
+	public int update(@PathVariable int check_id, int check_sign){
+		ProjectChecklist pc = new ProjectChecklist();
+		pc.setCheck_id(check_id);
+		pc.setCheck_sign(check_sign);
+		service.update(pc);
+		return 1;
+	}
+	
 	@RequestMapping(value="{check_id}", method=RequestMethod.GET)
 	public String read(@PathVariable int check_id, @PathVariable int p_id, Model model, RedirectAttributes ra){
 		ProjectChecklist pc = service.read(check_id);
