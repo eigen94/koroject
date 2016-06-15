@@ -77,11 +77,11 @@
 	
 	<!-- 체크리스트페이지 -->
 	<definition name="usecase" extends="checklist_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/usecaseDescription/usecaseDescriptionMain.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="usecasediagram" extends="checklist_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/usecase/usecaseMain.jsp"></put-attribute>
 	</definition>
 	
 	<definition name="umldiagram" extends="checklist_layout">
@@ -89,7 +89,7 @@
 	</definition>
 	
 	<definition name="erddiagram" extends="checklist_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/erd/erdMain.jsp"></put-attribute>
 	</definition>
 	
 	<!-- 이미지 게시판 -->

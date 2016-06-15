@@ -1,5 +1,7 @@
 package org.kosta.erd.service;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.kosta.erd.persistence.ErdDao;
@@ -12,8 +14,8 @@ public class ErdServiceImpl implements ErdService {
 	private ErdDao dao;
 
 	@Override
-	public void save(String jsonData) {
-		dao.save(jsonData);
+	public void save(Map<String, String> map) {
+		dao.save(map);
 		
 	}
 

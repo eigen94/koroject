@@ -6,13 +6,21 @@
 <mapper namespace="org.kosta.usecase.UsecaseMapper">
 	<cache />
 	
-<update id="save" parameterType="String">
-	update usecase set content = #{content}
-		where pid = 1
+<update id="save">
+	update usecase set usecase_content = #{usecase_content}
+		where usecase_id = ( select check_content from checklist where check_id = #{check_id} )
 </update>
 
 <select id="load" parameterType="int" resultType="String">
-	select content from usecase where pid = #{pid}
+	select usecase_content from usecase where usecase_id = ( select check_content from checklist where check_id = #{check_id} )
+</select>
+
+<insert id="create">
+	insert into usecase values( nvl((select max(usecase_id) from usecase)+1, 0), null )
+</insert>
+
+<select id="maxId" resultType="Integer">
+	select max(usecase_id) from usecase
 </select>
 
 </mapper>

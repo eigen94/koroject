@@ -112,6 +112,10 @@ label
 	
 
 	$(function(){
+		var numberP_id=window.location.href;
+		var regExp = /(\/\d+)$/g;
+		var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+		
 		$("#add").click(function(){
 			$("#usecaseContainer").append(table);
 		})
@@ -136,8 +140,11 @@ label
 			
 			$.ajax({
 				type : "post",
-				url : "save",
-				data : { "jsonData" : JSON.stringify(usecaseList) },
+				url : "/usecaseDes/save",
+				data : { 
+					"jsonData" : JSON.stringify(usecaseList),
+					"id" : p_id
+					},
 				dataType : "text",
 				success : function(){
 					//alert("¼º°ø");
@@ -151,8 +158,9 @@ label
 			
 			$.ajax({
 				type : "post",
-				url : "load",
+				url : "/usecaseDes/load",
 				dataType : "json",
+				data : {"id" : p_id},
 				success : function(data){
 					//console.log(data.jsonData)
 					$.each(JSON.parse(data.jsonData), function(){

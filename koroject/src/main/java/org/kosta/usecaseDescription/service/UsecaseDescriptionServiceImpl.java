@@ -1,5 +1,7 @@
 package org.kosta.usecaseDescription.service;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.kosta.erd.persistence.ErdDao;
@@ -13,8 +15,8 @@ public class UsecaseDescriptionServiceImpl implements UsecaseDescriptionService 
 	private UsecaseDescriptionDao dao;
 
 	@Override
-	public void save(String jsonData) {
-		dao.save(jsonData);		
+	public void save(Map<String, String> map) {
+		dao.save(map);		
 	}
 
 	@Override

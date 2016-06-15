@@ -46,6 +46,10 @@
 	var erd = joint.shapes.erd;
 
 	$(function() {
+		var numberP_id=window.location.href;
+		var regExp = /(\/\d+)$/g;
+		var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+		
 		var graph = new joint.dia.Graph();
 
 		var paper = new joint.dia.Paper({
@@ -166,9 +170,10 @@
 			//console.log(json);
 			$.ajax({
 				type : "post",
-				url : "save",
+				url : "/erd/save",
 				data : {
-					"jsonData" : JSON.stringify(json)
+					"jsonData" : JSON.stringify(json),
+					"id" : p_id
 				},
 				dataType : "text",
 				success : function() {
@@ -180,8 +185,9 @@
 		$("#load").click(function() {
 			$.ajax({
 				type : "post",
-				url : "load",
+				url : "/erd/load",
 				dataType : "json",
+				data : {"id" : p_id},
 				success : function(data) {
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},

@@ -1,5 +1,7 @@
 package org.kosta.erd.persistence;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -14,8 +16,8 @@ public class ErdDaoImpl implements ErdDao {
 	private static String namespace = "org.kosta.erd.ErdMapper";
 
 	@Override
-	public void save(String jsonData) {
-		session.update(namespace+".save", jsonData);
+	public void save(Map<String, String> map) {
+		session.update(namespace+".save", map);
 		
 	}
 

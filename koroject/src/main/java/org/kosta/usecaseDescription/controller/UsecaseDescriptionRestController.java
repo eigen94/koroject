@@ -1,5 +1,8 @@
 package org.kosta.usecaseDescription.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.kosta.usecaseDescription.domain.JsonUsecaseDescription;
@@ -17,17 +20,20 @@ public class UsecaseDescriptionRestController {
 	private UsecaseDescriptionService service;
 
 	@RequestMapping(value="save", method=RequestMethod.POST)
-	public void save(@RequestParam("jsonData") String jsonData) throws Exception
+	public void save(int id, @RequestParam("jsonData") String jsonData) throws Exception
 	{
-		service.save(jsonData);		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("check_id", Integer.toString(id));
+		map.put("usecaseDescription_content", jsonData);
+		service.save(map);			
 	}
 	
 	@ResponseBody
 	@RequestMapping("load")
-	public JsonUsecaseDescription load()
+	public JsonUsecaseDescription load(int id)
 	{
 		JsonUsecaseDescription json = new JsonUsecaseDescription();
-		json.setJsonData(service.load(1));		
+		json.setJsonData(service.load(id));		
 		
 		return json;		
 	}
