@@ -8,6 +8,15 @@
 
 //	json 데이터 값
 	var essenceJsonData = {//["이해관계자","기회","요구사항","소프트웨어시스템","팀","작업","작업방식"]
+			
+			a1 : {name:'이해관계자'},
+			a2 : {name:'기회'},
+			a3 : {name:'요구사항'},
+			a4 : {name:'소프트웨어시스템'},
+			a5 : {name:'팀'},
+			a6 : {name:'작업'},
+			a7 : {name:'작업방식'},
+			
 //			1.이해관계자
 			a1s1 : {name:'식별', checkList : makeNumberArr(1,3)},
 			a1s2 : {name:'대표선출', checkList : makeNumberArr(4,7)},
