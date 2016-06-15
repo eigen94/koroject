@@ -238,7 +238,7 @@ $(function(){
 					},
 					success : function(pmid){
 						var pmid = pmid;
-						var memberid = $("#memberid");
+						var memberid = $("#memberid").val();
 						var checkNumber=-1;
 						if(pmid==memberid){
 							checkNumber = 1;
