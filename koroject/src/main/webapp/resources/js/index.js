@@ -57,16 +57,16 @@ $('#temp').mouseover(function(){
 
 //회원정보에 대한 네비게이션 링크 걸어둠
 $('#settingMypage').click(function(){
-	location.href="myPage";
+	location.href="/myPage";
 })
 $('#settingNote').click(function(){
-	location.href="note/main";
+	location.href="/note/main";
 })
 $('#settingMessenger').click(function(){
-	location.href="note/main";
+	location.href="/note/main";
 })
 $('#settingLogOut').click(function(){
-	location.href="logout";
+	location.href="/logout";
 })
 
 $('.settingA').click(function(e){

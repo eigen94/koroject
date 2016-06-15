@@ -243,7 +243,8 @@ $(function(){
 						if(pmid==memberid){
 							checkNumber = 1;
 						}
-						
+						console.log("p: "+pmid+" m: "+memberid);
+						console.log(checkNumber);
 						$(".checklists").remove();
 						for(var i=0; i<data.length; i++){
 							var html = generateChecklistHtml(i+1,data[i].check_id,data[i].check_name);

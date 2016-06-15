@@ -46,7 +46,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	}*/
 	
 //	타일즈 불러올 페이지를 리턴값으로 적어줄것
-	@RequestMapping(value="/main")	//노트 메인을 열어줘요
+	@RequestMapping(value="main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
 		Member member = (Member)request.getSession().getAttribute("member");
 		
