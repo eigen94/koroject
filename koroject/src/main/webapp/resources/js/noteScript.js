@@ -122,6 +122,12 @@ function receive(email) {
 	$(function(){	
 		//노트 클릭시 오른쪽에 나오게함 
 		$(document).on('click', '.clickPoint', function(){
+			
+			//클릭한 곳에서 날짜 추출해서 직접 넣어주는 부분
+			var regExp = /\d\d-\d\d-\d\d \d\d:\d\d/;
+			var dateStr = $(this).closest(".message-list-item").text();
+			var dateStr2 = (regExp.exec(dateStr))[0];
+			
 			var n_id = $(this).find('input').val();
 			var $html = "";
 			$.ajax({
@@ -130,8 +136,8 @@ function receive(email) {
 	            success : function(data) {
 	            	$('.noteDetail').empty();
 	            	/* $html += '<input type="text" name="noteId" value="' + data.n_id + '">'; */
-	            	$html += '<p>' + data.n_date + '</p>';
-	            	/*$html += '<fmt:formatDate value="'+data.n_date +'" pattern="yy-MM-dd hh:mm"/>';*/
+	            	$html += '<p>' + dateStr2 + '</p>';
+	            	//$html += '<fmt:formatDate value="'+data.n_date +'" pattern="yy-MM-dd hh:mm"/>';
 	            	$html += '<p style="display: inline-block; margin-bottom:0px;">보내는 사람: &nbsp</p><p style="font-weight:bold; display:inline-block; margin-bottom:3px;">&lt'+ data.senderEmail + '&gt</p><br>';
 	            	$html += '<p style="display:inline-block;">제목: &nbsp</p><p style="font-weight:bold; display:inline-block;">'+data.n_title+'</p>'
 	            	$html += '<div style="border:1px solid #e6e8e8; height:300px; "><p>'+data.n_content+'</p><div>'
