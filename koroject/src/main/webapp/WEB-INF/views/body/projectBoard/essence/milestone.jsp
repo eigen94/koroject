@@ -42,6 +42,26 @@
 .alphastate li{
 	height: auto;
 }
+/* 
+녹색 #43C367
+노랑 #E6EB5C
+파랑 #4958FF
+<th class='checklistAlpha'>알파</th><th class='checklistAlphastate'>상태</th><th class='checklistList'>체크리스트</th><th class='checklistState'>상태</th>
+
+ */
+.checklistAlpha{
+	width: 200px;
+}
+.checklistAlphastate{
+	width: 200px;
+	
+}
+.checklistList{
+	
+}
+.checklistState{
+	width: 80px;
+}
 </style>
 </head>
 <body>
@@ -81,6 +101,36 @@ $(function(){
 			set : function(hashId,attr,newValue,newValue2,newValue3){
 				//console.log("set start");
 				for(var i=0; i<(this.milestone).length; i++){
+					
+					//셀렉트 한 다음 객체에 점수 수정
+					if(attr=="alphastateValue")
+					{
+						if((this.milestone[i].alphaState)!=undefined){
+							for(var j=0;j<(this.milestone[i].alphaState).length;j++){
+								if(this.milestone[i].alphaState[j].hashId==hashId){
+									if(this.milestone[i].alphaState[j ].checkvalue==undefined){//점수 없으면 배열 등록
+										console.log(essenceJsonData[this.milestone[i].alphaState[j].alphaID].checkList);
+										var zeroPadding = essenceJsonData[this.milestone[i].alphaState[j].alphaID].checkList.length;
+										console.log("zero padding :"+zeroPadding);
+										this.milestone[i].alphaState[j].checkvalue=[];
+										for(var k=0; k<zeroPadding;k++){
+											this.milestone[i].alphaState[j].checkvalue.push(0);
+										}
+									} 
+									//추가
+									var index = newValue;
+									var value = newValue2;
+									console.log("in, index : "+index+" value : "+value);
+									//essence.set(hashId,"alphastateValue",index,value)
+									this.milestone[i].alphaState[j].checkvalue.splice(index,1,value);
+								
+								}//end of if
+							}//end of scan for loop
+							
+						}//end of alphastate length Check
+					}//end of alphaStateValue command
+				
+					//객체 조작
 					if((this.milestone[i]).hashId==hashId){
 						if(attr=="name"){
 							(this.milestone[i]).name = newValue;
@@ -157,7 +207,7 @@ $(function(){
 							}
 							
 							}
-						
+
 						//수행테스크
 						
 						//console.log(this.milestone);
@@ -165,12 +215,25 @@ $(function(){
 				}
 			},
 			get : function(attr){
-				console.log(attr);
+				if(attr=="alpha"){
+					var alphastateList = [];
+					for(var i=0; i<(essence.milestone).length;i++){
+						if(essence.milestone[i].alphaState!=undefined){
+							for(var j=0; j<(essence.milestone[i].alphaState).length;j++){
+								//console.log(essence.milestone[i].alphaState[j]);
+								alphastateList.push(essence.milestone[i].alphaState[j]);
+							}
+						}
+					}
+					//정렬 알고리즘 추가할것
+					//console.log(alphastateList);
+					return alphastateList;
+				}
 			},
 			importJson : function(data){
 				//console.log(data);
 				var obj = data;
-				console.log("importJson : ");
+				console.log("importJson : "+obj);
 				console.log(obj);
 				console.log(JSON.parse(obj));
 				this.milestone = JSON.parse(obj);
@@ -195,10 +258,14 @@ $(function(){
 		                    //,"<th>이해관계자</th><th>기회</th><th>요구사항</th><th>S/W</th><th>팀</th><th>작업방식</th><th>작업</th><th class='removeMilestone'>삭제</th>"
 		                    ,alphaState
 		                    ,"<th class='milestoneTask'>수행타스크</th><th class='milestoneResult'>수행산출물</th><th class='milestoneNote2'>비고</th><th class='removeMilestone'>삭제</th>"
+		                    ,"<th class=''>알파</th><th class=''>상태</th><th class=''>체크리스트</th><th class=''><select><option value=0/></select></th>"
+		                    ,"<th class='checklistAlpha'>알파</th><th class='checklistAlphastate'>상태</th><th class='checklistList'>체크리스트</th><th class='checklistState'>상태</th>"
 		                    ];
 		var tableBodyArr = ["<td class='milestoneDue'><input type='text'></td><td class='milestoneDef'><textarea/></td><td class='milestoneGoal'><textarea/></td><td class='milestoneNote'><textarea/></td><td class='removeMilestoneBtn'>X</td>"
 		                    ,"<td class='alphastate'><ul class='sortable1'></ul></td><td class='alphastate'><ul class='sortable2'></ul></td><td class='alphastate'><ul class='sortable3'></ul></td><td class='alphastate'><ul class='sortable4'></ul></td><td class='alphastate'><ul class='sortable5'></ul></td><td class='alphastate'><ul class='sortable6'></ul></td><td class='alphastate'><ul class='sortable7'></ul></td><td class='removeMilestoneBtn'>X</td>"
 		                    ,"<td class='milestoneTask'><textarea/></td><td class='milestoneResult'><textarea/></td><td class='milestoneNote2'><textarea/></td><td class='removeMilestoneBtn'>X</td>"
+		                    ,"<td class=''></td><td class=''></td><td class=''></td><td class=''></td>"
+		                    ,createChecklistHtml()
 		                    ];
 		var returnHtml="";
 		if(scope===0){
@@ -210,6 +277,10 @@ $(function(){
 			returnHtml += "<tr class='milestoneTr' id="+hashId+"><td class='milestoneHead'><input type='text'></td>";
 			returnHtml += tableBodyArr[tableType];
 			returnHtml += "</tr>";
+		} else if(scope===2){
+			returnHtml += "<table><thead><tr>"
+			returnHtml += tableHeadArr[tableType];
+			returnHtml += "</tr></thead><tbody class='milestoneRow'>"+tableBodyArr[tableType]+"</tbody></table>";
 		}
 		
 		return returnHtml;
@@ -252,6 +323,56 @@ $(function(){
 		
 		return this.returnHtmlValue;
 	}
+	function createChecklistHtml(){
+		var checkArr = essence.get("alpha");
+		var returnHtml = "";
+		if(checkArr.length!=undefined){
+			//returnHtml += "<tr>"
+			for(var i=0; i<checkArr.length;i++){
+				for(var k=0; k<(essenceJsonData[checkArr[i].alphaID].checkList).length; k++){
+					//returnHtml += "<table>"
+					returnHtml += "<tr value='"+checkArr[i].hashId+"'>"
+					returnHtml += "<td>"
+					returnHtml += essenceJsonData[(checkArr[i].alphaID).substr(0,2)].name;
+					returnHtml += "</td>"
+					
+					returnHtml += "<td>"
+					returnHtml += essenceJsonData[checkArr[i].alphaID].name;
+					returnHtml += "</td>"
+					
+					returnHtml += "<td>"
+					returnHtml += essenceJsonData[essenceJsonData[checkArr[i].alphaID].checkList[k]].desc;
+					returnHtml += "</td>"
+					
+					returnHtml += "<td><select class='checkliststateValue arrIndex"+k+"'>"
+					
+					var selectedValue = -1;
+					if(checkArr[i].checkvalue!=undefined){
+						selectedValue = checkArr[i].checkvalue[k];
+					}
+					
+					for(var j=0;j<6;j++){//객체에 저장된 값과 같으면 셀렉트를 추가
+						returnHtml += "<option"
+						if(j==selectedValue){
+							returnHtml += " selected";
+						}
+						returnHtml += ">"+j+"</option>";
+						
+					}
+					returnHtml += "</select></td>"
+					
+					returnHtml += "</tr>"
+					//returnHtml += "</table>"
+					
+				}
+				
+			}
+			//returnHtml += "</td>"
+		}
+		//"<td class='checklistAlpha'></td><td class='checklistAlphastate'></td><td class='checklistList'></td><td class='checklistState'></td>"
+		return returnHtml;
+	}
+	
 	//헬퍼 html코드 부분
 	function createAlphaHtml(code,name,hashId){
 //		console.log(obj)
@@ -405,15 +526,29 @@ $(function(){
 		$(".essencemenu").css("color","#ef7f5b");
 		$(this).css("color","black");
 	});
-	
+	// 버튼 
+	$("body").on("click","#essenceActivityBtn",function(){
+		editorMode=3;
+		$(".milestoneField").empty().append(drawTable(3,0));
+		//
+		drawMilestone();
+		
+	});
+	//checklist 버튼 
+	$("body").on("click","#essenceChecklistBtn",function(){
+		editorMode=4;
+		$(".milestoneField").empty().append(drawTable(4,2));
+		//
+		//drawMilestone();
+		
+	});
 	
 	//테스트 버튼
 	$("body").on("click","#essenceset",function(){
 		//console.log(" event get")
 		console.log(essence);
-		console.log(essence.exportJson());
+		//essence.exportJson()
 		
-		//essence.set($("#test").val(),"hi","hi");
 	});
 	//저장
 	$("body").on("click","#essenceSave",function(){
@@ -472,7 +607,8 @@ $(function(){
 	//마일스톤 text내용 반영
 	$('body').on("keypress","input,textarea",function(e){
 		var targetId = $(this).closest("tr").attr("id");
-		var textValue = $(this).val()+e.key;
+//		var textValue = $(this).val()+e.key;
+		var textValue = $(this).val();
 		var attr = $(this).parent().attr("class");
 		essence.set(targetId,attr,textValue);
 		
@@ -492,6 +628,15 @@ $(function(){
 		$(this).closest("li").remove();
 	});
 	
+	//체크리스트 점수 매기는 부분
+	$('body').on("change",".checkliststateValue",function(){
+		var hashId = $(this).closest("tr").attr("value");
+		var alphaStateValue = $(this).val();
+		var index = $(this).attr("class").replace("checkliststateValue ","").replace("arrIndex","");
+		essence.set(hashId,"alphastateValue",index,alphaStateValue);
+		console.log();
+		console.log();
+	});
 
 	$.ajax({
 		url : "http://localhost:10000/import",
@@ -512,6 +657,14 @@ $(function(){
 		}
 	})
 	
+	
+	//
+	//
+	//에센스 체크리스트 블럭
+	//
+	//
+	
+
 	
 });
 </script>
