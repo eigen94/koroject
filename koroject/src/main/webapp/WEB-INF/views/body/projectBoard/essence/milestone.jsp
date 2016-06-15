@@ -90,7 +90,6 @@ $(function(){
 	var numberP_id=window.location.href;
 	var regExp = /(\/\d+)/g;
 	var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
-	
 	//임시로 데이터를 저장해놓는 변수
 	var lastAddedAlphaName;
 	var lastAddedAlphaCode;
@@ -98,17 +97,29 @@ $(function(){
 
 	//페이지 로드시 서버에서 데이터 가져오는 작업 
 	$.ajax({
-		url : "http://localhost:10000/import",
+		url : "load",
+		//url : "http://localhost:10000/import",
 		method : "POST",
 		data : {
-			p_id : p_id
+			"p_id" : p_id
 		},
 		success : function(data){
 			//console.log("load done");
 			//console.log(data);
-			essence.importJson(data);
+			if(data=="{}"){
+				
+			} else {
+				essence.importJson(data);
+				
+			}
 			
 			//1.정의 테이블 보여주기, 정의 선택
+			$(".milestoneField").append(drawTable(0,0));
+			$(".definitionBtn").css("color","black");
+			drawMilestone();
+		},
+		error : function(){
+			console.log("error")
 			$(".milestoneField").append(drawTable(0,0));
 			$(".definitionBtn").css("color","black");
 			drawMilestone();

@@ -1,3 +1,4 @@
+
 var alphaState = makeListHtml();
 var editorMode =0;
 
@@ -247,3 +248,4 @@ function addSortableAlphaStateRow(){
 		});
 	}
 }
+
