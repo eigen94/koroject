@@ -80,7 +80,7 @@ input[type=text], input[type=email], input[type=password], select {
 	height: 30px;
 	margin-top: 5px;
 	font-weight: bold;
-	background-image: url("/images/pencil02.jpg");
+	/* background-image: url("/images/pencil02.jpg"); */
 	background-repeat: no-repeat;
 }
 
@@ -91,7 +91,7 @@ input[type=text], input[type=email], input[type=password], select {
 	height: 30px;
 	margin-top: 5px;
 	font-weight: bold;
-	background-image: url("/images/minus01.jpg");
+	/* background-image: url("/images/minus01.jpg"); */
 	background-repeat: no-repeat;
 	
 }
@@ -119,6 +119,7 @@ input[type=text], input[type=email], input[type=password], select {
 					<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email" role="form" action="memberModify" method="post" style="margin-bottom: 3px;">
 						<div class="form-group">
 						<input type="hidden" name="m_id" value="${member.m_id }">
+						<input type="hidden" name="m_email" value="${member.m_email }">
 							<label class="control-label" style="margin-bottom: 2px;"> 이 름 </label> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="text" name="m_name" value="${member.m_name }">
@@ -179,8 +180,8 @@ input[type=text], input[type=email], input[type=password], select {
 									<form id="imgForm" action="proImg" method="POST"	enctype="multipart/form-data">
 									<input id="ck" name="tae" type="hidden" value="${member.m_email }">
 										<input type="file" id="image" name="file"><br> <input
-											class="thumbnailMyPageUpdate" type="button">
-										<input id="delete" class="thumbnailMyPageDelete"type="button">
+											class="thumbnailMyPageUpdate" type="button" value="수정">
+										<input id="delete" class="thumbnailMyPageDelete"type="button" value="삭제">
 									</form>
 								</div>
 							</div>

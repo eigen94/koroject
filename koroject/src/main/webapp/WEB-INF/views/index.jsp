@@ -131,7 +131,7 @@ $(function(){
 <a class="button special big" id="startProject" href="#">project go!</a>
 </li>
 <li>
-<a class="button big scrolly" href="#one">뉴스 보기</a>
+<a class="button big scrolly" href="#one">보기</a>
 </li>
 </ul>
 </div>
