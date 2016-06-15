@@ -12,16 +12,17 @@
 <style type="text/css">
 legend {
 	color: #ef7f5b;
-	font-size: 20px;
 	font-weight: bold;
+	margin-top: 80px;
 }
 
 .myPagefiledset {
 	border: 1px solid #e6e8e8;
 	border-radius: 10px;
-	margin: 20px 0;
+	margin: 40px 0px 40px 12%;
+	height: 80%;
 	padding: 25px;
-	width: 64%;
+	width: 100%;
 }
 
 label {
@@ -58,14 +59,13 @@ input[type=text], input[type=email], input[type=password], select {
 }
 
 .leftMyPage {
-	border: 1px solid;
 	position: relative;
 	float: left;
 	width: 50%;
 }
 
 .rightMyPage {
-	border: 1px solid;
+	border:1px solid #e6e8e8;
 	width: 35%;
 	position: relative;
 	float: right;
@@ -75,164 +75,85 @@ input[type=text], input[type=email], input[type=password], select {
 
 .thumbnailMyPageUpdate {
 	background: #007aff;
-	border: 1px solid #c8c7cc !important;
-	border-radius: 5px !important;
+	border: 0px solid #c8c7cc !important;
+	border-radius: 0px !important;
 	height: 30px;
 	margin-top: 5px;
-	color: white;
 	font-weight: bold;
+	background-image: url("/images/pencil02.jpg");
+	background-repeat: no-repeat;
 }
 
 .thumbnailMyPageDelete {
 	background: #d43f3a;
-	border: 1px solid #c8c7cc !important;
-	border-radius: 5px !important;
+	border: 0px solid #c8c7cc !important;
+	border-radius: 0px !important;
 	height: 30px;
 	margin-top: 5px;
-	color: white;
 	font-weight: bold;
+	background-image: url("/images/minus01.jpg");
+	background-repeat: no-repeat;
+	
 }
 
 .MyPageButton {
 	border: 1px solid #c8c7cc !important;
-	border-radius: 5px !important;
-	height: 30px;
-	margin-top: 100px;
-	margin-left: 360px;
-	color: white;
+	border-radius: 0px !important;
+	height: 10px;
+	margin-top: 20px;
+	float:left;
 	font-weight: bold;
-	background: #ef7f5b
 }
 </style>
 
 </head>
-<body>
-	<%-- 
-	<div class="tab-pane ng-scope active" style="">
-		<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email"
-			role="form" action="#" id="formMy">
-			<fieldset>
-			<input type="hidden" id="m_id" name="m_id" value="${member.m_id }">
-				<legend> 회원 정보 </legend>
-				<div class="row">
-					<div class="leftMyPage">
-						<div class="form-group">
-							<label class="control-label">이름 </label><br> <input
-								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="m_name" value="${member.m_name }">
-						</div>
-						<div class="form-group">
-							<label class="control-label">이메일</label><br> <input
-								class="form-control ng-pristine ng-untouched ng-valid"
-								type="email" name="m_email" value="${member.m_email }">
-						</div>
-						<div class="form-group">
-							<label class="control-label">비밀번호 </label><br> <input
-								class="form-control ng-pristine ng-untouched ng-valid ng-valid-email"
-								type="password" name="m_pwd">
-						</div>
-						<div class="form-group">
-							<label class="control-label">핸드폰 번호</label><Br> <input
-								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="m_phone" value="${member.m_phone }">
-						</div>
-						<div class="form-group">
-							<label class="control-label">질문</label><br> <select
-								name="m_question">
-								<option value="1">고향은?</option>
-								<option value="2">이름은?</option>
-								<option value="3">주소는?</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label class="control-label">답변</label><Br> <input
-								class="form-control ng-pristine ng-untouched ng-valid"
-								type="text" name="m_answer" value="${ member.m_answer}">
-						</div>
-					</div>
-				</div>
+<body style="background:#e6e8e8; min-height:800px; ;">
+<div style="width: 80%; height: 100%;">
 
-				
-						 <input class="MyPageButton" type="button" value="submit">
-	</div>
-	
-	</fieldset>
-	</form>
-	
-	<form id="imgForm" action="proImg" method="POST" enctype="multipart/form-data">
-		<div class="rightMyPage">
-			<div class="form-group">
-				<label> 프로필 사진 </label>
-				<div class="ng-scope">
-					<div class="user-image">
-						<div class="thumbnailMyPage">
-							<img class="ng-scope" alt="" src="/images/defaultImage.jpg">
-						</div>
-					</div>
-					<div class="user-image-buttons-edit ng-scope">
-						<p>JPG파일만 사용가능</p>
-						<input type="file" id="image" name="file"><br> <input
-							class="thumbnailMyPageUpdate" type="submit" value="프로필사진 수정">
-						<input class="thumbnailMyPageDelete" type="button"
-							value="프로필사진 삭제">
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-	
-	</div> --%>
-
-	<div class="tab-pane ng-scope active" style="">
+	<div class="tab-pane ng-scope active">
 		
-			<fieldset class="myPagefiledset">
-				<legend> 마이페이지 </legend>
+			<fieldset class="myPagefiledset" style="background: white; margin-bottom: 60px; height: 10%;">
+				<legend style="margin-left:180px; font-size: 23px;"> 마이페이지 </legend>
 				<div class="row">
 					<div class="leftMyPage">
-					<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email" role="form" action="memberModify" method="post">
+					<form id="form" class="ng-pristine ng-valid ng-scope ng-valid-email" role="form" action="memberModify" method="post" style="margin-bottom: 3px;">
 						<div class="form-group">
 						<input type="hidden" name="m_id" value="${member.m_id }">
-							<label class="control-label"> 이 름 </label> <input
+							<label class="control-label" style="margin-bottom: 2px;"> 이 름 </label> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="text" name="m_name" value="${member.m_name }">
 						</div>
 						<div class="form-group">
-							<label class="control-label"> 이메일 </label> <label>${member.m_email }</label>
-								<input class="form-control ng-pristine ng-untouched ng-valid ng-valid-email"
-								type="hidden" name="m_email" value="${member.m_email }">
-								
-						</div>
-						<div class="form-group">
-							<label class="control-label"> 현재 비밀번호 </label> <input
+							<label class="control-label" style="margin-bottom: 2px;"> 현재 비밀번호 </label> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="password" name="m_pwd">
 						</div>
 						<div class="form-group">
-							<label class="control-label"> 변경할 비밀번호 </label> <input
+							<label class="control-label" style="margin-bottom: 2px;"> 변경할 비밀번호 </label> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="password" name="m_pwdCheck">
 						</div>
 					
 						<div class="form-group">
-							<label class="control-label"> 핸드폰 번호 </label> <input
+							<label class="control-label" style="margin-bottom: 2px;"> 핸드폰 번호 </label> <input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="text" name="m_phone" value="${member.m_phone }">
 						</div>
 						<div class="form-group">
-							<label class="control-label">질문</label><br> <select
+							<label class="control-label" style="margin-bottom: 2px;" >질문</label><select
 								name="m_question">
 								<option value="1">고향은?</option>
 								<option value="2">이름은?</option>
 								<option value="3">주소는?</option>
 							</select>
 						</div>
-						<div class="form-group">
-							<label class="control-label">답변</label><Br> <input
+					
+							<label class="control-label" style="margin-bottom: 2px;">답변</label><input
 								class="form-control ng-pristine ng-untouched ng-valid"
 								type="text" name="m_answer" value="${ member.m_answer}"><br>
 								<p>${pwdFalse }</p>
-						</div>
-						<input class="MyPageButton" type="submit" value="마이페이지 수정">
+					
+						<input class="MyPageButton" type="submit" value="수정" style="margin-top: 0px;">
 						</form>
 					</div>
 					<!-- 왼쪽 div 끝 -->
@@ -258,8 +179,8 @@ input[type=text], input[type=email], input[type=password], select {
 									<form id="imgForm" action="proImg" method="POST"	enctype="multipart/form-data">
 									<input id="ck" name="tae" type="hidden" value="${member.m_email }">
 										<input type="file" id="image" name="file"><br> <input
-											class="thumbnailMyPageUpdate" type="submit" value="수정">
-										<input id="delete" class="thumbnailMyPageDelete"type="button"value="삭제">
+											class="thumbnailMyPageUpdate" type="button">
+										<input id="delete" class="thumbnailMyPageDelete"type="button">
 									</form>
 								</div>
 							</div>
@@ -270,8 +191,9 @@ input[type=text], input[type=email], input[type=password], select {
 				</div>
 				
 			</fieldset>
-	
+			
 	</div>
+</div>
 	<script src="/resources/js/jquery.min.js"></script>
 	<script src="/resources/js/jquery.scrolly.min.js"></script>
 	<script src="/resources/js/imageUpload.js"></script>

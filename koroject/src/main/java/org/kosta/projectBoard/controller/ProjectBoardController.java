@@ -20,8 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/projectBoard/*")
 public class ProjectBoardController {
 	
-	@Inject
-	private ProjectBoardService service;
+	@Inject	private ProjectBoardService service;
 		
 	@RequestMapping(value="create", method=RequestMethod.GET)
 	public void create()
@@ -31,14 +30,17 @@ public class ProjectBoardController {
 	//프로젝트 생성 todo : 맴버추가기능 넣어줘야 함
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	@ResponseBody
-	public void createPost(@RequestParam("projectName") String p_name, @RequestParam("projectManger") int p_pmid, 
-			@RequestParam("projectStartDate") String p_start, @RequestParam("projectStartDate") String p_end)
+	public void createPost(@RequestParam("p_name") String p_name, @RequestParam("p_pmid") int p_pmid, 
+			@RequestParam("p_start") String p_start, @RequestParam("p_end") String p_end,
+			@RequestParam("p_crew") String p_crew,@RequestParam("p_memo") String p_memo)
 	{
 		ProjectBoard pb = new ProjectBoard();
 		pb.setP_name(p_name);
 		pb.setP_pmid(p_pmid);
 		pb.setP_start(p_start);
 		pb.setP_end(p_end);
+		pb.setP_crew(p_crew);
+		pb.setP_memo(p_memo);
 		service.create(pb);
 	}
 	//프로젝트 리스트 호출. 프로젝트를 생성한 사람 기준으로 불러옴, 참여한 프로젝트도 호출하는 로직 제작 필요

@@ -6,7 +6,6 @@ import java.security.NoSuchAlgorithmException;
 import javax.inject.Inject;
 
 import org.kosta.member.domain.LoginCommand;
-import org.kosta.member.domain.Member;
 import org.kosta.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,8 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class MemberRestController {
 
-	@Inject
-	private MemberService service;
+	@Inject	private MemberService service;
 
 	@Autowired
 	public void setService(MemberService service) {

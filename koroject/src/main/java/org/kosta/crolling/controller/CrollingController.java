@@ -50,8 +50,6 @@ public class CrollingController {
 	            elements = doc.select("div.item-details");
 	           
 	            for(int i=0;i<10; i++){
-	            	System.out.println("---------------------"+i+"----------------------");
-	            	System.out.println(elements.get(i).child(0).html());
 	            	//list.add("<ul type='circle'>"+"<li>"+elements.get(i).child(0).html()+"</li>"+"</ul>");
 	            	list.add(elements.get(i).child(0).html());
 	            }

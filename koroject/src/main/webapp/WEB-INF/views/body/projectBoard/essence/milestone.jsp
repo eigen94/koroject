@@ -57,12 +57,18 @@
 </a>
 <input type="text" id="test">
 <button id="essenceset">?</button>
+<button id="essenceSave">저장</button>
+<button id="essenceLoad">로딩</button>
 <!-- 테이블이 올 장소 -->
 <div class="milestoneField"></div>
 
 <script type="text/javascript">
 $(function(){
 
+	var numberP_id=window.location.href;
+	var regExp = /(\/\d+)/g;
+	var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+	
 	var lastAddedAlphaName;
 	var lastAddedAlphaCode;
 	var lastAddedAlphaHashId;
@@ -133,18 +139,20 @@ $(function(){
 								{
 								this.milestone[i].alphaState=[];
 								this.milestone[i].alphaState.push({"alphaID":newValue,"name":newValue2,"hashId":newValue3});
+								console.log("등록");
 								}
 							else
 								{
 								this.milestone[i].alphaState.push({"alphaID":newValue,"name":newValue2,"hashId":newValue3});
+								console.log("등록");
 								}
 							}
 						else if(attr=="removeAlpha")
 							{
 							for(var j=0;j<(this.milestone[i].alphaState).length;j++){
-								console.log("removeStart : "+j);
 								if(this.milestone[i].alphaState[j].hashId==newValue){
 									this.milestone[i].alphaState.splice(j,1);
+									console.log("삭제")
 								}
 							}
 							
@@ -158,6 +166,20 @@ $(function(){
 			},
 			get : function(attr){
 				console.log(attr);
+			},
+			importJson : function(data){
+				//console.log(data);
+				var obj = data;
+				console.log("importJson : ");
+				console.log(obj);
+				console.log(JSON.parse(obj));
+				this.milestone = JSON.parse(obj);
+				//this.milestone = data;
+			},
+			exportJson : function(){
+				var tmp = JSON.stringify(this.milestone);
+				console.log(tmp);
+				return tmp;
 			}
 			
 	}//end of essence
@@ -233,7 +255,7 @@ $(function(){
 	//헬퍼 html코드 부분
 	function createAlphaHtml(code,name,hashId){
 //		console.log(obj)
-		this.returnHtml= '<li value='+code+' id='+hashId+' class="pure-menu-item addedAlphaLists ui-sortable"><a class="pure-menu-link" href="" style="display: block;">'+name+'</a><div class="removeAlphastate">x</div></li>'
+		this.returnHtml= '<li value='+code+' id='+hashId+' class="pure-menu-item addedAlphaLists ui-sortable"><a class="pure-menu-link" href="" style="display: block;">'+name+'<div class="removeAlphastate">x</div></a></li>'
 		return this.returnHtml;
 	}
 	
@@ -319,7 +341,7 @@ $(function(){
 		for(var i=1; i<8;i++){
 			$(".sortable"+i).sortable({
 				connectWith : ".sortable"+i,
-				update : function(e,ui){
+				stop : function(e,ui){
 					console.log("update!")
 				
 					console.log("event : ");
@@ -334,19 +356,19 @@ $(function(){
 					console.log();
  					if(targetId==toElId){
 						console.log("same");
-						console.log("add");
 						//같은 마일 스톤이므로 객체 순서 스캔 후 수정
 
 					} else {
 						//이동 했으므로 삭제 후 등록 target을 삭제하고 toEl을 등록
-						var milestoneHashID=$(e.toElement).closest('tr').attr('id');
+//						var milestoneHashID=$(e.toElement).closest('tr').attr('id');
 						//마일스톤 등록
 						//이동시 중복현상 해결할것
+						console.log("add start");
 						essence.set(targetId,"removeAlpha",hashId);
-						if(milestoneHashID!=undefined){
-							console.log("add");
-							essence.set(milestoneHashID,"addAlpha",alphaID,name,hashId);
-						}
+						essence.set(toElId,"addAlpha",alphaID,name,hashId);
+//						if(milestoneHashID!=undefined){
+//							console.log("add");
+//						}
 						
 					}
 					//console.log(ui);
@@ -389,9 +411,44 @@ $(function(){
 	$("body").on("click","#essenceset",function(){
 		//console.log(" event get")
 		console.log(essence);
+		console.log(essence.exportJson());
 		
 		//essence.set($("#test").val(),"hi","hi");
 	});
+	//저장
+	$("body").on("click","#essenceSave",function(){
+		var sendData = essence.exportJson();
+		console.log("send : "+sendData);
+		$.ajax({
+			url : "http://localhost:10000/export",
+			data : {
+				milestone : sendData,
+				p_id : p_id
+			},
+			method : "POST",
+			success : function(){
+				console.log("save done");
+			}
+		})
+	});
+	
+	//로드
+	$("body").on("click","#essenceLoad",function(){
+		$.ajax({
+			url : "http://localhost:10000/import",
+			method : "POST",
+			data : {
+				p_id : p_id
+			},
+			success : function(data){
+				console.log("load done");
+				console.log(data);
+				essence.importJson(data);
+			}
+		})
+		
+	});
+	
 	
 	//마일스톤을 누르면 행 추가
 	$("body").on("click",".addMilestoneBtn",function(){
@@ -434,9 +491,26 @@ $(function(){
 		//뷰제거
 		$(this).closest("li").remove();
 	});
-	//1.정의 테이블 보여주기, 정의 선택
-	$(".milestoneField").append(drawTable(0,0));
-	$(".definitionBtn").css("color","black");
+	
+
+	$.ajax({
+		url : "http://localhost:10000/import",
+		method : "POST",
+		data : {
+			p_id : p_id
+		},
+		success : function(data){
+			console.log("load done");
+			console.log(data);
+			essence.importJson(data);
+			
+			
+			//1.정의 테이블 보여주기, 정의 선택
+			$(".milestoneField").append(drawTable(0,0));
+			$(".definitionBtn").css("color","black");
+			drawMilestone();
+		}
+	})
 	
 	
 });

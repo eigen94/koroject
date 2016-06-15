@@ -134,15 +134,13 @@
   $.fn.betterCheckbox = function( method ) {
 
     if ( methods[method] ) {
-    	console.log("in 1");
+    	
       return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ));
     } else if ( typeof method === 'object' || ! method ) {
-    	console.log("in 2");
-    	console.log(this);
-    	console.log(arguments);
+    	
       return methods.init.apply( this, arguments );
     } else {
-    	console.log("in 3");
+    	
       $.error( 'Method ' +  method + ' does not exist on jQuery.betterCheckbox' );
     }    
   

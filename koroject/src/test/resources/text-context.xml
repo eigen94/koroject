@@ -37,7 +37,7 @@
 	
 	<!-- 디폴트 뷰리졸버 세팅 : 타일즈 이후의 jsp로딩을 위해 order 2
 	 -->
-	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/body/" />
 		<beans:property name="suffix" value=".jsp" />
 		<beans:property name="order" value="2"/>
@@ -48,6 +48,7 @@
 		<beans:property name="maxUploadSize" value="10485760"></beans:property>
 	</beans:bean>
 	
+	
 	<!-- auto scan -->
 	<context:component-scan base-package="org.kosta" />
 	<!-- 세션관리 인터셉터 -->
@@ -55,7 +56,7 @@
 	<beans:bean id="loginCheckInterceptor" class="org.kosta.member.interceptor.LoginCheckInterceptor"></beans:bean>
 	<beans:bean id="logoutInterceptor" class="org.kosta.member.interceptor.LogoutInterCeptor"></beans:bean>
 	<beans:bean id="SessionCheckInterceptor" class="org.kosta.member.interceptor.SessionCheckInterceptor"></beans:bean>
-
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="login" />

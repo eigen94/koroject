@@ -15,8 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-	@Inject
-	private ImageDAO imageDao;
+	@Inject	private ImageDAO imageDao;
 	
 
 	@Transactional
@@ -25,7 +24,6 @@ public class ImageServiceImpl implements ImageService {
 		imageDao.create(vo);
 		
 		int maxNum = maxNum();
-		System.out.println("maxNum : " + maxNum);
 		
 		String[] files = vo.getFiles();
 		

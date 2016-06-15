@@ -1,6 +1,6 @@
 /* 전체 */
 .noteBody {
-	margin: 100px 50px;
+	
 	height: 100%;
 	width: 100%;
 }
@@ -10,9 +10,10 @@
 /* 좌측 */
 .left {
 	float: left;
-	width: 20%;
-	height: 100%;
+	width: 15%;
+	height: 80%;
 	text-align: center;
+	margin-left: 15px;
 }
 
 /* 좌측 끝 */
@@ -20,12 +21,23 @@
 /* 좌측 버튼 */
 
 .left button {
-	width: 100%;
-	margin: 10px;
+	
+	margin: 5px;
 }
 
 .left #toggleBtn {
+	width: 20%;
 	height: 30px;
+	padding:0px;
+	float:left;
+	
+	
+}
+
+#button{
+	width: 70%;
+	height: 10%;
+	padding:0px;
 }
 
 /* 좌측 버튼 끝 */
@@ -35,7 +47,8 @@
 	float: left;
 	margin-left : 50px;
 	width: 70%;
-	height: 100%;
+	height: 80%;
+	border: 1px solid #e6e8e8;
 }
 
 /* 쪽지전송폼 숨김 */
@@ -69,16 +82,19 @@
 .right_left {
 	float: left;
 	width: 35%;
-	height: 100%;
+	height: 80%;
 	text-align: center;
 }
+.listlist{
+	width:100%;
 
+	height: 80%;
+}
 .scroll {
-	/* height: 100%; */
 	overflow: auto;
 	width: 100%;
-	height: 450px;
-	margin-top: 50px;
+	height: 360px;
+		margin-top: 3px;
 }
 
 ul {
@@ -123,7 +139,6 @@ ul {
 .message-list .message-list-item .clickPoint {
 	cursor: pointer;
 	display: block;
-	padding: 15px;
 }
 
 /* 날짜 지금 날짜 없음 . 적용 X */
@@ -155,22 +170,23 @@ ul {
 
 /* 내용보기 */
 .right_right {
-	padding: 30px 100px;
 	float: left;
 	width: 55%;
-	height: 100%;
-	text-align: center;
+	height: 455px;
+	margin-left: 40px
+	
 }
 
 /* 선택한 쪽지가 없을때 */
 .right_right h1{
-	font-size: 50px;
+	font-size: 40px;
 	text-align: center;
-	margin: 100px;
+	margin: 20px;
+	margin-top: 35%;
 }
 
 /* 제목 */
-.noteTitle #noteTitle {
+.note #noteTitle {
 	color: black;
 	text-align: center;
 	font-size: 50px;
@@ -190,6 +206,16 @@ ul {
 /* 우측 끝 */
 
 
+#searchType{
+	margin-bottom: 2px;
+}
+#keywordInput{
+	margin-bottom: 2px;
+}
+
+.note_senderEmail{
+	color: #777;
+}
 
 
 

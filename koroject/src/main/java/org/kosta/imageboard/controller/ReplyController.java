@@ -22,15 +22,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/projectBoard/{p_id}/checklist/{check_id}/replies/*")
 public class ReplyController {
 
-  @Inject
-  private ReplyService service;
+  @Inject private ReplyService service;
   
  
   
   //등록 처리 
   @RequestMapping(value = "", method = RequestMethod.POST)
   public ResponseEntity<String> register(@RequestBody ReplyVO vo) {
-    System.out.println("호출");
+   
     ResponseEntity<String> entity = null;
     try {
       service.addReply(vo);

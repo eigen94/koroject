@@ -1,4 +1,53 @@
  $(function(){
+	 var count = 0;
+		
+		$('#projectMemeber').keyup(function(){
+			var search = $('#projectMemeber').val()
+			var m_id = $('#projectCreator').val();
+		
+			$('#memberAddPoint').empty();
+			if(search == ""){
+				
+			}else{
+				
+				$.ajax({
+					url: "/projectBoard/memberList?search="+search,
+					dataType: 'json',
+					success:function(data){
+						
+						$.each(data,function(){
+							if(m_id != this.m_id){
+								$('#memberAddPoint').append('<p class="m_name">'+this.m_name+', '+ this.m_email +'/</p>')									
+								for(var i=0; i<count; i++){
+									var contents = $('#memberAddList').children().last().text();
+									var contentz = this.m_name+', '+ this.m_email +'/'
+									
+									if(contents == contentz){
+										$('#memberAddPoint').children().last().remove();
+									}
+								}
+							}
+						})
+					}
+				})			
+			}
+		})
+		$('body').on('click','.m_name',function(){
+			
+			var content = $(this).text();
+			var contentsplit = content.split(',')[1]
+		
+			$('#memberAddList').append('<p class="memberList">'+content+'</p>' );
+			count++;
+			$(this).remove();
+		})
+		
+		$('body').on('click','.memberList',function(){
+			$(this).remove();
+			count--;
+		})
+		
+		
 	    $('#datetimepicker1').datetimepicker({format: 'YYYY-MM-DD'});
 	    $('#datetimepicker2').datetimepicker({format: 'YYYY-MM-DD'});
  
@@ -46,8 +95,14 @@
 		 var projectName = $('#inputName').val();
 		 var projectCreatorId = $('#projectCreator').val();
 		 var projectStartDate = $('#projectStartDate').val();
-		 var projectEndDate = $('#projectEndtDate').val();
-		 console.log("name : "+projectName);
+		 var projectEndDate = $('#projectEndDate').val();
+		 var projectMemo = $('#projectMemo').val()
+		 var memberList = "";
+		 for(var i=0;i<count;i++){
+			memberList = memberList + $('#memberAddList').children().eq(i).text().split(',')[1];
+		
+		 }
+		
 		 if(projectName==""){//제목이 없으면 실행 되지 않게 함 todo : 제목에 벨리데이션 추가할것
 			 
 		 } else {
@@ -55,10 +110,12 @@
 				url : "projectBoard/create",
 				method : "POST",
 				data : {
-					projectName : projectName,
-					projectManger : projectCreatorId,
-					projectStartDate : projectStartDate,
-					projectEndDate : projectEndDate
+					p_name : projectName,
+					p_pmid : projectCreatorId,
+					p_start : projectStartDate,
+					p_end : projectEndDate,
+					p_crew : memberList,
+					p_memo : projectMemo
 				},
 				success : function(){
 					loadProjectList();
@@ -87,7 +144,7 @@
 				memberid : $('#projectCreator').val()
 			},
 			success : function(data){
-				console.log(data);
+			
 				$(".projectThumbnail").remove();
 				for(var i=0;i<data.length;i++){
 					var p_id = data[i].p_Id;
@@ -120,6 +177,6 @@
 			 }
 			 
 		  });
-		  console.log();
+		
 	  });
  });

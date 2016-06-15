@@ -1,4 +1,7 @@
 $(function(){
+	
+
+	
 	function toggleLoingForm(obj){
 
 		$('.login').fadeToggle('slow');
@@ -30,8 +33,7 @@ $(function(){
 
 
 	$('#menu').on("click",".menuLoginButton",function(){
-		/* console.log("hi");
-		 console.log(this);*/
+		
 		//$(this).panel({delay: 500,hideOnClick: true,hideOnSwipe: true,resetScroll: true,resetForms: true,side: 'right', visibleClass:''});
 		$(this).parent().parent().parent().removeClass('visible');
 		//이벤트 중지
