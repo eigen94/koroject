@@ -8,7 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="send">
 		INSERT INTO note (n_id, n_title, n_content, n_sender, n_receive, n_date, folder, senderEmail)
 		values(note_seq.nextval, #{n_title},
-		#{n_content}, #{n_sender}, #{n_receive}, SYSDATE, 0,(select m_email from member where m_id = #{n_sender}))
+		#{n_content}, #{n_sender}, #{n_receive}, TO_DATE(sysdate, 'yyyy-mm-dd hh24:mi'),
+		0,(select m_email from member where m_id = #{n_sender}))
 	</insert>
 
 	<select id="listAll" resultType="Note">
