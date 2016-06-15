@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Image;
-import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 public class CreatePDF {
@@ -39,9 +42,10 @@ public class CreatePDF {
 		
 			
 			//문서에 내용 첨부
-			addMetaData(document);
+	//		addMetaData(document);
 			addTitlePage(document);
 			addImageData(document, req);
+			createTable(document);
 			
 			//문서를 닫음
 			document.close();
@@ -68,12 +72,12 @@ public class CreatePDF {
 			
 		}
 	//내용 첨부 메소드 1
-	private static void addMetaData(Document document) {
+	/*private static void addMetaData(Document document) {
 		document.addTitle("Generate PDF report");
 		document.addSubject("Generate PDF report");
 		document.addAuthor("Java Ryu");
 		document.addCreator("Java Ryu");
-	}
+	}*/
 	//내용 첨부 메소드 2 
 	private static void addTitlePage(Document document) throws DocumentException {
  
@@ -93,6 +97,37 @@ public class CreatePDF {
 		for (int i = 0; i < number; i++) {
 			paragraph.add(new Paragraph(" "));
 		}
+	}
+	
+	private static void createTable(Document document) throws DocumentException {
+		Paragraph paragraph = new Paragraph();
+		creteEmptyLine(paragraph, 2);
+		document.add(paragraph);
+		PdfPTable table = new PdfPTable(3);
+ 
+		PdfPCell c1 = new PdfPCell(new Phrase("First Name"));
+		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+		table.addCell(c1);
+ 
+		c1 = new PdfPCell(new Phrase("Last Name"));
+		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+		table.addCell(c1);
+ 
+		c1 = new PdfPCell(new Phrase("Test"));
+		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+		table.addCell(c1);
+		table.setHeaderRows(1);
+ 
+		for (int i = 0; i < 5; i++) {
+			table.setWidthPercentage(100);
+			table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
+			table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
+			table.addCell("Java");
+			table.addCell("Ryu");
+			table.addCell("Success");
+		}
+ 
+		document.add(table);
 	}
 		
 }

@@ -12,6 +12,10 @@
 	height: 500px;
 	
 }
+
+#temp_c{
+	display: inline;
+}
 .newsDivRight{
 	overflow:auto;
 	border: 1px solid white;
@@ -112,7 +116,11 @@ $(function(){
 				
 				var temp_c = parsed_json['current_observation']['temp_c'];//현재 기온(섭씨)
 				
-				$('#result').html('현재날씨 :' + weather + '<br>현재 기온 : ' + temp_c + '도')//result <div>태그 출력
+				var icon_url = parsed_json['current_observation']['icon_url'];//현재 기온(섭씨)
+				$('#result').html('');
+				$('#result').html('<p style="margin-bottom: 0px;">Seoul City, South Korea</p>'+
+						 	'<h2 id="temp_c">'+temp_c + '℃</h2>' +'&nbsp;&nbsp;<img src="'+icon_url+'"><br>'+
+								'현재날씨 :' + weather );//result <div>태그 출력
 			}
 		});
 	});
