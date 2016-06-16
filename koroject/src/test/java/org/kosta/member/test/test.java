@@ -27,14 +27,15 @@ public class test {
 	@Test
 	public void test() throws Exception{
 		Member member = new Member();
-		member.setM_id(1);
-		member.setM_name("гоюл");
+		member.setM_id(10);
+		member.setM_name("a");
 		member.setM_phone("000000");
 		member.setM_pwd("1234");
 		member.setM_question(1);
 		member.setM_answer("aaaaa");
 		member.setM_email("asdas@asd.asd");
 		member.setM_recentMember("asd");
+		member.setM_image("ddd");
 		dao.insertMember(member);
 	}
 
