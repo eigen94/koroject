@@ -11,7 +11,7 @@
 </style>
 
 <header id="header">
-<h1>
+<h1 style="font-size: 100%;">
 <a href="/">
 koroject
 <span>by kosta</span>
