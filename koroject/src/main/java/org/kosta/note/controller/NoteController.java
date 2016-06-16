@@ -59,7 +59,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		model.addAttribute("m_id", m_id);
-		return "/note/noteMain";
+		return "noteMain";
 	}
 
 	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
