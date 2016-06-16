@@ -1,5 +1,8 @@
 package org.kosta.usecase.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.kosta.usecase.domain.JsonUsecase;
@@ -14,21 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/usecase/*")
 public class UsecaseRestController {
-	@Inject
-	private UsecaseService service;
+	@Inject	private UsecaseService service;
 
 	@RequestMapping(value="save", method=RequestMethod.POST)
-	public void save(@RequestParam("jsonData") String jsonData) throws Exception
+	public void save(int id, @RequestParam("jsonData") String jsonData) throws Exception
 	{
-		service.save(jsonData);		
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("check_id", Integer.toString(id));
+		map.put("usecase_content", jsonData);
+		service.save(map);		
 	}
 	
 	@ResponseBody
 	@RequestMapping("load")
-	public JsonUsecase load()
+	public JsonUsecase load(int id)
 	{
 		JsonUsecase json = new JsonUsecase();
-		json.setJsonData(service.load(1));		
+		json.setJsonData(service.load(id));		
 		
 		return json;		
 	}

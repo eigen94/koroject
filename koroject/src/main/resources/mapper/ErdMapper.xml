@@ -7,12 +7,20 @@
 	<cache />
 	
 <update id="save" parameterType="String">
-	update erd set content = #{content}
-		where pid = 1
+	update erd set erd_content = #{erd_content}
+		where erd_id = ( select check_content from checklist where check_id = #{check_id} )
 </update>
 
 <select id="load" parameterType="int" resultType="String">
-	select content from erd where pid = #{pid}
+	select erd_content from erd where erd_id = ( select check_content from checklist where check_id = #{check_id} )
+</select>
+
+<insert id="create">
+	insert into erd values( nvl((select max(erd_id) from erd)+1, 0), null )
+</insert>
+
+<select id="maxId" resultType="Integer">
+	select max(erd_id) from erd
 </select>
 
 </mapper>

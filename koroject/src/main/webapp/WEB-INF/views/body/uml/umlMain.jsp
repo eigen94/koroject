@@ -46,6 +46,10 @@
 	var uml = joint.shapes.uml;
 	
 	$(function(){
+		var numberP_id=window.location.href;
+		var regExp = /(\/\d+)$/g;
+		var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+
 		var graph = new joint.dia.Graph();
 		
 		var paper = new joint.dia.Paper({
@@ -125,10 +129,12 @@
 		$("#save").click(function(){			
 			json = graph.toJSON();
 			//console.log(json);
+
 			$.ajax({
 				type : "post",
-				url : "save",
-				data : { "jsonData" : JSON.stringify(json) },
+				url : "/uml/save",
+				data : { "jsonData" : JSON.stringify(json),
+							"id" : p_id},
 				dataType : "text",
 				success : function(){
 					graph.clear();
@@ -139,8 +145,9 @@
 		$("#load").click(function(){
 			$.ajax({
 				type:"post",
-				url : "load",
-				dataType: "json",				
+				url : "/uml/load",
+				dataType: "json",		
+				data : {"id" : p_id },
 				success : function(data){					
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
@@ -224,7 +231,11 @@
 			
 		}); // end of relation change
 		
-		
+		$("#convert").click(function(){
+			paper.toJPEG(function(dataURL){
+				console.log(dataURL);
+			})
+		})
 		
 	})//end jquery 
 	
@@ -293,6 +304,7 @@
 	<div>
 	<button id="save">저장</button>
 	<button id="load">불러오기</button>
+	<button id="convert">이미지</button>
 	
 	</div>
 	<div id="stencil-holder"></div>

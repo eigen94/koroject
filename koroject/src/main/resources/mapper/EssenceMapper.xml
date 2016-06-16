@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.kosta.mapper.EssenceMapper">
+
+	<insert id="insert">
+		INSERT INTO ESSENCE (e_id, e_projectid, e_json)
+		values(NVL(1+(select max(e_id) from essence),0), #{p_id}, #{json})
+	</insert>
+
+	<select id="load" resultType="String">
+		SELECT e_json FROM ESSENCE WHERE e_projectid = #{p_id} and e_id = (SELECT max(e_id) from ESSENCE WHERE e_projectid = #{p_id})
+	</select>
+
+	<select id="detail" resultType="Note">
+		SELECT * FROM note WHERE n_id =
+		#{n_id}
+	</select>
+	
+	<select id="getM_id" resultType="Integer">
+		SELECT m_id FROM member WHERE m_email = #{m_email }
+	</select>
+
+	<update id="update">
+		UPDATE note SET
+		n_title = #{n_title },
+		n_content = #{n_content }
+		WHERE n_id = #{n_id }
+	</update>
+
+	<delete id="delete">
+		DELETE FROM note WHERE n_id = #{n_id}
+	</delete>
+
+	<select id="searchId" resultType="String">
+		SELECT m_email
+		FROM member
+		WHERE
+		m_email LIKE #{m_email }
+	</select>
+
+	<select id="note_receiveList" resultType="Note">
+		SELECT * 
+		FROM note 
+		WHERE n_receive = #{m_id}
+		ORDER BY n_id DESC
+	</select>
+	
+	<select id="note_sendList" resultType="Note">
+		SELECT * 
+		FROM note 
+		WHERE n_sender = #{m_id}
+		ORDER BY n_id DESC
+	</select>
+
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and n_title like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and n_content like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and n_sender like '%' || #{keyword} || '%'
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and ( n_title like '%' || #{keyword} || '%' 
+				OR n_content like '%' || #{keyword} || '%')
+			</if>
+			<if test="searchType == 'cw'.toString()">
+				and ( n_content like '%' || #{keyword} || '%' 
+				OR n_sender like '%' || #{keyword} || '%')
+			</if>
+			<if test="searchType == 'tcw'.toString()">
+				and ( n_title like '%' || #{keyword} || '%'
+				OR n_content like '%' || #{keyword} || '%'
+				OR n_sender like '%' || #{keyword} || '%')
+			</if>
+		</if>
+	</sql>
+
+	<select id="note_searchSen" resultType="Note">
+		<![CDATA[
+			select *
+			from note
+			where n_sender = #{m_id }
+		]]>
+
+		<include refid="search"></include>
+  
+		<![CDATA[    
+  			order by n_id desc
+		]]>
+	</select>
+	
+	<select id="note_searchRec" resultType="Note">
+		<![CDATA[
+			select *
+			from note
+			where n_receive = #{m_id }
+		]]>
+
+		<include refid="search"></include>
+  
+		<![CDATA[    
+  			order by n_id desc
+		]]>
+	</select>
+
+
+
+<!-- 
+
+	<select id="listAll" resultType="org.zerock.domain.BoardVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt 
+ from 
+   tbl_board 
+ where bno > 0 
+ order by bno desc, regdate desc
+ ]]>
+	</select>
+
+	<select id="listPage" resultType="BoardVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt , replycnt
+ from 
+   tbl_board 
+ where bno > 0 
+ order by bno desc, regdate desc
+ limit #{page}, 10
+ ]]>
+	</select>
+
+	<select id="listCriteria" resultType="BoardVO">
+ <![CDATA[
+ select 
+   bno, title, content, writer, regdate, viewcnt , replycnt
+ from 
+   tbl_board 
+ where bno > 0 
+ order by bno desc, regdate desc
+ limit #{pageStart}, #{perPageNum}
+ ]]>
+	</select>
+
+
+	
+
+
+
+	<select id="countPaging" resultType="int">
+ <![CDATA[
+ select 
+   count(bno) 
+ from 
+   tbl_board 
+ where 
+   bno > 0 
+ ]]>
+	</select>
+
+
+
+	
+
+	<select id="listSearchCount" resultType="int">
+<![CDATA[  
+  select count(bno) 
+  from tbl_board 
+  where bno > 0 
+]]>
+		<include refid="search"></include>
+
+	</select>
+
+
+ 
+<update id="updateReplyCnt">
+  update tbl_board set replycnt = replycnt + #{amount} where bno = #{bno}
+</update>
+
+
+<update id="updateViewCnt">
+  update tbl_board set viewcnt = viewcnt +1 where bno = #{bno}
+</update>
+
+
+ 
+<insert id="addAttach">
+insert into tbl_attach(fullname, bno) values (#{fullName}, LAST_INSERT_ID())
+</insert> 
+
+
+<select id="getAttach" resultType="string">
+select fullname from tbl_attach where bno = #{bno} order by regdate
+</select> 
+
+ 
+<delete id="deleteAttach">
+delete from tbl_attach where bno = #{bno}
+</delete>
+
+<insert id="replaceAttach">
+insert into tbl_attach(fullname, bno) values (#{fullName}, #{bno})
+</insert>
+   -->
+ 
+
+
+</mapper>

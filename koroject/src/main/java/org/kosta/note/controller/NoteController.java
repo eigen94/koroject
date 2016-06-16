@@ -46,7 +46,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 	}*/
 	
 //	타일즈 불러올 페이지를 리턴값으로 적어줄것
-	@RequestMapping(value="/main")	//노트 메인을 열어줘요
+	@RequestMapping(value="main")	//노트 메인을 열어줘요
 	public String main(Model model, HttpServletRequest request)throws Exception{
 		Member member = (Member)request.getSession().getAttribute("member");
 		
@@ -59,7 +59,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		model.addAttribute("m_id", m_id);
-		return "noteMain";
+		return "/note/noteMain";
 	}
 
 	@RequestMapping(value="/note_sendForm")	// 열려라 쪽지전송 폼!
@@ -79,7 +79,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		List<Note> note_list = service.note_receiveList(m_id);
 		model.addAttribute("list", note_list);
 		model.addAttribute("m_id", m_id);
-		return "noteMain";
+		return "/note/noteMain";
 	}
 	
 	@RequestMapping("/note_delete{n_id}")
@@ -115,6 +115,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Note> note_searchSen = service.note_searchSen(cri);
 		int m_id = member.getM_id();
+		String sender = "no";
 		
 //		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
 		model.addAttribute("list", note_searchSen);	//검색한한 쪽지만 출력 
@@ -123,6 +124,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		pageMaker.setCri(cri);
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("sender", sender);
 		model.addAttribute("m_id", m_id);
 		
 		return "noteMain";
@@ -134,6 +136,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		Member member = (Member)request.getSession().getAttribute("member");
 		List<Note> note_searchRec = service.note_searchRec(cri);
 		int m_id = member.getM_id();
+		String sender = "sender";
 		
 //		model.addAttribute("list", note_list);	//로그인한 사용자가 수신한 쪽지만 출력 
 		model.addAttribute("list", note_searchRec);	//검색한한 쪽지만 출력 
@@ -142,6 +145,7 @@ private static final Logger logger = LoggerFactory.getLogger(NoteController.clas
 		pageMaker.setCri(cri);
 		
 		model.addAttribute("pageMaker", pageMaker);
+		model.addAttribute("sender",sender);
 		model.addAttribute("m_id", m_id);
 		
 		return "noteMain";

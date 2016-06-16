@@ -14,19 +14,19 @@
 <link rel="stylesheet" type="text/css" href="/resources/css/noteStyle.css">
 
 </head>
-<body>
+<body >
 
 	<h3 style="margin:20px 0px 20px 70px;">${member.m_name }님의 쪽지목록</h3>
 	
 	<div class="noteBody">
 		<!-- 좌측에 버튼들 -->
 		<div class="left">
-			<div class="clickToggle"><button id="toggleBtn" style="margin-left:50px;">V</button></div><br>
+			<div class="clickToggle"><button id="toggleBtn" style="margin-left:30px; border-radius:0px;">V</button></div><br>
 			<hr style="margin:8px;">
 			<div class="toggleDiv">
-				<div class="sendform">	<button id="button"> 쪽지 보내기 </button>	</div>
-				<div class="sendList"><button id="button"> 보낸 쪽지함 </button></div>
-				<div class="receiveList"><button id="button"> 받은 쪽지함 </button></div>
+				<div class="sendform">	<button id="button" style="border-radius:0px;"> 쪽지 보내기 </button>	</div>
+				<div class="sendList"><button id="button" style="border-radius:0px;"> 보낸 쪽지함 </button></div>
+				<div class="receiveList"><button id="button" style="border-radius:0px;"> 받은 쪽지함 </button></div>
 			</div>
 		</div>
 		
@@ -34,33 +34,35 @@
 		<div class="right">
 			<div class="sendFormArea" id="offSendForm">
 				<%-- <jsp:include page="noteSend.jsp"/> --%>
+				<div style="padding-left:50px;">
 				<form action="note_send" method="post" id="formTag">
 					<div class="noteForm">
 						<div class="hidden_text">
 							<input type="hidden" name="n_sender" value="${m_id }">
 						</div>
 						<div class="input_text">
-							<div class="title"> 
-							<h3> 제목 </h3>
-								<input type="text" name="n_title">
+							<div class="title" style="margin-bottom: 5px;"> 
+							<h3 style="margin-bottom: 3px;"> 제목 </h3>
+								<input type="text" name="n_title" style="width: 300px;">
 							</div>
-							<div class="receive">
-							<h3> 받는사람 </h3>
-								<button class="searchOpen">이메일 검색</button>
-								<input type="text" id="n_receiveEmail" name="n_receiveEmail">
+							<div class="receive" style="margin-bottom: 5px;">
+							<h3 style="margin-bottom: 3px;"> 받는사람 </h3>
+								<input type="text" id="n_receiveEmail" name="n_receiveEmail" style="width: 500px; display:inline-block;">
+								<button class="searchOpen" style="padding: 0px;border-radius:0px; height:40px;;">이메일 검색</button>
 								<input type="hidden" id="n_receive" name="n_receive">
 							</div>
-							<div class="content">
-							<h3> 내용 </h3>
-								<textarea rows="10" cols="" name="n_content"></textarea>
+							<div class="content" style="margin-bottom: 5px;">
+							<h3 style="margin-bottom: 3px;"> 내용 </h3>
+								<textarea rows="10" cols="" name="n_content" style="width:80%;"></textarea>
 							</div>
 						</div>
 					</div>
 
 					<div class="send">
-						<input type="submit" value="전송">
+						<input type="submit" value="전송" style="float: right; margin-right: 20px; height:40px; border-radius:0px;">
 					</div>
 				</form>
+			</div>
 			</div>
 			
 			<div class="listAndDetailArea" id="onlistAndDetail">
@@ -91,16 +93,18 @@
 							<ul class="message-list">
 								<c:forEach var="note" items="${list }">
 								
-									<li class="message-list-item">
+									<li class="message-list-item" style=" background: #bbd5ef">
 										<button id="noteDelete">X</button>
 										<div class="clickPoint">
 											<div class="message-list-item-header">
-												<input type="hidden" value="${note.n_id }">
 												<fmt:formatDate value="${note.n_date }" pattern="yy-MM-dd hh:mm"/>
-												<span class="note_senderEmail">${note.senderEmail }</span>
+												<input type="hidden" value="${note.n_id }">
+												<c:if test="${sender eq 'sender'}">
+												<p class="note_senderEmail" style="color: #777; margin-bottom:0px; font-weight: bold;">${note.senderEmail }</p>
 												<hr style="margin: 2px;">
-												<p class="note_title">${note.n_title }</p>
-												<p class="note_content">${note.n_content }</p>
+												</c:if>
+												<p class="note_title" style="color:black; margin-bottom: 0px;">${note.n_title }</p>
+												<p class="note_content" style="color:#aeacb4; margin-bottom: 3px;">${note.n_content }</p>
 											</div>
 										</div>
 									</li>

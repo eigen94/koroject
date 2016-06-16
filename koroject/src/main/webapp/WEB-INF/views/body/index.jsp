@@ -12,6 +12,10 @@
 	height: 500px;
 	
 }
+
+#temp_c{
+	display: inline;
+}
 .newsDivRight{
 	overflow:auto;
 	border: 1px solid white;
@@ -27,7 +31,7 @@
 	border: 1px solid white;
 	width:50%;
 	height: 500px;
-	background: black;
+	background: white;
 	display: inline-block;
 	float:left
 }
@@ -68,12 +72,12 @@ $(function(){
 				$.each(data,function(){
 //					$('.newsDivLeft').append('<ul><li>'+this+'</li></ul>');
 //					href = $('.newsDivLeft').children().children().children().last().attr('href');
-					$('.newsDivLeft').append('<li>'+this+'</li>');
-					href = $('.newsDivLeft').children().children().last().attr('href');
-					$('.newsDivLeft').children().last().attr('href', '');
-					$('.newsDivLeft').append('<input type="hidden" class="href" value="'+href+'">');
-					
-					$('.newsDivLeft a').addClass('link')
+					$('.newsScript').append('<li>'+this+'</li>');
+					href = $('.newsScript').children().children().last().attr('href');
+					$('.newsScript').children().last().attr('href', '');
+					$('.newsScript').append('<input type="hidden" class="href" value="'+href+'">');
+					$('.newsScript a').addClass('link');
+					$('.newsScript a').css('color','black');
 				})					
 				
 			 }
@@ -112,7 +116,11 @@ $(function(){
 				
 				var temp_c = parsed_json['current_observation']['temp_c'];//현재 기온(섭씨)
 				
-				$('#result').html('현재날씨 :' + weather + '<br>현재 기온 : ' + temp_c + '도')//result <div>태그 출력
+				var icon_url = parsed_json['current_observation']['icon_url'];//현재 기온(섭씨)
+				$('#result').html('');
+				$('#result').html('<p style="margin-bottom: 0px;">Seoul City, South Korea</p>'+
+						 	'<h2 id="temp_c">'+temp_c + '℃</h2>' +'&nbsp;&nbsp;<img src="'+icon_url+'"><br>'+
+								'현재날씨 :' + weather );//result <div>태그 출력
 			}
 		});
 	});
@@ -141,9 +149,15 @@ $(function(){
 <section id="one" class="wrapper alt style2">
 <div class="newsDiv">
 <div class="newsDivLeft">
-<h3><strong>최신 IT뉴스 기사 리스트 top 10 </strong></h3>
-출처 : http://www.itnews.or.kr/
+<h3 style="margin-left: 150px; margin-top: 10px; margin-bottom: 0px;"><strong style="color: black;">최신 IT뉴스 기사 리스트 top 10 </strong></h3>
+<div class="newsScript" style=" padding-left: 40px; width: 650px; margin-top:20px; margin-bottom: 20px; margin-left: 25px;">
+
 <!-- 기사 들어갈곳 -->
+</div>
+<div class="copyRight" style="float: right; margin-right: 10px; ">
+<p style="color:black; margin-bottom: 0px;">출처 : http://www.itnews.or.kr/<p>
+
+</div>
 </div>
 <div class="newsDivRight">
 <!-- 컨텐츠 들어갈곳 -->
@@ -202,32 +216,6 @@ $(function(){
 </div>
 </section>
 
-<!-- 
-<nav id="menu">
-<ul class="links">
-<li>
-<a href="projectPage">Project</a>
-</li>
-<li>
-<a href="generic.html">Generic</a>
-</li>
-<li>
-<a href="elements.html">Elements</a>
-</li>
-</ul>
-<ul class="actions vertical">
-<li>
-<a class="button fit special signUp" href="#">Sign Up</a>
-</li>
-<li>
-<a class="button fit menuLoginButton" href="#">Log In</a>
-<script type="text/javascript">
-</script>
-
-</li>
-</ul>
-<a class="close" href="#menu"></a>
-</nav> -->
 
 
 

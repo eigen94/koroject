@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProjectBoardServiceImpl implements ProjectBoardService {
 
-	@Inject
-	ProjectBoardDAO dao;
+	@Inject	ProjectBoardDAO dao;
 
 	@Override
 	public void create(ProjectBoard pb) {
@@ -43,7 +42,11 @@ public class ProjectBoardServiceImpl implements ProjectBoardService {
 
 	@Override
 	public List<Member> memberList(String search) {
-		// TODO Auto-generated method stub
 		return dao.memberList(search);
+	}
+
+	@Override
+	public int getPmid(int projectId) {
+		return dao.getPmid(projectId);
 	}
 }

@@ -16,6 +16,7 @@
 	<package name="org.kosta.erd.domain"/>
 	<package name="org.kosta.usecase.domain"/>
 	<package name="org.kosta.usecaseDescription.domain"/>
+	<package name="org.kosta.essence.domain"/>
 	</typeAliases>
 	
 	

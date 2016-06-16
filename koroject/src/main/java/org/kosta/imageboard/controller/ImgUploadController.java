@@ -45,11 +45,9 @@ public class ImgUploadController {
  
   @RequestMapping(value = "uploadForm", method = RequestMethod.POST)
   public String uploadForm(MultipartFile file, Model model, HttpServletRequest req) throws Exception {
-	  System.out.println("originalName: " + file.getOriginalFilename());
-	  System.out.println("size: " + file.getSize());
-	  System.out.println("contentType: " + file.getContentType());
-	  String uploadPath = req.getSession().getServletContext().getRealPath("/");
-	  System.out.println(uploadPath);
+	
+	String uploadPath = req.getSession().getServletContext().getRealPath("/");
+	  
     String savedName = uploadFile(file.getOriginalFilename(), file.getBytes(), uploadPath);
 
     model.addAttribute("savedName", uploadPath+savedName);
@@ -84,8 +82,7 @@ public class ImgUploadController {
     logger.info("originalName: " + file.getOriginalFilename());
     String uploadPath = req.getSession().getServletContext().getRealPath("/");
     //return new ResponseEntity<>(file.getOriginalFilename(), HttpStatus.CREATED);
-    System.out.println("file : "+file);
-   System.out.println("uploadPath : "+uploadPath);
+   
    return 
       new ResponseEntity<>(
           ImgUploadFileUtils.uploadFile(uploadPath, 
@@ -163,79 +160,8 @@ public class ImgUploadController {
     
     return new ResponseEntity<String>("deleted", HttpStatus.OK);
   }  
-  
-  /*
-  @ResponseBody
-  @RequestMapping(value="/deleteAllFiles", method=RequestMethod.POST)
-  public ResponseEntity<String> deleteFile(@RequestParam("files[]") String[] files){
-    
-    logger.info("delete all files: "+ files);
-    
-    if(files == null || files.length == 0) {
-      return new ResponseEntity<String>("deleted", HttpStatus.OK);
-    }
-    
-    for (String fileName : files) {
-      String formatName = fileName.substring(fileName.lastIndexOf(".")+1);
-      
-      MediaType mType = MediaUtils.getMediaType(formatName);
-      
-      if(mType != null){      
-        
-        String front = fileName.substring(0,12);
-        String end = fileName.substring(14);
-        new File(uploadPath + (front+end).replace('/', File.separatorChar)).delete();
-      }
-      
-      new File(uploadPath + fileName.replace('/', File.separatorChar)).delete();
-      
-    }
-    return new ResponseEntity<String>("deleted", HttpStatus.OK);
-  }  */
 
 }
   
   
-  
-  
-//  @ResponseBody
-//  @RequestMapping(value = "/uploadAjax", 
-//                 method = RequestMethod.POST, 
-//                 produces = "text/plain;charset=UTF-8")
-//  public ResponseEntity<String> uploadAjax(MultipartFile file) throws Exception {
-//
-//    logger.info("originalName: " + file.getOriginalFilename());
-//    logger.info("size: " + file.getSize());
-//    logger.info("contentType: " + file.getContentType());
-//
-//    return 
-//        new ResponseEntity<>(file.getOriginalFilename(), HttpStatus.CREATED);
-//  }
-
-// @RequestMapping(value = "/uploadForm", method = RequestMethod.POST)
-// public void uploadForm(MultipartFile file, Model model) throws Exception {
-//
-// logger.info("originalName: " + file.getOriginalFilename());
-// logger.info("size: " + file.getSize());
-// logger.info("contentType: " + file.getContentType());
-//
-// String savedName = uploadFile(file.getOriginalFilename(), file.getBytes());
-//
-// model.addAttribute("savedName", savedName);
-//
-// }
-//
-// private String uploadFile(String originalName, byte[] fileData)throws
-// Exception{
-//
-// UUID uid = UUID.randomUUID();
-//
-// String savedName = uid.toString() + "_"+ originalName;
-//
-// File target = new File(uploadPath,savedName);
-//
-// FileCopyUtils.copy(fileData, target);
-//
-// return savedName;
-//
-// }
+ 

@@ -1,7 +1,5 @@
 package org.kosta.messenger.persistence;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,8 +9,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class MessengerDaoImpl implements MessengerDao {
 
-	@Inject
-	private SqlSession session;
+	@Inject	private SqlSession session;
 
 	private static String namespace = "org.kosta.mapper.messengerMapper";
 

@@ -12,10 +12,12 @@
 <a href="/projectBoard/${p_id}/essence/milestone">
 마일스톤관리
 </a>
-<a href="/projectBoard/${p_id}/essence/activity">
+<a id="essenceActivityBtn">
+<%-- <a href="/projectBoard/${p_id}/essence/activity"> --%>
 엑티비티관리
 </a>
-<a href="/projectBoard/${p_id}/essence/checklist">
+<a id="essenceChecklistBtn">
+<%-- <a href="/projectBoard/${p_id}/essence/checklist"> --%>
 체크리스트
 </a>
 </body>

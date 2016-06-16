@@ -19,4 +19,6 @@ public interface ProjectBoardDAO {
 
 	List<Member> memberList(String search);
 
+	int getPmid(int projectId);
+	
 }

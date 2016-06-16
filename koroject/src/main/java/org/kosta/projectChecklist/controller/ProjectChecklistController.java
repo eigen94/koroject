@@ -19,8 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/projectBoard/{p_id}/checklist/*")
 public class ProjectChecklistController {
 
-	@Inject
-	ProjectChecklistService service;
+	@Inject	ProjectChecklistService service;
 	
 	@RequestMapping(value="create", method=RequestMethod.POST)
 	@ResponseBody
@@ -40,6 +39,16 @@ public class ProjectChecklistController {
 	@ResponseBody
 	public int delete(@PathVariable int check_id){
 		service.delete(check_id);
+		return 1;
+	}
+	
+	@RequestMapping(value="{check_id}/update", method=RequestMethod.POST)
+	@ResponseBody
+	public int update(@PathVariable int check_id, int check_sign){
+		ProjectChecklist pc = new ProjectChecklist();
+		pc.setCheck_id(check_id);
+		pc.setCheck_sign(check_sign);
+		service.update(pc);
 		return 1;
 	}
 	

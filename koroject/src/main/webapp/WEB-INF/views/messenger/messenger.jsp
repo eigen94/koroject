@@ -51,12 +51,12 @@
 </head>
 <body>
 
-	<div id="progressArea">
+	<div id="progressArea" style="display: none">
 		<div id="btn">
 			<input type="hidden" id="m_email" value="${member.m_email}">
 		</div>
 		
-		<div id="chatting">
+		<div id="chatting" style="z-index: 1">
 			<iframe id="iframeLink" src="" width="250" height="400"></iframe>
 		</div>
 	</div>

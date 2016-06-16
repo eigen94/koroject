@@ -6,13 +6,23 @@
 <mapper namespace="org.kosta.uml.UmlMapper">
 	<cache />
 	
-<insert id="save" parameterType="String">
-	update uml set content = #{content}
-		where pid = 1
-</insert>
+
+	
+<update id="save">
+	update uml set uml_content = #{uml_content}
+		where uml_id = ( select check_content from checklist where check_id = #{check_id} )
+</update>
 
 <select id="load" parameterType="int" resultType="String">
-	select content from uml where pid = #{pid}
+	select uml_content from uml where uml_id = ( select check_content from checklist where check_id = #{check_id} )
+</select>
+
+<insert id="create">
+	insert into uml values( nvl((select max(uml_id) from uml)+1, 0), null )
+</insert>
+
+<select id="maxId" resultType="Integer">
+	select max(uml_id) from uml
 </select>
 
 </mapper>

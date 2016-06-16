@@ -6,14 +6,12 @@ import javax.inject.Inject;
 
 import org.kosta.projectChecklist.domain.ProjectChecklist;
 import org.kosta.projectChecklist.persistence.ProjectChecklistDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ProjectChecklistServiceImpl implements ProjectChecklistService {
 
-	@Inject
-	ProjectChecklistDao dao;
+	@Inject	ProjectChecklistDao dao;
 	
 	@Override
 	public void create(ProjectChecklist pc) {

@@ -7,12 +7,20 @@
 	<cache />
 	
 <update id="save" parameterType="String">
-	update usecasedescription set content = #{content}
-		where pid = 1
+	update usecasedescription set content = #{usecasedescription_content}
+		where usecasedescription_id = ( select check_content from checklist where check_id = #{check_id} )
 </update>
 
 <select id="load" parameterType="int" resultType="String">
-	select content from usecasedescription where pid = #{pid}
+	select usecasedescription_content from usecasedescription where usecasedescription_id = ( select check_content from checklist where check_id = #{check_id} )
+</select>
+
+<insert id="create">
+	insert into usecasedescription values( nvl((select max(usecasedescription_id) from usecasedescription)+1, 0), null )
+</insert>
+
+<select id="maxId" resultType="Integer">
+	select max(usecasedescription_id) from usecasedescription
 </select>
 
 </mapper>

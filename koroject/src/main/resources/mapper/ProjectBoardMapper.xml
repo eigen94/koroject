@@ -37,6 +37,12 @@
 		
 		
 	</select>
+	
+	<select id="getPmid" resultType="int">
+		select p_pmid from project where p_id = #{projectId}
+		
+		
+	</select>
 </mapper>
 
 

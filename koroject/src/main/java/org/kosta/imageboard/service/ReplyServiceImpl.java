@@ -1,8 +1,6 @@
 package org.kosta.imageboard.service;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -12,16 +10,13 @@ import org.kosta.imageboard.persistence.ImageDAO;
 import org.kosta.imageboard.persistence.ReplyDAO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Service
 public class ReplyServiceImpl implements ReplyService {
 
-	@Inject
-	private ImageDAO imageDao;
+	@Inject	private ImageDAO imageDao;
 	
-	@Inject
-	private ReplyDAO replyDao;
+	@Inject	private ReplyDAO replyDao;
 
 	@Transactional
 	@Override

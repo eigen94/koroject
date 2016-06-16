@@ -161,4 +161,9 @@ CREATE SEQUENCE imgboard_seq;
 CREATE SEQUENCE imgreply_seq;
 
 
-
+--에센스 게시판
+create table essence(
+   e_id NUMBER primary key,
+   e_projectid NUMBER,
+   e_json varchar2(4000)
+)
