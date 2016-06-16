@@ -16,14 +16,14 @@
 		<div class="col-md-12">
 			<!-- general form elements -->
 			<div class='box'>
-				<div class="box-header with-border">
+				<div class="box-header with-border" style="margin-left: 250px;">
 					<h3 class="box-title">Board List</h3>
 				</div>
  
 
-				<div class='box-body'>
+				<div class='box-body' style="margin-left: 250px;">
 
-					<select name="searchType">
+					<select name="searchType" style="width: 200px; height: 35px;">
 						<option value="n"
 							<c:out value="${cri.searchType == null?'selected':''}"/>>
 							---</option>
@@ -47,7 +47,7 @@
 							Title OR Content OR Writer</option>
 					</select> 
 					
-					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }'>
+					<input type="text" name='keyword' id="keywordInput" value='${cri.keyword }' style=" height: 35px; width: 400px; margin: 3px 0px 3px 0px;">
 					<button id='searchBtn'>Search</button>
 					<button id='newBtn'>New Board</button>
 
@@ -56,11 +56,11 @@
 
 
 			<div class="box">
-				<div class="box-header with-border">
+				<div class="box-header with-border" style="margin-left:250px;">
 					<h3 class="box-title">LIST PAGING</h3>
 				</div>
-				<div class="box-body">
-					<table class="table table-bordered">
+				<div class="box-body" style="margin-left:250px;">
+					<table class="table table-bordered" style="width: 80%;">
 						<tr>
 							<th style="width: 10px">BNO</th>
 							<th>TITLE</th>
