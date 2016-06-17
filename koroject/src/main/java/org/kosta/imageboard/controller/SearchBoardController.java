@@ -8,8 +8,6 @@ import org.kosta.imageboard.domain.ImageVO;
 import org.kosta.imageboard.domain.ImgPageMaker;
 import org.kosta.imageboard.domain.ImgSearchCriteria;
 import org.kosta.imageboard.service.ImageService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +22,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/projectBoard/{p_id}/checklist/{check_id}/*")
 public class SearchBoardController {
 
-	private static final Logger logger = LoggerFactory.getLogger(SearchBoardController.class);
 	
 	@Inject private ImageService service;
 	
