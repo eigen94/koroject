@@ -1,5 +1,6 @@
 package org.kosta.imageboard.test;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -30,35 +31,40 @@ public class imageboardtest {
 	public void testCreate() throws Exception{
 		ImageVO vo = new ImageVO();
 		
-		vo.setImg_bno(2);
-		vo.setImg_title("새로운 글 작성");
-		vo.setImg_content("새로운 글 작성");
-		
+		vo.setImg_bno(1);
+		vo.setImg_title("기아");
+		vo.setImg_content("기아");
+		vo.setImg_writer("기아");
+		vo.setImg_regdate(new Date());
+		vo.setImg_viewcnt(0);
 		
 		dao.create(vo);
 	}*/
 	
 	/*@Test
 	public void testRead()throws Exception{
-		System.out.println(dao.read(1).toString());
+		System.out.println(dao.read(62).toString());
 	}*/
 	
 	/*@Test
 	public void testUpdate()throws Exception{
 		ImageVO vo = new ImageVO();
 		
-		vo.setImg_bno(2);
-		vo.setImg_title("작성");
-		vo.setImg_content("작성");
+		vo.setImg_bno(62);
+		vo.setImg_title("test title update");
+		vo.setImg_content("test content update");
+		vo.setImg_writer("test writer update");
+		vo.setImg_regdate(new Date());
+		vo.setImg_viewcnt(2);
 		dao.update(vo);
 	}*/
 	
 	/*@Test
 	public void testDelete() throws Exception{
-		dao.delete(1);
+		dao.delete(64);
 	}*/
 	
-	/*@Test
+	/*@Test//안됨
 	public void testListPage()throws Exception{
 		int page = 3;
 		
@@ -101,7 +107,7 @@ public class imageboardtest {
 
 	/*@Test//동적 검색 테스트
 	public void testDynamic1() throws Exception{
-		SearchCriteria cri = new SearchCriteria();
+		ImgSearchCriteria cri = new ImgSearchCriteria();
 		cri.setPage(1);
 		cri.setKeyword("삼성");
 		cri.setSearchType("t");
