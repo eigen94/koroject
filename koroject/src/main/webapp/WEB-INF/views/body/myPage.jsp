@@ -182,17 +182,19 @@ input[type=text], input[type=email], input[type=password], select {
 										<input type="file" id="image" name="file"><br> <input
 											class="thumbnailMyPageUpdate" type="button" value="수정">
 										<input id="delete" class="thumbnailMyPageDelete"type="button" value="삭제">
+										<br>
+										<label>회원 탈퇴</label>
+										<input id="memberPwd" type="password" placeholder="비밀번호를 입력하시오">
+										<p>${message}</p>
+										<input id="deleteMember" type="button" value="회원탈퇴">
 									</form>
 								</div>
 							</div>
 						</div>
 					</div>
 					<!-- right div 끝 -->
-
 				</div>
-				
 			</fieldset>
-			
 	</div>
 </div>
 	<script src="/resources/js/jquery.min.js"></script>

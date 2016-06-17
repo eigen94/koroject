@@ -4,10 +4,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
+import org.kosta.member.domain.DeleteMember;
 import org.kosta.member.domain.LoginCommand;
 import org.kosta.member.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +43,21 @@ public class MemberRestController {
 			login = new LoginCommand();
 			login.setM_email("noEmail");
 		}
-	
-		
+
 		return login;
+	}
+	// 회원탈퇴
+	@RequestMapping(value="/deleteMember")
+	public int deleteMember(@RequestParam("m_email") String email, @RequestParam("m_pwd") String pwd, HttpServletRequest request, Model model) {
+		DeleteMember dm = new DeleteMember(email,pwd);
+			dm.setM_pwd(testSHA256(dm.getM_pwd()));
+			int intre = service.deleteMember(dm);
+			if(intre == 1){
+				request.getSession().removeAttribute("member");
+			}
+
+		return intre;
+			
 	}
 	
 	//비밀번호 암호화
