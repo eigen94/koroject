@@ -34,9 +34,11 @@
 	height: 400px;	
 	position: absolute;
 }
-
-.inspector input{
+.inspector textarea, .inspector input{
 	height: 40px;
+}
+.btn-list-add,.btn-list-del{
+	height: 20px;
 }
 </style>
 

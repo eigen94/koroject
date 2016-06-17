@@ -20,4 +20,20 @@ $(function(){
 		})
 	})
 	
+	$('#deleteMember').on('click',function(){
+		var email = $('#ck').val();
+		var pwd = $('#memberPwd').val();
+		$.ajax({
+			url: '/deleteMember?m_email='+email+'&m_pwd='+pwd,
+			success:function(data){
+				if(data == 1){
+					window.location.href = "/index"
+				}else if(data==0){
+					window.location.href="/myPage"
+				}
+			}
+		})
+		
+	})
+	
 });

@@ -9,7 +9,7 @@ import java.util.Random;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.kosta.member.domain.DeleteMember;
+import org.apache.commons.httpclient.HttpsURL;
 import org.kosta.member.domain.ImageUtill;
 import org.kosta.member.domain.LoginCommand;
 import org.kosta.member.domain.Member;
@@ -144,48 +144,36 @@ public class MemberController {
 
 	// 회원정보보기
 	@RequestMapping(value = "detailMember")
-	public String detailMember() {
-
+	public String detailMember(HttpServletRequest req) {
+		if(req.getSession().getAttribute("member")==null){
+			return "/index";
+		}
 		return "/myPage";
 	}
-
-	// 회원탈퇴
-	@RequestMapping(value = "deleteMember")
-	public String deleteMember(DeleteMember dm, HttpServletRequest request, Model model) {
-		dm.setM_pwd(testSHA256(dm.getM_pwd()));
-		int result = service.deleteMember(dm);
-
-		if (result == 0) {
-			model.addAttribute("message", "비밀번호가 틀렸습니다.");
-			return "redirect:/detailMember";
-		} else {
-			request.getSession().removeAttribute("member");
-			return "redirect:/index";
-		}
-	}
-
-	// 비밀번호 찾기 폼
-	@RequestMapping(value = "serchMember", method = RequestMethod.GET)
-	public String serchMember() {
-
-		return "/memberRegister/serchMember";
+	
+	//세션삭제
+	@RequestMapping(value="sessionDelete")
+	public String sessionDelete(HttpServletRequest req){
+		req.getSession().removeAttribute("message");
+		
+		return "/index";
 	}
 
 	// 임시 비밀번호 알려주기
-	@RequestMapping(value = "serchMember", method = RequestMethod.POST)
-	public String serchPWD(PassSerchCommand psc, Model model) {
+	@RequestMapping(value = "searchID", method = RequestMethod.POST)
+	public String serchPWD(PassSerchCommand psc, HttpServletRequest req) {
 		PassSerchCommand pscd = service.serchPWD(psc);
+		req.getSession().removeAttribute("message");
 		if (pscd == null) {
-
-			model.addAttribute("message", psc.getM_email() + " 라는 이메일은 존재 하지 않습니다.");
-			return "redirect:/serchMember";
+			req.getSession().setAttribute("message", psc.getM_email() + " 라는 이메일은 존재 하지 않습니다.");
+			return "redirect:/searchID";
 		} else {
 			if (psc.getM_question() != pscd.getM_question()) {
-				model.addAttribute("message", "질문이 잘 못 됐습니다.");
-				return "redirect:/serchMember";
+				req.getSession().setAttribute("message", "질문이 잘 못 됐습니다.");
+				return "redirect:/searchID";
 			} else if (!(psc.getM_answer().equals(pscd.getM_answer()))) {
-				model.addAttribute("message", "답이 잘 못 됐습니다.");
-				return "redirect:/serchMember";
+				req.getSession().setAttribute("message", "답이 잘 못 됐습니다.");
+				return "redirect:/searchID";
 			}
 		}
 		Random random = new Random();
@@ -194,8 +182,8 @@ public class MemberController {
 		member.setM_email(psc.getM_email());
 		member.setM_pwd(testSHA256("koroject" + a));
 		service.changePwd(member);
-		model.addAttribute("message", "koroject" + a);
-		return "redirect:/login_form";
+		req.getSession().setAttribute("message","임시 비밀번호 : " +"koroject" + a);
+		return "redirect:/searchID";
 	}
 
 	@RequestMapping(value = "proImg", method = RequestMethod.POST)
