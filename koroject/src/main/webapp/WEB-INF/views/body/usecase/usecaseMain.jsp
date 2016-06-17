@@ -23,16 +23,21 @@
 }
 
 #paper-holder {
-	left: 300px;
+	left: 200px;
 	height: 600px;
 	width: 1200px;	
 	position: relative;
+	
 }
 
 #stencil-holder {
-	width: 300px;
-	height: 600px;	
+	width: 200px;
+	height: 400px;	
 	position: absolute;
+}
+
+.inspector input{
+	height: 40px;
 }
 </style>
 
@@ -54,7 +59,7 @@
 		
 		var paper = new joint.dia.Paper({
 			el : $('#paper-holder'),
-			width : 1150,
+			width : 1250,
 			height : 600,
 			gridSize : 1,
 			model : graph
@@ -64,16 +69,16 @@
 	        graph: graph, 
 	        paper: paper,
 	        width: 300,
-	        height: 600
+	        height: 400
 	    });	
 		
 	    $('#stencil-holder').append(stencil.render().el);
 	    
 	    var actor = createActor();
 	    var usecase = createUsecase();
-	    var system = createSystem();
+	    //var system = createSystem();
 		
-		stencil.load([actor, usecase, system]);  
+		stencil.load([actor, usecase]);  
 		
 		var inspector;
 		
@@ -85,7 +90,8 @@
 				}
 
 				inspector = new joint.ui.Inspector({
-					inputs : {						
+					inputs : {				
+												
 						
 						labels: {
 			                type: 'list',
@@ -191,7 +197,57 @@
 		})	
 		
 		
-		
+		$('body').on('click','.tool-options',function(){
+			var circle = this;
+			var link = $(this).parent().parent().parent();			
+			var linkId = link.attr("model-id");
+			var links = graph.getLinks();
+			var source;
+			var target;
+			var realLink;
+			
+			$.each(links, function(){
+				if(this.prop("type") == "link")
+				{
+					if(this.id == linkId)
+					{
+						realLink = this;						
+						source = this.prop("source");
+						target = this.prop("target");
+					}
+				}
+				else
+				{
+					if(this.id == linkId)
+					{
+						realLink = this;
+						source = this.prop("source").id
+						target = this.prop("target").id
+					}
+				}				
+			})			
+			
+			var ct = new joint.ui.ContextToolbar({
+			    tools: [
+			        
+			        { action: 'link-change', content: 'link-change' }
+			        
+			    ],
+			    target: circle
+			});
+
+			ct.on('action:link-change', function() { 				
+				var g = new uml.Implementation({ source: { id: source }, target: { id: target }});				
+				graph.addCell(g)
+				realLink.remove()
+				console.log($(this).parent())
+				
+			});			
+
+			ct.render();
+			
+			
+		}); // end of relation change
 		
 		
 		
@@ -205,8 +261,8 @@
 				y : 20
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
 			attrs : {
 				image : {
@@ -228,8 +284,8 @@
 				y : 220
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
             attrs: {
                 circle: { width: 50, height: 30, },

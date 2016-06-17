@@ -23,16 +23,22 @@
 }
 
 #paper-holder {
-	left: 300px;
+	left: 200px;
 	height: 600px;
 	width: 1200px;	
 	position: relative;
 }
 
 #stencil-holder {
-	width: 300px;
-	height: 600px;	
+	width: 200px;
+	height: 400px;	
 	position: absolute;
+}
+.inspector textarea, .inspector input{
+	height: 40px;
+}
+.btn-list-add,.btn-list-del{
+	height: 20px;
 }
 </style>
 
@@ -54,7 +60,7 @@
 		
 		var paper = new joint.dia.Paper({
 			el : $('#paper-holder'),
-			width : 1150,
+			width : 1250,
 			height : 600,
 			gridSize : 1,
 			model : graph
@@ -64,7 +70,7 @@
 	        graph: graph, 
 	        paper: paper,
 	        width: 300,
-	        height: 600
+	        height: 400
 	    });	
 		
 	    $('#stencil-holder').append(stencil.render().el);
@@ -247,8 +253,8 @@
 					y : 20
 				},
 				size : {
-					width : 250,
-					height : 150,
+					width : 125,
+					height : 75,
 				},
 				attrs:{text:{'font-size':18}},
 				name : "Class",
@@ -263,11 +269,11 @@
 		var i = new uml.Interface({
 			position : {
 				x : 20,
-				y : 190
+				y : 120
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
 			attrs:{text:{'font-size':18}},
 			name : "Interface",
@@ -282,11 +288,11 @@
 		var a = new uml.Abstract({
 			position : {
 				x : 20,
-				y : 360
+				y : 220
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
 			attrs:{text:{'font-size':18}},
 			name : "Abstract",
