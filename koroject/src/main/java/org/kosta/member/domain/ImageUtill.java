@@ -19,6 +19,7 @@ public class ImageUtill {
         FileInputStream srcIs = null;
         try {
             srcIs = new FileInputStream(src);
+            System.out.println(srcIs);
             ImageUtill.resize(srcIs, dest, width, height);
         } finally {
             if (srcIs != null) try { srcIs.close(); } catch(IOException ex) {}
@@ -28,6 +29,7 @@ public class ImageUtill {
     public static void resize(InputStream src, File dest, 
                               int width, int height) throws IOException {
         BufferedImage srcImg = ImageIO.read(src);
+        System.out.println(srcImg);
         int srcWidth = srcImg.getWidth();
         int srcHeight = srcImg.getHeight();
         

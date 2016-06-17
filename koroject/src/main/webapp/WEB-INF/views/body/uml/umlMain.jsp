@@ -305,7 +305,6 @@
 	<button id="save">저장</button>
 	<button id="load">불러오기</button>
 	<button id="convert">이미지</button>
-	
 	</div>
 	<div id="stencil-holder"></div>
 	<div id="paper-holder" class="paper"></div>
