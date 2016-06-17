@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.UUID;
 
-import javax.annotation.Resource;
-import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.IOUtils;
@@ -33,15 +31,10 @@ public class ImgUploadController {
 
   private static final Logger logger = LoggerFactory.getLogger(ImgUploadController.class);
   
-  //@Resource(name = "uploadPath")
-//  private String uploadPath = "C:\\Users\\Ryu\\Pictures\\Screenshots";
-//  private String uploadPath = "http://dinky.iptime.org:10000/";
-
   @RequestMapping(value = "uploadForm", method = RequestMethod.GET)
   public void uploadForm() {
 	
   } 
-
  
   @RequestMapping(value = "uploadForm", method = RequestMethod.POST)
   public String uploadForm(MultipartFile file, Model model, HttpServletRequest req) throws Exception {

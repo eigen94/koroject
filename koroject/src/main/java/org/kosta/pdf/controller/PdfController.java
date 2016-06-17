@@ -33,7 +33,7 @@ public class PdfController {
 	    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
 	    final String temperotyFilePath = tempDirectory.getAbsolutePath();
  
-	    String fileName = "ddd.pdf";
+	    String fileName = "total.pdf";
 	    response.setContentType("application/pdf");
 	    response.setHeader("Content-disposition", "attachment; fileName="+ fileName);
  

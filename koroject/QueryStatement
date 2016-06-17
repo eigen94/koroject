@@ -85,12 +85,13 @@ CREATE TABLE checkList(
 	CONSTRAINT fk_schedule_member FOREIGN KEY (check_manager) REFERENCES member(m_id),
 	CONSTRAINT fk_schedule_project FOREIGN KEY (check_projectid) REFERENCES project(p_id)
 );
+
 --data archive
-CREATE TABLE datalist(
-	data_id number primary key,
-	data_projectId number,
-	CONSTRAINT fk_datalist_projectId FOREIGN KEY (data_projectID) REFERENCES project(p_id)
-);
+--CREATE TABLE datalist(
+	--data_id number primary key,
+	--data_projectId number,
+	--CONSTRAINT fk_datalist_projectId FOREIGN KEY (data_projectID) REFERENCES project(p_id)
+--);
 
 --data detail
 CREATE TABLE datadetail(
@@ -167,3 +168,26 @@ create table essence(
    e_projectid NUMBER,
    e_json varchar2(4000)
 )
+
+--UML
+create table uml(
+	uml_id NUMBER(10),
+	uml_content varchar2(4000)
+)
+--usecase
+create table usecase(
+	usecase_id NUMBER(10),
+	usecase_content varchar2(4000)
+)
+--usecaseDescription
+create table usecaseDescription(
+	usecaseDescription_id NUMBER(10),
+	usecaseDescription_content varchar2(4000)
+)
+--erd
+create table erd(
+	erd_id NUMBER(10),
+	erd_content varchar2(4000)
+)
+
+
