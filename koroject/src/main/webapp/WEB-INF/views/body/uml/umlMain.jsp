@@ -23,16 +23,20 @@
 }
 
 #paper-holder {
-	left: 300px;
+	left: 200px;
 	height: 600px;
 	width: 1200px;	
 	position: relative;
 }
 
 #stencil-holder {
-	width: 300px;
-	height: 600px;	
+	width: 200px;
+	height: 400px;	
 	position: absolute;
+}
+
+.inspector input{
+	height: 40px;
 }
 </style>
 
@@ -54,7 +58,7 @@
 		
 		var paper = new joint.dia.Paper({
 			el : $('#paper-holder'),
-			width : 1150,
+			width : 1250,
 			height : 600,
 			gridSize : 1,
 			model : graph
@@ -64,7 +68,7 @@
 	        graph: graph, 
 	        paper: paper,
 	        width: 300,
-	        height: 600
+	        height: 400
 	    });	
 		
 	    $('#stencil-holder').append(stencil.render().el);
@@ -86,6 +90,25 @@
 
 	            inspector = new joint.ui.Inspector({
 	               inputs: {
+	            	   
+	            	   labels: {
+			                type: 'list',
+			                group: 'labels',
+			                attrs: {
+			                    label: { 'data-tooltip': 'Set (possibly multiple) labels for the link' }
+			                },
+			                item: {
+			                    type: 'object',
+			                    properties: {
+			                        position: { type: 'range', min: 0.1, max: .9, step: .1, defaultValue: .5, label: 'position', index: 2, attrs: { label: { 'data-tooltip': 'Position the label relative to the source of the link' } } },
+			                        attrs: {
+			                            text: {
+			                                text: { type: 'text', label: 'text', defaultValue: 'label', index: 1, attrs: { label: { 'data-tooltip': 'Set text of the label' } } }
+			                            }
+			                        }
+			                    }
+			                }
+			            },
 	                    name : { 
 	                    	type: 'textarea', group: 'name', index: 1	                    	
 	                    	},             	                    
@@ -148,7 +171,8 @@
 				url : "/uml/load",
 				dataType: "json",		
 				data : {"id" : p_id },
-				success : function(data){					
+				success : function(data){	
+					graph.clear();
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
 				error : function(){
@@ -191,6 +215,7 @@
 			
 			var ct = new joint.ui.ContextToolbar({
 			    tools: [
+			        { action: "Association", content: "Association"},
 			        { action: 'Generalization', content: 'Generalization' },
 			        { action: 'Implementation', content: 'Implementation' },
 			        { action: 'Aggregation', content: 'Aggregation' },
@@ -198,6 +223,12 @@
 			    ],
 			    target: circle
 			});
+			
+			ct.on("action:Association", function(){
+				var g = new uml.Transition({ source:{id: source}, target:{id:target} });
+				graph.addCell(g)
+				realLink.remove()
+			})
 
 			ct.on('action:Generalization', function() { 				
 				var g = new uml.Generalization({ source: { id: source }, target: { id: target }});				
@@ -247,8 +278,8 @@
 					y : 20
 				},
 				size : {
-					width : 250,
-					height : 150,
+					width : 125,
+					height : 75,
 				},
 				attrs:{text:{'font-size':18}},
 				name : "Class",
@@ -263,11 +294,11 @@
 		var i = new uml.Interface({
 			position : {
 				x : 20,
-				y : 190
+				y : 105
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
 			attrs:{text:{'font-size':18}},
 			name : "Interface",
@@ -282,11 +313,11 @@
 		var a = new uml.Abstract({
 			position : {
 				x : 20,
-				y : 360
+				y : 190
 			},
 			size : {
-				width : 250,
-				height : 150,
+				width : 125,
+				height : 75,
 			},
 			attrs:{text:{'font-size':18}},
 			name : "Abstract",

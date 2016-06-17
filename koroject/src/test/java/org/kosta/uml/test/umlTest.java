@@ -17,13 +17,7 @@ public class umlTest {
 	@Inject
 	private UmlDao dao;
 	
-	@Test
-	/*public void testSave()throws Exception {
-		dao.save("abcabc");
-	}*/
-	public void testLoad()throws Exception
-	{
-		System.out.println(dao.load(1));
-	}
+	
+	
 
 }

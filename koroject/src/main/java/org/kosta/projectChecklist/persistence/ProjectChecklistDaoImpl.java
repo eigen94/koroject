@@ -1,58 +1,64 @@
 package org.kosta.projectChecklist.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
 import org.kosta.projectChecklist.domain.ProjectChecklist;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProjectChecklistDaoImpl implements ProjectChecklistDao {
 
 	@Inject	private SqlSession session;
+	@Inject private MongoTemplate mongo;
 	
-	private static String namespace = "org.kosta.mapper.ProjectChecklistMapper";
-	
-	private static String umlNamespace = "org.kosta.uml.UmlMapper";
-	private static String usecaseNamespace = "org.kosta.usecase.UsecaseMapper";
-	private static String descriptionNamespace = "org.kosta.usecaseDescription.UsecaseDescriptionMapper";
-	private static String erdNamespace = "org.kosta.erd.ErdMapper";
+	private static String namespace = "org.kosta.mapper.ProjectChecklistMapper";	
 	
 	@Override
 	public void create(ProjectChecklist pc) {
+		session.insert(namespace+".create", pc);	
+		int contentId = session.selectOne(namespace+".getMaxId");
+		
 		if(pc.getCheck_type() == 1) // description
-		{
-			session.insert(descriptionNamespace+".create"); //
-			int usecaseId = session.selectOne(descriptionNamespace+".maxId");
-			pc.setCheck_content(Integer.toString(usecaseId));
+		{			
+			Map<String, String> map  = new HashMap<String, String>();
+			map.put("id", Integer.toString(contentId));
+			map.put("content", null);
+			mongo.insert(map, "use_des");
 		}
 		else if(pc.getCheck_type() == 2) // usecase diagram
-		{
-			session.insert(usecaseNamespace+".create"); //
-			int usecaseId = session.selectOne(usecaseNamespace+".maxId");
-			pc.setCheck_content(Integer.toString(usecaseId));
+		{			
+			Map<String, String> map  = new HashMap<String, String>();
+			map.put("id", Integer.toString(contentId));
+			map.put("content", null);
+			mongo.insert(map, "use_dia");
 		}
 		else if(pc.getCheck_type() == 3) // uml
 		{
-			session.insert(umlNamespace+".create"); //
-			int umlId = session.selectOne(umlNamespace+".maxId");
-			pc.setCheck_content(Integer.toString(umlId));
+			Map<String, String> map  = new HashMap<String, String>();
+			map.put("id", Integer.toString(contentId));
+			map.put("content", null);
+			mongo.insert(map, "uml");			
 		}
 		else if(pc.getCheck_type() == 4) // erd
 		{
-			session.insert(erdNamespace+".create"); //
-			int erdId = session.selectOne(erdNamespace+".maxId");
-			pc.setCheck_content(Integer.toString(erdId));
+			Map<String, String> map  = new HashMap<String, String>();
+			map.put("id", Integer.toString(contentId));
+			map.put("content", null);
+			mongo.insert(map, "erd");			
 		}
 		else if(pc.getCheck_type() == 5) // image board
-		{// 인선이가 하면 됨
+		{// �씤�꽑�씠媛� �븯硫� �맖
 			
 			
 		}		
 		
-		session.insert(namespace+".create", pc);	
+		
 		
 	}
 
