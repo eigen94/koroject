@@ -189,6 +189,7 @@
 				dataType : "json",
 				data : {"id" : p_id},
 				success : function(data) {
+					graph.clear();
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
 				error : function() {

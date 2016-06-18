@@ -25,8 +25,8 @@ public class UmlRestController {
 	public void save(int id, @RequestParam("jsonData") String jsonData) throws Exception
 	{		
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("check_id", Integer.toString(id));
-		map.put("uml_content", jsonData);
+		map.put("id", Integer.toString(id));
+		map.put("content", jsonData);
 		service.save(map);		
 	}
 	
@@ -35,7 +35,7 @@ public class UmlRestController {
 	public JsonUml load(int id)
 	{
 		JsonUml json = new JsonUml();
-		json.setJsonData(service.load(id));		
+		json.setJsonData(service.load(id));				
 		
 		return json;		
 	}

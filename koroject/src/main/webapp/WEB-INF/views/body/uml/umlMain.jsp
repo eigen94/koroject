@@ -92,6 +92,25 @@
 
 	            inspector = new joint.ui.Inspector({
 	               inputs: {
+	            	   
+	            	   labels: {
+			                type: 'list',
+			                group: 'labels',
+			                attrs: {
+			                    label: { 'data-tooltip': 'Set (possibly multiple) labels for the link' }
+			                },
+			                item: {
+			                    type: 'object',
+			                    properties: {
+			                        position: { type: 'range', min: 0.1, max: .9, step: .1, defaultValue: .5, label: 'position', index: 2, attrs: { label: { 'data-tooltip': 'Position the label relative to the source of the link' } } },
+			                        attrs: {
+			                            text: {
+			                                text: { type: 'text', label: 'text', defaultValue: 'label', index: 1, attrs: { label: { 'data-tooltip': 'Set text of the label' } } }
+			                            }
+			                        }
+			                    }
+			                }
+			            },
 	                    name : { 
 	                    	type: 'textarea', group: 'name', index: 1	                    	
 	                    	},             	                    
@@ -154,7 +173,8 @@
 				url : "/uml/load",
 				dataType: "json",		
 				data : {"id" : p_id },
-				success : function(data){					
+				success : function(data){	
+					graph.clear();
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
 				error : function(){
@@ -197,6 +217,7 @@
 			
 			var ct = new joint.ui.ContextToolbar({
 			    tools: [
+			        { action: "Association", content: "Association"},
 			        { action: 'Generalization', content: 'Generalization' },
 			        { action: 'Implementation', content: 'Implementation' },
 			        { action: 'Aggregation', content: 'Aggregation' },
@@ -204,6 +225,12 @@
 			    ],
 			    target: circle
 			});
+			
+			ct.on("action:Association", function(){
+				var g = new uml.Transition({ source:{id: source}, target:{id:target} });
+				graph.addCell(g)
+				realLink.remove()
+			})
 
 			ct.on('action:Generalization', function() { 				
 				var g = new uml.Generalization({ source: { id: source }, target: { id: target }});				
@@ -269,7 +296,7 @@
 		var i = new uml.Interface({
 			position : {
 				x : 20,
-				y : 120
+				y : 105
 			},
 			size : {
 				width : 125,
@@ -288,7 +315,7 @@
 		var a = new uml.Abstract({
 			position : {
 				x : 20,
-				y : 220
+				y : 190
 			},
 			size : {
 				width : 125,
@@ -311,6 +338,7 @@
 	<button id="save">저장</button>
 	<button id="load">불러오기</button>
 	<button id="convert">이미지</button>
+	
 	</div>
 	<div id="stencil-holder"></div>
 	<div id="paper-holder" class="paper"></div>
