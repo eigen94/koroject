@@ -43,6 +43,12 @@
 		
 		
 	</select>
+	
+	<select id="getLastIndex" resultType="int">
+		select max(p_id) from project
+		
+		
+	</select>
 </mapper>
 
 
