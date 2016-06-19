@@ -49,10 +49,7 @@
 <title>koroject</title>
 <meta charset="utf-8">
 <meta content="width=device-width, initial-scale=1" name="viewport">
-<style type="text/css">
 
-</style>
-</head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/js/jquery.scrolly.min.js"></script>
@@ -117,6 +114,9 @@ $(function(){
 		});
 	});
 </script>
+
+</head>
+<!--  -->
   
 <body class="">
 

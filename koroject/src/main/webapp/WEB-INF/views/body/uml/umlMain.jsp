@@ -55,6 +55,8 @@
 		var numberP_id=window.location.href;
 		var regExp = /(\/\d+)$/g;
 		var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
+		
+		
 
 		var graph = new joint.dia.Graph();
 		
@@ -149,6 +151,26 @@
 	        halo.removeHandle('rotate');
 	        halo.render();
 	    });
+		
+		
+		$.ajax({
+			type:"post",
+			url : "/uml/load",
+			dataType: "json",		
+			data : {"id" : p_id },
+			success : function(data){
+				if(data != null)
+				{
+					graph.clear();
+					graph.fromJSON(JSON.parse(data.jsonData));
+				}
+				
+				
+			},
+			error : function(){
+				console.log("½ÇÆÐ")
+			}			
+		})
 				
 		var json;
 		$("#save").click(function(){			

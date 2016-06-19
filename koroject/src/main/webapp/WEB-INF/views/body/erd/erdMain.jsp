@@ -163,6 +163,25 @@
 			halo.removeHandle('rotate');
 			halo.render();
 		});
+		
+		
+			$.ajax({
+				type : "post",
+				url : "/erd/load",
+				dataType : "json",
+				data : {"id" : p_id},
+				success : function(data) {
+					if(data != null)
+					{
+						graph.clear();
+						graph.fromJSON(JSON.parse(data.jsonData));
+					}
+				},
+				error : function() {
+					console.log("½ÇÆÐ")
+				}
+			})
+		
 
 		var json;
 		$("#save").click(function() {

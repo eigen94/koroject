@@ -120,6 +120,31 @@ label
 		var regExp = /(\/\d+)$/g;
 		var p_id = (regExp.exec(numberP_id)[0]).replace("/","");
 		
+		$.ajax({
+			type : "post",
+			url : "/usecaseDes/load",
+			dataType : "json",
+			data : {"id" : p_id},
+			success : function(data){
+				if(data == null)
+				{
+					$("#usecaseContainer").append(table);					
+				}
+				else
+				{
+					$.each(JSON.parse(data.jsonData), function(){
+						//console.log(this)
+						$("#usecaseContainer").append(createTable(this.usecaseName,
+								this.actorName, this.usecaseSummary, this.precondition, this.eventFlow,
+								this.postcondition));
+					})
+				}
+									
+			}
+		})
+		
+		
+		
 		$("#add").click(function(){
 			$("#usecaseContainer").append(table);
 		})
@@ -172,9 +197,7 @@ label
 						$("#usecaseContainer").append(createTable(this.usecaseName,
 								this.actorName, this.usecaseSummary, this.precondition, this.eventFlow,
 								this.postcondition));
-					})
-					
-					
+					})					
 				}
 			})
 		})
