@@ -61,5 +61,17 @@ public class ProjectBoard implements Serializable {
 				+ ", p_start=" + p_start + ", p_end=" + p_end + ", p_pmid="
 				+ p_pmid + ", p_crew=" + p_crew + ", p_memo=" + p_memo + "]";
 	}
+	public ProjectBoard(int p_Id, String p_name, String p_start, String p_end, int p_pmid, String p_crew,
+			String p_memo) {
+		super();
+		this.p_Id = p_Id;
+		this.p_name = p_name;
+		this.p_start = p_start;
+		this.p_end = p_end;
+		this.p_pmid = p_pmid;
+		this.p_crew = p_crew;
+		this.p_memo = p_memo;
+	}
+	
 	
 }

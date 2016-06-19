@@ -53,7 +53,7 @@ public class ProjectChecklistDaoImpl implements ProjectChecklistDao {
 			mongo.insert(map, "erd");			
 		}
 		else if(pc.getCheck_type() == 5) // image board
-		{// �씤�꽑�씠媛� �븯硫� �맖
+		{
 			
 			
 		}		

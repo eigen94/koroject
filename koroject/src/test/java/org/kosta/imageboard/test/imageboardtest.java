@@ -27,24 +27,20 @@ public class imageboardtest {
 	@Inject
 	private ImageDAO dao;
 	
-	/*@Test
+	//화면 명세서 생성
+	@Test
 	public void testCreate() throws Exception{
-		ImageVO vo = new ImageVO();
-		
-		vo.setImg_bno(1);
-		vo.setImg_title("기아");
-		vo.setImg_content("기아");
-		vo.setImg_writer("기아");
-		vo.setImg_regdate(new Date());
-		vo.setImg_viewcnt(0);
-		
+		String[] arr = {"test.jpg","test.jpg"};
+		ImageVO vo = new ImageVO(10,"제목 테스트","내용 테스트","작성자 테스트",
+							new Date(),0,0,arr);
 		dao.create(vo);
-	}*/
+	}
 	
-	/*@Test
+	//화면 명세서 리스트
+	@Test
 	public void testRead()throws Exception{
-		System.out.println(dao.read(62).toString());
-	}*/
+		dao.read(10);
+	}
 	
 	/*@Test
 	public void testUpdate()throws Exception{
