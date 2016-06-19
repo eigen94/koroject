@@ -79,7 +79,7 @@ public class MemberController {
 		
 		if (member == null) {
 			
-			model.addAttribute("pwdFalse", "비밀번호를 잘못 입력하셧습니다.");
+			model.addAttribute("pwdFalse", "비밀번호를 잘못 입력하셨습니다.");
 			return "myPage";
 		}
 		member.setM_pwd(testSHA256(rc.getM_pwdCheck()));

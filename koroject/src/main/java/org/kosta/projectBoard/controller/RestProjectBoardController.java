@@ -21,7 +21,6 @@ public class RestProjectBoardController {
 	@RequestMapping(value="memberList")
 	public List<Member> memberlist(@RequestParam("search") String search){
 		List<Member> list = new ArrayList<Member>();
-		list = service.memberList(search);
 		System.out.println(list);
 		return list;
 	}
