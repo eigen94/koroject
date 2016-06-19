@@ -18,17 +18,19 @@
 }
 .newsDivRight{
 	overflow:auto;
-	border: 1px solid white;
+	border-left: 1px solid #e6e8e8;
 	width:50%;
 	height: 500px;
 	padding:10px; 
 	display: inline-block;
+	background: white;
+	color: black;
 	
 	
 }
 .newsDivLeft{
 	/* overflow:auto; */
-	border: 1px solid white;
+	border: 2px solid #e6e8e8;
 	width:50%;
 	height: 500px;
 	background: white;
@@ -36,14 +38,28 @@
 	float:left
 }
 .newsDivRightTop{
-	border: 1px solid white;
-	background: black;
+	border: 1px solid #e6e8e8;
+	background: white;
 	height:250px;
+	color: black;
+	font-weight: bold;
 }
 .newsDivRightBottom{
-	border: 1px solid white;
-	background: black;
-	height:250px;
+	border: 1px solid #e6e8e8;
+	background: white;
+	height:240px;
+	color: black;
+	font-weight: bold;
+}
+
+#result{
+    margin-top: 50px;
+    margin-left: 300px;
+}
+.ptag{
+	 margin-left: 200px;
+	 margin-top: 30px;
+	 font-size: 30px;
 }
 
 
@@ -163,8 +179,11 @@ $(function(){
 <!-- 컨텐츠 들어갈곳 -->
 
 <div class="newsDivRightTop">
+<div class="ptag">
 최신 IT 뉴스를 만나보세요.<br>
 기사 제목을 누르시면 기사가 보여집니다.
+</div>
+
 </div>
 
 <div class="newsDivRightBottom">

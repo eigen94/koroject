@@ -19,7 +19,7 @@ public class UmlServiceImpl implements UmlService {
 	}
 
 	@Override
-	public String load(int pid) {		
+	public String load(int pid) {			
 		return dao.load(pid);
 	}
 

@@ -7,8 +7,8 @@
 	<cache />
 	
 	<insert id="create">
-		insert into checklist(check_id, check_name, check_projectid, check_start, check_end, check_manager, check_type, check_content)
-			values(NVL((select MAX(check_id) from checklist)+1,0), #{check_name}, #{check_projectid}, sysdate, sysdate, #{check_manager}, #{check_type}, #{check_content})
+		insert into checklist(check_id, check_name, check_projectid, check_start, check_end, check_manager, check_type)
+			values(NVL((select MAX(check_id) from checklist)+1,0), #{check_name}, #{check_projectid}, sysdate, sysdate, #{check_manager}, #{check_type})
 <!-- 			values(NVL((select MAX(check_id) from project)+1,0), #{check_name}, #{check_projectid}, #{check_start}, #{check_end}, #{check_manager}, #{check_type}) -->
 	</insert>
 	
@@ -32,6 +32,14 @@
 		delete from checklist
 			where check_id = #{check_id}
 	</delete>
+	
+	<select id="selectContentId" resultType="Integer">
+		select check_content from checklist where check_id = #{check_id}
+	</select>
+	
+	<select id="getMaxId" resultType="Integer">
+		select max(check_id) from checklist
+	</select>
 	
 </mapper>
 

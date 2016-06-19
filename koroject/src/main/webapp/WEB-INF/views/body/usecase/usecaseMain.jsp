@@ -187,7 +187,8 @@
 				url : "/usecase/load",
 				dataType: "json",			
 				data : {"id" : p_id},
-				success : function(data){					
+				success : function(data){		
+					graph.clear();
 					graph.fromJSON(JSON.parse(data.jsonData));
 				},
 				error : function(){

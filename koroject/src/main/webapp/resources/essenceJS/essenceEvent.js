@@ -78,8 +78,9 @@
 			data : {
 				p_id : p_id
 			},
-			success : function(data){
+			success : function(getData){
 				console.log("load done");
+				var data = decodeURIComponent(getData);
 				console.log(data);
 				essence.importJson(data);
 			}

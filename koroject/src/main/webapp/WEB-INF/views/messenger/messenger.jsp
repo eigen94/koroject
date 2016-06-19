@@ -14,9 +14,10 @@
 	bottom: 100;
 	right: 0;
 	height: 400px;
-	border:1px;
+	border:1px solid;
 	width: 250px;
 }
+
 </style>
 
 <script type="text/javascript">
@@ -49,7 +50,7 @@
 </script>
 
 </head>
-<body>
+<body class="messengerBody">
 
 	<div id="progressArea" style="display: none">
 		<div id="btn">

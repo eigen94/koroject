@@ -72,7 +72,7 @@
 	</definition>
 	
 	<definition name="integration" extends="project_layout">
-		<put-attribute name="body" value="/WEB-INF/views/body/projectBoard/integration.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/views/body/pdf/pdfIndex.jsp"></put-attribute>
 	</definition>
 	
 	<!-- 체크리스트페이지 -->

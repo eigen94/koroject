@@ -23,8 +23,8 @@ public class UsecaseRestController {
 	public void save(int id, @RequestParam("jsonData") String jsonData) throws Exception
 	{
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("check_id", Integer.toString(id));
-		map.put("usecase_content", jsonData);
+		map.put("id", Integer.toString(id));
+		map.put("content", jsonData);
 		service.save(map);		
 	}
 	

@@ -18,6 +18,8 @@
 	border: 1px solid black;
 	padding: 5px;
 	margin: 5px;
+	width: 30%;
+	
 }
 
 div.usecaseName, div.actorName, div.usecaseSummary, div.precondition, div.eventFlow,  div.postcondition
@@ -26,12 +28,14 @@ div.usecaseName, div.actorName, div.usecaseSummary, div.precondition, div.eventF
 	padding-bottom: 2px;
 }
 
-input {
-	margin-left: 10px;
+input{
+width: 60%;
 }
+
 
 label
 {
+	margin-bottom:0px;
 	font-size: 15px;
 	font-weight: bold;
 }
@@ -40,32 +44,32 @@ label
 <script type="text/javascript">
 	var table = '<div class="table">'+
 					'<div class="usecaseName">'+
-						'<label class="usecaseName">유즈케이스 명</label>&nbsp;&nbsp;'+
+						'<label class="usecaseName">유즈케이스 명</label>'+
 						'<input type="text" class="usecaseName">'+
 					'</div>'+
 
 					'<div class="actorName">'+
-						'<label class="actorName">액터 명</label>&nbsp;&nbsp;'+
+						'<label class="actorName">액터 명</label>'+
 						'<input type="text" class="actorName">'+
 					'</div>'+
 
 					'<div class="usecaseSummary">'+
-						'<label class="usecaseSummary">유즈케이스 개요</label>&nbsp;&nbsp;'+ 
+						'<label class="usecaseSummary">유즈케이스 개요</label>'+ 
 						'<input type="text" class="usecaseSummary">'+		
 					'</div>'+
 	
 					'<div class="precondition">'+
-						'<label class="precondition">사전 조건</label>&nbsp;&nbsp;'+ 
+						'<label class="precondition">사전 조건</label>'+ 
 						'<input type="text" class="precondition">'+
 					'</div>'+
 	
 					'<div class="eventFlow">'+
-						'<label class="eventFlow">이벤트 흐름</label><br>'+
+						'<label class="eventFlow">이벤트 흐름</label>'+
 						'<textarea class="eventFlow" rows="10" cols="35"></textarea>'+
 					'</div>'+
 	
 					'<div class="postcondition">'+
-						'<label class="postcondition">사후 조건</label>&nbsp;&nbsp;'+ 
+						'<label class="postcondition">사후 조건</label>'+ 
 						'<input type="text" class="postcondition">'+
 					'</div>'+		
 				'</div>';
@@ -74,22 +78,22 @@ label
 	{
 		var table = '<div class="table">'+
 		'<div class="usecaseName">'+
-			'<label class="usecaseName">유즈케이스 명</label>&nbsp;&nbsp;'+
+			'<label class="usecaseName">유즈케이스 명</label>'+
 			'<input type="text" class="usecaseName" value="'+usecaseName+'">'+
 		'</div>'+
 
 		'<div class="actorName">'+
-			'<label class="actorName">액터 명</label>&nbsp;&nbsp;'+
+			'<label class="actorName">액터 명</label>'+
 			'<input type="text" class="actorName" value="'+actorName+'">'+
 		'</div>'+
 
 		'<div class="usecaseSummary">'+
-			'<label class="usecaseSummary">유즈케이스 개요</label>&nbsp;&nbsp;'+ 
+			'<label class="usecaseSummary">유즈케이스 개요</label>'+ 
 			'<input type="text" class="usecaseSummary" value="'+usecaseSummary+'">'+		
 		'</div>'+
 
 		'<div class="precondition">'+
-			'<label class="precondition">사전 조건</label>&nbsp;&nbsp;'+ 
+			'<label class="precondition">사전 조건</label>'+ 
 			'<input type="text" class="precondition" value="'+precondition+'">'+
 		'</div>'+
 
@@ -99,7 +103,7 @@ label
 		'</div>'+
 
 		'<div class="postcondition">'+
-			'<label class="postcondition">사후 조건</label>&nbsp;&nbsp;'+ 
+			'<label class="postcondition">사후 조건</label>'+ 
 			'<input type="text" class="postcondition" value="'+postcondition+'">'+
 		'</div>'+		
 	'</div>';
@@ -182,6 +186,7 @@ label
 </script>
 </head>
 <body>
+<div class="usecaseDescription" style="width: 100%; min-height: 100%; margin-left: 50px;">
 	<div>
 		<button id="add">추가</button>&nbsp;&nbsp;
 		<button id="save">저장</button>&nbsp;&nbsp;
@@ -189,5 +194,6 @@ label
 	</div>	
 
 	<div id="usecaseContainer"></div>
+</div>	
 </body>
 </html>

@@ -1,5 +1,7 @@
 package org.kosta.essence.service;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import org.kosta.essence.persistence.EssenceDao;
@@ -11,9 +13,9 @@ public class EssenceService {
 	@Inject
 	EssenceDao dao;
 	
-	public String insert(int p_id, String json) {
+	public void update(Map<String, String> map) {
 		// TODO Auto-generated method stub
-		return dao.insert(p_id, json);
+		dao.update(map);
 	}
 
 	public String load(int p_id) {
