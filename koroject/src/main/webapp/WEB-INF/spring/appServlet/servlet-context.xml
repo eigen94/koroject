@@ -23,6 +23,9 @@
 
 	<!-- 타일즈 세팅
 	 -->
+
+	 <!-- Test 하려면 주석 처리 -->
+
 	<beans:bean id="tilesconfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
 		<beans:property name="definitions">
 			<beans:list>

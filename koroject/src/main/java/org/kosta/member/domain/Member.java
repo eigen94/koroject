@@ -13,6 +13,22 @@ public class Member implements Serializable {
 	private String m_recentMember;
 	private String m_image;
 	
+	public Member(){}
+	public Member(int m_id, String m_name, String m_email, String m_pwd, String m_phone, int m_question,
+			String m_answer, String m_recentMember, String m_image) {
+		super();
+		this.m_id = m_id;
+		this.m_name = m_name;
+		this.m_email = m_email;
+		this.m_pwd = m_pwd;
+		this.m_phone = m_phone;
+		this.m_question = m_question;
+		this.m_answer = m_answer;
+		this.m_recentMember = m_recentMember;
+		this.m_image = m_image;
+	}
+
+
 	public String getM_image() {
 		return m_image;
 	}

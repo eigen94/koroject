@@ -177,12 +177,12 @@ input[type=text], input[type=email], input[type=password], select {
 								</div>
 								<div class="user-image-buttons-edit ng-scope">
 									<p>JPG파일만 사용가능</p>
-									<form id="imgForm" action="proImg" method="POST"	enctype="multipart/form-data">
-									<input id="ck" name="tae" type="hidden" value="${member.m_email }">
-										<input type="file" id="image" name="file"><br> <input
-											class="thumbnailMyPageUpdate" type="button" value="수정">
-										<input id="delete" class="thumbnailMyPageDelete"type="button" value="삭제">
-										<br>
+									<form id="imgForm" action="proImg" method="POST" enctype="multipart/form-data">
+										<input id="ck" name="tae" type="hidden" value="${member.m_email }">
+										<input type="file" id="image" name="file"><br> 
+										<input class="thumbnailMyPageUpdate" type="submit" value="수정">
+										<input id="delete" class="thumbnailMyPageDelete" type="button" value="삭제">
+										
 										<label>회원 탈퇴</label>
 										<input id="memberPwd" type="password" placeholder="비밀번호를 입력하시오">
 										<p>${message}</p>
