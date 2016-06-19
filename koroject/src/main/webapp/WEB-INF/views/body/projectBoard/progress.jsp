@@ -4,41 +4,22 @@
 <html>
 
 <head>
-
+<style type="text/css">
+.chartCon{
+margin: 20px;
+}
+</style>
 </head>
 <body>
 
-<div id="chartContainer2" style="height: 300px; width: 50%; float: left;"></div>
-<div id="chartContainer1" style="height: 300px; width: 50%;"></div>
+<div id="chartContainer2" class="chartCon" style="height: 300px; width: 40%; float: left;"></div>
+<div id="chartContainer1" class="chartCon" style="height: 300px; width: 40%;"></div>
+<div id="chartContainer3" class="chartCon" style="height: 300px; width: 90%;"></div>
 <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
 window.onload = function () {
 /* 
-    var dataPoints = [];
-    var y = 0;
-    
-    for ( var i = 0; i < 10000; i++ ) {
-      
-      y += Math.round(5 + Math.random() * (-5 - 5));	
-      dataPoints.push({ y: y});
-    }
-    
-    var chart2 = new CanvasJS.Chart("chartContainer2",
-    {
-      animationEnabled: true,
-      zoomEnabled: true,
-      
-      title:{
-        text: "프로젝트 능률의 변화"
-      },    
-      data: [
-      {
-        type: "spline",              
-        dataPoints: dataPoints
-      }
-      ]
-    });
-    chart2.render(); */
+     */
 	
 
 }
@@ -105,12 +86,42 @@ $(function(){
 										dataPoints: [
 											{ label: "생성한 총 일정 개수", y: count },
 											{ label: "완료한 일정 개수", y: sign },
+											{ label: "uml", y: data["uml"] },
+											{ label: "usecase", y: data["usecase"] },
+											{ label: "usecase diagram", y: data["usediagram"] },
+											{ label: "erd", y: data["erd"] },
+											{ label: "image", y: data["image"] },
 										]
 									}
 									]
 								});
 
 								chart2.render();
+								var dataPoints = [];
+							    var y = 0;
+							    
+							    for ( var i = 0; i < 10000; i++ ) {
+							      
+							      y += Math.round(5 + Math.random() * (-5 - 5));	
+							      dataPoints.push({ y: y});
+							    }
+							    
+							    var chart3 = new CanvasJS.Chart("chartContainer3",
+							    {
+							      animationEnabled: true,
+							      zoomEnabled: true,
+							      
+							      title:{
+							        text: "프로젝트 능률의 변화"
+							      },    
+							      data: [
+							      {
+							        type: "spline",              
+							        dataPoints: dataPoints
+							      }
+							      ]
+							    });
+							    chart3.render();
 			 }
 		  });
 });
