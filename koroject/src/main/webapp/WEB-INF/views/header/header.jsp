@@ -123,7 +123,7 @@ koroject
              <input type="password" id="loginPwd" name="m_pwd" placeholder="password" style="margin-top: 0px;" />
              <input type="submit" value="Login" />
              <div style="margin-bottom: 0px; margin-top: 10px;">
-             <a class="searchID" href="searchID">아이디</a>를 잊어버렸나요?
+             <a class="searchID" href="searchID">패스워드</a>를 잊어버렸나요?
              </div>
              
          </form>

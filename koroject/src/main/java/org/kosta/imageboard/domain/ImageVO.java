@@ -16,7 +16,18 @@ public class ImageVO implements Serializable {
 	
 	private String[] files;
 	
-	
+	public ImageVO(Integer img_bno, String img_title, String img_content, String img_writer, Date img_regdate,
+			int img_viewcnt, int img_replycnt, String[] files) {
+		super();
+		this.img_bno = img_bno;
+		this.img_title = img_title;
+		this.img_content = img_content;
+		this.img_writer = img_writer;
+		this.img_regdate = img_regdate;
+		this.img_viewcnt = img_viewcnt;
+		this.img_replycnt = img_replycnt;
+		this.files = files;
+	}
 	public Integer getImg_bno() {
 		return img_bno;
 	}

@@ -13,7 +13,7 @@
 	
 	<!-- 생성한 프로젝트 뿐만 아니라 참여한 프로젝트도 불러오는 기능 추가필요 -->
 	<select id="list" resultType="ProjectBoard">
-		select * from project where p_pmid = p_pmid
+		select * from project where p_pmid = #{p_pmid}
 	</select>
 	
 	<select id="read" resultType="ProjectBoard">
