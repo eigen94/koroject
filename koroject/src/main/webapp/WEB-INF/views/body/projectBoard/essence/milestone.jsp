@@ -33,14 +33,24 @@
 .removeMilestone{
 	width: 70px;
 }
+.removeAlphastate{
+	position: absolute;
+	top: 5px;
+	right: 20px;
+}
 .alphastate{
 	width: 116px;
 }
 .alphastate ul{
-	min-height: 30px;
+	min-height: 80px;
+	list-style: none;
 }
 .alphastate li{
 	height: auto;
+}
+.addedAlphaLists a{
+	position: relative;
+	min-width: 120px;
 }
 /* 
 녹색 #43C367
@@ -103,9 +113,11 @@ $(function(){
 		data : {
 			"p_id" : p_id
 		},
-		success : function(data){
-			//console.log("load done");
-			//console.log(data);
+		success : function(getData){
+			console.log("load done");
+			console.log(data);
+			var data = decodeURIComponent(getData);
+			console.log(data);
 			if(data=="{}"){
 				
 			} else {

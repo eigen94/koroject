@@ -43,6 +43,31 @@
 		
 		
 	</select>
+	
+	<select id="getLastIndex" resultType="int">
+		select max(p_id) from project
+		
+		
+	</select>
+	<select id="getStat" resultType="ProjectStat">
+		select (select count(*) from checklist
+               where check_projectid = #{projectId }) as count, 
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND check_sign=1) as done,
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND  check_type=1) as usecase,
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND  check_type=2) as usediagram,
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND  check_type=3) as uml,
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND  check_type=4) as erd,
+		(select count(*) from checklist
+			where check_projectid = #{projectId } AND  check_type=5) as image
+			from dual
+		
+		
+	</select>
 </mapper>
 
 

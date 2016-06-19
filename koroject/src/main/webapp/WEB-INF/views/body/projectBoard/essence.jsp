@@ -34,9 +34,10 @@ $(function(){
 		data : {
 			p_id : p_id
 		},
-		success : function(data){
+		success : function(getData){
 			//console.log("load done");
 			//console.log(data);
+			var data = decodeURIComponent(getData);
 			essence.importJson(data);
 			console.log(essence);
 			milestoneNum = essence.milestone.length;
