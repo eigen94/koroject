@@ -33,7 +33,6 @@
     <br />
     <div class="row">
 		<div class="col-md-10">
-			<h4>통합 게시판</h4>
 		</div>
 		<div class="col-md-2">
 		 <div>
@@ -64,11 +63,11 @@
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">bootstrap-duallist <a href="https://github.com/bbilginn/bootstrap-duallist" target="_blank">github</a></li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">UML</li>
+                    <li class="list-group-item">UseCaseDescription</li>
+                    <li class="list-group-item">UseCaseDiagram</li>
+                    <li class="list-group-item">ERD</li>
+                    <li class="list-group-item">화면 명세서</li>
                 </ul>
             </div>
         </div>
@@ -99,11 +98,11 @@
                     </div>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
+                    <!-- <li class="list-group-item"></li>
                     <li class="list-group-item">Dapibus ac facilisis in</li>
                     <li class="list-group-item">Morbi leo risus</li>
                     <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">Vestibulum at eros</li> -->
                 </ul>
             </div>
         </div>
