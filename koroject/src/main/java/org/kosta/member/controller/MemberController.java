@@ -9,7 +9,6 @@ import java.util.Random;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.httpclient.HttpsURL;
 import org.kosta.member.domain.ImageUtill;
 import org.kosta.member.domain.LoginCommand;
 import org.kosta.member.domain.Member;
