@@ -32,14 +32,14 @@ public class EssenceRestController {
 	public String load(@PathVariable("p_id") int p_id){
 		String returnJson = service.load(p_id);
 		System.out.println(" load : "+returnJson);
+		if(returnJson==null){
+			returnJson = "{}";
+		}
 		try {
 			returnJson = URLEncoder.encode(returnJson, "UTF-8");
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		if(returnJson==null){
-			returnJson = "{}";
 		}
 		return returnJson;
 	}

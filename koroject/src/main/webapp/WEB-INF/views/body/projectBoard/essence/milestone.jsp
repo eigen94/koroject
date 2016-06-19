@@ -85,16 +85,20 @@
 <a class="essencemenu taskBtn">
 수행테스크
 </a>
-<input type="text" id="test">
-<button id="essenceset">?</button>
-<button id="essenceSave">저장</button>
-<button id="essenceLoad">로딩</button>
+<a id="essenceChecklistBtn">
+체크리스트
+</a>
+<!-- <input type="text" id="test">
+<button id="essenceset">?</button> -->
+<a id="essenceSave">저장</a>
+<!-- <button id="essenceLoad">로딩</button> -->
 <!-- 테이블이 올 장소 -->
 <div class="milestoneField"></div>
 
 <script type="text/javascript">
 $(function(){
 
+	
 	
 	//프로젝트 번호를 가져오기 위한 블럭
 	var numberP_id=window.location.href;
@@ -129,6 +133,7 @@ $(function(){
 			$(".milestoneField").append(drawTable(0,0));
 			$(".definitionBtn").css("color","black");
 			drawMilestone();
+			essence.get("checkScore");
 		},
 		error : function(){
 			console.log("error")
@@ -136,7 +141,8 @@ $(function(){
 			$(".definitionBtn").css("color","black");
 			drawMilestone();
 		}
-	})
+	});
+	
 	
 });
 </script>

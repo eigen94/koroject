@@ -116,7 +116,8 @@
 				}//end of 'Fn set' for loop
 			},
 			get : function(attr){
-				if(attr=="alpha"){
+				if(attr=="alpha")
+				{
 					var alphastateList = [];
 					for(var i=0; i<(essence.milestone).length;i++){
 						if(essence.milestone[i].alphaState!=undefined){
@@ -129,6 +130,40 @@
 					//정렬 알고리즘 추가할것
 					//console.log(alphastateList);
 					return alphastateList;
+				}
+				else if(attr=="checkScore")
+				{
+					var scoreArr = {};
+					for(var i=0; i<(essence.milestone).length;i++){
+						if(essence.milestone[i].alphaState!=undefined){
+							for(var j=0; j<(essence.milestone[i].alphaState).length;j++){
+								//console.log(essence.milestone[i].alphaState[j]);
+								var alphaId = (essence.milestone[i].alphaState[j])["alphaID"];
+								var checkArr = (essence.milestone[i].alphaState[j])["checkvalue"];
+								var arrTotal=0;
+								var arrSign=0;
+								if(checkArr!=undefined){
+									for(var k=0; k<checkArr.length;k++){
+										arrTotal+=parseInt(checkArr[k]);
+										if(checkArr[k]==0){
+											arrSign+=1;
+										}
+										if(k==checkArr.length-1){
+											arrTotal=arrTotal/(k+1);
+										}
+									}
+									arrTotal=arrTotal.toFixed(2);
+									console.log(alphaId);
+									console.log(checkArr);
+									console.log(arrTotal);
+									scoreArr[alphaId]=[arrTotal,arrSign];
+									
+								}
+							}
+						}
+					}
+					console.log(scoreArr);
+					return scoreArr;
 				}
 			},
 			importJson : function(data){
