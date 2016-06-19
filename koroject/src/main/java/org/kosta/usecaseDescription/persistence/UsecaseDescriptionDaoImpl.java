@@ -20,18 +20,15 @@ public class UsecaseDescriptionDaoImpl implements UsecaseDescriptionDao {
 
 	@Override
 	public void save(Map<String, String> map) {		
-		//조건 설정하기
 		//where id = map.get("id")
 		Criteria criteria = new Criteria("id");
 		criteria.is(map.get("id"));
 
 		Query query = new Query(criteria);
-		//업데이트 할 조건 정의
 		//set content = map.get("content")
 		Update update = new Update();
 		update.set("content", map.get("content"));
 
-		//updqteFirst(조건, 업데이트 내용, collections)
 		mongo.updateFirst(query, update, "use_des");		
 	}
 
