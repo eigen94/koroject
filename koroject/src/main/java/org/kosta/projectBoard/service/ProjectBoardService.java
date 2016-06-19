@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
+import org.kosta.projectBoard.domain.ProjectStat;
 
 public interface ProjectBoardService {
 
@@ -20,5 +21,7 @@ public interface ProjectBoardService {
 	public List<Member> memberList(String search);
 
 	public int getPmid(int projectId);
+
+	public ProjectStat getStat(int projectId);
 	
 }

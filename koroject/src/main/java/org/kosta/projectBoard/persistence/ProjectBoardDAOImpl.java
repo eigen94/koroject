@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
+import org.kosta.projectBoard.domain.ProjectStat;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -57,6 +58,11 @@ public class ProjectBoardDAOImpl implements ProjectBoardDAO {
 	@Override
 	public int getPmid(int projectId) {
 		return session.selectOne(namespace+".getPmid", projectId);
+	}
+
+	@Override
+	public ProjectStat getStat(int projectId) {
+		return session.selectOne(namespace+".getStat",projectId);
 	}
 	
 	

@@ -8,13 +8,12 @@
 </head>
 <body>
 
-<div id="chartContainer1" style="height: 300px; width: 100%;">
-</div>
-<div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+<div id="chartContainer2" style="height: 300px; width: 50%; float: left;"></div>
+<div id="chartContainer1" style="height: 300px; width: 50%;"></div>
 <script type="text/javascript" src="http://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <script type="text/javascript">
 window.onload = function () {
-
+/* 
     var dataPoints = [];
     var y = 0;
     
@@ -39,43 +38,82 @@ window.onload = function () {
       }
       ]
     });
-    chart2.render();
+    chart2.render(); */
 	
-	var chart1 = new CanvasJS.Chart("chartContainer1",
-	{
-		title:{
-			text: "코로젝트와 함께 프로젝트를 관리하세요",
-			fontFamily: "Impact",
-			fontWeight: "normal"
-		},
 
-		legend:{
-			verticalAlign: "bottom",
-			horizontalAlign: "center"
-		},
-		data: [
-		{
-			//startAngle: 45,
-			indexLabelFontSize: 20,
-			indexLabelFontFamily: "Garamond",
-			indexLabelFontColor: "darkgrey",
-			indexLabelLineColor: "darkgrey",
-			indexLabelPlacement: "outside",
-			type: "doughnut",
-			showInLegend: true,
-			dataPoints: [
-				{  y: 53.37, legendText:"효과적인설계 53%", indexLabel: "효과적인설계 53%" },
-				{  y: 35.0, legendText:"체계적문서관리 35%", indexLabel: "체계적문서관리 35%" },
-				{  y: 7, legendText:"다양한방법론 7%", indexLabel: "다양한방법론 7%" },
-				{  y: 2, legendText:"불필요한회의 2%", indexLabel: "불필요한회의 2%" },
-				{  y: 5, legendText:"아름다움 5%", indexLabel: "아름다움 5%" }
-			]
-		}
-		]
-	});
-
-	chart1.render();
 }
+$(function(){
+	  $.ajax({
+			 url : "getStat",
+			 method : "POST",
+			 success : function(data){
+				 console.log(data);
+				 console.log(data["erd"]/data["count"]);
+				 console.log(data["erd"]/data["count"]*100);
+				 console.log();
+				 var sign = data["sign"];
+				 var count = data["count"];
+				 var erd = Math.round((data["erd"]/data["count"]*100)); 
+				 var uml = Math.round((data["uml"]/data["count"]*100)); 
+				 var image = Math.round((data["image"]/data["count"]*100)); 
+				 var usecase = Math.round((data["usecase"]/data["count"]*100)); 
+				 var usediagram = Math.round((data["usediagram"]/data["count"]*100)); 
+				 console.log(erd);
+					var chart1 = new CanvasJS.Chart("chartContainer1",
+							{
+								title:{
+									text: "사용중인 일정의 비율",
+									fontFamily: "Impact",
+									fontWeight: "normal"
+								},
+
+								legend:{
+									verticalAlign: "bottom",
+									horizontalAlign: "center"
+								},
+								data: [
+								{
+									//startAngle: 45,
+									indexLabelFontSize: 20,
+									indexLabelFontFamily: "Garamond",
+									indexLabelFontColor: "darkgrey",
+									indexLabelLineColor: "darkgrey",
+									indexLabelPlacement: "outside",
+									type: "doughnut",
+									showInLegend: true,
+									dataPoints: [
+										{  y: usecase, legendText:"usecase", indexLabel: "usecase "+usecase+"%" },
+										{  y: usediagram, legendText:"usecase Diagram", indexLabel: "usecaseDiagram "+usediagram+"%" },
+										{  y: uml, legendText:"uml diagram", indexLabel: "uml diagram "+uml+"%" },
+										{  y: erd, legendText:"erd diagram", indexLabel: "erd diagram "+erd+"%" },
+										{  y: image, legendText:"image board", indexLabel: "image board "+image+"%" }
+									]
+								}
+								]
+							});
+
+							chart1.render();
+						var chart2 = new CanvasJS.Chart("chartContainer2",
+								{
+									animationEnabled: true,
+									title:{
+										text: "일정 진행 현황"
+									},
+									data: [
+									{
+										type: "column", //change type to bar, line, area, pie, etc
+										dataPoints: [
+											{ label: "생성한 총 일정 개수", y: count },
+											{ label: "완료한 일정 개수", y: sign },
+										]
+									}
+									]
+								});
+
+								chart2.render();
+			 }
+		  });
+});
 </script>
 </body>
 

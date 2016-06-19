@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.kosta.member.domain.Member;
 import org.kosta.projectBoard.domain.ProjectBoard;
+import org.kosta.projectBoard.domain.ProjectStat;
 import org.kosta.projectBoard.persistence.ProjectBoardDAO;
 import org.springframework.stereotype.Service;
 
@@ -48,5 +49,10 @@ public class ProjectBoardServiceImpl implements ProjectBoardService {
 	@Override
 	public int getPmid(int projectId) {
 		return dao.getPmid(projectId);
+	}
+
+	@Override
+	public ProjectStat getStat(int projectId) {
+		return dao.getStat(projectId);
 	}
 }
