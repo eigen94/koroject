@@ -25,6 +25,7 @@
 	display: inline-block;
 	background: white;
 	color: black;
+	margin-top: 0px;
 	
 	
 }
@@ -46,7 +47,7 @@
 }
 .newsDivRightBottom{
 	border: 1px solid #e6e8e8;
-	background: white;
+	background: #2cb6c8;
 	height:240px;
 	color: black;
 	font-weight: bold;
@@ -193,7 +194,7 @@ $(function(){
 </div>
 </section>
 <!-- 뉴스 끝  -->
-<section id="two" class="wrapper alt">
+<!-- <section id="two" class="wrapper alt">
 <section class="spotlight">
 <div class="image">
 <img alt="" src="/images/pic01.jpg">
@@ -233,7 +234,7 @@ $(function(){
 </li>
 </ul>
 </div>
-</section>
+</section> -->
 
 
 

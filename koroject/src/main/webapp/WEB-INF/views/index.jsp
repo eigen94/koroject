@@ -166,7 +166,7 @@ $(function(){
 </div>
 </section>
 <!-- 뉴스 끝  -->
-<section id="two" class="wrapper alt">
+<!-- <section id="two" class="wrapper alt">
 <section class="spotlight">
 <div class="image">
 <img alt="" src="/images/pic01.jpg">
@@ -206,7 +206,7 @@ $(function(){
 </li>
 </ul>
 </div>
-</section>
+</section> -->
 
 
 
