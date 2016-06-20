@@ -62,6 +62,7 @@
 	 margin-left: 100px;
 	 margin-top: 30px;
 	 font-size: 30px;
+	
 }
 
 
@@ -90,7 +91,7 @@ $(function(){
 				$.each(data,function(){
 //					$('.newsDivLeft').append('<ul><li>'+this+'</li></ul>');
 //					href = $('.newsDivLeft').children().children().children().last().attr('href');
-					$('.newsScript').append('<li style="color:#9d2323;">'+this+'</li>');
+					$('.newsScript').append('<li class="news" style="color:#9d2323;">'+this+'</li>');
 					href = $('.newsScript').children().children().last().attr('href');
 					$('.newsScript').children().last().attr('href', '');
 					$('.newsScript').append('<input type="hidden" class="href" value="'+href+'">');
@@ -101,6 +102,14 @@ $(function(){
 			 }
 		});
 	
+	$("body").on("mouseover",".news",function(){
+			$(this).css("font-weight","bold");
+	})
+	$("body").on("mouseout",".news",function(){
+			$(this).css("font-weight","normal");
+	})
+   
+   
 	
 	
 	$("body").on('click',".link",function(event){
