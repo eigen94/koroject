@@ -23,7 +23,7 @@ public class RestProjectBoardController {
 	@RequestMapping(value="memberList")
 	public List<Member> memberlist(@RequestParam("search") String search){
 		List<Member> list = new ArrayList<Member>();
-		System.out.println(list);
+		list = service.memberList(search);
 		return list;
 	}
 	@RequestMapping(value="getPMid", method=RequestMethod.POST)

@@ -25,7 +25,8 @@ public class ProjectChecklistController {
 	@ResponseBody
 	public void create(String check_name,int check_projectid, String check_start,
 			String check_end, int check_manager, int check_type){
-		ProjectChecklist pc = new ProjectChecklist(0, check_name, check_projectid, check_start, check_end, check_manager, 0, check_type, "");
+		ProjectChecklist pc = new ProjectChecklist(0, check_name, check_projectid, check_start, check_end, 1, 0, check_type, "");
+//		ProjectChecklist pc = new ProjectChecklist(0, check_name, check_projectid, check_start, check_end, check_manager, 0, check_type, "");
 		service.create(pc);
 	}
 	

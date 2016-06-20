@@ -124,14 +124,14 @@
 					<div class="StartEndDate" style="display: inline-block; width:200px; float:left; margin-right:20px; ">
 	       			<label for="inputStartDate" style="margin-bottom: 0px; font-size: 14px">시작일</label>
 		                <div class='input-group date' id='datetimepicker1'>
-		                    <input type='text' id="checkListStartDate" class="form-control" name="check_start" value="1"/>
+		                    <input type='text' id="checkListStartDate" class="form-control" name="check_start" value="2016-06-20"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
 		                </div>
 	       			<label for="inputEndDate" style="margin-bottom: 0px; font-size: 14px">종료일</label>
 		                <div class='input-group date' id='datetimepicker2'>
-		                    <input type='text' id="checkListEndDate" class="form-control" name="check_end" value="1"/>
+		                    <input type='text' id="checkListEndDate" class="form-control" name="check_end" value="2016-06-20"/>
 		                    <span class="input-group-addon">
 		                        <span class="glyphicon glyphicon-calendar"></span>
 		                    </span>
@@ -151,7 +151,7 @@
 					</div>
 	       			<label for="inputPhone" style="margin-bottom: 0px; font-size:14px;">담당자</label>
 	   				<div>
-						<input class="form-control" id="checkListManager" type="text" name="check_manager" size="20" placeholder="담당자를 입력하세요" value="1">
+						<input class="form-control" id="checkListManager" type="text" name="check_manager" size="20" placeholder="담당자를 입력하세요" value="김성훈">
 					</div>
 					
 					</div>
@@ -195,7 +195,8 @@ $(function(){
 				check_projectid : $("#checkListProjectId").val(),
 				check_start : $("#checkListStartDate").val(),
 				check_end : $("#checkListEndDate").val(),
-				check_manager : $("#checkListManager").val(),
+				check_manager : 1,
+/* 				check_manager : $("#checkListManager").val(), */
 				check_type : $("#checkListCheckType").val()
 			},
 			success : function(){

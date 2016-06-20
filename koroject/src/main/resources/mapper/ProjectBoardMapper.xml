@@ -33,7 +33,7 @@
 	</delete>
 	
 	<select id="memberList" resultType="Member">
-		select * from member where m_email like '%'|| #{email}||'%' or m_name like '%'|| #{email}||'%'
+		select * from member where m_email like '%'|| #{search}||'%' or m_name like '%'|| #{search}||'%'
 		
 		
 	</select>
