@@ -29,17 +29,14 @@ $(function(){
 			 method : "POST",
 			 success : function(data){
 				 console.log(data);
-				 console.log(data["erd"]/data["count"]);
-				 console.log(data["erd"]/data["count"]*100);
-				 console.log();
-				 var sign = data["sign"];
+
+				 var sign = data["done"];
 				 var count = data["count"];
 				 var erd = Math.round((data["erd"]/data["count"]*100)); 
 				 var uml = Math.round((data["uml"]/data["count"]*100)); 
 				 var image = Math.round((data["image"]/data["count"]*100)); 
 				 var usecase = Math.round((data["usecase"]/data["count"]*100)); 
 				 var usediagram = Math.round((data["usediagram"]/data["count"]*100)); 
-				 console.log(erd);
 					var chart1 = new CanvasJS.Chart("chartContainer1",
 							{
 								title:{
@@ -112,7 +109,7 @@ $(function(){
 							      zoomEnabled: true,
 							      
 							      title:{
-							        text: "프로젝트 능률의 변화"
+							        text: ""
 							      },    
 							      data: [
 							      {
@@ -121,7 +118,7 @@ $(function(){
 							      }
 							      ]
 							    });
-							    chart3.render();
+							    //chart3.render();
 			 }
 		  });
 });
