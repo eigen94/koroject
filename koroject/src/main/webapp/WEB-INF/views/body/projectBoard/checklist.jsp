@@ -81,8 +81,8 @@
 		}
 	#checkListPlus{
 		margin-top: 20px;
-		position: absolute;
-		margin-left:70px;
+		
+		margin-left:0px;
 		}
 	.checklists{
 		border-bottom: 1px solid
@@ -92,10 +92,11 @@
 </head>
 <body>
 <div id="checklistPage" class="container-fluid">
+
+<div class="checkListDiv col-md-4">
 <a data-toggle="modal" data-target="#checkCreateModal"  id="checkListPlus">
 	<img alt="checkPlus" src="/images/checkPlus.jpg">
 </a>
-<div class="checkListDiv col-md-4">
 <div class="checklistContainer" ></div>
 </div>
 <div id='calendar' class="col-md-5"></div>
