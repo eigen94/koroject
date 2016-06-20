@@ -34,7 +34,7 @@
 	border: 2px solid #e6e8e8;
 	width:50%;
 	height: 500px;
-	background: white;
+	background: #eaeaec;
 	display: inline-block;
 	float:left
 }
@@ -44,6 +44,7 @@
 	height:250px;
 	color: black;
 	font-weight: bold;
+	text-align: center;
 }
 .newsDivRightBottom{
 	border: 1px solid #e6e8e8;
@@ -58,7 +59,7 @@
     margin-left: 300px;
 }
 .ptag{
-	 margin-left: 200px;
+	 margin-left: 100px;
 	 margin-top: 30px;
 	 font-size: 30px;
 }
@@ -89,7 +90,7 @@ $(function(){
 				$.each(data,function(){
 //					$('.newsDivLeft').append('<ul><li>'+this+'</li></ul>');
 //					href = $('.newsDivLeft').children().children().children().last().attr('href');
-					$('.newsScript').append('<li>'+this+'</li>');
+					$('.newsScript').append('<li style="color:#9d2323;">'+this+'</li>');
 					href = $('.newsScript').children().children().last().attr('href');
 					$('.newsScript').children().last().attr('href', '');
 					$('.newsScript').append('<input type="hidden" class="href" value="'+href+'">');
