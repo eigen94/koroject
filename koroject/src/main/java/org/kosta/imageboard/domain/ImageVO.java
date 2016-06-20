@@ -16,6 +16,10 @@ public class ImageVO implements Serializable {
 	
 	private String[] files;
 	
+	public ImageVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public ImageVO(Integer img_bno, String img_title, String img_content, String img_writer, Date img_regdate,
 			int img_viewcnt, int img_replycnt, String[] files) {
 		super();
