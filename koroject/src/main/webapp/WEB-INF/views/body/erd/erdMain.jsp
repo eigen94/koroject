@@ -11,6 +11,10 @@
 <link rel="stylesheet" type="text/css"
 	href="http://jointjs.com/css/rappid.min.css" />
 <style type="text/css">
+.paper
+{
+   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAHUlEQVQYV2NkYGAwBuKzQIwXMBJSAJMfVUidcAQAnUQBC6jEGBUAAAAASUVORK5CYII=");
+}
 #inspector-holder {
 	position: absolute;
 	top: 0;

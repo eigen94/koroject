@@ -3,8 +3,9 @@
 <footer id="footer">
 <div class="inner">
 <section class="about">
-<h4 class="major">Magna Aliquam Feugiat</h4>
-<p>Etiam finibus pharetra purus, imperdiet sagittis mauris hendrerit vitae. In feugiat ante elementum nulla arcu. Maecenas vulputate faucibus, convallis ligula ipsum dolor feugiat tempus adipiscing.</p>
+<h4 class="major">koroject란</h4>
+<p>프로젝트와 관련된 모든 사람과  공동으로 작업할 수 있는 툴 또는 서비스를 가능하게 한다. 에센스 작업시 변경되는 내용의 반영과 현 상황 및 평가점수를 보기 쉽게 제공하고 프로젝트 진행을 한눈에 파악할 수 있게 한다.
+ </p>
 <ul class="actions">
 <li>
 <a class="button">Learn more</a>
@@ -27,20 +28,20 @@
 </ul>
 <ul class="contact">
 <li class="fa-home">
-Untitled Corp
+주소
 <br>
-1234 Fictional Road
+가산디지털 단지
 <br>
-Suite 5432
+신한 이노플렉스 1차
 <br>
-Nashville, TN 00000
+한국소프트웨어 진흥 협회 206
 <br>
-USA
+한국
 </li>
 </ul>
 </section>
 </div>
 <div class="copyright">
-<p>© Untitled Corp. All rights reserved.</p>
+<p>© koroject 김성훈, 장윤권, 조용철, 오태광, 류인선, 이형은</p>
 </div>
 </footer>
